@@ -1,18 +1,26 @@
 .navbar {
     /* padding: 10px 0px; */
-    background-color: antiquewhite;
+    background-color: #0176d3;
+    position: sticky;
+    top: 0;
+}
+
+.navbar ul li a{
+    color: #fff;
 }
 
 .heroSection img {
     width: 60%;
 }
 
-.heroSection ul li dt {
+.heroSection dl dt {
     font-weight: 600;
+    font-size: 20px;
 }
 
-.heroSection ul li dd {
+.heroSection dl dd {
     font-weight: 400;
+    font-size: 20px !important;
 }
 
 /* time line */
@@ -95,7 +103,6 @@
 .container img {
     position: absolute;
     width: 40px;
-    border-radius: 50%;
     overflow: hidden;
     right: -20px;
     top: 32px;

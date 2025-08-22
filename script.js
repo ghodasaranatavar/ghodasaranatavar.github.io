@@ -146,30 +146,39 @@ class EnhancedStickyPortfolioApp {
             anchor.removeEventListener('click', this.handleSmoothScroll);
             anchor.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = anchor.getAttribute('href').substring(1);
-                const target = document.getElementById(targetId);
-                
-                if (target) {
-                    const headerHeight = this.getHeaderHeight();
-                    const targetPosition = target.offsetTop - headerHeight - 20;
+                try {
+                    const targetId = anchor.getAttribute('href').substring(1);
+                    const target = document.getElementById(targetId);
                     
-                    // Set flag to prevent observer conflicts during programmatic scroll
-                    this.isUpdatingFromObserver = false;
-                    
-                    // Immediately update active navigation
-                    this.updateActiveNavigation(targetId);
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu after navigation
-                    if (this.mobileMenuOpen) {
-                        this.toggleMobileMenu();
+                    if (target) {
+                        const headerHeight = this.getHeaderHeight();
+                        const targetPosition = target.offsetTop - headerHeight - 20;
+                        
+                        // Set flag to prevent observer conflicts during programmatic scroll
+                        this.isUpdatingFromObserver = false;
+                        
+                        // Immediately update active navigation
+                        this.updateActiveNavigation(targetId);
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu after navigation
+                        if (this.mobileMenuOpen) {
+                            this.toggleMobileMenu();
+                        }
+                        
+                        // Re-enable observer after scroll
+                        setTimeout(() => {
+                            this.isUpdatingFromObserver = true;
+                        }, 1000);
+                        
+                        console.log(`🔗 Navigated to: ${targetId}`);
                     }
-                    
-                    console.log(`🔗 Navigated to: ${targetId}`);
+                } catch (error) {
+                    console.error('❌ Error in smooth scrolling:', error);
                 }
             });
         });
@@ -364,40 +373,51 @@ class EnhancedStickyPortfolioApp {
 
     // FIXED: Enhanced Active Navigation Management
     setupActiveNavigation() {
-        // Improved intersection observer for better section detection
+        // Enhanced intersection observer for better section detection
         this.sectionObserver = new IntersectionObserver((entries) => {
-            if (this.isUpdatingFromObserver === false) return;
-            
-            // Get all currently intersecting sections
-            const intersectingEntries = entries.filter(entry => entry.isIntersecting);
-            
-            if (intersectingEntries.length === 0) return;
-            
-            // Find the section that is most prominently in view
-            let mostVisibleEntry = intersectingEntries[0];
-            let maxVisibleArea = 0;
-            
-            intersectingEntries.forEach(entry => {
-                const rect = entry.boundingRect;
-                const headerHeight = this.getHeaderHeight();
-                const viewportHeight = window.innerHeight;
+            try {
+                if (this.isUpdatingFromObserver === false) return;
                 
-                // Calculate visible area of the section
-                const visibleTop = Math.max(rect.top, headerHeight);
-                const visibleBottom = Math.min(rect.bottom, viewportHeight);
-                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-                const visibleArea = visibleHeight * entry.intersectionRatio;
+                // Get all currently intersecting sections
+                const intersectingEntries = entries.filter(entry => entry.isIntersecting);
                 
-                if (visibleArea > maxVisibleArea) {
-                    maxVisibleArea = visibleArea;
-                    mostVisibleEntry = entry;
+                if (intersectingEntries.length === 0) return;
+                
+                // Find the section that is most prominently in view
+                let mostVisibleEntry = intersectingEntries[0];
+                let maxVisibleArea = 0;
+                
+                intersectingEntries.forEach(entry => {
+                    if (!entry.boundingClientRect) {
+                        console.warn('⚠️ Missing boundingClientRect for entry:', entry);
+                        return;
+                    }
+                    
+                    const rect = entry.boundingClientRect;
+                    const headerHeight = this.getHeaderHeight();
+                    const viewportHeight = window.innerHeight;
+                    
+                    // Calculate visible area of the section
+                    const visibleTop = Math.max(rect.top, headerHeight);
+                    const visibleBottom = Math.min(rect.bottom, viewportHeight);
+                    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                    const visibleArea = visibleHeight * entry.intersectionRatio;
+                    
+                    if (visibleArea > maxVisibleArea) {
+                        maxVisibleArea = visibleArea;
+                        mostVisibleEntry = entry;
+                    }
+                });
+                
+                const sectionId = mostVisibleEntry.target.id;
+                if (sectionId && sectionId !== this.currentSection) {
+                    this.updateActiveNavigation(sectionId);
+                    console.log(`🎯 Observer detected section: ${sectionId} (visible area: ${maxVisibleArea.toFixed(2)})`);
                 }
-            });
-            
-            const sectionId = mostVisibleEntry.target.id;
-            if (sectionId && sectionId !== this.currentSection) {
-                this.updateActiveNavigation(sectionId);
-                console.log(`🎯 Observer detected section: ${sectionId} (visible area: ${maxVisibleArea.toFixed(2)})`);
+            } catch (error) {
+                console.error('❌ Error in intersection observer:', error);
+                // Fallback to manual detection
+                this.manualSectionDetection();
             }
         }, {
             // Multiple thresholds for better detection
@@ -434,7 +454,7 @@ class EnhancedStickyPortfolioApp {
             // Set timeout to run manual detection after scroll stops
             scrollTimeout = setTimeout(() => {
                 this.manualSectionDetection();
-                this.isUpdatingFromObserver = false;
+                // Keep observer enabled for continuous updates
             }, 150);
         }, { passive: true });
 
@@ -449,70 +469,74 @@ class EnhancedStickyPortfolioApp {
 
     // FIXED: Improved manual section detection
     manualSectionDetection() {
-        const sections = ['home', 'experience', 'certifications', 'skills', 'portfolio', 'contact'];
-        const headerHeight = this.getHeaderHeight();
-        const scrollPosition = window.scrollY;
-        const viewportHeight = window.innerHeight;
-        const viewportCenter = scrollPosition + viewportHeight / 2;
-        
-        let activeSection = 'home';
-        let minDistance = Infinity;
-        
-        // Find the section whose center is closest to the viewport center
-        for (const sectionId of sections) {
-            const section = document.getElementById(sectionId);
-            if (!section) continue;
+        try {
+            const sections = ['home', 'experience', 'certifications', 'skills', 'portfolio', 'contact'];
+            const headerHeight = this.getHeaderHeight();
+            const scrollPosition = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            const viewportCenter = scrollPosition + viewportHeight / 2;
             
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionCenter = sectionTop + sectionHeight / 2;
-            const sectionBottom = sectionTop + sectionHeight;
+            let activeSection = 'home';
+            let minDistance = Infinity;
             
-            // Check if section is significantly in view
-            const visibleTop = Math.max(sectionTop, scrollPosition + headerHeight);
-            const visibleBottom = Math.min(sectionBottom, scrollPosition + viewportHeight);
-            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-            const visibilityRatio = visibleHeight / sectionHeight;
-            
-            // Prefer sections that are more than 30% visible
-            if (visibilityRatio > 0.3) {
-                const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
-                
-                if (distanceFromCenter < minDistance) {
-                    minDistance = distanceFromCenter;
-                    activeSection = sectionId;
-                }
-            }
-        }
-        
-        // Fallback: if no section is 30% visible, use the one with the most visibility
-        if (minDistance === Infinity) {
-            let maxVisibility = 0;
-            
+            // Find the section whose center is closest to the viewport center
             for (const sectionId of sections) {
                 const section = document.getElementById(sectionId);
                 if (!section) continue;
                 
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.offsetHeight;
+                const sectionCenter = sectionTop + sectionHeight / 2;
                 const sectionBottom = sectionTop + sectionHeight;
                 
+                // Check if section is significantly in view
                 const visibleTop = Math.max(sectionTop, scrollPosition + headerHeight);
                 const visibleBottom = Math.min(sectionBottom, scrollPosition + viewportHeight);
                 const visibleHeight = Math.max(0, visibleBottom - visibleTop);
                 const visibilityRatio = visibleHeight / sectionHeight;
                 
-                if (visibilityRatio > maxVisibility) {
-                    maxVisibility = visibilityRatio;
-                    activeSection = sectionId;
+                // Prefer sections that are more than 30% visible
+                if (visibilityRatio > 0.3) {
+                    const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
+                    
+                    if (distanceFromCenter < minDistance) {
+                        minDistance = distanceFromCenter;
+                        activeSection = sectionId;
+                    }
                 }
             }
-        }
-        
-        // Only update if different from current
-        if (activeSection !== this.currentSection) {
-            this.updateActiveNavigation(activeSection);
-            console.log(`🔍 Manual detection - Active section: ${activeSection} (scroll: ${scrollPosition})`);
+            
+            // Fallback: if no section is 30% visible, use the one with the most visibility
+            if (minDistance === Infinity) {
+                let maxVisibility = 0;
+                
+                for (const sectionId of sections) {
+                    const section = document.getElementById(sectionId);
+                    if (!section) continue;
+                    
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionBottom = sectionTop + sectionHeight;
+                    
+                    const visibleTop = Math.max(sectionTop, scrollPosition + headerHeight);
+                    const visibleBottom = Math.min(sectionBottom, scrollPosition + viewportHeight);
+                    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                    const visibilityRatio = visibleHeight / sectionHeight;
+                    
+                    if (visibilityRatio > maxVisibility) {
+                        maxVisibility = visibilityRatio;
+                        activeSection = sectionId;
+                    }
+                }
+            }
+            
+            // Only update if different from current
+            if (activeSection !== this.currentSection) {
+                this.updateActiveNavigation(activeSection);
+                console.log(`🔍 Manual detection - Active section: ${activeSection} (scroll: ${scrollPosition})`);
+            }
+        } catch (error) {
+            console.error('❌ Error in manual section detection:', error);
         }
     }
 

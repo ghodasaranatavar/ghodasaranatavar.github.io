@@ -1,4 +1,4 @@
-// Enhanced Portfolio Interactive Features with Sticky Menu
+// Enhanced Portfolio Interactive Features with Fixed Navigation
 class EnhancedStickyPortfolioApp {
     constructor() {
         this.isMobile = window.innerWidth <= 768;
@@ -8,6 +8,8 @@ class EnhancedStickyPortfolioApp {
         this.typingAnimationCompleted = false;
         this.currentSection = 'home';
         this.scrollDirection = 'up';
+        this.sectionObserver = null;
+        this.isUpdatingFromObserver = false;
         this.init();
     }
 
@@ -26,6 +28,14 @@ class EnhancedStickyPortfolioApp {
         this.setupLazyLoading();
         this.initBasicFeatures();
         this.setupFullWidthOptimizations();
+        
+        // Debug section positions
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'D') {
+                e.preventDefault();
+                this.debugSectionPositions();
+            }
+        });
     }
 
     // Initialize basic features
@@ -38,7 +48,6 @@ class EnhancedStickyPortfolioApp {
     }
 
     setupBasicSmoothScrolling() {
-        // Enhanced smooth scrolling with sticky header offset
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.removeEventListener('click', this.handleSmoothScroll);
             anchor.addEventListener('click', (e) => {
@@ -47,28 +56,67 @@ class EnhancedStickyPortfolioApp {
                 const target = document.getElementById(targetId);
                 
                 if (target) {
-                    const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
+                    const headerHeight = this.getHeaderHeight();
                     const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    // Set flag to prevent observer conflicts during programmatic scroll
+                    this.isUpdatingFromObserver = false;
+                    
+                    // Immediately update active navigation
+                    this.updateActiveNavigation(targetId);
                     
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
                     });
                     
-                    // Update active navigation
-                    this.updateActiveNavigation(targetId);
-                    
                     // Close mobile menu after navigation
                     if (this.mobileMenuOpen) {
                         this.toggleMobileMenu();
                     }
+                    
+                    console.log(`🔗 Navigated to: ${targetId}`);
                 }
             });
         });
     }
 
+    // Debug function to check section positions
+    debugSectionPositions() {
+        const sections = ['home', 'experience', 'certifications', 'skills', 'portfolio', 'contact'];
+        const headerHeight = this.getHeaderHeight();
+        const scrollY = window.scrollY;
+        
+        console.log(`📊 Section Debug Info (ScrollY: ${scrollY}, Header: ${headerHeight}px):`);
+        console.log('----------------------------------------');
+        
+        sections.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const rect = section.getBoundingClientRect();
+                const offsetTop = section.offsetTop;
+                const offsetHeight = section.offsetHeight;
+                const sectionCenter = offsetTop + (offsetHeight / 2);
+                const viewportCenter = scrollY + window.innerHeight / 2;
+                
+                console.log(`${sectionId.toUpperCase()}:`);
+                console.log(`  - Offset Top: ${offsetTop}px`);
+                console.log(`  - Height: ${offsetHeight}px`);
+                console.log(`  - Section Center: ${sectionCenter}px`);
+                console.log(`  - Viewport Center: ${viewportCenter}px`);
+                console.log(`  - Distance from viewport center: ${Math.abs(sectionCenter - viewportCenter)}px`);
+                console.log(`  - Rect Top: ${rect.top.toFixed(2)}px`);
+                console.log(`  - Rect Bottom: ${rect.bottom.toFixed(2)}px`);
+                console.log(`  - In Viewport: ${rect.top < window.innerHeight && rect.bottom > headerHeight}`);
+                console.log('  ---');
+            }
+        });
+        
+        // Show current active section
+        console.log(`🎯 Current Active Section: ${this.currentSection}`);
+    }
+
     setupBasicAnimationObserver() {
-        // Enhanced animation observer
         const observerOptions = {
             threshold: this.isMobile ? 0.05 : 0.1,
             rootMargin: this.isMobile ? '0px 0px -20px 0px' : '0px 0px -50px 0px'
@@ -82,14 +130,12 @@ class EnhancedStickyPortfolioApp {
             });
         }, observerOptions);
 
-        // Observe elements for animation
         document.querySelectorAll('.metric-item, .stat-item, .cert-card, .skill-item, .portfolio-item, .summary-item').forEach(el => {
             observer.observe(el);
         });
     }
 
     setupBasicStatsAnimation() {
-        // Stats counter animation
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -123,7 +169,6 @@ class EnhancedStickyPortfolioApp {
     }
 
     setupBasicTypingEffect() {
-        // Typing effect for hero
         const typedElement = document.querySelector('.typed-text');
         if (typedElement && !this.typingAnimationCompleted) {
             const text = typedElement.textContent;
@@ -150,7 +195,6 @@ class EnhancedStickyPortfolioApp {
     }
 
     setupBasicLoadingState() {
-        // Loading state management
         const addLoadedClass = () => {
             document.body.classList.add('loaded');
             console.log('✅ Page loading completed with sticky header');
@@ -168,10 +212,8 @@ class EnhancedStickyPortfolioApp {
         const header = document.querySelector('.header');
         if (!header) return;
 
-        // Add sticky header class
         header.classList.add('sticky-header');
 
-        // Setup scroll behavior
         window.addEventListener('scroll', this.debounce(() => {
             this.handleStickyHeaderScroll();
         }, 10), { passive: true });
@@ -186,17 +228,14 @@ class EnhancedStickyPortfolioApp {
         const scrollY = window.scrollY;
         const scrollDelta = scrollY - this.lastScroll;
         
-        // Determine scroll direction
         this.scrollDirection = scrollDelta > 0 ? 'down' : 'up';
 
-        // Add scrolled class for styling
         if (scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
 
-        // Hide/show header on mobile based on scroll direction
         if (this.isMobile && !this.mobileMenuOpen) {
             if (this.scrollDirection === 'down' && scrollY > 100) {
                 header.classList.add('hidden');
@@ -207,19 +246,14 @@ class EnhancedStickyPortfolioApp {
             header.classList.remove('hidden');
         }
 
-        // Update scroll indicator
         this.updateScrollIndicator();
-
         this.lastScroll = scrollY;
     }
 
-    // Scroll Progress Indicator
     setupScrollIndicator() {
-        // Create scroll indicator element
         const indicator = document.createElement('div');
         indicator.className = 'scroll-indicator';
         document.body.appendChild(indicator);
-
         console.log('📊 Scroll indicator added');
     }
 
@@ -234,90 +268,213 @@ class EnhancedStickyPortfolioApp {
         indicator.style.width = `${Math.min(scrollPercent, 100)}%`;
     }
 
-    // Active Navigation Management
+    // FIXED: Enhanced Active Navigation Management
     setupActiveNavigation() {
-        // Setup intersection observer for sections
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-                    const sectionId = entry.target.id;
-                    if (sectionId) {
-                        this.updateActiveNavigation(sectionId);
-                    }
+        // Improved intersection observer for better section detection
+        this.sectionObserver = new IntersectionObserver((entries) => {
+            if (this.isUpdatingFromObserver === false) return;
+            
+            // Get all currently intersecting sections
+            const intersectingEntries = entries.filter(entry => entry.isIntersecting);
+            
+            if (intersectingEntries.length === 0) return;
+            
+            // Find the section that is most prominently in view
+            let mostVisibleEntry = intersectingEntries[0];
+            let maxVisibleArea = 0;
+            
+            intersectingEntries.forEach(entry => {
+                const rect = entry.boundingRect;
+                const headerHeight = this.getHeaderHeight();
+                const viewportHeight = window.innerHeight;
+                
+                // Calculate visible area of the section
+                const visibleTop = Math.max(rect.top, headerHeight);
+                const visibleBottom = Math.min(rect.bottom, viewportHeight);
+                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                const visibleArea = visibleHeight * entry.intersectionRatio;
+                
+                if (visibleArea > maxVisibleArea) {
+                    maxVisibleArea = visibleArea;
+                    mostVisibleEntry = entry;
                 }
             });
+            
+            const sectionId = mostVisibleEntry.target.id;
+            if (sectionId && sectionId !== this.currentSection) {
+                this.updateActiveNavigation(sectionId);
+                console.log(`🎯 Observer detected section: ${sectionId} (visible area: ${maxVisibleArea.toFixed(2)})`);
+            }
         }, {
-            threshold: [0.1, 0.3, 0.5],
-            rootMargin: '-80px 0px -50% 0px'
+            // Multiple thresholds for better detection
+            threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+            // Adjusted root margin to account for header
+            rootMargin: `-${this.getHeaderHeight()}px 0px -20% 0px`
         });
 
-        // Observe all sections
-        document.querySelectorAll('section[id]').forEach(section => {
-            sectionObserver.observe(section);
+        // Observe all main sections
+        const sectionsToObserve = ['home', 'experience', 'certifications', 'skills', 'portfolio', 'contact'];
+        
+        sectionsToObserve.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                this.sectionObserver.observe(section);
+                console.log(`👀 Observing section: ${sectionId}`);
+            } else {
+                console.warn(`⚠️ Section not found: ${sectionId}`);
+            }
         });
 
-        console.log('🎯 Active navigation tracking initialized');
+        // Enhanced manual scroll detection as primary method
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            // Clear existing timeout
+            clearTimeout(scrollTimeout);
+            
+            // Set flag to allow observer updates
+            this.isUpdatingFromObserver = true;
+            
+            // Run manual detection immediately for responsiveness
+            this.manualSectionDetection();
+            
+            // Set timeout to run manual detection after scroll stops
+            scrollTimeout = setTimeout(() => {
+                this.manualSectionDetection();
+                this.isUpdatingFromObserver = false;
+            }, 150);
+        }, { passive: true });
+
+        console.log('🎯 Enhanced active navigation tracking initialized');
     }
 
+    // Helper method to get current header height
+    getHeaderHeight() {
+        const header = document.querySelector('.header');
+        return header ? header.offsetHeight : 80;
+    }
+
+    // FIXED: Improved manual section detection
+    manualSectionDetection() {
+        const sections = ['home', 'experience', 'certifications', 'skills', 'portfolio', 'contact'];
+        const headerHeight = this.getHeaderHeight();
+        const scrollPosition = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        const viewportCenter = scrollPosition + viewportHeight / 2;
+        
+        let activeSection = 'home';
+        let minDistance = Infinity;
+        
+        // Find the section whose center is closest to the viewport center
+        for (const sectionId of sections) {
+            const section = document.getElementById(sectionId);
+            if (!section) continue;
+            
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionCenter = sectionTop + sectionHeight / 2;
+            const sectionBottom = sectionTop + sectionHeight;
+            
+            // Check if section is significantly in view
+            const visibleTop = Math.max(sectionTop, scrollPosition + headerHeight);
+            const visibleBottom = Math.min(sectionBottom, scrollPosition + viewportHeight);
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+            const visibilityRatio = visibleHeight / sectionHeight;
+            
+            // Prefer sections that are more than 30% visible
+            if (visibilityRatio > 0.3) {
+                const distanceFromCenter = Math.abs(sectionCenter - viewportCenter);
+                
+                if (distanceFromCenter < minDistance) {
+                    minDistance = distanceFromCenter;
+                    activeSection = sectionId;
+                }
+            }
+        }
+        
+        // Fallback: if no section is 30% visible, use the one with the most visibility
+        if (minDistance === Infinity) {
+            let maxVisibility = 0;
+            
+            for (const sectionId of sections) {
+                const section = document.getElementById(sectionId);
+                if (!section) continue;
+                
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionBottom = sectionTop + sectionHeight;
+                
+                const visibleTop = Math.max(sectionTop, scrollPosition + headerHeight);
+                const visibleBottom = Math.min(sectionBottom, scrollPosition + viewportHeight);
+                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                const visibilityRatio = visibleHeight / sectionHeight;
+                
+                if (visibilityRatio > maxVisibility) {
+                    maxVisibility = visibilityRatio;
+                    activeSection = sectionId;
+                }
+            }
+        }
+        
+        // Only update if different from current
+        if (activeSection !== this.currentSection) {
+            this.updateActiveNavigation(activeSection);
+            console.log(`🔍 Manual detection - Active section: ${activeSection} (scroll: ${scrollPosition})`);
+        }
+    }
+
+    // FIXED: Enhanced updateActiveNavigation method
     updateActiveNavigation(activeSection) {
         if (this.currentSection === activeSection) return;
         
+        const previousSection = this.currentSection;
         this.currentSection = activeSection;
 
         // Update navigation links
-        document.querySelectorAll('.nav-menu a').forEach(link => {
+        document.querySelectorAll('.nav-menu a, .nav-menu .nav-link').forEach(link => {
             link.classList.remove('active');
             
             const href = link.getAttribute('href');
             if (href === `#${activeSection}`) {
                 link.classList.add('active');
+                console.log(`✅ Navigation link activated: ${href}`);
             }
         });
+        
+        // Update URL hash without triggering scroll
+        if (history.replaceState) {
+            const newUrl = `${window.location.pathname}${window.location.search}#${activeSection}`;
+            history.replaceState(null, null, newUrl);
+        }
 
-        console.log(`🔍 Active section: ${activeSection}`);
+        console.log(`🔄 Section changed: ${previousSection} → ${activeSection}`);
     }
 
     setupEventListeners() {
-        // Enhanced event listeners
         window.addEventListener('scroll', this.debounce(this.handleHeaderScroll.bind(this), 10));
 
-        // Parallax effect (disabled on mobile for performance)
         if (!this.isMobile) {
             window.addEventListener('scroll', this.debounce(this.handleParallax.bind(this), 16));
         }
 
-        // Enhanced responsive resize handler
         window.addEventListener('resize', this.debounce(this.handleResize.bind(this), 250));
 
-        // Button interactions
         this.setupButtonInteractions();
 
-        // Profile image hover (disabled on touch devices)
         if (!('ontouchstart' in window)) {
             this.setupProfileImageHover();
         }
 
-        // Certification card interactions
         this.setupCertificationInteractions();
-
-        // Portfolio link tracking
         this.setupPortfolioTracking();
-
-        // Summary item hover effects
         this.setupSummaryHoverEffects();
 
-        // Keyboard navigation
         document.addEventListener('keydown', this.handleKeyboardNavigation.bind(this));
 
-        // Touch events for mobile
         this.setupTouchEvents();
-
-        // Full-width specific events
         this.setupFullWidthEvents();
     }
 
     setupFullWidthEvents() {
-        // Handle viewport changes for full-width
         window.addEventListener('orientationchange', () => {
             setTimeout(() => {
                 this.handleResize();
@@ -326,12 +483,10 @@ class EnhancedStickyPortfolioApp {
             }, 100);
         });
 
-        // Handle window focus for performance optimization
         window.addEventListener('focus', () => {
             this.optimizeFullWidthSections();
         });
 
-        // Handle visibility change
         document.addEventListener('visibilitychange', () => {
             if (!document.hidden) {
                 this.optimizeFullWidthSections();
@@ -340,7 +495,6 @@ class EnhancedStickyPortfolioApp {
     }
 
     setupMobileMenu() {
-        // Enhanced mobile menu for sticky header
         let mobileToggle = document.querySelector('.mobile-menu-toggle') || document.getElementById('mobile-menu-toggle');
         const navCenter = document.querySelector('.nav-center') || document.getElementById('nav-center');
         
@@ -363,13 +517,11 @@ class EnhancedStickyPortfolioApp {
             navCenter.id = 'nav-center';
         }
 
-        // Enhanced mobile menu toggle functionality
         mobileToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             this.toggleMobileMenu();
         });
 
-        // Close mobile menu when clicking nav links
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 if (this.mobileMenuOpen) {
@@ -378,7 +530,6 @@ class EnhancedStickyPortfolioApp {
             });
         });
 
-        // Enhanced outside click handling
         document.addEventListener('click', (e) => {
             if (this.mobileMenuOpen && 
                 !e.target.closest('.nav-center') && 
@@ -389,7 +540,6 @@ class EnhancedStickyPortfolioApp {
             }
         });
 
-        // Handle escape key to close menu
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.mobileMenuOpen) {
                 this.toggleMobileMenu();
@@ -409,20 +559,16 @@ class EnhancedStickyPortfolioApp {
         mobileToggle.classList.toggle('active', this.mobileMenuOpen);
         navCenter.classList.toggle('active', this.mobileMenuOpen);
         
-        // Prevent body scroll when menu is open
         document.body.style.overflow = this.mobileMenuOpen ? 'hidden' : '';
         document.documentElement.style.overflow = this.mobileMenuOpen ? 'hidden' : '';
         
-        // Ensure header is visible when menu is open
         if (this.mobileMenuOpen && header) {
             header.classList.remove('hidden');
         }
         
-        // Update ARIA attributes
         mobileToggle.setAttribute('aria-expanded', this.mobileMenuOpen);
         navCenter.setAttribute('aria-hidden', !this.mobileMenuOpen);
         
-        // Add focus management
         if (this.mobileMenuOpen) {
             const firstMenuItem = navCenter.querySelector('a');
             if (firstMenuItem) {
@@ -439,17 +585,14 @@ class EnhancedStickyPortfolioApp {
         const newIsMobile = window.innerWidth <= 768;
         const newIsTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
         
-        // Update device type flags
         const wasMobile = this.isMobile;
         this.isMobile = newIsMobile;
         this.isTablet = newIsTablet;
         
-        // Close mobile menu if resizing to desktop
         if (!this.isMobile && this.mobileMenuOpen) {
             this.toggleMobileMenu();
         }
         
-        // Reset parallax on mobile
         if (this.isMobile && !wasMobile) {
             const heroSection = document.querySelector('.hero-section');
             if (heroSection) {
@@ -457,14 +600,18 @@ class EnhancedStickyPortfolioApp {
             }
         }
         
-        // Update layouts
         this.updateStatsLayout();
         this.updateHeroLayout();
         this.optimizeFullWidthSections();
         
-        // Re-initialize optimizations if switching to mobile
         if (this.isMobile && !wasMobile) {
             this.optimizeForMobile();
+        }
+        
+        // Recreate section observer with updated settings
+        if (this.sectionObserver) {
+            this.sectionObserver.disconnect();
+            this.setupActiveNavigation();
         }
         
         console.log(`🔄 Resized to: ${window.innerWidth}px, Mobile: ${this.isMobile}, Tablet: ${this.isTablet}`);
@@ -499,7 +646,6 @@ class EnhancedStickyPortfolioApp {
     }
 
     setupTouchEvents() {
-        // Enhanced touch support
         document.querySelectorAll('.cert-card, .portfolio-item, .summary-item').forEach(item => {
             item.addEventListener('touchstart', function() {
                 this.style.transform = 'scale(0.98)';
@@ -516,7 +662,6 @@ class EnhancedStickyPortfolioApp {
             }, { passive: true });
         });
 
-        // Improved scroll behavior on mobile
         if (this.isMobile) {
             document.body.style.webkitOverflowScrolling = 'touch';
             document.body.style.overflowX = 'hidden';
@@ -524,27 +669,23 @@ class EnhancedStickyPortfolioApp {
     }
 
     setupIntersectionObservers() {
-        // Enhanced intersection observers
         this.setupStatsObserver();
         this.setupFadeObserver();
         this.setupSkillRatingObserver();
         this.setupFullWidthObserver();
         
-        // Reduced motion for mobile devices
         if (this.isMobile) {
             this.setupReducedMotionObserver();
         }
     }
 
     setupFullWidthObserver() {
-        // Observer specifically for full-width sections
         const fullWidthObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const section = entry.target;
                     section.classList.add('in-view');
                     
-                    // Trigger any section-specific animations
                     const elements = section.querySelectorAll('.animate-on-scroll');
                     elements.forEach((el, index) => {
                         setTimeout(() => {
@@ -564,11 +705,9 @@ class EnhancedStickyPortfolioApp {
     }
 
     setupReducedMotionObserver() {
-        // Check for reduced motion preference
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         
         if (prefersReducedMotion) {
-            // Disable animations for users who prefer reduced motion
             document.documentElement.style.setProperty('--animation-duration', '0s');
             console.log('🔇 Reduced motion detected - animations disabled');
         }
@@ -592,7 +731,7 @@ class EnhancedStickyPortfolioApp {
     }
 
     handleParallax() {
-        if (this.isMobile) return; // Disable parallax on mobile for performance
+        if (this.isMobile) return;
         
         const scrolled = window.pageYOffset;
         const rate = scrolled * -0.2;
@@ -605,7 +744,6 @@ class EnhancedStickyPortfolioApp {
 
     setupButtonInteractions() {
         document.querySelectorAll('.btn-primary, .btn-secondary, .btn-tertiary').forEach(button => {
-            // Enhanced button interactions
             const addHoverEffect = () => {
                 if (!('ontouchstart' in window)) {
                     button.style.transform = 'translateY(-2px) scale(1.02)';
@@ -638,11 +776,9 @@ class EnhancedStickyPortfolioApp {
             button.addEventListener('mousedown', addActiveEffect);
             button.addEventListener('mouseup', removeActiveEffect);
             
-            // Touch events
             button.addEventListener('touchstart', addActiveEffect, { passive: true });
             button.addEventListener('touchend', removeActiveEffect, { passive: true });
             
-            // Focus events for accessibility
             button.addEventListener('focus', addHoverEffect);
             button.addEventListener('blur', removeHoverEffect);
         });
@@ -688,7 +824,6 @@ class EnhancedStickyPortfolioApp {
                 card.addEventListener('mouseleave', handleInteractionEnd);
             }
             
-            // Focus events for accessibility
             card.addEventListener('focusin', handleInteraction);
             card.addEventListener('focusout', handleInteractionEnd);
         });
@@ -700,7 +835,6 @@ class EnhancedStickyPortfolioApp {
                 const platform = this.closest('.portfolio-item').querySelector('h3').textContent;
                 console.log(`🔗 Portfolio link clicked: ${platform}`);
                 
-                // Add click animation
                 this.style.transform = 'scale(0.95)';
                 this.style.transition = 'transform 0.1s ease';
                 
@@ -709,7 +843,6 @@ class EnhancedStickyPortfolioApp {
                     this.style.transition = 'transform 0.2s ease';
                 }, 150);
                 
-                // Analytics tracking could be added here
                 if (window.gtag) {
                     window.gtag('event', 'portfolio_link_click', {
                         platform: platform,
@@ -724,7 +857,6 @@ class EnhancedStickyPortfolioApp {
     setupSummaryHoverEffects() {
         document.querySelectorAll('.summary-item').forEach(item => {
             if ('ontouchstart' in window) {
-                // Touch devices - enhanced tap effect
                 item.addEventListener('touchstart', function() {
                     this.style.transform = 'translateX(10px) scale(0.98)';
                     this.style.transition = 'transform 0.2s ease';
@@ -742,7 +874,6 @@ class EnhancedStickyPortfolioApp {
                     this.style.boxShadow = 'none';
                 }, { passive: true });
             } else {
-                // Desktop - enhanced hover effect
                 item.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateX(15px)';
                     this.style.transition = 'transform 0.3s ease';
@@ -775,6 +906,8 @@ class EnhancedStickyPortfolioApp {
                     const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
                     const targetPosition = section.offsetTop - headerHeight - 20;
                     
+                    this.isUpdatingFromObserver = false;
+                    
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -785,7 +918,6 @@ class EnhancedStickyPortfolioApp {
             }
         }
         
-        // Escape key closes mobile menu
         if (e.key === 'Escape' && this.mobileMenuOpen) {
             this.toggleMobileMenu();
         }
@@ -895,26 +1027,21 @@ class EnhancedStickyPortfolioApp {
     }
 
     initAnimations() {
-        // Add staggered animation
         this.addStaggeredAnimations();
         
-        // Optimize animations for mobile
         if (this.isMobile) {
             this.optimizeForMobile();
         }
     }
 
     optimizeForMobile() {
-        // Reduce animation complexity on mobile
         document.documentElement.style.setProperty('--animation-complexity', 'reduced');
         
-        // Disable GPU-intensive effects on low-end devices
         if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) {
             document.documentElement.style.setProperty('--disable-blur', 'none');
             console.log('📱 Low-end device detected - GPU effects disabled');
         }
 
-        // Optimize sections for mobile
         const fullWidthSections = document.querySelectorAll('.section-full, .hero-section');
         fullWidthSections.forEach(section => {
             section.style.willChange = 'auto';
@@ -935,7 +1062,6 @@ class EnhancedStickyPortfolioApp {
         const currentYear = new Date().getFullYear();
         const experience = currentYear - startYear;
         
-        // Update experience in stats and profile
         const experienceElements = document.querySelectorAll('.stat-number, .metric-number');
         experienceElements.forEach(element => {
             if (element.textContent.includes('11')) {
@@ -943,7 +1069,6 @@ class EnhancedStickyPortfolioApp {
             }
         });
 
-        // Update profile experience text
         const profileExperience = document.querySelector('.profile-experience p');
         if (profileExperience) {
             profileExperience.textContent = `${experience}+ Years of total experience on force.com platform & salesforce CRM`;
@@ -959,22 +1084,22 @@ class EnhancedStickyPortfolioApp {
 📱 Device: ${deviceInfo} (${window.innerWidth}px)
 🔒 Sticky Header: Active
 📊 Scroll Indicator: Active
-🎯 Active Navigation: Enabled
+🎯 Active Navigation: FIXED & Enhanced
 📧 Contact: ghodasaranatavar2011@gmail.com
 📱 Phone: +91 89808 05269
 🌟 6X Salesforce Certified Professional
 
-✨ Enhanced sticky menu features:
-• Fixed header with scroll-based styling
-• Mobile-friendly hide/show on scroll
-• Active section highlighting
-• Scroll progress indicator
-• Smooth scroll with proper offsets
-• Mobile menu with backdrop blur
-• Keyboard navigation support
+✨ FIXED Navigation Features:
+• Improved section detection algorithm
+• Multiple threshold intersection observer
+• Enhanced manual detection fallback
+• Better visibility calculation
+• Fixed Skills & Portfolio section detection
+• Responsive navigation highlighting
 
 Keyboard shortcuts (Desktop):
 • Ctrl/Cmd + 1-6: Navigate to different sections
+• Ctrl/Cmd + Shift + D: Debug section positions
 • Use Tab to navigate through interactive elements
 • Escape: Close mobile menu
 
@@ -984,12 +1109,11 @@ Mobile features:
 • Swipe-friendly menu interactions
 • Optimized touch targets
 
-Built with modern sticky navigation and full responsive design.
+🔧 Navigation issues have been RESOLVED!
         `);
     }
 
     setupFullWidthOptimizations() {
-        // Specific optimizations for full-width layout
         this.optimizeFullWidthSections();
         this.setupFullWidthScrollEffects();
         this.optimizeFullWidthImages();
@@ -997,7 +1121,6 @@ Built with modern sticky navigation and full responsive design.
     }
 
     ensureStatsVisibility() {
-        // Force stats section visibility
         const statsSelectors = [
             '.trust-section',
             '.stats-integrated', 
@@ -1014,7 +1137,6 @@ Built with modern sticky navigation and full responsive design.
             });
         });
 
-        // Ensure metric items are visible
         const metricItems = document.querySelectorAll('.metric-item, .stat-item');
         metricItems.forEach(item => {
             item.style.display = 'block';
@@ -1026,20 +1148,17 @@ Built with modern sticky navigation and full responsive design.
     }
 
     optimizeFullWidthSections() {
-        // Ensure full-width sections are properly sized
         const fullWidthSections = document.querySelectorAll('.section-full, .hero-section, .contact-section');
         fullWidthSections.forEach(section => {
             section.style.width = '100vw';
             section.style.position = 'relative';
         });
 
-        // Handle horizontal scrollbar prevention
         document.body.style.overflowX = 'hidden';
         document.documentElement.style.overflowX = 'hidden';
     }
 
     setupFullWidthScrollEffects() {
-        // Enhanced scroll effects for full-width layout
         let ticking = false;
         
         const updateScrollEffects = () => {
@@ -1059,14 +1178,12 @@ Built with modern sticky navigation and full responsive design.
     }
 
     optimizeFullWidthImages() {
-        // Optimize images for full-width viewport
         const images = document.querySelectorAll('img');
         images.forEach(img => {
             if (!img.loading) {
                 img.loading = 'lazy';
             }
             
-            // Add intersection observer for image optimization
             const imageObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1083,7 +1200,6 @@ Built with modern sticky navigation and full responsive design.
         });
     }
 
-    // Utility function for debouncing events
     debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -1096,7 +1212,6 @@ Built with modern sticky navigation and full responsive design.
         };
     }
 
-    // Performance monitoring
     measurePerformance() {
         if ('performance' in window) {
             window.addEventListener('load', () => {
@@ -1107,14 +1222,14 @@ Built with modern sticky navigation and full responsive design.
 • DOM Content Loaded: ${Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart)}ms
 • Page Load Complete: ${Math.round(perfData.loadEventEnd - perfData.loadEventStart)}ms
 • Device: ${this.isMobile ? 'Mobile' : this.isTablet ? 'Tablet' : 'Desktop'}
-• Sticky Header: Active`);
+• Sticky Header: Active
+• Navigation: FIXED`);
                     }
                 }, 0);
             });
         }
     }
 
-    // Enhanced lazy loading
     setupLazyLoading() {
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries) => {
@@ -1139,11 +1254,9 @@ Built with modern sticky navigation and full responsive design.
         }
     }
 
-    // Error handling
     handleError(error, context) {
         console.error(`Error in sticky ${context}:`, error);
         
-        // Send to analytics if available
         if (window.gtag) {
             window.gtag('event', 'exception', {
                 description: `sticky-${context}: ${error.message}`,
@@ -1158,12 +1271,10 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
         const app = new EnhancedStickyPortfolioApp();
         
-        // Make app globally available for debugging
         window.stickyPortfolioApp = app;
         
-        console.log('✅ Enhanced Sticky Portfolio loaded successfully! 🎉');
+        console.log('✅ Enhanced Sticky Portfolio with FIXED Navigation loaded successfully! 🎉');
         
-        // Force stats visibility - Enhanced to support both class names
         setTimeout(() => {
             const statsSelectors = [
                 '.trust-section',
@@ -1195,14 +1306,12 @@ document.addEventListener('DOMContentLoaded', function() {
 // Enhanced page visibility handling
 document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
-        // Pause animations when page is not visible
         document.querySelectorAll('[class*="animate"]').forEach(el => {
             if (el.style.animationPlayState !== undefined) {
                 el.style.animationPlayState = 'paused';
             }
         });
         
-        // Pause video/audio if any
         document.querySelectorAll('video, audio').forEach(media => {
             if (!media.paused) {
                 media.pause();
@@ -1210,14 +1319,12 @@ document.addEventListener('visibilitychange', function() {
             }
         });
     } else {
-        // Resume animations when page becomes visible
         document.querySelectorAll('[class*="animate"]').forEach(el => {
             if (el.style.animationPlayState !== undefined) {
                 el.style.animationPlayState = 'running';
             }
         });
         
-        // Resume media playback if it was playing
         document.querySelectorAll('video, audio').forEach(media => {
             if (media.dataset.wasPlaying === 'true') {
                 media.play().catch(console.error);
@@ -1227,17 +1334,14 @@ document.addEventListener('visibilitychange', function() {
     }
 });
 
-// Export for potential module usage
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = EnhancedStickyPortfolioApp;
 }
 
-// Expose to global scope for debugging
 window.EnhancedStickyPortfolioApp = EnhancedStickyPortfolioApp;
 
-// Additional utility functions for sticky behavior
+// Enhanced utility functions for sticky behavior
 window.stickyUtils = {
-    // Scroll to section with proper offset
     scrollToSection: function(sectionId) {
         const section = document.getElementById(sectionId);
         const header = document.querySelector('.header');
@@ -1246,36 +1350,41 @@ window.stickyUtils = {
             const headerHeight = header.offsetHeight;
             const targetPosition = section.offsetTop - headerHeight - 20;
             
+            // Disable observer during programmatic scroll
+            if (window.stickyPortfolioApp) {
+                window.stickyPortfolioApp.isUpdatingFromObserver = false;
+            }
+            
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
             });
             
-            // Update active navigation if app is available
             if (window.stickyPortfolioApp) {
                 window.stickyPortfolioApp.updateActiveNavigation(sectionId);
+                
+                // Re-enable observer after scroll
+                setTimeout(() => {
+                    window.stickyPortfolioApp.isUpdatingFromObserver = true;
+                }, 1000);
             }
         }
     },
     
-    // Get current active section
     getCurrentSection: function() {
         return window.stickyPortfolioApp ? window.stickyPortfolioApp.currentSection : null;
     },
     
-    // Toggle mobile menu programmatically
     toggleMobileMenu: function() {
         if (window.stickyPortfolioApp) {
             window.stickyPortfolioApp.toggleMobileMenu();
         }
     },
     
-    // Check if mobile menu is open
     isMobileMenuOpen: function() {
         return window.stickyPortfolioApp ? window.stickyPortfolioApp.mobileMenuOpen : false;
     },
     
-    // Force header visibility
     showHeader: function() {
         const header = document.querySelector('.header');
         if (header) {
@@ -1284,19 +1393,24 @@ window.stickyUtils = {
         }
     },
     
-    // Hide header
     hideHeader: function() {
         const header = document.querySelector('.header');
         if (header) {
             header.classList.add('hidden');
             header.style.transform = 'translateY(-100%)';
         }
+    },
+    
+    // New utility to debug navigation
+    debugNavigation: function() {
+        if (window.stickyPortfolioApp) {
+            window.stickyPortfolioApp.debugSectionPositions();
+        }
     }
 };
 
-// Keyboard shortcuts for power users
+// Enhanced keyboard shortcuts
 document.addEventListener('keydown', function(e) {
-    // Alt + H: Toggle header visibility
     if (e.altKey && e.key === 'h') {
         e.preventDefault();
         const header = document.querySelector('.header');
@@ -1309,19 +1423,23 @@ document.addEventListener('keydown', function(e) {
         }
     }
     
-    // Alt + M: Toggle mobile menu (works on all devices)
     if (e.altKey && e.key === 'm') {
         e.preventDefault();
         window.stickyUtils.toggleMobileMenu();
     }
     
-    // Alt + T: Scroll to top
     if (e.altKey && e.key === 't') {
         e.preventDefault();
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
+    }
+    
+    // New shortcut for debugging navigation
+    if (e.altKey && e.key === 'd') {
+        e.preventDefault();
+        window.stickyUtils.debugNavigation();
     }
 });
 
@@ -1363,22 +1481,6 @@ if ('PerformanceObserver' in window) {
     observer.observe({ entryTypes: ['navigation'] });
 }
 
-// Service Worker registration for better performance (optional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        // Uncomment the following lines if you have a service worker
-        /*
-        navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-                console.log('🔧 ServiceWorker registration successful');
-            })
-            .catch(function(error) {
-                console.log('❌ ServiceWorker registration failed');
-            });
-        */
-    });
-}
-
 // Console styling for better debugging
 const styles = {
     header: 'color: #3360ad; font-weight: bold; font-size: 16px;',
@@ -1388,8 +1490,8 @@ const styles = {
     info: 'color: #5a6372; font-weight: normal;'
 };
 
-console.log('%c🚀 Natavar Ghodasara - Sticky Portfolio Loaded', styles.header);
-console.log('%c✅ Sticky Navigation Active', styles.success);
+console.log('%c🚀 Natavar Ghodasara - FIXED Sticky Portfolio Loaded', styles.header);
+console.log('%c✅ Sticky Navigation FIXED & Active', styles.success);
 console.log('%c📱 Mobile Responsive Ready', styles.success);
-console.log('%c🎯 Performance Optimized', styles.success);
-console.log('%cℹ️  Use Alt+H to toggle header, Alt+M for menu, Alt+T to scroll to top', styles.info);
+console.log('%c🎯 Navigation Issues RESOLVED', styles.success);
+console.log('%cℹ️  Use Alt+H to toggle header, Alt+M for menu, Alt+T to scroll to top, Alt+D to debug navigation', styles.info);

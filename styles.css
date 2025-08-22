@@ -1366,7 +1366,95 @@ body.loaded {
         animation: none;
     }
 }
+.experience-section {
+        background: linear-gradient(135deg, var(--lab-bg-light) 0%, var(--lab-bg-white) 50%, var(--lab-bg-lighter) 100%);
+    }
 
+    .timeline-container {
+        margin-bottom: var(--section-spacing);
+        padding-bottom: var(--card-gap-xl);
+        border-bottom: 1px solid var(--lab-border-light);
+    }
+
+    .summary-container {
+        padding-top: var(--card-gap-xl);
+    }
+
+    .timeline-container .section-header,
+    .summary-container .section-header {
+        margin-bottom: var(--card-gap-lg);
+    }
+
+    /* Enhanced education content styling */
+    .education-content {
+        text-align: center;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--card-gap-xl);
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--lab-border-light);
+        box-shadow: var(--lab-shadow-light);
+    }
+
+    .education-item {
+        position: relative;
+    }
+
+    .education-item::before {
+        content: '🎯';
+        font-size: 2rem;
+        display: block;
+        margin-bottom: var(--card-gap-sm);
+    }
+
+    .education-item h3 {
+        font: var(--font-title3);
+        color: var(--lab-palette-primary-main);
+        margin-bottom: var(--card-gap-sm);
+        font-weight: 700;
+    }
+
+    .education-item p {
+        color: var(--lab-text-muted);
+        font: var(--font-subtitle1);
+        font-weight: 600;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .timeline-container {
+            margin-bottom: var(--card-gap-lg);
+            padding-bottom: var(--card-gap-md);
+        }
+
+        .summary-container {
+            padding-top: var(--card-gap-md);
+        }
+
+        .education-content {
+            padding: var(--card-gap-md);
+        }
+    }
+
+    /* Animation for section transitions */
+    .experience-section .timeline-container,
+    .experience-section .summary-container {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .experience-section .summary-container {
+        animation-delay: 0.3s;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 /* Better spacing for larger screens */
 @media (min-width: 1920px) {
     :root {

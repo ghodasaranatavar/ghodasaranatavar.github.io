@@ -28,6 +28,7 @@ class EnhancedStickyPortfolioApp {
         this.setupLazyLoading();
         this.initBasicFeatures();
         this.setupFullWidthOptimizations();
+        this.setupFooterAnimations();
         
         // Debug section positions
         document.addEventListener('keydown', (e) => {
@@ -35,6 +36,99 @@ class EnhancedStickyPortfolioApp {
                 e.preventDefault();
                 this.debugSectionPositions();
             }
+        });
+    }
+
+    // NEW: Setup footer animations and interactions
+    setupFooterAnimations() {
+        this.setupFooterIntersectionObserver();
+        this.setupFooterHoverEffects();
+        this.setupFooterButtonAnimations();
+        console.log('🦶 Footer animations initialized');
+    }
+
+    setupFooterIntersectionObserver() {
+        const footerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const footerColumns = entry.target.querySelectorAll('.footer-column');
+                    footerColumns.forEach((column, index) => {
+                        setTimeout(() => {
+                            column.classList.add('animate-fade-in');
+                        }, index * 200);
+                    });
+                    
+                    const footerContactItems = entry.target.querySelectorAll('.footer-contact-item');
+                    footerContactItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate-fade-in');
+                        }, 500 + (index * 100));
+                    });
+                    
+                    footerObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        const footerSection = document.querySelector('.footer-section');
+        if (footerSection) {
+            footerObserver.observe(footerSection);
+        }
+    }
+
+    setupFooterHoverEffects() {
+        const footerContactItems = document.querySelectorAll('.footer-contact-item');
+        footerContactItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('.footer-contact-icon');
+                if (icon) {
+                    icon.style.transform = 'scale(1.1) rotate(5deg)';
+                    icon.style.transition = 'transform 0.3s ease';
+                }
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('.footer-contact-icon');
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                }
+            });
+        });
+
+        // Footer social links hover effects
+        const socialLinks = document.querySelectorAll('.footer-social-link');
+        socialLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.1) rotate(5deg)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+            });
+        });
+    }
+
+    setupFooterButtonAnimations() {
+        const footerButtons = document.querySelectorAll('.footer-demo-btn');
+        footerButtons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.02)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            button.addEventListener('mousedown', function() {
+                this.style.transform = 'translateY(0) scale(0.98)';
+            });
+            
+            button.addEventListener('mouseup', function() {
+                this.style.transform = 'translateY(-2px) scale(1.02)';
+            });
         });
     }
 
@@ -197,7 +291,7 @@ class EnhancedStickyPortfolioApp {
     setupBasicLoadingState() {
         const addLoadedClass = () => {
             document.body.classList.add('loaded');
-            console.log('✅ Page loading completed with sticky header');
+            console.log('✅ Page loading completed with sticky header and footer');
         };
 
         if (document.readyState === 'complete') {
@@ -646,7 +740,7 @@ class EnhancedStickyPortfolioApp {
     }
 
     setupTouchEvents() {
-        document.querySelectorAll('.cert-card, .portfolio-item, .summary-item').forEach(item => {
+        document.querySelectorAll('.cert-card, .portfolio-item, .summary-item, .footer-contact-item, .footer-demo-btn').forEach(item => {
             item.addEventListener('touchstart', function() {
                 this.style.transform = 'scale(0.98)';
                 this.style.transition = 'transform 0.1s ease';
@@ -699,7 +793,7 @@ class EnhancedStickyPortfolioApp {
             rootMargin: '0px 0px -10% 0px'
         });
 
-        document.querySelectorAll('.section-full').forEach(section => {
+        document.querySelectorAll('.section-full, .footer-section').forEach(section => {
             fullWidthObserver.observe(section);
         });
     }
@@ -743,7 +837,7 @@ class EnhancedStickyPortfolioApp {
     }
 
     setupButtonInteractions() {
-        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-tertiary').forEach(button => {
+        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-tertiary, .footer-demo-btn').forEach(button => {
             const addHoverEffect = () => {
                 if (!('ontouchstart' in window)) {
                     button.style.transform = 'translateY(-2px) scale(1.02)';
@@ -830,10 +924,10 @@ class EnhancedStickyPortfolioApp {
     }
 
     setupPortfolioTracking() {
-        document.querySelectorAll('.portfolio-link').forEach(link => {
+        document.querySelectorAll('.portfolio-link, .footer-demo-btn').forEach(link => {
             link.addEventListener('click', function(e) {
-                const platform = this.closest('.portfolio-item').querySelector('h3').textContent;
-                console.log(`🔗 Portfolio link clicked: ${platform}`);
+                const platform = this.closest('.portfolio-item')?.querySelector('h3')?.textContent || 'Footer Demo';
+                console.log(`🔗 Link clicked: ${platform}`);
                 
                 this.style.transform = 'scale(0.95)';
                 this.style.transition = 'transform 0.1s ease';
@@ -844,7 +938,7 @@ class EnhancedStickyPortfolioApp {
                 }, 150);
                 
                 if (window.gtag) {
-                    window.gtag('event', 'portfolio_link_click', {
+                    window.gtag('event', 'link_click', {
                         platform: platform,
                         device_type: this.isMobile ? 'mobile' : 'desktop',
                         layout_type: 'full_width'
@@ -977,7 +1071,7 @@ class EnhancedStickyPortfolioApp {
             rootMargin: this.isMobile ? '0px 0px -20px 0px' : '0px'
         });
 
-        document.querySelectorAll('.cert-card, .portfolio-item, .summary-item, .skills-category, .stat-item, .metric-item').forEach(card => {
+        document.querySelectorAll('.cert-card, .portfolio-item, .summary-item, .skills-category, .stat-item, .metric-item, .footer-contact-item').forEach(card => {
             fadeObserver.observe(card);
         });
     }
@@ -1042,7 +1136,7 @@ class EnhancedStickyPortfolioApp {
             console.log('📱 Low-end device detected - GPU effects disabled');
         }
 
-        const fullWidthSections = document.querySelectorAll('.section-full, .hero-section');
+        const fullWidthSections = document.querySelectorAll('.section-full, .hero-section, .footer-section');
         fullWidthSections.forEach(section => {
             section.style.willChange = 'auto';
             section.style.transform = 'translateZ(0)';
@@ -1080,14 +1174,22 @@ class EnhancedStickyPortfolioApp {
     showWelcomeMessage() {
         const deviceInfo = this.isMobile ? 'Mobile' : this.isTablet ? 'Tablet' : 'Desktop';
         console.log(`
-🚀 Welcome to Natavar Ghodasara's Enhanced Sticky Portfolio!
+🚀 Welcome to Natavar Ghodasara's Enhanced Sticky Portfolio with Footer!
 📱 Device: ${deviceInfo} (${window.innerWidth}px)
 🔒 Sticky Header: Active
 📊 Scroll Indicator: Active
 🎯 Active Navigation: FIXED & Enhanced
+🦶 Footer: Two-column responsive design
 📧 Contact: ghodasaranatavar2011@gmail.com
 📱 Phone: +91 89808 05269
 🌟 6X Salesforce Certified Professional
+
+✨ NEW Footer Features:
+• Two-column responsive layout
+• Contact information with icons
+• Request a Demo section with benefits
+• Social media links
+• Enhanced mobile responsiveness
 
 ✨ FIXED Navigation Features:
 • Improved section detection algorithm
@@ -1108,8 +1210,10 @@ Mobile features:
 • Auto-hiding header on scroll down
 • Swipe-friendly menu interactions
 • Optimized touch targets
+• Responsive footer columns
 
 🔧 Navigation issues have been RESOLVED!
+🦶 Footer successfully integrated!
         `);
     }
 
@@ -1148,7 +1252,7 @@ Mobile features:
     }
 
     optimizeFullWidthSections() {
-        const fullWidthSections = document.querySelectorAll('.section-full, .hero-section, .contact-section');
+        const fullWidthSections = document.querySelectorAll('.section-full, .hero-section, .footer-section');
         fullWidthSections.forEach(section => {
             section.style.width = '100vw';
             section.style.position = 'relative';
@@ -1218,11 +1322,12 @@ Mobile features:
                 setTimeout(() => {
                     const perfData = performance.getEntriesByType('navigation')[0];
                     if (perfData) {
-                        console.log(`🚀 Sticky Portfolio Performance:
+                        console.log(`🚀 Sticky Portfolio with Footer Performance:
 • DOM Content Loaded: ${Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart)}ms
 • Page Load Complete: ${Math.round(perfData.loadEventEnd - perfData.loadEventStart)}ms
 • Device: ${this.isMobile ? 'Mobile' : this.isTablet ? 'Tablet' : 'Desktop'}
 • Sticky Header: Active
+• Footer: Loaded
 • Navigation: FIXED`);
                     }
                 }, 0);
@@ -1273,7 +1378,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         window.stickyPortfolioApp = app;
         
-        console.log('✅ Enhanced Sticky Portfolio with FIXED Navigation loaded successfully! 🎉');
+        console.log('✅ Enhanced Sticky Portfolio with FIXED Navigation and Footer loaded successfully! 🎉');
         
         setTimeout(() => {
             const statsSelectors = [
@@ -1340,7 +1445,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
 window.EnhancedStickyPortfolioApp = EnhancedStickyPortfolioApp;
 
-// Enhanced utility functions for sticky behavior
+// Enhanced utility functions for sticky behavior with footer
 window.stickyUtils = {
     scrollToSection: function(sectionId) {
         const section = document.getElementById(sectionId);
@@ -1368,6 +1473,13 @@ window.stickyUtils = {
                     window.stickyPortfolioApp.isUpdatingFromObserver = true;
                 }, 1000);
             }
+        }
+    },
+    
+    scrollToFooter: function() {
+        const footer = document.querySelector('.footer-section');
+        if (footer) {
+            footer.scrollIntoView({ behavior: 'smooth' });
         }
     },
     
@@ -1406,10 +1518,23 @@ window.stickyUtils = {
         if (window.stickyPortfolioApp) {
             window.stickyPortfolioApp.debugSectionPositions();
         }
+    },
+    
+    // Footer-specific utilities
+    animateFooterItems: function() {
+        const footerItems = document.querySelectorAll('.footer-contact-item');
+        footerItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.transform = 'translateX(10px)';
+                setTimeout(() => {
+                    item.style.transform = 'translateX(0)';
+                }, 200);
+            }, index * 100);
+        });
     }
 };
 
-// Enhanced keyboard shortcuts
+// Enhanced keyboard shortcuts including footer navigation
 document.addEventListener('keydown', function(e) {
     if (e.altKey && e.key === 'h') {
         e.preventDefault();
@@ -1434,6 +1559,11 @@ document.addEventListener('keydown', function(e) {
             top: 0,
             behavior: 'smooth'
         });
+    }
+    
+    if (e.altKey && e.key === 'f') {
+        e.preventDefault();
+        window.stickyUtils.scrollToFooter();
     }
     
     // New shortcut for debugging navigation
@@ -1490,8 +1620,9 @@ const styles = {
     info: 'color: #5a6372; font-weight: normal;'
 };
 
-console.log('%c🚀 Natavar Ghodasara - FIXED Sticky Portfolio Loaded', styles.header);
+console.log('%c🚀 Natavar Ghodasara - FIXED Sticky Portfolio with Footer Loaded', styles.header);
 console.log('%c✅ Sticky Navigation FIXED & Active', styles.success);
 console.log('%c📱 Mobile Responsive Ready', styles.success);
 console.log('%c🎯 Navigation Issues RESOLVED', styles.success);
-console.log('%cℹ️  Use Alt+H to toggle header, Alt+M for menu, Alt+T to scroll to top, Alt+D to debug navigation', styles.info);
+console.log('%c🦶 Footer Successfully Integrated', styles.success);
+console.log('%cℹ️  Use Alt+H to toggle header, Alt+M for menu, Alt+T to scroll to top, Alt+F for footer, Alt+D to debug navigation', styles.info);

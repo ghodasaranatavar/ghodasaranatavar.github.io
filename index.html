@@ -6,763 +6,800 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>6X Salesforce Certified | Architect, Developer, Administrator & Consultant | Driving Digital Transformation &
         Scalable CRM Solutions | 11 Years Experience - Natavar Ghodasara</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/feviconicon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Enhanced Sticky Header with Full Width -->
-    <header class="header sticky-header">
-        <nav class="nav">
-            <a href="#home" class="logo">Natavar Ghodasara</a>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
 
-            <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <!-- Enhanced Mobile-First Navigation Header -->
+    <header class="header sticky-header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <!-- Logo/Brand -->
+            <a href="#home" class="logo" aria-label="Natavar Ghodasara - Homepage">
+                Natavar Ghodasara
+            </a>
 
-            <div class="nav-center" id="nav-center">
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
-                    <li><a href="#certifications" class="nav-link">Certifications</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="#contact" class="nav-link">Contact Me</a></li>
+            <!-- Desktop Navigation (Hidden on Mobile) -->
+            <div class="desktop-nav" id="desktop-nav">
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="#home" class="nav-link active" role="menuitem">Home</a></li>
+                    <li role="none"><a href="#experience" class="nav-link" role="menuitem">Experience</a></li>
+                    <li role="none"><a href="#certifications" class="nav-link" role="menuitem">Certifications</a></li>
+                    <li role="none"><a href="#skills" class="nav-link" role="menuitem">Skills</a></li>
+                    <li role="none"><a href="#portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
+                    <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
                 </ul>
-
-                <div class="nav-contact-info">
-                    <div class="contact-item">
-                        <a href="mailto:ghodasaranatavar2011@gmail.com">
-                            <span class="contact-icon">📧</span>
-                            <span class="contact-text">Email</span>
-                        </a>
-                    </div>
-
-                    <div class="contact-item">
-                        <a href="tel:+918980805269">
-                            <span class="contact-icon">📱</span>
-                            <span class="contact-text">Call</span>
-                        </a>
-                    </div>
-
-                    <div class="contact-item">
-                        <a href="https://wa.me/918980805269?text=Hi%20Natavar%2C%20I%20came%20from%20your%20website."
-                            target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-                            <span class="contact-icon">💬</span>
-                            <span class="contact-text">WhatsApp</span>
-                        </a>
-                    </div>
-
-                    <div class="contact-item">
-                        <a href="https://www.linkedin.com/in/natavarghodasara" target="_blank">
-                            <span class="contact-icon">💼</span>
-                            <span class="contact-text">LinkedIn</span>
-                        </a>
-                    </div>
-                </div>
             </div>
 
+            <!-- Mobile Menu Toggle Button -->
+            <button 
+                class="mobile-menu-toggle" 
+                id="mobile-menu-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="mobile-navigation"
+                aria-haspopup="true">
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+            </button>
+
             <a href="mailto:ghodasaranatavar2011@gmail.com?subject=Demo Request - Salesforce Development Services"
-                class="nav-cta">
+                class="nav-cta" aria-label="Request a demo via email">
                 Get Demo
             </a>
         </nav>
+
+        <!-- Full-Width Mobile Navigation Menu -->
+        <div class="mobile-navigation" id="mobile-navigation" aria-hidden="true">
+            <div class="mobile-nav-content">
+                <ul class="mobile-nav-menu" role="menu">
+                    <li role="none">
+                        <a href="#home" class="mobile-nav-link active" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#experience" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">💼</span>
+                            <span class="nav-text">Experience</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#certifications" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">🏆</span>
+                            <span class="nav-text">Certifications</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#skills" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">⚡</span>
+                            <span class="nav-text">Skills</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#portfolio" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">💻</span>
+                            <span class="nav-text">Portfolio</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#contact" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">📞</span>
+                            <span class="nav-text">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Mobile CTA Button -->
+                <div class="mobile-nav-cta">
+                    <a href="mailto:ghodasaranatavar2011@gmail.com?subject=Demo Request - Salesforce Development Services" class="mobile-cta-btn">
+                        Get Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
     </header>
 
-    <!-- Enhanced Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-container">
-            <!-- Main Hero Grid: Profile Card + Hero Content with Trust Section -->
-            <div class="hero-main-grid">
-                <!-- Profile Card (Left Side) -->
-                <div class="profile-card">
-                    <div class="profile-image">
-                        <img src="/assets/images/avtaar.png" alt="Natavar Ghodasara Profile" class="profile-img">
-                    </div>
-                    <div class="profile-info">
-                        <h2>Natavar Ghodasara</h2>
-                        <p class="profile-title">6X Salesforce Certified | Architect, Developer, Administrator &
-                            Consultant</p>
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        <!-- Enhanced Hero Section -->
+        <section id="home" class="hero-section" role="main">
+            <div class="hero-container">
+                <!-- Main Hero Grid: Profile Card + Hero Content with Trust Section -->
+                <div class="hero-main-grid">
+                    <!-- Profile Card (Left Side) -->
+                    <div class="profile-card">
+                        <div class="profile-image">
+                            <img src="/assets/images/avtaar.png" alt="Natavar Ghodasara Profile" class="profile-img">
+                        </div>
+                        <div class="profile-info">
+                            <h2>Natavar Ghodasara</h2>
+                            <p class="profile-title">6X Salesforce Certified | Architect, Developer, Administrator &
+                                Consultant</p>
 
-                        <div class="profile-section">
-                            <h3>Experience</h3>
-                            <p>11+ Years of total experience on force.com platform & salesforce CRM</p>
+                            <div class="profile-section">
+                                <h3>Experience</h3>
+                                <p>11+ Years of total experience on force.com platform & salesforce CRM</p>
+                            </div>
+
+                            <div class="profile-section">
+                                <h3>Education</h3>
+                                <p>Master in Computer Application - Gujarat Technological University (2014)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Content (Right Side) - Contains Hero Text + Trust Section -->
+                    <div class="hero-content">
+                        <!-- Hero Text Section -->
+                        <div class="hero-text-section">
+                            <div class="hero-tagline animate-fade-in">6X Salesforce Certified Professional</div>
+
+                            <h1 class="hero-title animate-fade-in">
+                                <span class="highlight typed-text">Driving Digital Transformation</span>
+                                <span class="typed-cursor">|</span>
+                                <div>& Scalable CRM Solutions</div>
+                            </h1>
+
+                            <p class="hero-subtitle animate-fade-in">
+                                11+ Years of expertise in Salesforce development, administration, and consulting.
+                                Architect, Developer, Administrator & Consultant specializing in Lightning Web Components,
+                                Apex, and enterprise-scale implementations.
+                            </p>
+
+                            <div class="hero-cta-buttons hero-buttons animate-fade-in">
+                                <a href="#contact" class="btn-primary">Hire Me</a>
+                                <a href="#portfolio" class="btn-secondary">View Portfolio</a>
+                                <a href="#contact" class="btn-tertiary">Contact</a>
+                            </div>
                         </div>
 
-                        <div class="profile-section">
-                            <h3>Education</h3>
-                            <p>Master in Computer Application - Gujarat Technological University (2014)</p>
+                        <!-- Trust Indicators Section - Fixed Class Names -->
+                        <div class="trust-section stats-integrated">
+                            <div class="trust-tagline">Trusted by organizations worldwide. Proven results delivered.</div>
+                            <div class="metrics-grid stats-grid">
+                                <div class="metric-item stat-item animate-scale">
+                                    <span class="metric-number stat-number">11+</span>
+                                    <div class="metric-label stat-label">Years Experience</div>
+                                </div>
+                                <div class="metric-item stat-item animate-scale">
+                                    <span class="metric-number stat-number">30+</span>
+                                    <div class="metric-label stat-label">Projects Delivered</div>
+                                </div>
+                                <div class="metric-item stat-item animate-scale">
+                                    <span class="metric-number stat-number">6X</span>
+                                    <div class="metric-label stat-label">Certified Professional</div>
+                                </div>
+                                <div class="metric-item stat-item animate-scale">
+                                    <span class="metric-number stat-number">20+</span>
+                                    <div class="metric-label stat-label">Satisfied Clients</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FIXED: Combined Experience Section with Both Timeline and Summary -->
+        <section id="experience" class="experience-section section-full">
+            <!-- Professional Experience Timeline -->
+            <div class="timeline-container">
+                <div class="section-header">
+                    <h2 class="section-title">Professional Experience Timeline</h2>
+                    <p class="section-subtitle">
+                        Over a decade of progressive growth in Salesforce development and administration across diverse
+                        industries.
+                    </p>
+                </div>
+                <div class="education-content">
+                    <div class="education-item">
+                        <h3>11+ Years Professional Journey</h3>
+                        <p>Salesforce Development, Administration & Consulting (2014 - Present)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Summary within same section -->
+            <div class="summary-container">
+                <div class="section-header">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <p class="section-subtitle">
+                        Comprehensive expertise across the entire Salesforce ecosystem with proven track record of
+                        delivering scalable solutions.
+                    </p>
+                </div>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-icon">⚡</div>
+                        <p>Utilized Lightning Web Components & Aura Components to deliver Custom UI and functionality
+                            attained
+                            in the Custom controller or by VisualForce remote objects.</p>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">🌐</div>
+                        <p>Worked with Force.com Sites, Communities to develop and release a public facing site using
+                            VisualForce, JavaScript, JQuery, AngularJs.</p>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">⚙️</div>
+                        <p>Niche Experience in Salesforce Administration, Setting up Inbound Email Services, Web Services,
+                            User
+                            setup & management, territory management, Business process automation using Work-flow Rules and
+                            Approval processes, Flows, Process Builder, Outbound messaging, Scheduling Apex.</p>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">☁️</div>
+                        <p>Implemented Salesforce B2B Commerce Cloud, CPQ, Service cloud and Community with case management
+                            including web to case with Assigning Cases, Escalation rules and other Configurations.</p>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">🗂️</div>
+                        <p>Architected Solutions for multiple clients reflecting deep understanding of governor-friendly
+                            Apex
+                            programming techniques, Batch Apex, Trigger, Rest Resource, Scheduling Apex, programmatically
+                            sharing records.</p>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">🔗</div>
+                        <p>Worked on Various REST Integrations and SOAP with salesforce.</p>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">📊</div>
+                        <p>Thorough knowledge in writing effective SOQL queries to retrieve accurate data to leverage
+                            OFFSET,
+                            Nested SOQL, relationships etc.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section with Full Width -->
+        <section id="certifications" class="certifications-section section-full">
+            <div class="section-header">
+                <h2 class="section-title">Salesforce Certifications</h2>
+                <p class="section-subtitle">
+                    Six Salesforce certifications spanning development, administration, and consulting disciplines.
+                    All validated through rigorous examination and hands-on experience.
+                </p>
+            </div>
+
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="/assets/images/logoes/Administrator.png" alt="Certified Salesforce Administrator">
+                    </div>
+                    <h3 class="cert-title">Administrator</h3>
+                    <p class="cert-issuer">Salesforce</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="/assets/images/logoes/Associate.png" alt="Certified Salesforce Associate">
+                    </div>
+                    <h3 class="cert-title">Associate</h3>
+                    <p class="cert-issuer">Salesforce</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="/assets/images/logoes/B2C-Commerce-Developer.png"
+                            alt="Certified Salesforce B2C Commerce Cloud Developer">
+                    </div>
+                    <h3 class="cert-title">B2C Commerce Developer</h3>
+                    <p class="cert-issuer">Salesforce</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="/assets/images/logoes/Platform-App-Builder.png" alt="Certified Salesforce App Builder">
+                    </div>
+                    <h3 class="cert-title">Platform App Builder</h3>
+                    <p class="cert-issuer">Salesforce</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="/assets/images/logoes/Platform-Developer-I.png"
+                            alt="Certified Salesforce Platform Developer I">
+                    </div>
+                    <h3 class="cert-title">Platform Developer I</h3>
+                    <p class="cert-issuer">Salesforce</p>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-image">
+                        <img src="/assets/images/logoes/Experience-Cloud-Consultant.png"
+                            alt="Certified Salesforce Experience Cloud Consultant">
+                    </div>
+                    <h3 class="cert-title">Experience Cloud Consultant</h3>
+                    <p class="cert-issuer">Salesforce</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section with Full Width -->
+        <section id="skills" class="skills-section section-full">
+            <div class="section-header">
+                <h2 class="section-title">Technical Skills & Expertise</h2>
+            </div>
+            <div class="skills-grid">
+                <!-- Technical Skills -->
+                <div class="skills-category">
+                    <h3 class="skills-category-title">Technical Skills</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Lightning Web Component (LWC)</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">SOQL & SOSL</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Apex</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Visualforce pages</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Lightning Components (Aura)</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star-empty">☆</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">HTML</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CSS 3.0</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Salesforce Lightning Design System</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Bootstrap</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">3rd Party Integration (Rest & Soap)</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Salesforce Automation</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Salesforce Configuration & Customization</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Data Loading</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Documentation</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Hero Content (Right Side) - Contains Hero Text + Trust Section -->
-                <div class="hero-content">
-                    <!-- Hero Text Section -->
-                    <div class="hero-text-section">
-                        <div class="hero-tagline animate-fade-in">6X Salesforce Certified Professional</div>
+                <!-- Salesforce Functional Experience -->
+                <div class="skills-category">
+                    <h3 class="skills-category-title">Salesforce Functional Experience</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Docusign</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star-empty">☆</span><span class="star-empty">☆</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Conga Composer</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span
+                                    class="star-empty">☆</span><span class="star-empty">☆</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Experience Cloud</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Sales Cloud & Automation</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Salesforce CPQ & Configuration</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star-empty">☆</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Service Cloud & Customization</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star-empty">☆</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Salesforce B2B Commerce Cloud</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star-empty">☆</span><span class="star-empty">☆</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">B2C Commerce Cloud (Demandware)</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span
+                                    class="star-empty">☆</span><span class="star-empty">☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                        <h1 class="hero-title animate-fade-in">
-                            <span class="highlight typed-text">Driving Digital Transformation</span>
-                            <span class="typed-cursor">|</span>
-                            <div>& Scalable CRM Solutions</div>
-                        </h1>
+                <!-- Technical Tools -->
+                <div class="skills-category">
+                    <h3 class="skills-category-title">Technical Tools</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Asana - Project Management</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">VS Code</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Jira - Project Management</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Eclipse and UX Studio</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star-empty">☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                        <p class="hero-subtitle animate-fade-in">
-                            11+ Years of expertise in Salesforce development, administration, and consulting.
-                            Architect, Developer, Administrator & Consultant specializing in Lightning Web Components,
-                            Apex, and enterprise-scale implementations.
+                <!-- Communication Skills -->
+                <div class="skills-category">
+                    <h3 class="skills-category-title">Communication Skills - English</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Read</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Write</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Speak</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Skills -->
+                <div class="skills-category">
+                    <h3 class="skills-category-title">Other Skills</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Problem Solving / Trouble Shooting Capabilities</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Self Disciplined</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Task Ownership & Leadership</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Critical Thinking & Analysis</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Quick Learner</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Team Player</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Self Motivated</span>
+                            <div class="skill-rating">
+                                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+                                    class="star">★</span><span class="star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section with Full Width -->
+        <section id="portfolio" class="portfolio-section section-full">
+            <div class="section-header">
+                <h2 class="section-title">Portfolio & Links</h2>
+                <p class="section-subtitle">
+                    Connect with me across various platforms to see my work and professional journey.
+                </p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <p>Professional networking and career updates</p>
+                    <a href="https://www.linkedin.com/in/natavarghodasara" class="portfolio-link" target="_blank">View
+                        Profile</a>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-icon">🎥</div>
+                    <h3>Youtube</h3>
+                    <p>Educational videos and tutorials</p>
+                    <a href="https://www.youtube.com/@natavarghodasara3409/videos" class="portfolio-link"
+                        target="_blank">Watch Videos</a>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-icon">💻</div>
+                    <h3>Upwork</h3>
+                    <p>Freelance projects and client reviews</p>
+                    <a href="https://www.upwork.com/freelancers/natavarghodasara" class="portfolio-link"
+                        target="_blank">View Profile</a>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-icon">🎯</div>
+                    <h3>Fiverr</h3>
+                    <p>Service offerings and gig portfolio</p>
+                    <a href="https://www.fiverr.com/natavar" class="portfolio-link" target="_blank">View Services</a>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-icon">🏆</div>
+                    <h3>Trailhead</h3>
+                    <p>Salesforce learning achievements and badges</p>
+                    <a href="https://trailblazer.me/id/nghodasara" class="portfolio-link" target="_blank">View Trailhead</a>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-icon">📄</div>
+                    <h3>Resume</h3>
+                    <p>Download detailed resume document</p>
+                    <a href="https://github.com/ghodasaranatavar/ghodasaranatavar.github.io/raw/main/assets/Natavar%20Ghodasara.docx"
+                        class="portfolio-link" target="_blank">Download Resume</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Enhanced Footer Section with 2 Columns -->
+        <footer id="contact" class="footer-section">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <!-- Column 1: Contact Information -->
+                    <div class="footer-column footer-contact">
+                        <h3 class="footer-column-title">Contact Information</h3>
+                        <div class="footer-contact-list">
+                            <div class="footer-contact-item">
+                                <div class="footer-contact-icon">
+                                    <span>📧</span>
+                                </div>
+                                <div class="footer-contact-content">
+                                    <span class="footer-contact-label">Email</span>
+                                    <a href="mailto:ghodasaranatavar2011@gmail.com" class="footer-contact-value">
+                                        ghodasaranatavar2011@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="footer-contact-item">
+                                <div class="footer-contact-icon">
+                                    <span>📱</span>
+                                </div>
+                                <div class="footer-contact-content">
+                                    <span class="footer-contact-label">Phone</span>
+                                    <a href="tel:+918980805269" class="footer-contact-value">
+                                        +91 89808 05269
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="footer-contact-item">
+                                <div class="footer-contact-icon">
+                                    <span>🌐</span>
+                                </div>
+                                <div class="footer-contact-content">
+                                    <span class="footer-contact-label">Location</span>
+                                    <span class="footer-contact-value">
+                                        Remote projects worldwide
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="footer-contact-item">
+                                <div class="footer-contact-icon">
+                                    <span>⏰</span>
+                                </div>
+                                <div class="footer-contact-content">
+                                    <span class="footer-contact-label">Availability</span>
+                                    <span class="footer-contact-value footer-availability">
+                                        Open for new opportunities
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Request a Demo -->
+                    <div class="footer-column footer-demo">
+                        <h3 class="footer-column-title">Request a Demo</h3>
+                        <p class="footer-demo-description">
+                            Ready to optimize your Salesforce implementation? Let's schedule a consultation to explore how
+                            my expertise can boost efficiency, drive adoption, and deliver measurable business growth.
                         </p>
 
-                        <div class="hero-cta-buttons animate-fade-in">
-                            <a href="#contact" class="btn-primary">Hire Me</a>
-                            <a href="#portfolio" class="btn-secondary">View Portfolio</a>
-                            <a href="#contact" class="btn-tertiary">Contact</a>
-                        </div>
-                    </div>
-
-                    <!-- Trust Indicators Section - Fixed Class Names -->
-                    <div class="trust-section stats-integrated">
-                        <div class="trust-tagline">Trusted by organizations worldwide. Proven results delivered.</div>
-                        <div class="metrics-grid stats-grid">
-                            <div class="metric-item stat-item animate-scale">
-                                <span class="metric-number stat-number">11+</span>
-                                <div class="metric-label stat-label">Years Experience</div>
+                        <div class="footer-demo-benefits">
+                            <div class="footer-benefit-item">
+                                <span class="footer-benefit-icon">✅</span>
+                                <span>Free consultation & strategy session</span>
                             </div>
-                            <div class="metric-item stat-item animate-scale">
-                                <span class="metric-number stat-number">30+</span>
-                                <div class="metric-label stat-label">Projects Delivered</div>
+                            <div class="footer-benefit-item">
+                                <span class="footer-benefit-icon">✅</span>
+                                <span>Custom solution recommendations</span>
                             </div>
-                            <div class="metric-item stat-item animate-scale">
-                                <span class="metric-number stat-number">6X</span>
-                                <div class="metric-label stat-label">Certified Professional</div>
-                            </div>
-                            <div class="metric-item stat-item animate-scale">
-                                <span class="metric-number stat-number">20+</span>
-                                <div class="metric-label stat-label">Satisfied Clients</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FIXED: Combined Experience Section with Both Timeline and Summary -->
-    <section id="experience" class="experience-section section-full">
-        <!-- Professional Experience Timeline -->
-        <div class="timeline-container">
-            <div class="section-header">
-                <h2 class="section-title">Professional Experience Timeline</h2>
-                <p class="section-subtitle">
-                    Over a decade of progressive growth in Salesforce development and administration across diverse
-                    industries.
-                </p>
-            </div>
-            <div class="education-content">
-                <div class="education-item">
-                    <h3>11+ Years Professional Journey</h3>
-                    <p>Salesforce Development, Administration & Consulting (2014 - Present)</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Professional Summary within same section -->
-        <div class="summary-container">
-            <div class="section-header">
-                <h2 class="section-title">Professional Summary</h2>
-                <p class="section-subtitle">
-                    Comprehensive expertise across the entire Salesforce ecosystem with proven track record of
-                    delivering scalable solutions.
-                </p>
-            </div>
-            <div class="summary-grid">
-                <div class="summary-item">
-                    <div class="summary-icon">⚡</div>
-                    <p>Utilized Lightning Web Components & Aura Components to deliver Custom UI and functionality
-                        attained
-                        in the Custom controller or by VisualForce remote objects.</p>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-icon">🌐</div>
-                    <p>Worked with Force.com Sites, Communities to develop and release a public facing site using
-                        VisualForce, JavaScript, JQuery, AngularJs.</p>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-icon">⚙️</div>
-                    <p>Niche Experience in Salesforce Administration, Setting up Inbound Email Services, Web Services,
-                        User
-                        setup & management, territory management, Business process automation using Work-flow Rules and
-                        Approval processes, Flows, Process Builder, Outbound messaging, Scheduling Apex.</p>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-icon">☁️</div>
-                    <p>Implemented Salesforce B2B Commerce Cloud, CPQ, Service cloud and Community with case management
-                        including web to case with Assigning Cases, Escalation rules and other Configurations.</p>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-icon">🗂️</div>
-                    <p>Architected Solutions for multiple clients reflecting deep understanding of governor-friendly
-                        Apex
-                        programming techniques, Batch Apex, Trigger, Rest Resource, Scheduling Apex, programmatically
-                        sharing records.</p>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-icon">🔗</div>
-                    <p>Worked on Various REST Integrations and SOAP with salesforce.</p>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-icon">📊</div>
-                    <p>Thorough knowledge in writing effective SOQL queries to retrieve accurate data to leverage
-                        OFFSET,
-                        Nested SOQL, relationships etc.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section with Full Width -->
-    <section id="certifications" class="certifications-section section-full">
-        <div class="section-header">
-            <h2 class="section-title">Salesforce Certifications</h2>
-            <p class="section-subtitle">
-                Six Salesforce certifications spanning development, administration, and consulting disciplines.
-                All validated through rigorous examination and hands-on experience.
-            </p>
-        </div>
-
-        <div class="cert-grid">
-            <div class="cert-card">
-                <div class="cert-image">
-                    <img src="/assets/images/logoes/Administrator.png" alt="Certified Salesforce Administrator">
-                </div>
-                <h3 class="cert-title">Administrator</h3>
-                <p class="cert-issuer">Salesforce</p>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image">
-                    <img src="/assets/images/logoes/Associate.png" alt="Certified Salesforce Associate">
-                </div>
-                <h3 class="cert-title">Associate</h3>
-                <p class="cert-issuer">Salesforce</p>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image">
-                    <img src="/assets/images/logoes/B2C-Commerce-Developer.png"
-                        alt="Certified Salesforce B2C Commerce Cloud Developer">
-                </div>
-                <h3 class="cert-title">B2C Commerce Developer</h3>
-                <p class="cert-issuer">Salesforce</p>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image">
-                    <img src="/assets/images/logoes/Platform-App-Builder.png" alt="Certified Salesforce App Builder">
-                </div>
-                <h3 class="cert-title">Platform App Builder</h3>
-                <p class="cert-issuer">Salesforce</p>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image">
-                    <img src="/assets/images/logoes/Platform-Developer-I.png"
-                        alt="Certified Salesforce Platform Developer I">
-                </div>
-                <h3 class="cert-title">Platform Developer I</h3>
-                <p class="cert-issuer">Salesforce</p>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image">
-                    <img src="/assets/images/logoes/Experience-Cloud-Consultant.png"
-                        alt="Certified Salesforce Experience Cloud Consultant">
-                </div>
-                <h3 class="cert-title">Experience Cloud Consultant</h3>
-                <p class="cert-issuer">Salesforce</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section with Full Width -->
-    <section id="skills" class="skills-section section-full">
-        <div class="section-header">
-            <h2 class="section-title">Technical Skills & Expertise</h2>
-        </div>
-        <div class="skills-grid">
-            <!-- Technical Skills -->
-            <div class="skills-category">
-                <h3 class="skills-category-title">Technical Skills</h3>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <span class="skill-name">JavaScript</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Lightning Web Component (LWC)</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">SOQL & SOSL</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Apex</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Visualforce pages</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Lightning Components (Aura)</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star-empty">☆</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">HTML</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">CSS 3.0</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Salesforce Lightning Design System</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Bootstrap</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">3rd Party Integration (Rest & Soap)</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Salesforce Automation</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Salesforce Configuration & Customization</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Data Loading</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Documentation</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Salesforce Functional Experience -->
-            <div class="skills-category">
-                <h3 class="skills-category-title">Salesforce Functional Experience</h3>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Docusign</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star-empty">☆</span><span class="star-empty">☆</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Conga Composer</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span
-                                class="star-empty">☆</span><span class="star-empty">☆</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Experience Cloud</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Sales Cloud & Automation</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Salesforce CPQ & Configuration</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star-empty">☆</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Service Cloud & Customization</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star-empty">☆</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Salesforce B2B Commerce Cloud</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star-empty">☆</span><span class="star-empty">☆</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">B2C Commerce Cloud (Demandware)</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span
-                                class="star-empty">☆</span><span class="star-empty">☆</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Technical Tools -->
-            <div class="skills-category">
-                <h3 class="skills-category-title">Technical Tools</h3>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Asana - Project Management</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">VS Code</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Jira - Project Management</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Eclipse and UX Studio</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star-empty">☆</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Communication Skills -->
-            <div class="skills-category">
-                <h3 class="skills-category-title">Communication Skills - English</h3>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Read</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Write</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Speak</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Other Skills -->
-            <div class="skills-category">
-                <h3 class="skills-category-title">Other Skills</h3>
-                <div class="skills-list">
-                    <div class="skill-item">
-                        <span class="skill-name">Problem Solving / Trouble Shooting Capabilities</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Self Disciplined</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Task Ownership & Leadership</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Critical Thinking & Analysis</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Quick Learner</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Team Player</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Self Motivated</span>
-                        <div class="skill-rating">
-                            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span
-                                class="star">★</span><span class="star">★</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section with Full Width -->
-    <section id="portfolio" class="portfolio-section section-full">
-        <div class="section-header">
-            <h2 class="section-title">Portfolio & Links</h2>
-            <p class="section-subtitle">
-                Connect with me across various platforms to see my work and professional journey.
-            </p>
-        </div>
-
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <div class="portfolio-icon">💼</div>
-                <h3>LinkedIn</h3>
-                <p>Professional networking and career updates</p>
-                <a href="https://www.linkedin.com/in/natavarghodasara" class="portfolio-link" target="_blank">View
-                    Profile</a>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-icon">🎥</div>
-                <h3>Youtube</h3>
-                <p>Educational videos and tutorials</p>
-                <a href="https://www.youtube.com/@natavarghodasara3409/videos" class="portfolio-link"
-                    target="_blank">Watch Videos</a>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-icon">💻</div>
-                <h3>Upwork</h3>
-                <p>Freelance projects and client reviews</p>
-                <a href="https://www.upwork.com/freelancers/natavarghodasara" class="portfolio-link"
-                    target="_blank">View Profile</a>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-icon">🎯</div>
-                <h3>Fiverr</h3>
-                <p>Service offerings and gig portfolio</p>
-                <a href="https://www.fiverr.com/natavar" class="portfolio-link" target="_blank">View Services</a>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-icon">🏆</div>
-                <h3>Trailhead</h3>
-                <p>Salesforce learning achievements and badges</p>
-                <a href="https://trailblazer.me/id/nghodasara" class="portfolio-link" target="_blank">View Trailhead</a>
-            </div>
-            <div class="portfolio-item">
-                <div class="portfolio-icon">📄</div>
-                <h3>Resume</h3>
-                <p>Download detailed resume document</p>
-                <a href="https://github.com/ghodasaranatavar/ghodasaranatavar.github.io/raw/main/assets/Natavar%20Ghodasara.docx"
-                    class="portfolio-link" target="_blank">Download Resume</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section with Full Width -->
-
-
-    <!-- NEW: Enhanced Footer Section with 2 Columns -->
-    <footer id="contact" class="footer-section">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <!-- Column 1: Contact Information -->
-                <div class="footer-column footer-contact">
-                    <h3 class="footer-column-title">Contact Information</h3>
-                    <div class="footer-contact-list">
-                        <div class="footer-contact-item">
-                            <div class="footer-contact-icon">
-                                <span>📧</span>
-                            </div>
-                            <div class="footer-contact-content">
-                                <span class="footer-contact-label">Email</span>
-                                <a href="mailto:ghodasaranatavar2011@gmail.com" class="footer-contact-value">
-                                    ghodasaranatavar2011@gmail.com
-                                </a>
+                            <div class="footer-benefit-item">
+                                <span class="footer-benefit-icon">✅</span>
+                                <span>Quick response within 24 hours</span>
                             </div>
                         </div>
 
-                        <div class="footer-contact-item">
-                            <div class="footer-contact-icon">
-                                <span>📱</span>
-                            </div>
-                            <div class="footer-contact-content">
-                                <span class="footer-contact-label">Phone</span>
-                                <a href="tel:+918980805269" class="footer-contact-value">
-                                    +91 89808 05269
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="footer-contact-item">
-                            <div class="footer-contact-icon">
-                                <span>🌍</span>
-                            </div>
-                            <div class="footer-contact-content">
-                                <span class="footer-contact-label">Location</span>
-                                <span class="footer-contact-value">
-                                    Remote projects worldwide
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="footer-contact-item">
-                            <div class="footer-contact-icon">
-                                <span>⏰</span>
-                            </div>
-                            <div class="footer-contact-content">
-                                <span class="footer-contact-label">Availability</span>
-                                <span class="footer-contact-value footer-availability">
-                                    Open for new opportunities
-                                </span>
-                            </div>
+                        <div class="footer-demo-actions">
+                            <a href="mailto:ghodasaranatavar2011@gmail.com?subject=Demo Request - Salesforce Development Services&body=Hi Natavar,%0A%0AI'm interested in scheduling a demo to discuss my Salesforce requirements.%0A%0APlease let me know your availability.%0A%0AThank you!"
+                                class="footer-demo-btn">
+                                Schedule Demo
+                            </a>
+                            <a href="https://wa.me/918980805269?text=Hi%20Natavar%2C%20I%20came%20from%20your%20website%20and%20would%20like%20to%20schedule%20a%20demo."
+                                target="_blank" rel="noopener" class="footer-demo-btn footer-demo-btn-secondary">
+                                WhatsApp Chat
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Column 2: Request a Demo -->
-                <div class="footer-column footer-demo">
-                    <h3 class="footer-column-title">Request a Demo</h3>
-                    <p class="footer-demo-description">
-                        Ready to optimize your Salesforce implementation? Let's schedule a consultation to explore how
-                        my expertise can boost efficiency, drive adoption, and deliver measurable business growth.
-                    </p>
-
-                    <div class="footer-demo-benefits">
-                        <div class="footer-benefit-item">
-                            <span class="footer-benefit-icon">✅</span>
-                            <span>Free consultation & strategy session</span>
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="footer-bottom-content">
+                        <p class="footer-copyright">
+                            © 2025 Natavar Ghodasara. All rights reserved. | 6X Salesforce Certified Professional
+                        </p>
+                        <div class="footer-social-links">
+                            <a href="https://www.linkedin.com/in/natavarghodasara" target="_blank" rel="noopener"
+                                class="footer-social-link" aria-label="LinkedIn Profile">
+                                <span>💼</span>
+                            </a>
+                            <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank" rel="noopener"
+                                class="footer-social-link" aria-label="YouTube Channel">
+                                <span>🎥</span>
+                            </a>
+                            <a href="https://trailblazer.me/id/nghodasara" target="_blank" rel="noopener"
+                                class="footer-social-link" aria-label="Trailhead Profile">
+                                <span>🏆</span>
+                            </a>
                         </div>
-                        <div class="footer-benefit-item">
-                            <span class="footer-benefit-icon">✅</span>
-                            <span>Custom solution recommendations</span>
-                        </div>
-                        <div class="footer-benefit-item">
-                            <span class="footer-benefit-icon">✅</span>
-                            <span>Quick response within 24 hours</span>
-                        </div>
-                    </div>
-
-                    <div class="footer-demo-actions">
-                        <a href="mailto:ghodasaranatavar2011@gmail.com?subject=Demo Request - Salesforce Development Services&body=Hi Natavar,%0A%0AI'm interested in scheduling a demo to discuss my Salesforce requirements.%0A%0APlease let me know your availability.%0A%0AThank you!"
-                            class="footer-demo-btn">
-                            Schedule Demo
-                        </a>
-                        <a href="https://wa.me/918980805269?text=Hi%20Natavar%2C%20I%20came%20from%20your%20website%20and%20would%20like%20to%20schedule%20a%20demo."
-                            target="_blank" rel="noopener" class="footer-demo-btn footer-demo-btn-secondary">
-                            WhatsApp Chat
-                        </a>
                     </div>
                 </div>
             </div>
-
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p class="footer-copyright">
-                        © 2024 Natavar Ghodasara. All rights reserved. | 6X Salesforce Certified Professional
-                    </p>
-                    <div class="footer-social-links">
-                        <a href="https://www.linkedin.com/in/natavarghodasara" target="_blank" rel="noopener"
-                            class="footer-social-link">
-                            <span>💼</span>
-                        </a>
-                        <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank" rel="noopener"
-                            class="footer-social-link">
-                            <span>🎥</span>
-                        </a>
-                        <a href="https://trailblazer.me/id/nghodasara" target="_blank" rel="noopener"
-                            class="footer-social-link">
-                            <span>🏆</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>

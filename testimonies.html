@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Testimonials | 6X Salesforce Certified | Natavar Ghodasara</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/feviconicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="widget.css">
+    <style>
+        /* Testimonials Page Specific Styles */
+        .testimonials-hero {
+            background: linear-gradient(135deg, var(--lab-palette-primary-main) 0%, var(--lab-palette-primary-dark) 100%);
+            color: white;
+            padding: var(--section-spacing) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: clamp(300px, 40vw, 600px);
+            height: clamp(300px, 40vw, 600px);
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .testimonials-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--full-width-padding);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials-hero h1 {
+            font: var(--font-title1);
+            color: white;
+            margin-bottom: var(--card-gap-md);
+            letter-spacing: -0.01em;
+        }
+
+        .testimonials-hero p {
+            font: var(--font-subtitle1);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--card-gap-lg);
+        }
+
+        .nps-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--card-gap-lg);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: var(--card-gap-lg);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .nps-title {
+            font: var(--font-title4);
+            color: white;
+            margin-bottom: var(--card-gap-sm);
+        }
+
+        .nps-description {
+            font: var(--font-body1);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--card-gap-md);
+        }
+
+        .testimonials-section {
+            padding: var(--section-spacing) 0;
+            background: var(--lab-bg-light);
+        }
+
+        .testimonials-container {
+            max-width: none;
+            width: 100%;
+            padding: 0 var(--full-width-padding);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--card-gap-lg);
+            margin-top: var(--card-gap-xl);
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .testimonial-card {
+            background: var(--lab-bg-white);
+            padding: var(--card-gap-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--lab-shadow-light);
+            border: 1px solid var(--lab-border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--lab-shadow-medium);
+            border-color: var(--lab-palette-primary-main);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: var(--card-gap-md);
+            margin-bottom: var(--card-gap-md);
+        }
+
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--lab-palette-primary-main), var(--lab-palette-accent-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .client-info {
+            flex: 1;
+        }
+
+        .client-name {
+            font: var(--font-title5);
+            color: var(--lab-text-primary);
+            margin-bottom: 4px;
+        }
+
+        .client-role {
+            font: var(--font-caption);
+            color: var(--lab-text-light);
+            font-weight: 600;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 2px;
+            margin-bottom: var(--card-gap-sm);
+        }
+
+        .rating-star {
+            color: #FFC107;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-content {
+            flex: 1;
+            margin-bottom: var(--card-gap-md);
+        }
+
+        .testimonial-text {
+            font: var(--font-body1);
+            color: var(--lab-text-muted);
+            line-height: 1.6;
+            font-style: italic;
+            position: relative;
+            padding-left: var(--card-gap-md);
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--lab-palette-primary-light);
+            opacity: 0.3;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-project {
+            background: var(--lab-bg-light);
+            padding: var(--card-gap-sm);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--lab-palette-primary-main);
+        }
+
+        .project-label {
+            font: var(--font-caption);
+            color: var(--lab-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .project-name {
+            font: var(--font-body2);
+            color: var(--lab-text-primary);
+            font-weight: 600;
+        }
+
+        .stats-section {
+            background: var(--lab-bg-white);
+            padding: var(--section-spacing) 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--card-gap-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--full-width-padding);
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: var(--card-gap-xl);
+            background: var(--lab-bg-light);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--lab-border-light);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--lab-shadow-medium);
+            border-color: var(--lab-palette-primary-main);
+        }
+
+        .stat-number {
+            font: var(--font-title1);
+            color: var(--lab-palette-primary-main);
+            margin-bottom: var(--card-gap-sm);
+            font-weight: 800;
+        }
+
+        .stat-label {
+            font: var(--font-subtitle1);
+            color: var(--lab-text-muted);
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--lab-palette-primary-dark) 0%, #0f2a4c 100%);
+            color: white;
+            padding: var(--section-spacing) 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--full-width-padding);
+        }
+
+        .cta-title {
+            font: var(--font-title2);
+            color: white;
+            margin-bottom: var(--card-gap-md);
+        }
+
+        .cta-description {
+            font: var(--font-subtitle1);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--card-gap-xl);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--card-gap-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Full width adjustments */
+        .section-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--full-width-padding);
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--card-gap-md);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: var(--card-gap-md);
+        }
+
+        .metric-number {
+            display: block;
+            font: var(--font-title2);
+            color: white;
+            font-weight: 700;
+            margin-bottom: var(--card-gap-sm);
+        }
+
+        .metric-label {
+            font: var(--font-caption);
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn-primary,
+            .cta-buttons .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-header {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--card-gap-sm);
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <!-- Enhanced Mobile-First Navigation Header -->
+    <header class="header sticky-header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <!-- Logo/Brand -->
+            <a href="index.html#home" class="logo" aria-label="Natavar Ghodasara - Homepage">
+                Natavar Ghodasara
+            </a>
+
+            <!-- Desktop Navigation (Hidden on Mobile) -->
+            <div class="desktop-nav" id="desktop-nav">
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#home" class="nav-link" role="menuitem">Home</a></li>
+                    <li role="none"><a href="index.html#experience" class="nav-link" role="menuitem">Experience</a></li>
+                    <li role="none"><a href="index.html#certifications" class="nav-link"
+                            role="menuitem">Certifications</a></li>
+                    <li role="none"><a href="index.html#skills" class="nav-link" role="menuitem">Skills</a></li>
+                    <li role="none"><a href="index.html#portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
+                    <li role="none"><a href="testimonies.html" class="nav-link active" role="menuitem">Testimonials</a>
+                    </li>
+                    <li role="none"><a href="index.html#contact" class="nav-link" role="menuitem">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu"
+                aria-expanded="false" aria-controls="mobile-navigation" aria-haspopup="true">
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+            </button>
+
+            <button class="nav-cta calendly-trigger" id="book-demo-btn" aria-label="Book a demo appointment">
+                Book A Call
+            </button>
+        </nav>
+
+        <!-- Full-Width Mobile Navigation Menu -->
+        <div class="mobile-navigation" id="mobile-navigation" aria-hidden="true">
+            <div class="mobile-nav-content">
+                <ul class="mobile-nav-menu" role="menu">
+                    <li role="none">
+                        <a href="index.html#home" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">🏠</span>
+                            <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#experience" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">💼</span>
+                            <span class="nav-text">Experience</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#certifications" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">🏆</span>
+                            <span class="nav-text">Certifications</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#skills" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">⚡</span>
+                            <span class="nav-text">Skills</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#portfolio" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">💻</span>
+                            <span class="nav-text">Portfolio</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="testimonies.html" class="mobile-nav-link active" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">⭐</span>
+                            <span class="nav-text">Testimonials</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#contact" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon">📞</span>
+                            <span class="nav-text">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile CTA Button -->
+                <div class="mobile-nav-cta">
+                    <a href="mailto:ghodasaranatavar2011@gmail.com?subject=Schedule A Call - Salesforce Development Services"
+                        class="mobile-cta-btn">
+                        Schedule A Call
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        <!-- Testimonials Hero Section -->
+        <section class="testimonials-hero">
+            <div class="testimonials-hero-content">
+                <h1>Hear From Our Customers</h1>
+                <p>Real feedback from clients who have experienced the value of Salesforce expertise and AI automation
+                    solutions</p>
+
+                <div class="nps-section">
+                    <h2 class="nps-title">Net Promoter Score (NPS) Feedback</h2>
+                    <p class="nps-description">We asked our customers, 'How likely are you to recommend me to a friend
+                        or colleague?' Here's what they had to say:</p>
+
+                    <div class="metrics-grid">
+                        <div class="metric-item animate-scale">
+                            <span class="metric-number">9.2/10</span>
+                            <div class="metric-label">Average Rating</div>
+                        </div>
+                        <div class="metric-item animate-scale">
+                            <span class="metric-number">94%</span>
+                            <div class="metric-label">Would Recommend</div>
+                        </div>
+                        <div class="metric-item animate-scale">
+                            <span class="metric-number">72</span>
+                            <div class="metric-label">Promoters</div>
+                        </div>
+                        <div class="metric-item animate-scale">
+                            <span class="metric-number">+68</span>
+                            <div class="metric-label">Net Promoter Score</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="testimonials-container">
+                <div class="section-header">
+                    <h2 class="section-title">Client Testimonials</h2>
+                    <p class="section-subtitle">
+                        Discover what clients say about working with me on their Salesforce implementations, custom
+                        development, and AI automation projects.
+                    </p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card animate-fade-in">
+                        <div class="testimonial-header">
+                            <div class="client-avatar">JD</div>
+                            <div class="client-info">
+                                <h3 class="client-name">John D.</h3>
+                                <p class="client-role">CTO, Tech Solutions Inc.</p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-rating">
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                        </div>
+
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                Natavar transformed our Salesforce implementation. His expertise in Lightning Web
+                                Components and Apex helped us build a custom solution that increased our sales team's
+                                productivity by 40%. His attention to detail and understanding of business processes is
+                                exceptional.
+                            </p>
+                        </div>
+
+                        <div class="testimonial-project">
+                            <div class="project-label">Project</div>
+                            <div class="project-name">Sales Cloud Customization & Automation</div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card animate-fade-in">
+                        <div class="testimonial-header">
+                            <div class="client-avatar">SM</div>
+                            <div class="client-info">
+                                <h3 class="client-name">Sarah M.</h3>
+                                <p class="client-role">Operations Director, Retail Corp</p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-rating">
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                        </div>
+
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                Working with Natavar on our Service Cloud implementation was a game-changer. He not only
+                                delivered a technically sound solution but also provided valuable insights on how to
+                                optimize our customer service processes. The AI receptionist he built has significantly
+                                reduced our response times.
+                            </p>
+                        </div>
+
+                        <div class="testimonial-project">
+                            <div class="project-label">Project</div>
+                            <div class="project-name">Service Cloud & AI Automation</div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card animate-fade-in">
+                        <div class="testimonial-header">
+                            <div class="client-avatar">RK</div>
+                            <div class="client-info">
+                                <h3 class="client-name">Robert K.</h3>
+                                <p class="client-role">CEO, Manufacturing Solutions</p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-rating">
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                        </div>
+
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                Natavar's integration of Salesforce with our legacy ERP system was flawless. He handled
+                                complex data migration and built custom interfaces that our team finds intuitive to use.
+                                His ability to understand our business needs and translate them into technical solutions
+                                is impressive.
+                            </p>
+                        </div>
+
+                        <div class="testimonial-project">
+                            <div class="project-label">Project</div>
+                            <div class="project-name">ERP Integration & Data Migration</div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card animate-fade-in">
+                        <div class="testimonial-header">
+                            <div class="client-avatar">AP</div>
+                            <div class="client-info">
+                                <h3 class="client-name">Amanda P.</h3>
+                                <p class="client-role">Marketing Director, E-commerce Brand</p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-rating">
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                        </div>
+
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                The Experience Cloud community Natavar built for us has transformed how we engage with
+                                our partners. It's user-friendly, visually appealing, and has all the functionality we
+                                needed. His expertise in Salesforce communities is evident in the final product.
+                            </p>
+                        </div>
+
+                        <div class="testimonial-project">
+                            <div class="project-label">Project</div>
+                            <div class="project-name">Partner Community Development</div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-card animate-fade-in">
+                        <div class="testimonial-header">
+                            <div class="client-avatar">TL</div>
+                            <div class="client-info">
+                                <h3 class="client-name">Thomas L.</h3>
+                                <p class="client-role">IT Manager, Financial Services</p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-rating">
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                        </div>
+
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                Natavar's CPQ implementation was exactly what our sales team needed. The solution he
+                                built handles our complex pricing models and product configurations seamlessly. His
+                                documentation and knowledge transfer made the transition smooth for our team.
+                            </p>
+                        </div>
+
+                        <div class="testimonial-project">
+                            <div class="project-label">Project</div>
+                            <div class="project-name">Salesforce CPQ Implementation</div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 6 -->
+                    <div class="testimonial-card animate-fade-in">
+                        <div class="testimonial-header">
+                            <div class="client-avatar">MJ</div>
+                            <div class="client-info">
+                                <h3 class="client-name">Maria J.</h3>
+                                <p class="client-role">Project Manager, Consulting Firm</p>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-rating">
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                        </div>
+
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                I've worked with many Salesforce developers, but Natavar stands out for his
+                                problem-solving skills and commitment to quality. He consistently delivers solutions
+                                that not only meet but exceed expectations. His 6X certification is a testament to his
+                                expertise.
+                            </p>
+                        </div>
+
+                        <div class="testimonial-project">
+                            <div class="project-label">Project</div>
+                            <div class="project-name">Ongoing Salesforce Development & Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="section-header">
+                <h2 class="section-title">Impact By The Numbers</h2>
+                <p class="section-subtitle">
+                    Quantifiable results delivered through Salesforce implementations and AI automation solutions.
+                </p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card animate-scale">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Average Increase in Team Productivity</div>
+                </div>
+                <div class="stat-card animate-scale">
+                    <div class="stat-number">65%</div>
+                    <div class="stat-label">Reduction in Manual Processes</div>
+                </div>
+                <div class="stat-card animate-scale">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Successful Projects Delivered</div>
+                </div>
+                <div class="stat-card animate-scale">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">On-Time Project Delivery</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Transform Your Business with Salesforce?</h2>
+                <p class="cta-description">
+                    Join the satisfied clients who have experienced the power of tailored Salesforce solutions and AI
+                    automation. Let's discuss how I can help drive your digital transformation.
+                </p>
+
+                <div class="cta-buttons">
+                    <button class="btn-primary calendly-trigger">Schedule a Consultation</button>
+                    <a href="index.html#portfolio" class="btn-secondary">View My Portfolio</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="footer-section">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: Contact Information -->
+                <div class="footer-column footer-contact">
+                    <h3 class="footer-column-title">Contact Information</h3>
+                    <div class="footer-contact-list">
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <span>📧</span>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Email</span>
+                                <a href="mailto:ghodasaranatavar2011@gmail.com" class="footer-contact-value">
+                                    ghodasaranatavar2011@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <span>📱</span>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Phone</span>
+                                <a href="tel:+918980805269" class="footer-contact-value">
+                                    +91 89808 05269
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <span>🌐</span>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Location</span>
+                                <span class="footer-contact-value">
+                                    Remote projects worldwide
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <span>⏰</span>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Availability</span>
+                                <span class="footer-contact-value footer-availability">
+                                    Open for new opportunities
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2: Request a Demo -->
+                <div class="footer-column footer-demo">
+                    <h3 class="footer-column-title">Request a Demo</h3>
+                    <p class="footer-demo-description">
+                        Ready to optimize your Salesforce implementation? Let's schedule a consultation to explore how
+                        my expertise can boost efficiency, drive adoption, and deliver measurable business growth.
+                    </p>
+
+                    <div class="footer-demo-benefits">
+                        <div class="footer-benefit-item">
+                            <span class="footer-benefit-icon">✅</span>
+                            <span>Free consultation & strategy session</span>
+                        </div>
+                        <div class="footer-benefit-item">
+                            <span class="footer-benefit-icon">✅</span>
+                            <span>Custom solution recommendations</span>
+                        </div>
+                        <div class="footer-benefit-item">
+                            <span class="footer-benefit-icon">✅</span>
+                            <span>Quick response within 24 hours</span>
+                        </div>
+                    </div>
+
+                    <div class="footer-demo-actions">
+                        <button class="footer-demo-btn calendly-trigger" id="footer-demo-btn"
+                            aria-label="Schedule a demo appointment">
+                            Schedule Your Discovery or Consulting Call
+                        </button>
+                        <a href="https://wa.me/918980805269?text=Hi%20Natavar%2C%20I%20came%20from%20your%20website%20and%20would%20like%20to%20schedule%20a%20demo."
+                            target="_blank" rel="noopener" class="footer-demo-btn footer-demo-btn-secondary">
+                            WhatsApp Chat
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="footer-copyright">
+                        © 2025 Natavar Ghodasara. All rights reserved. | 6X Salesforce Certified Professional
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="https://www.linkedin.com/in/natavarghodasara" target="_blank" rel="noopener"
+                            class="footer-social-link" aria-label="LinkedIn Profile">
+                            <span>💼</span>
+                        </a>
+                        <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank" rel="noopener"
+                            class="footer-social-link" aria-label="YouTube Channel">
+                            <span>🎥</span>
+                        </a>
+                        <a href="https://trailblazer.me/id/nghodasara" target="_blank" rel="noopener"
+                            class="footer-social-link" aria-label="Trailhead Profile">
+                            <span>🏆</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top" class="scroll-to-top-btn" aria-label="Scroll to top">
+        <svg class="scroll-to-top-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <!-- Add Calendly Modal -->
+    <div id="calendly-modal" class="calendly-modal" aria-hidden="true" role="dialog"
+        aria-labelledby="calendly-modal-title">
+        <div class="calendly-modal-overlay" id="calendly-modal-overlay"></div>
+        <div class="calendly-modal-content">
+            <button class="calendly-modal-close" id="calendly-modal-close" aria-label="Close booking calendar">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h2 id="calendly-modal-title" class="sr-only">Book a Demo Appointment</h2>
+            <div class="calendly-embed-container" id="calendly-embed"></div>
+        </div>
+    </div>
+
+    <script src="widget.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

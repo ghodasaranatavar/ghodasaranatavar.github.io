@@ -1666,7 +1666,170 @@ body.loaded {
     z-index: 1001;
     transition: width 0.1s ease;
 }
+/* Toaster Content */
+.toaster-content {
+    flex: 1;
+    min-width: 0;
+}
 
+/* Toaster Title */
+.toaster-title {
+    font-weight: 700;
+    color: var(--lab-text-primary);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    letter-spacing: 0.01em;
+}
+
+/* Toaster Message */
+.toaster-message {
+    color: var(--lab-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    font-style: italic;
+}
+
+/* Toaster Project */
+.toaster-project {
+    color: var(--lab-palette-primary-main);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(234, 23, 99, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(234, 23, 99, 0);
+    }
+}
+/* Review Toaster Container */
+.review-toaster {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    max-width: 420px;
+    pointer-events: none;
+}
+
+/* Individual Toaster Notification */
+.toaster-notification {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fc 100%);
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(51, 96, 173, 0.1);
+    padding: var(--card-gap-md);
+    margin-bottom: var(--card-gap-sm);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--card-gap-sm);
+    cursor: pointer;
+    pointer-events: all;
+    transform: translateX(-120%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-left: 4px solid var(--lab-palette-primary-main);
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+/* Toaster Show Animation */
+.toaster-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Toaster Hide Animation */
+.toaster-notification.hide {
+    transform: translateX(-120%);
+    opacity: 0;
+}
+
+/* Toaster Shimmer Effect */
+.toaster-notification::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.toaster-notification:hover::before {
+    left: 100%;
+}
+
+/* Toaster Hover Effect */
+.toaster-notification:hover {
+    transform: translateX(5px) scale(1.02);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(51, 96, 173, 0.2);
+    border-left-color: var(--lab-palette-accent-pink);
+}
+
+/* Toaster Icon */
+.toaster-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--lab-palette-accent-pink), var(--lab-palette-primary-main));
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+/* Toaster Close Button */
+.toaster-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--lab-text-muted);
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    opacity: 0;
+}
+
+.toaster-notification:hover .toaster-close {
+    opacity: 1;
+}
+
+.toaster-close:hover {
+    background: var(--lab-palette-accent-pink);
+    color: white;
+    transform: rotate(90deg) scale(1.1);
+}
+
+.toaster-close:focus {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+    opacity: 1;
+}
 /* FIXED: Mobile Responsive Optimizations - Proper Mobile Navigation */
 @media (max-width: 1200px) {
     .hero-main-grid {
@@ -1824,6 +1987,41 @@ body.loaded {
     .education-content {
         padding: var(--card-gap-md);
     }
+     .review-toaster {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        max-width: none;
+    }
+    
+    .toaster-notification {
+        padding: var(--card-gap-sm);
+        max-width: 100%;
+    }
+    
+    .toaster-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+    }
+    
+    .toaster-title {
+        font-size: 0.85rem;
+    }
+    
+    .toaster-message {
+        font-size: 0.8rem;
+    }
+    
+    .toaster-project {
+        font-size: 0.7rem;
+    }
+    
+    .toaster-close {
+        opacity: 1;
+        width: 28px;
+        height: 28px;
+    }
 }
 
 /* CRITICAL: Optimizations for smallest screens (320px minimum) */
@@ -1902,6 +2100,26 @@ body.loaded {
         height: 36px;
         font-size: 1rem;
     }
+    .review-toaster {
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+    }
+    
+    .toaster-notification {
+        padding: 12px;
+    }
+    
+    .toaster-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem;
+    }
+    
+    .toaster-message {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
 }
 
 /* Enhanced Focus styles for accessibility */
@@ -1940,6 +2158,22 @@ body.loaded {
         background: #ffff00;
         color: #000000;
     }
+
+    .toaster-notification {
+        border: 2px solid #000000;
+        background: #ffffff;
+    }
+    
+    .toaster-title,
+    .toaster-message,
+    .toaster-project {
+        color: #000000;
+    }
+    
+    .toaster-close {
+        background: #000000;
+        color: #ffffff;
+    }
 }
 
 /* CRITICAL: Reduced motion for accessibility */
@@ -1970,7 +2204,26 @@ body.loaded {
     .mobile-menu-toggle .hamburger-line {
         transition: none;
     }
+    .toaster-notification {
+        transition: opacity 0.1s ease, transform 0.1s ease;
+    }
     
+    .toaster-notification.show {
+        transform: translateX(0);
+    }
+    
+    .toaster-notification.hide {
+        transform: translateX(0);
+        opacity: 0;
+    }
+    
+    .toaster-icon {
+        animation: none;
+    }
+    
+    .toaster-notification::before {
+        display: none;
+    }
     @keyframes fadeIn {
         to {
             opacity: 1;
@@ -2031,5 +2284,291 @@ body.loaded {
         margin: 0;
         background: white;
         color: black;
+    }
+    .review-toaster,
+    .toaster-notification {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   CALENDLY MODAL STYLES
+   ======================================== */
+
+/* Calendly Trigger Button - Update nav-cta to work as button */
+.nav-cta.calendly-trigger {
+    cursor: pointer;
+    border: 2px solid var(--lab-palette-accent-pink);
+}
+
+/* Calendly Modal Overlay */
+.calendly-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.calendly-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.calendly-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    cursor: pointer;
+}
+
+/* Calendly Modal Content */
+.calendly-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    height: 90vh;
+    max-height: 800px;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    z-index: 10001;
+    animation: modalSlideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: scale(0.8) translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Calendly Close Button */
+.calendly-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.calendly-modal-close:hover {
+    background: var(--lab-palette-accent-pink);
+    border-color: var(--lab-palette-accent-pink);
+    transform: rotate(90deg) scale(1.1);
+}
+
+.calendly-modal-close:focus {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 2px;
+    background: var(--lab-palette-accent-pink);
+}
+
+/* Calendly Embed Container */
+.calendly-embed-container {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+/* Prevent body scroll when modal is open */
+body.calendly-modal-open {
+    overflow: hidden;
+}
+
+/* Make sure the footer demo button has pointer cursor */
+.footer-demo-btn.calendly-trigger {
+    cursor: pointer;
+}
+/* Enhanced Scroll to Top Button with Progress */
+.scroll-to-top-btn {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    left: auto !important;
+    width: 60px;
+    height: 60px;
+    background: var(--lab-palette-primary-main);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(51, 96, 173, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    border: 2px solid var(--lab-palette-primary-main);
+    overflow: hidden;
+}
+
+/* Progress circle background */
+.scroll-to-top-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: conic-gradient(var(--lab-palette-accent-pink) 0%, transparent 0%);
+    border-radius: 50%;
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+.scroll-to-top-btn.visible::before {
+    background: conic-gradient(
+        var(--lab-palette-accent-pink) calc(var(--scroll-progress, 0) * 100%), 
+        transparent calc(var(--scroll-progress, 0) * 100%)
+    );
+}
+
+.scroll-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top-btn:hover {
+    background: var(--lab-palette-primary-dark);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(51, 96, 173, 0.4);
+}
+
+.scroll-to-top-btn:focus {
+    background: var(--lab-palette-primary-dark);
+    outline: 3px solid var(--focus-color);
+    outline-offset: 2px;
+    box-shadow: 0 8px 25px rgba(51, 96, 173, 0.4);
+}
+
+.scroll-to-top-btn:active {
+    transform: translateY(-1px) scale(1.05);
+}
+
+.scroll-to-top-icon {
+    display: block;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.scroll-to-top-btn:hover .scroll-to-top-icon {
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .scroll-to-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-top-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-to-top-btn {
+        transition: opacity 0.1s ease;
+    }
+    
+    .scroll-to-top-btn:hover {
+        transform: none;
+    }
+    
+    .scroll-to-top-btn:hover .scroll-to-top-icon {
+        transform: none;
+    }
+}
+/* Mobile Responsive Calendly Modal */
+@media (max-width: 768px) {
+    .calendly-modal-content {
+        width: 95%;
+        height: 95vh;
+        max-height: none;
+        border-radius: var(--radius-md);
+    }
+
+    .calendly-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendly-modal-content {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .calendly-modal-close {
+        top: 5px;
+        right: 5px;
+    }
+}
+
+/* Reduced Motion Support for Modal */
+@media (prefers-reduced-motion: reduce) {
+    .calendly-modal-content {
+        animation: none;
+    }
+
+    @keyframes modalSlideIn {
+        to {
+            transform: none;
+            opacity: 1;
+        }
     }
 }

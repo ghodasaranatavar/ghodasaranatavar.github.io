@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Natavar Ghodasara</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/feviconicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-detail.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <!-- Enhanced Mobile-First Navigation Header -->
+    <header class="header sticky-header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <!-- Logo/Brand -->
+            <a href="index.html#home" class="logo" aria-label="Natavar Ghodasara - Homepage">
+                Natavar Ghodasara
+            </a>
+
+            <!-- Desktop Navigation (Hidden on Mobile) -->
+            <div class="desktop-nav" id="desktop-nav">
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#home" class="nav-link" role="menuitem">Home</a></li>
+                    <li role="none"><a href="index.html#experience" class="nav-link" role="menuitem">Experience</a></li>
+                    <li role="none"><a href="index.html#certifications" class="nav-link" role="menuitem">Certifications</a></li>
+                    <li role="none"><a href="index.html#skills" class="nav-link" role="menuitem">Skills</a></li>
+                    <li role="none"><a href="index.html#portfolio" class="nav-link active" role="menuitem">Portfolio</a></li>
+                    <li role="none"><a href="index.html#contact" class="nav-link" role="menuitem">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu"
+                aria-expanded="false" aria-controls="mobile-navigation" aria-haspopup="true">
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+            </button>
+
+            <button class="nav-cta calendly-trigger" id="book-demo-btn" aria-label="Book a demo appointment">
+                Book A Call
+            </button>
+        </nav>
+
+        <!-- Full-Width Mobile Navigation Menu -->
+        <div class="mobile-navigation" id="mobile-navigation" aria-hidden="true">
+            <div class="mobile-nav-content">
+                <ul class="mobile-nav-menu" role="menu">
+                    <li role="none">
+                        <a href="index.html#home" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon"><i class="ph ph-house"></i></span>
+                            <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#experience" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon"><i class="ph ph-briefcase"></i></span>
+                            <span class="nav-text">Experience</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#certifications" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon"><i class="ph ph-medal"></i></span>
+                            <span class="nav-text">Certifications</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#skills" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon"><i class="ph ph-lightning"></i></span>
+                            <span class="nav-text">Skills</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#portfolio" class="mobile-nav-link active" role="menuitem" tabindex="-1">
+                            <span class="nav-icon"><i class="ph ph-laptop"></i></span>
+                            <span class="nav-text">Portfolio</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="index.html#contact" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon"><i class="ph ph-phone"></i></span>
+                            <span class="nav-text">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile CTA Button -->
+                <div class="mobile-nav-cta">
+                    <a href="mailto:ghodasaranatavar2011@gmail.com?subject=Schedule A Call - Salesforce Development Services"
+                        class="mobile-cta-btn">
+                        Schedule A Call
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
+    </header>
+
+    <main id="case-study-content">
+        <!-- Hero Section -->
+        <section class="project-hero">
+            <div class="project-hero-content">
+                <span class="project-category" id="client-industry">Salesforce Automation</span>
+                <h1 class="project-title-outcome" id="project-title">Loading Project Details...</h1>
+            </div>
+        </section>
+
+        <!-- Main Content Layout -->
+        <div class="case-study-layout">
+            <!-- Left Column: Narratives -->
+            <div class="main-column">
+                
+                <!-- Client Overview -->
+                <div class="section-block">
+                    <h2><i class="ph ph-buildings"></i> Client Overview</h2>
+                    <div class="client-info-grid">
+                        <div class="info-item">
+                            <label>Industry</label>
+                            <span id="overview-industry">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Company Size</label>
+                            <span id="overview-size">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Location</label>
+                            <span id="overview-location">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem Statement -->
+                <div class="section-block">
+                    <h2><i class="ph ph-warning-circle"></i> Problem Statement</h2>
+                    <p id="problem-desc">-</p>
+                    <div class="problem-impact-box">
+                        <strong>Business Impact:</strong>
+                        <p id="problem-impact">-</p>
+                    </div>
+                </div>
+
+                <!-- Objective -->
+                <div class="section-block">
+                    <h2><i class="ph ph-target"></i> Objective</h2>
+                    <p>The primary goals for this engagement were:</p>
+                    <ul id="objective-list" class="solution-list" style="grid-template-columns: 1fr;"></ul>
+                </div>
+
+                <!-- Solution Delivered -->
+                <div class="section-block">
+                    <h2><i class="ph ph-brain"></i> Solution Delivered</h2>
+                    <p id="solution-desc" style="margin-bottom: 20px;">-</p>
+                    <div id="solution-highlights" class="solution-list"></div>
+                </div>
+
+                <!-- Key Takeaways -->
+                <div class="section-block">
+                    <h2><i class="ph ph-lightbulb"></i> Key Takeaways</h2>
+                    <div id="takeaways-list" class="solution-list" style="grid-template-columns: 1fr;"></div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Sidebar (Metrics & Meta) -->
+            <div class="sidebar-column">
+                
+                <!-- Results Widget -->
+                <div class="sidebar-widget">
+                    <h3><i class="ph ph-chart-line-up"></i> Results</h3>
+                    <div class="metrics-sidebar-grid" id="metrics-grid"></div>
+                </div>
+
+                <!-- Tech Stack Widget -->
+                <div class="sidebar-widget">
+                    <h3><i class="ph ph-gear-six"></i> Tech Stack</h3>
+                    <div style="margin-bottom: 15px;">
+                        <label class="info-item label" style="color:var(--lab-text-subtle); font-weight:700;">Salesforce</label>
+                        <div id="tech-salesforce" class="tech-pills"></div>
+                    </div>
+                    <div>
+                        <label class="info-item label" style="color:var(--lab-text-subtle); font-weight:700;">Tools & Integrations</label>
+                        <div id="tech-tools" class="tech-pills"></div>
+                    </div>
+                </div>
+
+                <!-- Feedback Widget -->
+                <div class="sidebar-widget testimonial-block" id="feedback-widget">
+                    <h3 style="color: white; margin-bottom: 15px;"><i class="ph ph-quotes"></i> Client Feedback</h3>
+                    <blockquote id="client-feedback">"-"</blockquote>
+                    <p style="margin-top: 15px; font-weight: 700; font-size: 0.9rem;">— Client Verification</p>
+                </div>
+
+                <!-- CTA Widget -->
+                <div class="sidebar-widget" style="background: var(--lab-bg-light); text-align: center;">
+                    <p style="font-weight: 700; margin-bottom: 15px;">Looking for similar results?</p>
+                    <button class="btn-primary calendly-trigger" style="width: 100%;">Schedule Consulting</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- NEW: Enhanced Footer Section with 2 Columns -->
+    <footer id="contact" class="footer-section">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: Contact Information -->
+                <div class="footer-column footer-contact">
+                    <h3 class="footer-column-title">Contact Information</h3>
+                    <div class="footer-contact-list">
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="ph ph-envelope"></i>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Email</span>
+                                <a href="mailto:ghodasaranatavar2011@gmail.com" class="footer-contact-value">
+                                    ghodasaranatavar2011@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="ph ph-phone"></i>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Phone</span>
+                                <a href="tel:+918980805269" class="footer-contact-value">
+                                    +91 89808 05269
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="ph ph-globe"></i>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Location</span>
+                                <span class="footer-contact-value">
+                                    Remote projects worldwide
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="ph ph-clock"></i>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Availability</span>
+                                <span class="footer-contact-value footer-availability">
+                                    Open for new opportunities
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2: Request a Demo -->
+                <div class="footer-column footer-demo">
+                    <h3 class="footer-column-title">Request a Demo</h3>
+                    <p class="footer-demo-description">
+                        Ready to optimize your Salesforce implementation? Let's schedule a consultation to explore
+                        how
+                        my expertise can boost efficiency, drive adoption, and deliver measurable business growth.
+                    </p>
+
+                    <div class="footer-demo-benefits">
+                        <div class="footer-benefit-item">
+                            <span class="footer-benefit-icon"><i class="ph ph-check-circle"></i></span>
+                            <span>Free consultation & strategy session</span>
+                        </div>
+                        <div class="footer-benefit-item">
+                            <span class="footer-benefit-icon"><i class="ph ph-check-circle"></i></span>
+                            <span>Custom solution recommendations</span>
+                        </div>
+                        <div class="footer-benefit-item">
+                            <span class="footer-benefit-icon"><i class="ph ph-check-circle"></i></span>
+                            <span>Quick response within 24 hours</span>
+                        </div>
+                    </div>
+
+                    <div class="footer-demo-actions">
+                        <button class="footer-demo-btn calendly-trigger" id="footer-demo-btn"
+                            aria-label="Schedule a demo appointment">
+                            Schedule Your Discovery or Consulting Call
+                        </button>
+                        <a href="https://wa.me/918980805269?text=Hi%20Natavar%2C%20I%20came%20from%20your%20website%20and%20would%20like%20to%20schedule%20a%20demo."
+                            target="_blank" rel="noopener" class="footer-demo-btn footer-demo-btn-secondary">
+                            WhatsApp Chat
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="footer-copyright">
+                        © 2025 Natavar Ghodasara. All rights reserved. | 6X Salesforce Certified Professional
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="https://www.linkedin.com/in/natavarghodasara" target="_blank" rel="noopener"
+                            class="footer-social-link" aria-label="LinkedIn Profile">
+                            <i class="ph ph-linkedin-logo"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank"
+                            rel="noopener" class="footer-social-link" aria-label="YouTube Channel">
+                            <i class="ph ph-youtube-logo"></i>
+                        </a>
+                        <a href="https://trailblazer.me/id/nghodasara" target="_blank" rel="noopener"
+                            class="footer-social-link" aria-label="Trailhead Profile">
+                            <i class="ph ph-medal"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top" class="scroll-to-top-btn" aria-label="Scroll to top">
+        <svg class="scroll-to-top-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <!-- Add Calendly Modal -->
+    <div id="calendly-modal" class="calendly-modal" aria-hidden="true" role="dialog"
+        aria-labelledby="calendly-modal-title">
+        <div class="calendly-modal-overlay" id="calendly-modal-overlay"></div>
+        <div class="calendly-modal-content">
+            <button class="calendly-modal-close" id="calendly-modal-close" aria-label="Close booking calendar">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h2 id="calendly-modal-title" class="sr-only">Book a Demo Appointment</h2>
+            <div class="calendly-embed-container" id="calendly-embed"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="widget.js"></script>
+    <script src="script.js"></script>
+    <script src="project-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get('id');
+
+            // 404 Redirection Logic
+            if (!projectId || !window.projectData[projectId]) {
+                window.location.replace('404.html');
+                return;
+            }
+
+            const data = window.projectData[projectId];
+
+            // 1. Hero & Titles
+            document.title = `${data.title} | Case Study`;
+            document.getElementById('project-title').innerText = data.title;
+            document.getElementById('client-industry').innerText = data.client.industry;
+
+            // 2. Client Overview
+            document.getElementById('overview-industry').innerText = data.client.industry;
+            document.getElementById('overview-size').innerText = data.client.size;
+            document.getElementById('overview-location').innerText = data.client.location;
+
+            // 3. Problem Statement
+            document.getElementById('problem-desc').innerText = data.problem.description;
+            document.getElementById('problem-impact').innerText = data.problem.impact;
+
+            // 4. Objectives
+            const objList = document.getElementById('objective-list');
+            data.objective.forEach(obj => {
+                const li = document.createElement('li');
+                li.className = 'solution-item';
+                li.innerHTML = `<i class="ph ph-target" style="color:var(--lab-palette-primary-main); font-size:1.2rem; flex-shrink:0;"></i><span>${obj}</span>`;
+                objList.appendChild(li);
+            });
+
+            // 5. Solution
+            document.getElementById('solution-desc').innerText = data.solution.description;
+            const solGrid = document.getElementById('solution-highlights');
+            data.solution.highlights.forEach(high => {
+                const div = document.createElement('div');
+                div.className = 'solution-item';
+                div.innerHTML = `<i class="ph ph-check-circle" style="color:var(--lab-palette-accent-green); font-size:1.2rem; flex-shrink:0;"></i><span>${high}</span>`;
+                solGrid.appendChild(div);
+            });
+
+            // 6. Metrics
+            const metricsGrid = document.getElementById('metrics-grid');
+            data.results.forEach(res => {
+                const div = document.createElement('div');
+                div.className = 'metric-card-small';
+                div.innerHTML = `<span class="metric-value">${res.metric}</span><span class="metric-label">${res.label}</span>`;
+                metricsGrid.appendChild(div);
+            });
+
+            // 7. Tech Stack
+            const sfGrid = document.getElementById('tech-salesforce');
+            data.techStack.salesforce.forEach(t => {
+                const span = document.createElement('span');
+                span.className = 'tech-pill';
+                span.innerText = t;
+                sfGrid.appendChild(span);
+            });
+            const toolGrid = document.getElementById('tech-tools');
+            const tools = [...data.techStack.tools, ...data.techStack.integrations];
+            tools.forEach(t => {
+                const span = document.createElement('span');
+                span.className = 'tech-pill';
+                span.style.background = 'var(--lab-palette-accent-pink)';
+                span.innerText = t;
+                toolGrid.appendChild(span);
+            });
+
+            // 8. feedback & takeaways
+            document.getElementById('client-feedback').innerText = `"${data.feedback}"`;
+            const takeList = document.getElementById('takeaways-list');
+            data.takeaways.forEach(take => {
+                const div = document.createElement('div');
+                div.className = 'solution-item';
+                div.style.borderLeft = '4px solid var(--lab-palette-accent-green)';
+                div.innerHTML = `<i class="ph ph-lightbulb" style="color:var(--lab-palette-accent-green); font-size:1.2rem; flex-shrink:0;"></i><span>${take}</span>`;
+                takeList.appendChild(div);
+            });
+        });
+    </script>
+</body>
+</html>

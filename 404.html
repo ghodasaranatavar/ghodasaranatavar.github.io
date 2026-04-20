@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Natavar Ghodasara</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/feviconicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+            padding: var(--full-width-padding);
+        }
+        .error-code {
+            font-size: clamp(5rem, 15vw, 10rem);
+            font-weight: 900;
+            color: var(--lab-palette-primary-main);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .error-message {
+            font: var(--font-title2);
+            color: var(--lab-text-primary);
+            margin-bottom: 30px;
+        }
+        .error-btn {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header sticky-header">
+        <nav class="nav">
+            <a href="index.html" class="logo">Natavar Ghodasara</a>
+        </nav>
+    </header>
+
+    <main class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-message">Oops! The project you're looking for doesn't exist.</h1>
+        <p style="margin-bottom: 40px; color: var(--lab-text-muted); max-width: 500px;">
+            It seems the case study has moved or the link is incorrect. Don't worry, you can find all my latest work on the homepage.
+        </p>
+        <a href="index.html" class="btn-primary error-btn">Return to Homepage</a>
+    </main>
+
+    <footer class="footer-section" style="padding: 40px 0; border-top: 1px solid var(--lab-border-light);">
+        <div class="footer-container" style="text-align: center;">
+            <p class="footer-copyright">© 2025 Natavar Ghodasara. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

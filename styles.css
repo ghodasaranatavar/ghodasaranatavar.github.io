@@ -1185,9 +1185,28 @@ body {
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--card-gap-lg);
+    gap: 40px;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.view-all-projects-container {
+    text-align: center;
+    margin-top: 80px;
+    padding-bottom: 40px;
+}
+
+.view-all-projects-container .btn-primary {
+    padding: 16px 48px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    box-shadow: var(--lab-shadow-medium);
+}
+
+.view-all-subtitle {
+    margin-top: 15px;
+    font: var(--font-caption);
+    color: var(--lab-text-subtle);
 }
 
 .portfolio-item {

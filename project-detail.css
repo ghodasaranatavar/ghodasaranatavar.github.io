@@ -1,0 +1,244 @@
+/* Project Detail Specific Styles */
+
+.project-hero {
+    background: linear-gradient(135deg, var(--lab-palette-primary-dark) 0%, var(--lab-palette-primary-main) 100%);
+    color: white;
+    padding: clamp(60px, 10vw, 100px) var(--full-width-padding);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    opacity: 0.1;
+}
+
+.project-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.project-category {
+    font: var(--font-caption);
+    background: var(--lab-palette-accent-pink);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.project-title-outcome {
+    font: var(--font-title1);
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+.case-study-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 60px;
+    padding: 60px var(--full-width-padding);
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.main-column {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.section-block h2 i {
+    color: var(--lab-palette-primary-main);
+    font-size: 1.5rem;
+}
+
+.sidebar-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: sticky;
+    top: calc(var(--header-height) + 20px);
+    height: fit-content;
+}
+
+/* Section Styling */
+.section-block h2 {
+    font: var(--font-title3);
+    color: var(--lab-palette-primary-dark);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.client-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    background: var(--lab-bg-light);
+    padding: 24px;
+    border-radius: var(--radius-md);
+}
+
+.info-item label {
+    display: block;
+    font: var(--font-caption);
+    color: var(--lab-text-subtle);
+    margin-bottom: 4px;
+}
+
+.info-item span {
+    font: var(--font-body1);
+    font-weight: 700;
+    color: var(--lab-text-primary);
+}
+
+.problem-impact-box {
+    border-left: 4px solid var(--lab-palette-accent-pink);
+    padding-left: 24px;
+    margin-top: 16px;
+    font-style: italic;
+    color: var(--lab-text-muted);
+}
+
+/* Solution Highlights */
+.solution-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.solution-item {
+    background: white;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--lab-border-light);
+    display: flex;
+    gap: 15px;
+    transition: transform 0.3s ease;
+}
+
+.solution-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--lab-shadow-light);
+}
+
+.solution-check {
+    color: var(--lab-palette-accent-green);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Sidebar Widgets */
+.sidebar-widget {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--lab-shadow-medium);
+}
+
+.sidebar-widget h3 {
+    font: var(--font-title4);
+    margin-bottom: 20px;
+}
+
+/* Metrics Grid */
+.metrics-sidebar-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.metric-card-small {
+    background: var(--lab-bg-light);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    border-top: 3px solid var(--lab-palette-primary-main);
+}
+
+.metric-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--lab-palette-primary-main);
+    line-height: 1;
+}
+
+.metric-label {
+    font: var(--font-caption);
+    color: var(--lab-text-muted);
+    margin-top: 8px;
+    display: block;
+}
+
+/* Tech Badges */
+.tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-pill {
+    background: var(--lab-palette-primary-light);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Testimonial */
+.testimonial-block {
+    background: var(--lab-palette-primary-dark);
+    color: white;
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-block blockquote {
+    font: var(--font-body1);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.testimonial-block::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 5rem;
+    opacity: 0.1;
+    font-family: serif;
+}
+
+/* Responsiveness */
+@media (max-width: 1100px) {
+    .case-study-layout {
+        grid-template-columns: 1fr;
+    }
+    .sidebar-column {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .client-info-grid {
+        grid-template-columns: 1fr;
+    }
+}

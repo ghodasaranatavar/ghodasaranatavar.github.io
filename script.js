@@ -298,6 +298,7 @@ class EnhancedAccessiblePortfolioApp {
 
     // Update ARIA attributes
     mobileToggle.setAttribute("aria-expanded", "true");
+    mobileNav.style.visibility = "visible";
     mobileNav.setAttribute("aria-hidden", "false");
     if (overlay) overlay.setAttribute("aria-hidden", "false");
 
@@ -342,6 +343,13 @@ class EnhancedAccessiblePortfolioApp {
     mobileToggle.setAttribute("aria-expanded", "false");
     mobileNav.setAttribute("aria-hidden", "true");
     if (overlay) overlay.setAttribute("aria-hidden", "true");
+
+    // Hide from visibility after transition to prevent focusable descendants issues
+    setTimeout(() => {
+      if (!this.mobileMenuOpen) {
+        mobileNav.style.visibility = "hidden";
+      }
+    }, 300);
 
     // Update tabindex for menu items
     const menuItems = mobileNav.querySelectorAll(".mobile-nav-link");
@@ -936,10 +944,12 @@ class EnhancedAccessiblePortfolioApp {
     );
   }
 
-  // Helper method to get current header height
+  // Helper method to get cached header height
   getHeaderHeight() {
+    if (this._cachedHeaderHeight) return this._cachedHeaderHeight;
     const header = document.querySelector(".header");
-    return header ? header.offsetHeight : 80;
+    this._cachedHeaderHeight = header ? header.offsetHeight : 80;
+    return this._cachedHeaderHeight;
   }
 
   // Improved manual section detection
@@ -1138,6 +1148,10 @@ class EnhancedAccessiblePortfolioApp {
     this.updateStatsLayout();
     this.updateHeroLayout();
     this.optimizeFullWidthSections();
+    
+    // Invalidate cached measurements
+    this._cachedHeaderHeight = null;
+    this._cachedDocHeight = null;
 
     if (this.isMobile && !wasMobile) {
       this.optimizeForMobile();
@@ -1185,16 +1199,12 @@ class EnhancedAccessiblePortfolioApp {
         ".cert-card, .portfolio-item, .summary-item, .footer-contact-item, .footer-demo-btn, .nav-link, .mobile-nav-link"
       )
       .forEach((item) => {
-        // Ensure minimum tap target size
-        const computedStyle = window.getComputedStyle(item);
-        const minSize = 44; // 44px minimum
-
-        if (parseInt(computedStyle.height) < minSize) {
-          item.style.minHeight = `${minSize}px`;
-          item.style.display = "flex";
-          item.style.alignItems = "center";
-          item.style.justifyContent = "center";
-        }
+        const minSize = 44; // Define minSize
+        // Apply minimum tap target size via CSS for better performance
+        item.style.minHeight = `${minSize}px`;
+        item.style.display = "flex";
+        item.style.alignItems = "center";
+        item.style.justifyContent = "center";
 
         item.addEventListener(
           "touchstart",
@@ -1639,14 +1649,26 @@ class EnhancedAccessiblePortfolioApp {
 
   updateExperience() {
     const startYear = 2014;
-    const currentYear = new Date().getFullYear();
-    const experience = currentYear - startYear;
+    const startMonth = 4; // May (0-indexed)
+    const now = new Date();
+    let experience = now.getFullYear() - startYear;
+
+    // Adjust if current month is before the start month
+    if (now.getMonth() < startMonth) {
+      experience--;
+    }
 
     const experienceElements = document.querySelectorAll(
       ".stat-number, .metric-number"
     );
     experienceElements.forEach((element) => {
-      if (element.textContent.includes("11")) {
+      // Check if it's the experience stat by looking at its content or context
+      // The current check element.textContent.includes("11") is brittle if we change it.
+      // Better to check if it's within a stat item labeled "Years Experience"
+      const parent = element.closest(".stat-item, .metric-item");
+      const label = parent ? parent.querySelector(".stat-label, .metric-label") : null;
+      
+      if (label && label.textContent.toLowerCase().includes("experience")) {
         element.textContent = experience + "+";
       }
     });
@@ -1927,8 +1949,10 @@ class EnhancedAccessiblePortfolioApp {
 
     const toggleScrollButton = () => {
       const scrollY = window.pageYOffset;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
+      if (!this._cachedDocHeight) {
+        this._cachedDocHeight = document.documentElement.scrollHeight;
+      }
+      const docHeight = this._cachedDocHeight - window.innerHeight;
       const scrollProgress = scrollY / docHeight;
 
       if (scrollY > 300) {

@@ -631,6 +631,35 @@ body {
     color: var(--lab-text-muted);
 }
 
+.skill-entry {
+    display: flex;
+    align-items: center;
+    gap: var(--card-gap-sm);
+    margin-top: 5px;
+}
+
+.skill-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--lab-text-primary);
+}
+
+.star-rating {
+    display: flex;
+    gap: 4px;
+    color: #ffb400; /* Professional Amber/Gold */
+    font-size: 0.9rem;
+    filter: drop-shadow(0 0 2px rgba(255, 180, 0, 0.2));
+}
+
+.star-rating i {
+    transition: transform 0.2s ease;
+}
+
+.star-rating i:hover {
+    transform: scale(1.2);
+}
+
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -719,7 +748,6 @@ body {
 .btn-primary:hover {
     background: var(--lab-palette-primary-dark);
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 6px 20px rgba(51, 96, 173, 0.4);
 }
 
 .btn-primary:focus {
@@ -750,7 +778,6 @@ body {
     background: var(--lab-palette-primary-main);
     color: white;
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 6px 20px rgba(51, 96, 173, 0.4);
 }
 
 .btn-secondary:focus {
@@ -1184,7 +1211,7 @@ body {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     max-width: 1400px;
     margin: 0 auto;
@@ -1217,11 +1244,12 @@ body {
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: var(--lab-shadow-light);
-    min-height: var(--tap-target-min);
+    min-height: 480px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
+    height: 100%;
 }
 
 .portfolio-item:hover {
@@ -1251,12 +1279,75 @@ body {
     font: var(--font-title4);
     color: var(--lab-text-primary);
     margin-bottom: var(--card-gap-sm);
+    min-height: 2.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .portfolio-item p {
     color: var(--lab-text-muted);
+    margin-bottom: var(--card-gap-md);
+    font: var(--font-body2);
+    font-weight: 500;
+    min-height: 3em;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.link-category {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--lab-bg-light);
+    color: var(--lab-text-subtle);
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: 1px solid var(--lab-border-light);
+    pointer-events: none;
+}
+
+.project-outcome {
+    font: var(--font-body1) !important;
+    color: var(--lab-text-primary) !important;
+    font-weight: 700 !important;
+    margin-bottom: var(--card-gap-md) !important;
+    min-height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-metrics-preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--card-gap-sm);
     margin-bottom: var(--card-gap-lg);
-    font: var(--font-body1);
+}
+
+.card-metric {
+    background: rgba(51, 96, 173, 0.08);
+    color: var(--lab-palette-primary-main);
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid rgba(51, 96, 173, 0.1);
+}
+
+.portfolio-item:hover .card-metric {
+    background: var(--lab-palette-primary-main);
+    color: white;
+    transform: scale(1.05);
 }
 
 .portfolio-link {
@@ -1276,6 +1367,8 @@ body {
     overflow: hidden;
     min-height: var(--tap-target-min);
     min-width: 120px;
+    margin-top: auto;
+    align-self: center;
 }
 
 .portfolio-link::before {
@@ -1546,13 +1639,12 @@ body {
     background: #c91457;
     border-color: #c91457;
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(234, 23, 99, 0.4);
 }
 
 .footer-demo-btn:focus {
     background: #c91457;
     border-color: #c91457;
-    box-shadow: 0 8px 25px rgba(234, 23, 99, 0.4), 0 0 0 3px var(--focus-color);
+    box-shadow: 0 0 0 3px var(--focus-color);
 }
 
 .footer-demo-btn-secondary {
@@ -1565,14 +1657,13 @@ body {
     background: var(--lab-palette-accent-green);
     border-color: var(--lab-palette-accent-green);
     color: white;
-    box-shadow: 0 8px 25px rgba(32, 140, 114, 0.4);
 }
 
 .footer-demo-btn-secondary:focus {
     background: var(--lab-palette-accent-green);
     border-color: var(--lab-palette-accent-green);
     color: white;
-    box-shadow: 0 8px 25px rgba(32, 140, 114, 0.4), 0 0 0 3px var(--focus-color);
+    box-shadow: 0 0 0 3px var(--focus-color);
 }
 
 .footer-bottom {
@@ -1952,7 +2043,11 @@ body.loaded {
     }
 
     .portfolio-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .portfolio-item {
+        min-height: auto;
     }
 
     .footer-grid {
@@ -2448,7 +2543,7 @@ body.calendly-modal-open {
     justify-content: center;
     font-size: 1.5rem;
     font-weight: 700;
-    box-shadow: 0 4px 20px rgba(51, 96, 173, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     visibility: hidden;

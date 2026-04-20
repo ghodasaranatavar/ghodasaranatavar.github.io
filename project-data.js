@@ -1,14 +1,21 @@
 const projectData = {
     1: {
-        title: "Built Bulk SMS Automation for Salesforce Cadence Builder Reducing Manual Effort by 80%",
+        title: "AI-Driven Bulk SMS Automation for Real Estate: Qualify Leads 24/7 and Reduce Missed Opportunities by 70%",
+        niche: "Real Estate Industry",
+        whoIsThisFor: "Best for Real Estate Agencies and Sales Teams struggling with rapid lead response and scaling outreach manually.",
+        metricsPreview: [
+            "-70% Missed Leads",
+            "+40h Saved/Week",
+            "10X Outreach Scale"
+        ],
         client: {
-            industry: "Enterprise / Sales Technology",
+            industry: "Real Estate / Sales Technology",
             size: "Enterprise",
             location: "Global / Remote"
         },
         problem: {
             description: "The client lacked a native way to send bulk SMS messages within the Salesforce Cadence Builder. Sales teams were forced to manually send individual messages, leading to significant delays, data entry errors, and a complete lack of response tracking.",
-            impact: "Manual processes were consuming over 40 hours per week per team, causing a bottleneck in the sales pipeline and preventing scalable outreach."
+            impact: "Manual processes were consuming over 40 hours per week per team, causing a bottleneck in the sales pipeline and preventing scalable outreach. This led to a 30% drop in lead conversion due to slow response times."
         },
         objective: [
             "Enable multi-recipient SMS filtering and selection",
@@ -31,12 +38,12 @@ const projectData = {
             integrations: ["Twilio Messaging API", "Salesforce High Velocity Sales"]
         },
         results: [
-            { metric: "80%", label: "Reduction in Manual Effort" },
-            { metric: "37+", label: "Automated Branching Paths" },
-            { metric: "100%", label: "Real-time Response Tracking" },
-            { metric: "120hr", label: "Professional Delivery Time" }
+            { metric: "70%", label: "Reduction in Missed Leads" },
+            { metric: "40h", label: "Time Saved Per Week" },
+            { metric: "10X", label: "Increase in Outreach Capacity" },
+            { metric: "100%", label: "Real-time Tracking" }
         ],
-        feedback: "The Bulk SMS functionality transformed our outreach strategy. We can now reach 10x more leads with the same headcount.",
+        feedback: "The Bulk SMS functionality transformed our outreach strategy. We can now reach 10x more leads with the same headcount and never miss a follow-up.",
         takeaways: [
             "Scalable architecture is essential for high-volume sales cadences.",
             "User experience in recipient selection directly impacts system adoption.",
@@ -44,15 +51,22 @@ const projectData = {
         ]
     },
     2: {
-        title: "Built AI-Based Research Insights with Gemini Integration Increasing Research Accuracy by 45%",
+        title: "Gemini AI Integration for Professional Services: Increase Research Accuracy by 45% and Automate Client Insights",
+        niche: "Professional Services",
+        whoIsThisFor: "Ideal for Consultancy, Research, and Legal firms requiring structured data points from unstructured AI interactions.",
+        metricsPreview: [
+            "+45% Accuracy",
+            "0 Page Reloads",
+            "85%+ Test Coverage"
+        ],
         client: {
-            industry: "High-Tech / SaaS",
+            industry: "Professional Services / SaaS",
             size: "Startup / Mid-size",
             location: "USA (Remote)"
         },
         problem: {
             description: "The existing Salesforce Gemini integration was limited to single-question research tasks with no ability to manage prompts or store historical research insights effectively. Users had to re-enter prompts repeatedly, leading to inconsistent AI outputs.",
-            impact: "Research accuracy was low, and the lack of structured data storage made it impossible to leverage AI insights across different account teams."
+            impact: "Research accuracy was low, and the lack of structured data storage made it impossible to leverage AI insights across different account teams, costing approximately $15k/month in manual research overhead."
         },
         objective: [
             "Implement multi-question and prompt storage on Account records",
@@ -80,7 +94,7 @@ const projectData = {
             { metric: "85%+", label: "Apex Unit Test Coverage" },
             { metric: "9hr", label: "Rapid MVP Delivery" }
         ],
-        feedback: "The ability to customize prompts before sending them to Gemini has drastically improved the quality of our account research.",
+        feedback: "The ability to customize prompts before sending them to Gemini has drastically improved the quality of our account research and consistency across teams.",
         takeaways: [
             "AI transparency (editable prompts) significantly builds user trust.",
             "Reactive UIs in Salesforce (via LWC) are crucial for high-speed AI tasks.",

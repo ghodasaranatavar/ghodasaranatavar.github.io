@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="project-detail.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
+
 <body>
     <!-- Enhanced Mobile-First Navigation Header -->
     <header class="header sticky-header" role="banner">
@@ -23,9 +25,11 @@
                 <ul class="nav-menu" role="menubar">
                     <li role="none"><a href="index.html#home" class="nav-link" role="menuitem">Home</a></li>
                     <li role="none"><a href="index.html#experience" class="nav-link" role="menuitem">Experience</a></li>
-                    <li role="none"><a href="index.html#certifications" class="nav-link" role="menuitem">Certifications</a></li>
+                    <li role="none"><a href="index.html#certifications" class="nav-link"
+                            role="menuitem">Certifications</a></li>
                     <li role="none"><a href="index.html#skills" class="nav-link" role="menuitem">Skills</a></li>
-                    <li role="none"><a href="index.html#portfolio" class="nav-link active" role="menuitem">Portfolio</a></li>
+                    <li role="none"><a href="index.html#portfolio" class="nav-link active" role="menuitem">Portfolio</a>
+                    </li>
                     <li role="none"><a href="index.html#contact" class="nav-link" role="menuitem">Contact</a></li>
                 </ul>
             </div>
@@ -103,8 +107,20 @@
         <!-- Hero Section -->
         <section class="project-hero">
             <div class="project-hero-content">
-                <span class="project-category" id="client-industry">Salesforce Automation</span>
-                <h1 class="project-title-outcome" id="project-title">Loading Project Details...</h1>
+                <span class="project-category" id="client-industry">Expert Case Study</span>
+                <h1 class="project-title-outcome" id="project-title">Loading Solution Details...</h1>
+                <div class="project-hero-cta">
+                    <button class="btn-primary calendly-trigger">Book Free
+                        Consultation</button>
+                    <p class="hero-cta-subtitle">Let's discuss how to achieve similar results for your business</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: High-Impact Results Bar -->
+        <section class="results-impact-bar">
+            <div class="results-impact-container" id="top-results-bar">
+                <!-- Dynamically populated -->
             </div>
         </section>
 
@@ -112,7 +128,15 @@
         <div class="case-study-layout">
             <!-- Left Column: Narratives -->
             <div class="main-column">
-                
+
+                <!-- NEW: Who This Is For (Niche Relatability) -->
+                <div class="section-block niche-block">
+                    <h2><i class="ph ph-users-three"></i> Who This Is For</h2>
+                    <div class="niche-content">
+                        <p id="who-is-this-for"
+                            style="font-size: 1.1rem; color: var(--lab-palette-primary-main); font-weight: 700;">-</p>
+                    </div>
+                </div>
                 <!-- Client Overview -->
                 <div class="section-block">
                     <h2><i class="ph ph-buildings"></i> Client Overview</h2>
@@ -162,11 +186,22 @@
                     <div id="takeaways-list" class="solution-list" style="grid-template-columns: 1fr;"></div>
                 </div>
 
+                <!-- NEW: Bottom High-Conversion CTA -->
+                <div class="bottom-cta-section">
+                    <div class="bottom-cta-card">
+                        <h2>Ready to scale your business?</h2>
+                        <p>Let's build a tailored solution to your specific needs.</p>
+                        <div class="bottom-cta-buttons">
+                            <button class="btn-primary calendly-trigger">Get a Free Architecture Plan</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Right Column: Sidebar (Metrics & Meta) -->
             <div class="sidebar-column">
-                
+
                 <!-- Results Widget -->
                 <div class="sidebar-widget">
                     <h3><i class="ph ph-chart-line-up"></i> Results</h3>
@@ -174,29 +209,19 @@
                 </div>
 
                 <!-- Tech Stack Widget -->
-                <div class="sidebar-widget">
+                <div class="sidebar-widget" id="tech-stack-widget">
                     <h3><i class="ph ph-gear-six"></i> Tech Stack</h3>
-                    <div style="margin-bottom: 15px;">
-                        <label class="info-item label" style="color:var(--lab-text-subtle); font-weight:700;">Salesforce</label>
-                        <div id="tech-salesforce" class="tech-pills"></div>
-                    </div>
-                    <div>
-                        <label class="info-item label" style="color:var(--lab-text-subtle); font-weight:700;">Tools & Integrations</label>
-                        <div id="tech-tools" class="tech-pills"></div>
+                    <div id="tech-sections-container">
+                        <!-- Dynamically populated by JS (Primary Platform, Tools, etc.) -->
                     </div>
                 </div>
 
                 <!-- Feedback Widget -->
                 <div class="sidebar-widget testimonial-block" id="feedback-widget">
-                    <h3 style="color: white; margin-bottom: 15px;"><i class="ph ph-quotes"></i> Client Feedback</h3>
+                    <h3><i class="ph ph-quotes"></i> Client Feedback</h3>
                     <blockquote id="client-feedback">"-"</blockquote>
-                    <p style="margin-top: 15px; font-weight: 700; font-size: 0.9rem;">— Client Verification</p>
-                </div>
-
-                <!-- CTA Widget -->
-                <div class="sidebar-widget" style="background: var(--lab-bg-light); text-align: center;">
-                    <p style="font-weight: 700; margin-bottom: 15px;">Looking for similar results?</p>
-                    <button class="btn-primary calendly-trigger" style="width: 100%;">Schedule Consulting</button>
+                    <p id="feedback-signature" style="margin-top: 15px; font-weight: 700; font-size: 0.9rem;">— Verified
+                        Client Outcome</p>
                 </div>
 
             </div>
@@ -302,15 +327,15 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <p class="footer-copyright">
-                        © 2025 Natavar Ghodasara. All rights reserved. | 6X Salesforce Certified Professional
+                        © 2026 Natavar Ghodasara. All rights reserved. | 6X Salesforce Certified Professional
                     </p>
                     <div class="footer-social-links">
                         <a href="https://www.linkedin.com/in/natavarghodasara" target="_blank" rel="noopener"
                             class="footer-social-link" aria-label="LinkedIn Profile">
                             <i class="ph ph-linkedin-logo"></i>
                         </a>
-                        <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank"
-                            rel="noopener" class="footer-social-link" aria-label="YouTube Channel">
+                        <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank" rel="noopener"
+                            class="footer-social-link" aria-label="YouTube Channel">
                             <i class="ph ph-youtube-logo"></i>
                         </a>
                         <a href="https://trailblazer.me/id/nghodasara" target="_blank" rel="noopener"
@@ -371,9 +396,10 @@
             document.getElementById('overview-size').innerText = data.client.size;
             document.getElementById('overview-location').innerText = data.client.location;
 
-            // 3. Problem Statement
+            // 3. Problem Statement & Niche
             document.getElementById('problem-desc').innerText = data.problem.description;
             document.getElementById('problem-impact').innerText = data.problem.impact;
+            document.getElementById('who-is-this-for').innerText = data.whoIsThisFor;
 
             // 4. Objectives
             const objList = document.getElementById('objective-list');
@@ -394,32 +420,65 @@
                 solGrid.appendChild(div);
             });
 
-            // 6. Metrics
+            // 6. Metrics & Results Bar
             const metricsGrid = document.getElementById('metrics-grid');
-            data.results.forEach(res => {
+            const topBar = document.getElementById('top-results-bar');
+
+            data.results.forEach((res, index) => {
+                // Sidebar Metrics
                 const div = document.createElement('div');
                 div.className = 'metric-card-small';
                 div.innerHTML = `<span class="metric-value">${res.metric}</span><span class="metric-label">${res.label}</span>`;
                 metricsGrid.appendChild(div);
+
+                // Top Results Bar (First 3)
+                // Top Results Bar (First 3)
+                if (index < 3) {
+                    const barDiv = document.createElement('div');
+                    barDiv.className = 'result-impact-item';
+                    barDiv.innerHTML = `
+                        <span class="result-impact-value">${res.metric}</span>
+                        <span class="result-impact-label">${res.label}</span>
+                    `;
+                    topBar.appendChild(barDiv);
+                }
             });
 
-            // 7. Tech Stack
-            const sfGrid = document.getElementById('tech-salesforce');
-            data.techStack.salesforce.forEach(t => {
-                const span = document.createElement('span');
-                span.className = 'tech-pill';
-                span.innerText = t;
-                sfGrid.appendChild(span);
-            });
-            const toolGrid = document.getElementById('tech-tools');
-            const tools = [...data.techStack.tools, ...data.techStack.integrations];
-            tools.forEach(t => {
-                const span = document.createElement('span');
-                span.className = 'tech-pill';
-                span.style.background = 'var(--lab-palette-accent-pink)';
-                span.innerText = t;
-                toolGrid.appendChild(span);
-            });
+            // 7. Dynamic Tech Stack Rendering
+            const techContainer = document.getElementById('tech-sections-container');
+
+            // Helper to add a tech section
+            const addTechSection = (label, items, isAccent = false) => {
+                if (!items || items.length === 0) return;
+
+                const section = document.createElement('div');
+                section.style.marginBottom = '15px';
+
+                const labelEl = document.createElement('label');
+                labelEl.className = 'info-item label';
+                labelEl.style.cssText = 'color:var(--lab-text-subtle); font-weight:700; display:block; margin-bottom:8px;';
+                labelEl.innerText = label;
+
+                const pillContainer = document.createElement('div');
+                pillContainer.className = 'tech-pills';
+
+                items.forEach(item => {
+                    const span = document.createElement('span');
+                    span.className = 'tech-pill';
+                    if (isAccent) span.style.background = 'var(--lab-palette-accent-pink)';
+                    span.innerText = item;
+                    pillContainer.appendChild(span);
+                });
+
+                section.appendChild(labelEl);
+                section.appendChild(pillContainer);
+                techContainer.appendChild(section);
+            };
+
+            // Populate Tech Stack
+            addTechSection('Primary Platform', data.techStack.salesforce);
+            const secondaryTools = [...data.techStack.tools, ...data.techStack.integrations];
+            addTechSection('Technical Stack', secondaryTools, true);
 
             // 8. feedback & takeaways
             document.getElementById('client-feedback').innerText = `"${data.feedback}"`;
@@ -434,4 +493,5 @@
         });
     </script>
 </body>
+
 </html>

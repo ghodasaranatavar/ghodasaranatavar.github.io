@@ -1905,23 +1905,15 @@ class EnhancedAccessiblePortfolioApp {
       console.log("📅 Calendly modal closed");
     };
 
-    // Event Listeners for header button
-    if (bookDemoBtn) {
-      bookDemoBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        openCalendlyModal();
-      });
-    }
-
-    // ADD THIS: Event Listeners for footer button
-    if (footerDemoBtn) {
-      footerDemoBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        openCalendlyModal();
-      });
-    }
+    // ADDED: Generic listener for all elements with .calendly-trigger class
+    const triggerButtons = document.querySelectorAll(".calendly-trigger");
+    triggerButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openCalendlyModal();
+        });
+    });
 
     // Close button listener (same as before)
     if (calendlyModalClose) {

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found | Natavar Ghodasara</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/feviconicon.png">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         .error-container {
             display: flex;
@@ -16,6 +18,7 @@
             text-align: center;
             padding: var(--full-width-padding);
         }
+
         .error-code {
             font-size: clamp(5rem, 15vw, 10rem);
             font-weight: 900;
@@ -23,17 +26,20 @@
             line-height: 1;
             margin-bottom: 20px;
         }
+
         .error-message {
             font: var(--font-title2);
             color: var(--lab-text-primary);
             margin-bottom: 30px;
         }
+
         .error-btn {
             padding: 15px 40px;
             font-size: 1.1rem;
         }
     </style>
 </head>
+
 <body>
     <header class="header sticky-header">
         <nav class="nav">
@@ -45,15 +51,156 @@
         <div class="error-code">404</div>
         <h1 class="error-message">Oops! The project you're looking for doesn't exist.</h1>
         <p style="margin-bottom: 40px; color: var(--lab-text-muted); max-width: 500px;">
-            It seems the case study has moved or the link is incorrect. Don't worry, you can find all my latest work on the homepage.
+            It seems the case study has moved or the link is incorrect. Don't worry, you can find all my latest work on
+            the homepage.
         </p>
         <a href="index.html" class="btn-primary error-btn">Return to Homepage</a>
     </main>
 
-    <footer class="footer-section" style="padding: 40px 0; border-top: 1px solid var(--lab-border-light);">
-        <div class="footer-container" style="text-align: center;">
-            <p class="footer-copyright">© 2025 Natavar Ghodasara. All rights reserved.</p>
+    <!-- NEW: Enhanced Footer Section with 2 Columns -->
+    <footer id="contact" class="footer-section">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: Contact Information -->
+                <div class="footer-column footer-contact">
+                    <h3 class="footer-column-title">Contact Information</h3>
+                    <div class="footer-contact-list">
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="ph ph-envelope"></i>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Email</span>
+                                <a href="mailto:ghodasaranatavar2011@gmail.com" class="footer-contact-value">
+                                    ghodasaranatavar2011@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="ph ph-phone"></i>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Phone</span>
+                                <a href="tel:+918980805269" class="footer-contact-value">
+                                    +91 89808 05269
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="ph ph-globe"></i>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Location</span>
+                                <span class="footer-contact-value">
+                                    Remote projects worldwide
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">
+                                <i class="ph ph-clock"></i>
+                            </div>
+                            <div class="footer-contact-content">
+                                <span class="footer-contact-label">Availability</span>
+                                <span class="footer-contact-value footer-availability">
+                                    Open for new opportunities
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2: Request a Demo -->
+                <div class="footer-column footer-demo">
+                    <h3 class="footer-column-title">Request a Demo</h3>
+                    <p class="footer-demo-description">
+                        Ready to optimize your Salesforce implementation? Let's schedule a consultation to explore
+                        how
+                        my expertise can boost efficiency, drive adoption, and deliver measurable business growth.
+                    </p>
+
+                    <div class="footer-demo-benefits">
+                        <div class="footer-benefit-item">
+                            <span class="footer-benefit-icon"><i class="ph ph-check-circle"></i></span>
+                            <span>Free consultation & strategy session</span>
+                        </div>
+                        <div class="footer-benefit-item">
+                            <span class="footer-benefit-icon"><i class="ph ph-check-circle"></i></span>
+                            <span>Custom solution recommendations</span>
+                        </div>
+                        <div class="footer-benefit-item">
+                            <span class="footer-benefit-icon"><i class="ph ph-check-circle"></i></span>
+                            <span>Quick response within 24 hours</span>
+                        </div>
+                    </div>
+
+                    <div class="footer-demo-actions">
+                        <button class="footer-demo-btn calendly-trigger" id="footer-demo-btn"
+                            aria-label="Schedule a demo appointment">
+                            Schedule Your Discovery or Consulting Call
+                        </button>
+                        <a href="https://wa.me/918980805269?text=Hi%20Natavar%2C%20I%20came%20from%20your%20website%20and%20would%20like%20to%20schedule%20a%20demo."
+                            target="_blank" rel="noopener" class="footer-demo-btn footer-demo-btn-secondary">
+                            WhatsApp Chat
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="footer-copyright">
+                        © 2026 Natavar Ghodasara. All rights reserved. | 6X Salesforce Certified Professional
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="https://www.linkedin.com/in/natavarghodasara" target="_blank" rel="noopener"
+                            class="footer-social-link" aria-label="LinkedIn Profile">
+                            <i class="ph ph-linkedin-logo"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank" rel="noopener"
+                            class="footer-social-link" aria-label="YouTube Channel">
+                            <i class="ph ph-youtube-logo"></i>
+                        </a>
+                        <a href="https://trailblazer.me/id/nghodasara" target="_blank" rel="noopener"
+                            class="footer-social-link" aria-label="Trailhead Profile">
+                            <i class="ph ph-medal"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <button id="scroll-to-top" class="scroll-to-top-btn" aria-label="Scroll to top">
+        <svg class="scroll-to-top-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <!-- Add Calendly Modal -->
+    <div id="calendly-modal" class="calendly-modal" aria-hidden="true" role="dialog"
+        aria-labelledby="calendly-modal-title">
+        <div class="calendly-modal-overlay" id="calendly-modal-overlay"></div>
+        <div class="calendly-modal-content">
+            <button class="calendly-modal-close" id="calendly-modal-close" aria-label="Close booking calendar">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h2 id="calendly-modal-title" class="sr-only">Book a Demo Appointment</h2>
+            <div class="calendly-embed-container" id="calendly-embed"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="widget.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

@@ -33,8 +33,7 @@ class EnhancedAccessiblePortfolioApp {
     this.setupSmoothScrolling();
     // Initialize Review Toaster
     this.initReviewToaster();
-    this.setupCalendlyModal();
-     this.setupScrollToTop(); // Add this line
+    this.setupScrollToTop(); // Add this line
     // Debug section positions
     document.addEventListener("keydown", (e) => {
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "D") {
@@ -158,8 +157,6 @@ class EnhancedAccessiblePortfolioApp {
     // Move to next review
     this.currentReviewIndex =
       (this.currentReviewIndex + 1) % this.reviews.length;
-
-    console.log("📢 Showing review toaster:", review.project);
   }
 
   hideToaster(toaster) {
@@ -197,12 +194,6 @@ class EnhancedAccessiblePortfolioApp {
     const mobileToggle = document.getElementById("mobile-menu-toggle");
     const mobileNav = document.getElementById("mobile-navigation");
     const overlay = document.getElementById("mobile-nav-overlay");
-
-    console.log("🔍 Mobile Menu Elements Found:", {
-      toggle: !!mobileToggle,
-      nav: !!mobileNav,
-      overlay: !!overlay,
-    });
 
     if (!mobileToggle || !mobileNav) {
       console.error("❌ Mobile menu elements not found!");
@@ -1148,7 +1139,7 @@ class EnhancedAccessiblePortfolioApp {
     this.updateStatsLayout();
     this.updateHeroLayout();
     this.optimizeFullWidthSections();
-    
+
     // Invalidate cached measurements
     this._cachedHeaderHeight = null;
     this._cachedDocHeight = null;
@@ -1667,7 +1658,7 @@ class EnhancedAccessiblePortfolioApp {
       // Better to check if it's within a stat item labeled "Years Experience"
       const parent = element.closest(".stat-item, .metric-item");
       const label = parent ? parent.querySelector(".stat-label, .metric-label") : null;
-      
+
       if (label && label.textContent.toLowerCase().includes("experience")) {
         element.textContent = experience + "+";
       }
@@ -1683,8 +1674,8 @@ class EnhancedAccessiblePortfolioApp {
     const deviceInfo = this.isMobile
       ? "Mobile"
       : this.isTablet
-      ? "Tablet"
-      : "Desktop";
+        ? "Tablet"
+        : "Desktop";
   }
 
   setupFullWidthOptimizations() {
@@ -1849,91 +1840,6 @@ class EnhancedAccessiblePortfolioApp {
     return this.mobileMenuOpen;
   }
 
-  // ========================================
-  // CALENDLY MODAL FUNCTIONALITY
-  // ========================================
-
-  setupCalendlyModal() {
-    const bookDemoBtn = document.getElementById("book-demo-btn");
-    const footerDemoBtn = document.getElementById("footer-demo-btn"); // ADD THIS LINE
-    const calendlyModal = document.getElementById("calendly-modal");
-    const calendlyModalClose = document.getElementById("calendly-modal-close");
-    const calendlyModalOverlay = document.getElementById(
-      "calendly-modal-overlay"
-    );
-    const calendlyEmbed = document.getElementById("calendly-embed");
-
-    if (!calendlyModal) {
-      console.warn("⚠️ Calendly elements not found");
-      return;
-    }
-
-    // Open Calendly Modal function (same as before)
-    const openCalendlyModal = () => {
-      if (window.Calendly) {
-        window.Calendly.initInlineWidget({
-          url: "https://calendly.com/ghodasaranatavar2011/15min",
-          parentElement: calendlyEmbed,
-          prefill: {},
-          utm: {},
-        });
-      }
-
-      calendlyModal.classList.add("active");
-      calendlyModal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("calendly-modal-open");
-
-      setTimeout(() => {
-        if (calendlyModalClose) {
-          calendlyModalClose.focus();
-        }
-      }, 300);
-
-      console.log("📅 Calendly modal opened");
-    };
-
-    // Close Calendly Modal function (same as before)
-    const closeCalendlyModal = () => {
-      calendlyModal.classList.remove("active");
-      calendlyModal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("calendly-modal-open");
-
-      if (calendlyEmbed) {
-        calendlyEmbed.innerHTML = "";
-      }
-
-      console.log("📅 Calendly modal closed");
-    };
-
-    // ADDED: Generic listener for all elements with .calendly-trigger class
-    const triggerButtons = document.querySelectorAll(".calendly-trigger");
-    triggerButtons.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            openCalendlyModal();
-        });
-    });
-
-    // Close button listener (same as before)
-    if (calendlyModalClose) {
-      calendlyModalClose.addEventListener("click", closeCalendlyModal);
-    }
-
-    // Overlay click listener (same as before)
-    if (calendlyModalOverlay) {
-      calendlyModalOverlay.addEventListener("click", closeCalendlyModal);
-    }
-
-    // Escape key listener (same as before)
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && calendlyModal.classList.contains("active")) {
-        closeCalendlyModal();
-      }
-    });
-
-    console.log("✅ Calendly modal setup complete");
-  }
   setupScrollToTop() {
     const scrollBtn = document.getElementById("scroll-to-top");
 

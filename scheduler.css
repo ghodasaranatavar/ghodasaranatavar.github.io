@@ -1,0 +1,833 @@
+/* scheduler.css - Custom Calendly-style scheduling modal */
+
+/* Modal Base */
+.scheduler-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.scheduler-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scheduler-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.scheduler-modal-container {
+    position: relative;
+    background: var(--lab-bg-white);
+    width: 95%;
+    max-width: 1060px;
+    height: 90vh;
+    max-height: 640px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--lab-shadow-heavy);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.95) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.scheduler-modal.active .scheduler-modal-container {
+    transform: scale(1) translateY(0);
+}
+
+.scheduler-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--lab-text-secondary);
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.scheduler-modal-close:hover {
+    background: rgba(0,0,0,0.05);
+    color: var(--lab-text-primary);
+}
+
+/* Layout */
+.scheduler-layout {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.scheduler-left-panel {
+    width: 35%;
+    min-width: 250px;
+    background: var(--lab-bg-light);
+    border-right: 1px solid var(--lab-border-light);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.scheduler-right-panel {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Hide main scrollbar */
+}
+
+/* Custom Scrollbar Reset for all panels - Radical Removal */
+.scheduler-modal-container *::-webkit-scrollbar,
+.scheduler-modal-container::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+}
+
+/* Explicitly target the slots container to allow its scrollbar back if needed, 
+   but we'll keep it thin to avoid the "line" artifact */
+.scheduler-modal-container .slots-container::-webkit-scrollbar {
+    display: block !important;
+    width: 5px !important;
+}
+.scheduler-modal-container .slots-container::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+.scheduler-modal-container .slots-container::-webkit-scrollbar-thumb {
+    background: var(--lab-border-medium) !important;
+    border-radius: 10px !important;
+}
+
+.scheduler-modal-container,
+.scheduler-left-panel,
+.scheduler-right-panel,
+.scheduler-layout {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+    border-right: 0 !important;
+    outline: none !important;
+}
+
+.scheduler-right-panel {
+    overflow: hidden !important; /* Fix: Never allow the main right panel to scroll */
+    border: 0 !important;
+}
+
+.scheduler-left-panel {
+    overflow-y: auto !important;
+}
+
+/* Left Panel Content */
+.scheduler-profile-compact {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center avatar */
+    text-align: center;   /* Center text */
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.scheduler-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    margin-bottom: 15px;
+    border: 3px solid var(--lab-palette-primary-main);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.scheduler-duration-toggle {
+    display: flex;
+    background: var(--lab-bg-white);
+    border: 1px solid var(--lab-border-medium);
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 15px;
+    max-width: 140px;
+    width: 100%;
+    margin-left: auto; /* Center in parent */
+    margin-right: auto;
+}
+
+.duration-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--lab-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.duration-btn:hover {
+    background: rgba(51, 96, 173, 0.05);
+}
+
+.duration-btn.active {
+    background: var(--lab-palette-primary-main);
+    color: white;
+}
+
+.scheduler-name {
+    font-size: 1.3rem;
+    color: var(--lab-text-primary);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.scheduler-title {
+    font-size: 0.95rem;
+    color: var(--lab-palette-primary-main);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.scheduler-description {
+    font-size: 0.85rem;
+    color: var(--lab-text-secondary);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.scheduler-duration {
+    font-size: 0.9rem;
+    color: var(--lab-text-secondary);
+    font-weight: 600;
+}
+
+.scheduler-details-sidebar {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--lab-border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.scheduler-detail-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: var(--lab-text-secondary);
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.scheduler-detail-item i {
+    font-size: 1.2rem;
+    color: var(--lab-palette-primary-main);
+    margin-top: 2px;
+}
+
+/* Right Panel Steps */
+.scheduler-right-panel h2 {
+    font-size: 1.4rem;
+    color: var(--lab-text-primary);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.scheduler-step {
+    display: none;
+    animation: fadeInSlideUp 0.3s ease forwards;
+}
+
+.scheduler-step.active {
+    display: flex;
+    flex-direction: row; /* Split pane */
+    height: 100%;
+    overflow: hidden;
+    gap: 0;
+}
+
+#scheduler-step-1.active {
+    display: flex;
+    flex-direction: row;
+}
+
+#scheduler-step-3.active, #scheduler-step-4.active {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    align-items: center; /* Center content horizontally */
+    padding-bottom: 40px;
+}
+
+.calendar-section {
+    flex: 1;
+    min-width: 380px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slots-side-panel {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 1px solid var(--lab-border-light);
+    display: flex;
+    flex-direction: column;
+    background: var(--lab-bg-white);
+}
+
+.slots-side-panel.active {
+    width: 320px;
+    padding: 0 20px;
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scheduler-back-btn {
+    background: none;
+    border: none;
+    color: var(--lab-text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+}
+
+.scheduler-back-btn:hover {
+    background: var(--lab-bg-light);
+    color: var(--lab-palette-primary-main);
+}
+
+/* Calendar View */
+.timezone-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--lab-text-secondary);
+    font-size: 0.9rem;
+    justify-content: center;
+}
+
+.timezone-select {
+    padding: 8px 12px;
+    border: 1px solid var(--lab-border-light);
+    border-radius: var(--radius-sm);
+    background: var(--lab-bg-white);
+    color: var(--lab-text-primary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+    width: 100%;
+    max-width: 220px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 35px;
+}
+
+.timezone-select:focus {
+    border-color: var(--lab-palette-primary-main);
+}
+
+.calendar-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--lab-palette-primary-main);
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.calendar-header button:hover {
+    background: rgba(51, 96, 173, 0.1);
+}
+
+.calendar-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--lab-text-primary);
+    min-width: 120px;
+    text-align: center;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 40px);
+    gap: 8px 12px;
+    justify-content: center;
+}
+
+.calendar-day-name {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--lab-text-muted);
+    padding-bottom: 15px;
+}
+
+.calendar-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--lab-text-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.calendar-day.empty {
+    cursor: default;
+}
+
+.calendar-day:not(.empty):not(.disabled):hover {
+    background: rgba(51, 96, 173, 0.1);
+    color: var(--lab-palette-primary-main);
+}
+
+.calendar-day.disabled {
+    color: var(--lab-border-medium);
+    cursor: not-allowed;
+    background: none;
+}
+
+.calendar-day.day-active {
+    background: var(--lab-palette-primary-main);
+    color: white;
+}
+
+.calendar-day.today::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    width: 4px;
+    height: 4px;
+    background: var(--lab-palette-accent-pink);
+    border-radius: 50%;
+}
+
+.calendar-day.day-active.today::after {
+    background: white;
+}
+
+/* Time Slots View */
+.slots-date-header {
+    font-size: 1rem;
+    color: var(--lab-text-primary);
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.slots-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 440px;
+    overflow-y: auto;
+    padding: 10px 0 30px 0;
+}
+
+/* Custom Scrollbar for slots only */
+.slots-container::-webkit-scrollbar {
+    width: 6px;
+}
+.slots-container::-webkit-scrollbar-track {
+    background: var(--lab-bg-light);
+    border-radius: 4px;
+}
+.slots-container::-webkit-scrollbar-thumb {
+    background: var(--lab-border-medium);
+    border-radius: 4px;
+}
+
+/* Time Slots Styles */
+.time-slot {
+    border: 1px solid var(--lab-palette-primary-main);
+    background: transparent;
+    color: var(--lab-palette-primary-main);
+    padding: 14px 10px;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-slot:hover {
+    background: var(--lab-palette-primary-main);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(51, 96, 173, 0.2);
+}
+
+.time-slot:active {
+    transform: translateY(0);
+}
+
+.time-slot.locking {
+    opacity: 0.7;
+    pointer-events: none;
+    background: var(--lab-bg-light);
+    border-color: var(--lab-border-medium);
+    color: var(--lab-text-secondary);
+}
+
+/* Form View */
+.scheduler-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.scheduler-error-alert {
+    background: #fff5f5;
+    color: #c53030;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid #feb2b2;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.scheduler-error-alert::before {
+    content: '\26A0';
+    font-size: 1.1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--lab-text-primary);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid var(--lab-border-medium);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--lab-palette-primary-main);
+    box-shadow: 0 0 0 3px rgba(51, 96, 173, 0.2);
+}
+
+/* Rich Text Editor */
+.rich-text-editor {
+    height: 120px;
+    background: white;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+.ql-toolbar.ql-snow {
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    border-color: var(--lab-border-medium) !important;
+}
+
+.ql-container.ql-snow {
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    border-color: var(--lab-border-medium) !important;
+}
+
+.ql-editor {
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.scheduler-submit {
+    margin-top: 10px;
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+}
+
+/* Success View */
+.scheduler-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    height: 100%;
+    padding: 15px 20px; /* Reduced padding */
+}
+
+.success-icon {
+    font-size: 2.5rem; /* Even smaller */
+    color: var(--lab-palette-accent-green);
+    margin-bottom: 10px;
+}
+
+.scheduler-success h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.scheduler-success p {
+    color: var(--lab-text-secondary);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.success-summary-card {
+    background: #fdfdff;
+    border: 1px solid var(--lab-border-light);
+    border-radius: var(--radius-md);
+    padding: 20px; /* Reduced padding */
+    width: 100%;
+    max-width: 480px;
+    margin: 10px auto; /* Reduced margin */
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Reduced gap */
+}
+
+.success-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* Specific styling for the merged timing row to make it attractive */
+.success-detail-item:first-child {
+    background: rgba(51, 96, 173, 0.04);
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(51, 96, 173, 0.1);
+}
+
+.success-detail-item i {
+    color: var(--lab-palette-primary-main);
+    font-size: 1.1rem;
+    margin-top: 2px;
+}
+
+.success-detail-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--lab-text-muted);
+    margin-bottom: 2px;
+}
+
+.success-detail-value {
+    font-size: 0.95rem;
+    color: var(--lab-text-primary);
+    font-weight: 600;
+    line-height: 1.4;
+    display: block;
+}
+
+.success-detail-agenda {
+    margin-top: 6px;
+    padding: 8px 0; /* No background/border needed */
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--lab-text-secondary);
+    width: 100%;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.success-detail-agenda p {
+    margin-bottom: 8px;
+}
+
+.success-detail-agenda ul, 
+.success-detail-agenda ol {
+    padding-left: 18px;
+    margin-bottom: 8px;
+}
+
+.success-detail-agenda li {
+    margin-bottom: 4px;
+}
+
+.success-detail-agenda p:last-child,
+.success-detail-agenda ul:last-child,
+.success-detail-agenda ol:last-child {
+    margin-bottom: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .scheduler-layout {
+        flex-direction: column;
+    }
+
+    .scheduler-modal-container {
+        height: 95vh;
+        max-height: none;
+        width: 100%;
+        border-radius: var(--radius-md) var(--radius-md) 0 0;
+        transform: translateY(100%);
+    }
+
+    .scheduler-modal.active .scheduler-modal-container {
+        transform: translateY(0);
+    }
+
+    .scheduler-left-panel {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--lab-border-light);
+        padding: 15px 20px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        min-height: auto;
+        overflow: visible;
+        flex-shrink: 0;
+    }
+
+    .scheduler-profile-compact {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 0;
+        gap: 15px;
+    }
+
+    .scheduler-avatar {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 0;
+        border-width: 2px;
+    }
+
+    .scheduler-name {
+        font-size: 1.1rem;
+        margin-bottom: 2px;
+    }
+
+    .scheduler-title,
+    .scheduler-description {
+        display: none;
+    }
+
+    .scheduler-duration {
+        font-size: 0.8rem;
+    }
+
+    .scheduler-details-sidebar {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .scheduler-modal-title {
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+    }
+
+    .scheduler-detail-item {
+        margin-bottom: 5px;
+        font-size: 0.8rem;
+    }
+
+    .scheduler-detail-item:last-child {
+        display: none; /* Hide long description on mobile header */
+    }
+
+    .scheduler-right-panel {
+        padding: 20px;
+    }
+}

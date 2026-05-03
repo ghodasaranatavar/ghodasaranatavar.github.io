@@ -749,6 +749,7 @@
 @media (max-width: 768px) {
     .scheduler-layout {
         flex-direction: column;
+        overflow-y: auto;
     }
 
     .scheduler-modal-container {
@@ -767,7 +768,7 @@
         width: 100%;
         border-right: none;
         border-bottom: 1px solid var(--lab-border-light);
-        padding: 15px 20px;
+        padding: 15px 50px 15px 20px; /* Added right padding for close button */
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
@@ -828,6 +829,75 @@
     }
 
     .scheduler-right-panel {
-        padding: 20px;
+        padding: 15px;
+        overflow-y: visible !important; /* Allow layout to grow */
+    }
+
+    .scheduler-step.active, 
+    #scheduler-step-1.active { /* Use ID to override desktop specificity */
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+
+    .calendar-section {
+        min-width: 0;
+        width: 100%;
+        padding: 5px;
+    }
+
+    .calendar-container {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .calendar-grid {
+        gap: 5px 8px;
+    }
+
+    .calendar-day {
+        width: 35px;
+        height: 35px;
+        font-size: 0.85rem;
+    }
+
+    .slots-side-panel.active {
+        width: 100% !important;
+        max-width: none;
+        padding: 20px 0;
+        border-left: none;
+        border-top: 1px solid var(--lab-border-light);
+        margin-top: 20px;
+        transition: none; /* Disable width transition on mobile */
+    }
+
+    .slots-container {
+        max-height: none; /* Let it expand */
+        padding-bottom: 20px;
+    }
+
+    .scheduler-form {
+        width: 100%;
+    }
+
+    .success-summary-card {
+        padding: 15px;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+    .calendar-grid {
+        gap: 4px 6px;
+    }
+    
+    .calendar-day {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    
+    .scheduler-name {
+        font-size: 1rem;
     }
 }

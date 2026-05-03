@@ -1994,6 +1994,12 @@ body.loaded {
     .desktop-nav {
         display: none !important;
     }
+
+    .nav-cta {
+        padding: 8px 12px;
+        font-size: 0.7rem;
+        min-width: auto;
+    }
     
     /* FIXED: Mobile navigation optimization */
     .mobile-navigation {
@@ -2016,7 +2022,8 @@ body.loaded {
     
     .btn-primary,
     .btn-secondary,
-    .btn-tertiary {
+    .btn-tertiary,
+    .footer-demo-btn {
         width: 100%;
         max-width: 280px;
     }
@@ -2150,6 +2157,17 @@ body.loaded {
 
     .nav {
         padding: 0 var(--card-gap-md);
+        gap: var(--card-gap-xs);
+    }
+
+    .logo {
+        font-size: 0.9rem;
+        padding: 4px;
+    }
+
+    .nav-cta {
+        padding: 6px 10px;
+        font-size: 0.65rem;
     }
 
     /* FIXED: Ensure mobile menu works on smallest screens */

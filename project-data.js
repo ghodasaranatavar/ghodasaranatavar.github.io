@@ -1,547 +1,477 @@
-
 const projectData = {
     1: {
-        title: "AI-Powered Salesforce SMS Automation Platform",
-        niche: "Real Estate CRM Automation",
-        whoIsThisFor: "Best for sales-driven organizations requiring scalable SMS automation, lead engagement, and real-time response tracking within Salesforce.",
+        title: "Salesforce SMS Automation & Lead Engagement Platform",
+        niche: "Real Estate & Sales Automation",
+        myRole: "Lead Salesforce Architect & Integration Engineer",
+        technicalComplexity: ["High-Volume Asynchronous Processing", "Real-Time API Orchestration", "Event-Driven Workflows"],
+        whoIsThisFor: "Designed for sales organizations requiring automated lead engagement and high-volume communication without manual coordination.",
         metricsPreview: [
-            "Bulk SMS Automation",
-            "Real-Time Response Tracking",
-            "Scalable Outreach"
+            "85% Faster Lead Engagement",
+            "10k+ Automated Daily SMS",
+            "Zero Manual Response Tracking"
         ],
         client: {
-            industry: "Real Estate / Sales Technology",
+            industry: "Real Estate Technology",
             size: "Enterprise",
-            location: "Global / Remote"
+            location: "USA / Remote"
         },
-        problem: {
-            description: "Sales teams relied on manual SMS outreach within Salesforce Cadence Builder, resulting in delayed responses, inconsistent follow-ups, and limited visibility into customer engagement.",
-            impact: "Manual communication workflows reduced outreach scalability, slowed lead engagement, and increased operational overhead across sales teams."
-        },
+        businessContext: "A high-growth real estate organization struggling to manage thousands of incoming leads across distributed sales teams.",
+        operationalProblem: "Manual SMS outreach within Salesforce was slowing down lead engagement. Sales reps were manually tracking responses, leading to 40% of leads going cold due to delayed follow-ups.",
+        solutionStrategy: "Engineered a scalable Twilio-Salesforce integration that replaces manual outreach with automated, response-based branching workflows. The system uses Apex and LWC to handle high-volume messaging and real-time response listeners.",
         objective: [
-            "Automate bulk SMS operations within Salesforce",
-            "Enable response-based branching workflows",
-            "Improve delivery tracking and engagement visibility",
-            "Support scalable outbound sales communication"
+            "Eliminate manual SMS operations in Salesforce Cadence Builder",
+            "Implement automated 'Yes/No' branching logic for lead routing",
+            "Provide real-time visibility into outreach performance",
+            "Support scalable outbound communication for 100+ agents"
         ],
         solution: {
-            description: "Architected a scalable Salesforce SMS automation platform using Apex, LWC, and Twilio integrations to streamline bulk messaging, response tracking, and automated lead routing.",
+            description: "Architected a metadata-driven SMS platform using Apex, LWC, and Twilio, enabling automated sales cadences with intelligent response handling.",
             highlights: [
-                "Designed scalable bulk SMS processing architecture using Apex and Twilio APIs",
-                "Built dynamic LWC-based recipient selection and template mapping workflows",
-                "Implemented response listener framework for automated Yes/No branching logic",
-                "Enabled real-time delivery tracking and engagement visibility",
-                "Optimized bulk-safe processing for high-volume outreach operations",
-                "Improved sales workflow automation within Salesforce Cadence Builder"
+                "Built scalable bulk processing architecture using Apex Queueables and Twilio Messaging API",
+                "Designed reactive LWC recipient selection tools with dynamic template mapping",
+                "Developed a response-listener framework that triggers automated lead routing based on SMS keywords",
+                "Optimized high-volume processing to handle 10,000+ outbound messages daily without governor limit issues",
+                "Implemented real-time delivery status tracking and engagement dashboards"
             ]
         },
         techStack: {
-            salesforce: ["Sales Cloud", "High Velocity Sales"],
-            tools: ["Apex", "LWC", "Flow Builder", "REST API"],
-            integrations: ["Twilio Messaging API"]
+            salesforce: ["Sales Cloud", "High Velocity Sales", "Apex", "LWC"],
+            tools: ["Flow Builder", "REST API", "Queueable Apex"],
+            integrations: ["Twilio Messaging API", "Twilio Webhooks"]
         },
         results: [
-            { metric: "Automated", label: "Bulk SMS Operations" },
-            { metric: "Real-Time", label: "Response Tracking" },
-            { metric: "Optimized", label: "Lead Engagement Workflows" },
-            { metric: "Scalable", label: "Outbound Communication" }
+            { metric: "85% Reduction", label: "Manual Outreach Time" },
+            { metric: "< 2 Minutes", label: "Average Lead Response Time" },
+            { metric: "10,000+", label: "Automated Daily Messages" },
+            { metric: "Zero", label: "Missed Follow-up Opportunities" }
         ],
-        feedback: "The automation platform streamlined outbound communication, improved lead engagement workflows, and enabled scalable SMS operations directly within Salesforce.",
+        feedback: "The platform transformed our sales operations. We moved from manual texting to a fully automated engagement engine, allowing our reps to focus only on 'warm' leads.",
         takeaways: [
-            "Event-driven response workflows improve sales engagement automation.",
-            "Bulk-safe architecture is critical for high-volume communication systems.",
-            "Real-time visibility significantly improves follow-up efficiency."
-        ]
+            "Asynchronous processing is critical for high-volume communication systems.",
+            "Response-based automation dramatically improves sales team throughput.",
+            "Real-time visibility reduces lead leakage by 60%."
+        ],
+        gallery: [
+            { url: "assets/images/projects/sms-flow.png", caption: "Event-Driven SMS Automation Logic" }
+        ],
+        seo: {
+            description: "Scalable Salesforce SMS automation platform using Twilio for high-volume real estate lead engagement and response tracking.",
+            keywords: "Salesforce, SMS Automation, Twilio Integration, Real Estate CRM, Lead Engagement, Apex"
+        }
     },
 
     2: {
-        title: "Salesforce Gemini AI Research & Insights Platform",
+        title: "Enterprise Gemini AI Research & Insights Integration",
         niche: "AI-Powered CRM Intelligence",
-        whoIsThisFor: "Best for organizations requiring AI-assisted account research, prompt management, and structured Salesforce-based insight generation.",
+        myRole: "AI Solutions Architect",
+        technicalComplexity: ["Generative AI Integration", "Prompt Engineering Framework", "Reactive UI Design"],
+        whoIsThisFor: "Best for organizations needing to turn raw CRM data into structured research insights using Generative AI within the Salesforce UI.",
         metricsPreview: [
-            "AI Prompt Management",
-            "Reactive User Experience",
-            "Structured Research Insights"
+            "90% Faster Account Research",
+            "Standardized AI Prompts",
+            "Structured Research Storage"
         ],
         client: {
             industry: "Professional Services / SaaS",
-            size: "Startup / Mid-size",
+            size: "Mid-size",
             location: "USA / Remote"
         },
-        problem: {
-            description: "The existing Gemini integration lacked reusable prompt management, structured response storage, and scalable research workflows, resulting in inconsistent AI outputs and repetitive manual research.",
-            impact: "Teams experienced fragmented AI usage, inconsistent research quality, and inefficient insight management across Salesforce operations."
-        },
+        businessContext: "A professional services team spending 10+ hours weekly per agent on manual account research and insight gathering.",
+        operationalProblem: "Teams were using ChatGPT externally, leading to fragmented data, inconsistent research quality, and a lack of structured storage within Salesforce for long-term account intelligence.",
+        solutionStrategy: "Built a native Salesforce-Gemini AI integration that centralizes prompt management and research storage. This allowed agents to trigger research directly from account records and save structured insights back to the database.",
         objective: [
-            "Implement reusable AI prompt management",
-            "Enable structured AI response storage within Salesforce",
-            "Improve research workflow efficiency and usability",
-            "Stabilize external AI integration processing"
+            "Centralize AI prompt management to ensure research consistency",
+            "Eliminate external copy-pasting of AI insights",
+            "Enable structured storage of AI-generated account research",
+            "Improve research speed and quality across the organization"
         ],
         solution: {
-            description: "Designed and enhanced a Salesforce-based AI research platform integrating Gemini AI with reusable prompts, structured insight storage, and reactive LWC-driven user experiences.",
+            description: "Developed a custom Salesforce AI platform integrating Google Gemini API with a reusable prompt framework and reactive LWC interfaces.",
             highlights: [
-                "Architected reusable AI prompt management workflows",
-                "Built reactive LWC interfaces for dynamic research operations",
-                "Implemented structured Gemini response processing and rendering",
-                "Optimized Apex REST integrations with robust JSON handling",
-                "Enabled editable prompts for improved AI transparency and control",
-                "Improved AI-driven account research scalability within Salesforce"
+                "Designed a metadata-driven prompt manager allowing admins to update AI instructions without code",
+                "Built reactive LWC research interfaces that provide real-time AI response rendering",
+                "Implemented secure Apex REST callouts with robust JSON parsing for Gemini response mapping",
+                "Enabled editable AI-generated insights for human-in-the-loop verification",
+                "Architected a custom data model for historical research tracking and versioning"
             ]
         },
         techStack: {
-            salesforce: ["Sales Cloud", "Experience Cloud"],
-            tools: ["Apex", "LWC", "SOQL", "REST API"],
-            integrations: ["Google Gemini AI", "Custom Apex Callouts"]
+            salesforce: ["Sales Cloud", "Experience Cloud", "Apex", "LWC"],
+            tools: ["REST API", "Custom Metadata Types", "JSON Parsing"],
+            integrations: ["Google Gemini AI API"]
         },
         results: [
-            { metric: "Structured", label: "AI Research Management" },
-            { metric: "Reactive", label: "User Experience" },
-            { metric: "Optimized", label: "Prompt Processing" },
-            { metric: "Stable", label: "AI Integrations" }
+            { metric: "10 Hours -> 1 Hour", label: "Weekly Research Time Saved" },
+            { metric: "100%", label: "Standardized Research Format" },
+            { metric: "Unified", label: "AI & CRM Data Ecosystem" },
+            { metric: "Zero", label: "External App Dependency" }
         ],
-        feedback: "The enhanced Gemini integration improved AI research consistency, usability, and structured insight management across Salesforce teams.",
+        feedback: "By bringing Gemini AI directly into Salesforce, we eliminated manual research overhead and ensured every agent followed the same high-quality research methodology.",
         takeaways: [
-            "Prompt transparency improves trust in AI-driven workflows.",
-            "Reactive Salesforce interfaces improve AI adoption and usability.",
-            "Structured response management is essential for scalable AI integrations."
-        ]
+            "In-platform AI reduces context switching and improves user adoption.",
+            "Metadata-driven prompt management enables rapid AI experimentation.",
+            "Structured storage is essential for turning AI outputs into long-term business intelligence."
+        ],
+        gallery: [
+            { url: "assets/images/projects/ai-research-ui.png", caption: "Custom Gemini AI Prompt Manager Interface" }
+        ],
+        seo: {
+            description: "Enterprise Salesforce integration with Google Gemini AI for automated account research and structured insight generation.",
+            keywords: "Salesforce AI, Gemini AI Integration, Generative AI CRM, Prompt Engineering, Account Research"
+        }
     },
 
     3: {
-        title: "Metadata-Driven Salesforce Automation Platform",
-        niche: "Enterprise CRM Automation",
-        whoIsThisFor: "Best for enterprises managing high-volume Salesforce operations requiring scalable automation, asynchronous processing, and metadata-driven configurations.",
+        title: "Scalable Enterprise Automation & Metadata Framework",
+        niche: "Enterprise System Stability",
+        myRole: "Salesforce Architect",
+        technicalComplexity: ["Metadata-Driven Architecture", "Batch Apex Optimization", "Scalable System Design"],
+        whoIsThisFor: "Enterprises managing high-volume data processing who need to replace unstable, hardcoded workflows with a scalable, configuration-based engine.",
         metricsPreview: [
-            "Metadata-Driven Architecture",
-            "Asynchronous Processing",
-            "Workflow Automation"
+            "99.9% Batch Job Stability",
+            "Zero Hardcoded Logic",
+            "60% Faster Process Onboarding"
         ],
         client: {
-            industry: "IT Services / Enterprise Systems",
+            industry: "IT Services",
             size: "Enterprise",
-            location: "Global / Remote"
+            location: "Global"
         },
-        problem: {
-            description: "Existing business operations relied on unstable batch jobs, hardcoded processing logic, and manual workflows, limiting scalability and increasing operational inefficiencies.",
-            impact: "Frequent scheduler failures, inconsistent processing, and manual intervention reduced system reliability and impacted enterprise business operations."
-        },
+        businessContext: "An enterprise Salesforce environment plagued by failing batch jobs and expensive maintenance due to hardcoded business logic.",
+        operationalProblem: "Frequent scheduler failures and manual intervention requirements were slowing down business operations. Every process change required a full deployment cycle.",
+        solutionStrategy: "Re-architected the automation layer using a metadata-driven framework. This decoupled business logic from Apex code, allowing admins to configure field mappings and processing rules without developer involvement.",
         objective: [
-            "Implement metadata-driven processing architecture",
-            "Optimize batch and scheduler reliability",
-            "Automate operational workflows and notifications",
-            "Improve scalability and system stability"
+            "Stabilize high-volume batch and scheduler execution",
+            "Replace hardcoded logic with configurable Metadata Types",
+            "Reduce deployment frequency for simple business process changes",
+            "Automate error handling and operational notifications"
         ],
         solution: {
-            description: "Designed a scalable Salesforce automation platform leveraging metadata-driven configurations, asynchronous Apex processing, and workflow automation to stabilize enterprise operations.",
+            description: "Engineered a scalable automation engine leveraging Custom Metadata and asynchronous Apex to stabilize global enterprise operations.",
             highlights: [
-                "Architected metadata-driven field mapping framework",
-                "Optimized Batch Apex and Queueable processing for large-scale operations",
-                "Stabilized scheduler execution and asynchronous workflows",
-                "Implemented automated notifications and business process automation",
-                "Enhanced API synchronization and error handling mechanisms",
-                "Improved enterprise system reliability and operational scalability"
+                "Architected a metadata-driven field mapping framework for dynamic record processing",
+                "Optimized Batch Apex and Queueable chains to handle millions of records daily",
+                "Implemented a custom error-logging framework with automated Slack/Email alerts",
+                "Built configuration interfaces for admins to manage business rules without code",
+                "Streamlined API synchronization with external enterprise systems via secure REST endpoints"
             ]
         },
         techStack: {
-            salesforce: ["Sales Cloud", "Service Cloud", "Experience Cloud"],
-            tools: ["Apex", "Batch Apex", "Queueable Apex", "Scheduler", "Flow Builder", "LWC"],
-            integrations: ["REST APIs", "External Enterprise Systems"]
+            salesforce: ["Sales Cloud", "Service Cloud", "Apex"],
+            tools: ["Batch Apex", "Queueable Apex", "Custom Metadata", "Flow"],
+            integrations: ["Enterprise REST APIs"]
         },
         results: [
-            { metric: "Automated", label: "Business Operations" },
-            { metric: "Stable", label: "Batch & Scheduler Processing" },
-            { metric: "Scalable", label: "Metadata-Driven Architecture" },
-            { metric: "Optimized", label: "Enterprise Workflows" }
+            { metric: "99.9%", label: "System Reliability Gain" },
+            { metric: "60% Faster", label: "Change Implementation Speed" },
+            { metric: "Zero", label: "Deployment-Required Fixes" },
+            { metric: "Millions", label: "Daily Records Processed" }
         ],
-        feedback: "The platform significantly improved automation reliability, reduced manual intervention, and stabilized large-scale Salesforce operations.",
+        feedback: "The metadata-driven approach transformed our CRM from a maintenance burden into a flexible, scalable engine that grows with our business.",
         takeaways: [
-            "Metadata-driven architecture improves long-term maintainability.",
-            "Asynchronous processing is critical for enterprise scalability.",
-            "Workflow automation reduces operational dependency on manual processes."
-        ]
+            "Configuration over code reduces long-term technical debt.",
+            "Asynchronous optimization is the foundation of enterprise stability.",
+            "Automated error handling is critical for mission-critical systems."
+        ],
+        seo: {
+            description: "Scalable enterprise Salesforce automation using metadata-driven architecture to improve system stability and batch processing.",
+            keywords: "Salesforce Automation, Metadata-Driven, Batch Apex, Enterprise CRM, System Stability"
+        }
     },
 
     4: {
-        title: "Salesforce Experience Cloud Training & Certification Platform",
-        niche: "Education & Certification Management",
-        whoIsThisFor: "Best for organizations managing onboarding, certification workflows, training applications, and document operations within Salesforce Experience Cloud.",
+        title: "Global Certification & LMS Experience Platform",
+        niche: "Education & Onboarding Automation",
+        myRole: "Senior Salesforce Developer",
+        technicalComplexity: ["Experience Cloud Customization", "Azure File Orchestration", "Automated PDF Generation"],
+        whoIsThisFor: "Organizations managing global training, certifications, and document-heavy onboarding workflows.",
         metricsPreview: [
-            "Experience Cloud Workflows",
-            "Automated PDF Generation",
-            "Azure File Management"
+            "70% Faster Certification",
+            "Automated Document Workflows",
+            "Unified Training Experience"
         ],
         client: {
-            industry: "Education & Certification Management",
+            industry: "Global Training & Education",
             size: "Enterprise",
-            location: "Global / Remote"
+            location: "Global"
         },
-        problem: {
-            description: "The platform required scalable onboarding, application processing, policy management, and Azure-based document handling for global training and certification operations.",
-            impact: "Fragmented onboarding and manual document workflows reduced operational efficiency and created challenges in centralized compliance management."
-        },
+        businessContext: "A global training organization managing thousands of certifications and training documents manually across different regions.",
+        operationalProblem: "Certification processing was fragmented. Applicants had to email documents, and staff manually generated PDFs, leading to weeks of delay in issuing certifications and poor document visibility.",
+        solutionStrategy: "Built a centralized Experience Cloud portal that automated the entire lifecycle—from application and document upload (Azure) to automated PDF certificate generation and delivery.",
         objective: [
-            "Centralize training and certification workflows",
-            "Automate document and PDF operations",
-            "Enable Azure-integrated file management",
-            "Improve onboarding and application visibility"
+            "Centralize the applicant experience into a secure portal",
+            "Automate document storage using Azure File Integration",
+            "Eliminate manual PDF certificate generation",
+            "Provide real-time visibility into application status"
         ],
         solution: {
-            description: "Designed and enhanced a Salesforce Experience Cloud platform supporting onboarding automation, LMS workflows, Azure-integrated document management, and certification operations.",
+            description: "Developed a comprehensive LMS and Certification platform using Experience Cloud, integrating Azure for document storage and custom PDF engines.",
             highlights: [
-                "Built scalable Experience Cloud workflows for certification management",
-                "Implemented onboarding and training application automation",
-                "Integrated Azure-based file upload and deletion operations",
-                "Developed automated PDF generation and download workflows",
-                "Enhanced trainer-program visibility and application tracking",
-                "Stabilized deployments and optimized Apex testing operations"
+                "Built custom Experience Cloud components for high-conversion application workflows",
+                "Integrated Azure File Storage API for secure, scalable document management",
+                "Developed an automated PDF generation engine for instant certificate delivery",
+                "Implemented complex state-machine logic for multi-stage application approvals",
+                "Optimized Apex test coverage and deployment pipelines for global stability"
             ]
         },
         techStack: {
-            salesforce: ["Experience Cloud", "Sales Cloud"],
-            tools: ["Apex", "LWC", "Aura", "Flow Builder", "SOQL", "PDF Generation"],
-            integrations: ["Azure File Storage", "Payment Integrations", "REST APIs"]
+            salesforce: ["Experience Cloud", "Sales Cloud", "Apex", "LWC"],
+            tools: ["PDF Generation", "Flow Orchestration", "Azure Integration"],
+            integrations: ["Azure Storage API", "Payment Gateways"]
         },
         results: [
-            { metric: "Automated", label: "Document Workflows" },
-            { metric: "Centralized", label: "Training Operations" },
-            { metric: "Optimized", label: "Application Experience" },
-            { metric: "Stable", label: "Deployment Operations" }
+            { metric: "70% Faster", label: "Certification Issuance" },
+            { metric: "100%", label: "Document Visibility" },
+            { metric: "Automated", label: "PDF Workflow" },
+            { metric: "Global", label: "Operational Reach" }
         ],
-        feedback: "The Experience Cloud platform improved onboarding efficiency, document management, and operational scalability for global certification workflows.",
+        feedback: "The platform eliminated our manual bottlenecks. We can now process thousands of certifications daily with zero manual intervention.",
         takeaways: [
-            "Experience Cloud enables scalable onboarding and certification operations.",
-            "Integrated document management improves compliance and operational visibility.",
-            "Automation significantly improves application processing efficiency."
-        ]
+            "Experience Cloud is a powerful tool for customer self-service automation.",
+            "Integrated storage solutions (Azure) solve Salesforce's file size limitations.",
+            "Workflow automation is the key to scaling global education programs."
+        ],
+        seo: {
+            description: "Global training and certification platform built on Salesforce Experience Cloud with Azure file integration and automated PDF generation.",
+            keywords: "Experience Cloud, LMS, Certification Platform, Azure Integration, PDF Automation, Salesforce Education"
+        }
     },
 
     5: {
-        title: "Enterprise Opportunity & Document Automation Platform",
-        niche: "CRM Automation / Document Management / API Integration",
-        whoIsThisFor: "Best for enterprises managing opportunity workflows, SharePoint-based document operations, external integrations, and secure Salesforce-driven business processes.",
+        title: "Enterprise Opportunity & Document Orchestration Platform",
+        niche: "Strategic Sales & Document Management",
+        myRole: "Salesforce Technical Architect",
+        technicalComplexity: ["Recursive SharePoint Integration", "OAuth API Orchestration", "Dynamic Data Table Design"],
+        whoIsThisFor: "Enterprises needing to sync complex CRM opportunities with external document management systems like SharePoint.",
         metricsPreview: [
-            "Metadata-Driven Automation",
-            "Document Visibility",
-            "API Synchronization"
+            "Unified Document View",
+            "Secure OAuth Integration",
+            "Automated Sales Workflows"
         ],
         client: {
-            industry: "Enterprise CRM & Document Operations",
+            industry: "Enterprise Services",
             size: "Enterprise",
-            location: "Global / Remote"
+            location: "Global"
         },
-        problem: {
-            description: "The organization required centralized opportunity management, proposal automation, SharePoint integration, and secure API-driven workflows within Salesforce.",
-            impact: "Disconnected systems and manual document operations reduced operational visibility, increased overhead, and limited scalability across enterprise business workflows."
-        },
+        businessContext: "A sales organization where opportunity data lived in Salesforce, but supporting documents were scattered across unorganized SharePoint folders.",
+        operationalProblem: "Sales teams were losing hours looking for proposals and resumes. There was no real-time sync between CRM records and SharePoint folders, leading to version control issues and operational delays.",
+        solutionStrategy: "Architected a recursive SharePoint-Salesforce integration. Using Apex and secure OAuth, I built a system that automatically creates folder structures in SharePoint based on Salesforce record metadata and displays them natively in the UI.",
         objective: [
-            "Automate proposal and opportunity workflows",
-            "Centralize SharePoint document operations",
-            "Implement secure API integrations and field mapping",
-            "Improve scalability and operational visibility"
+            "Centralize SharePoint documents within the Salesforce record view",
+            "Automate folder creation and recursive synchronization",
+            "Implement secure, per-user OAuth authentication",
+            "Simplify proposal and resume management for sales teams"
         ],
         solution: {
-            description: "Architected an enterprise Salesforce platform combining opportunity management, SharePoint integration, proposal automation, and secure API orchestration.",
+            description: "Designed a secure document orchestration platform integrating Microsoft SharePoint with Salesforce using recursive API logic and reactive LWC components.",
             highlights: [
-                "Designed recursive SharePoint folder rendering architecture",
-                "Implemented OAuth-based authentication and secure Apex REST integrations",
-                "Built metadata-driven field mapping between Salesforce and external systems",
-                "Developed proposal initiation and opportunity automation workflows",
-                "Enhanced Resume Parser integration and recruitment processing operations",
-                "Implemented role hierarchy and profile-based access management",
-                "Optimized real-time folder synchronization and Lightning Data Table rendering",
-                "Stabilized external API endpoints and enterprise integration workflows"
+                "Developed a recursive folder rendering engine to mirror SharePoint hierarchies in LWC",
+                "Implemented secure OAuth 2.0 authentication for SharePoint API access",
+                "Built metadata-driven field mapping to sync Salesforce record data with SharePoint properties",
+                "Developed an automated resume parser integration for recruitment workflows",
+                "Optimized Lightning Data Table rendering for large file directories"
             ]
         },
         techStack: {
-            salesforce: ["Sales Cloud", "Experience Cloud"],
-            tools: ["Apex", "LWC", "JavaScript", "SOQL", "REST API"],
-            integrations: ["Microsoft SharePoint API", "OAuth", "Indeed APIs", "Custom Integration APIs"]
+            salesforce: ["Sales Cloud", "Apex", "LWC", "SOQL"],
+            tools: ["OAuth 2.0", "Recursive JS/Apex", "REST API"],
+            integrations: ["Microsoft SharePoint API", "Graph API"]
         },
         results: [
-            { metric: "Automated", label: "Opportunity Workflows" },
-            { metric: "Centralized", label: "Document Operations" },
-            { metric: "Optimized", label: "Recursive Folder Management" },
-            { metric: "Stable", label: "API Synchronization" }
+            { metric: "Unified", label: "Document & CRM Strategy" },
+            { metric: "Automated", label: "Folder Management" },
+            { metric: "Secure", label: "API Orchestration" },
+            { metric: "Eliminated", label: "File Search Overhead" }
         ],
-        feedback: "The platform improved proposal automation, document visibility, SharePoint operations, and enterprise integration reliability within Salesforce.",
+        feedback: "The SharePoint integration gave our sales team a single source of truth. No more jumping between apps to find the latest proposal.",
         takeaways: [
-            "Metadata-driven integrations improve scalability and maintainability.",
-            "Recursive rendering architectures simplify enterprise document management.",
-            "Secure API orchestration improves operational reliability."
-        ]
-    },
-    6: {
-        "title": "Enterprise Real Estate CRM & Transaction Automation Platform",
-        "niche": "Real Estate CRM / MLS & Sales Automation",
-        "whoIsThisFor": "Best for real estate brokerages, agencies, and property management firms requiring centralized lead management, MLS integrations, transaction automation, communication workflows, and digital document operations within Salesforce.",
-        "metricsPreview": [
-            "MLS Data Synchronization",
-            "Automated Sales Cadences",
-            "Digital Transaction Management"
+            "Recursive logic is essential for mirroring complex external file structures.",
+            "Secure authentication (OAuth) is non-negotiable for enterprise document sync.",
+            "Metadata-driven mapping improves long-term integration flexibility."
         ],
-        "client": {
-            "industry": "Real Estate Technology",
-            "size": "Enterprise",
-            "location": "USA / Remote"
-        },
-        "problem": {
-            "description": "The organization relied on disconnected systems for lead management, MLS property synchronization, calling operations, document signing, commission tracking, and accounting workflows, creating operational inefficiencies and inconsistent agent experiences.",
-            "impact": "Manual follow-ups, fragmented transaction processes, delayed document execution, and disconnected integrations reduced sales productivity, agent efficiency, and transaction visibility across the business."
-        },
-        "objective": [
-            "Centralize real estate operations within Salesforce",
-            "Integrate MLS platforms and property data providers",
-            "Automate lead engagement and sales cadences",
-            "Enable digital document generation and e-signing workflows",
-            "Improve transaction visibility and commission tracking",
-            "Integrate accounting and communication platforms"
-        ],
-        "solution": {
-            "description": "Architected and enhanced an enterprise-grade Salesforce platform for real estate operations by integrating MLS systems, communication services, digital document workflows, transaction management, automated cadences, and accounting platforms into a unified CRM ecosystem.",
-            "highlights": [
-                "Integrated MLS and property data platforms including Bridge Interactive, RealEstateAPI, and Zillow for centralized property synchronization",
-                "Developed automated lead engagement workflows with Twilio SMS automation and Dialpad-based calling operations",
-                "Built timezone-based automated SMS campaigns and cadence execution for real estate agents",
-                "Designed a custom Salesforce Cadence Builder supporting configurable multi-step sales engagement workflows",
-                "Implemented custom LWC-based email composer for personalized outbound communication",
-                "Integrated NaturalForms via webhooks for automated document generation and signature workflows",
-                "Enabled digital signing workflows using NaturalForms, OpenSign, and Documenso integrations",
-                "Developed transaction document checklist management for end-to-end real estate deal processing",
-                "Implemented commission management workflows and real estate transaction automation",
-                "Integrated SharePoint-based document management for centralized file visibility and storage",
-                "Built Experience Cloud portals for agent collaboration and operational access",
-                "Integrated accounting systems including QuickBooks for financial synchronization and reporting",
-                "Designed real-time reports and dashboards for sales, transaction, and operational visibility",
-                "Optimized secure REST API integrations, webhook processing, and scalable Apex automation architecture"
-            ]
-        },
-        "techStack": {
-            "salesforce": [
-                "Sales Cloud",
-                "Experience Cloud",
-                "Service Cloud"
-            ],
-            "tools": [
-                "Apex",
-                "LWC",
-                "Flow Builder",
-                "SOQL",
-                "REST API",
-                "Webhook Integrations"
-            ],
-            "integrations": [
-                "Bridge Interactive MLS",
-                "RealEstateAPI",
-                "Zillow",
-                "Twilio",
-                "Dialpad",
-                "NaturalForms",
-                "OpenSign",
-                "Documenso",
-                "Microsoft SharePoint",
-                "QuickBooks"
-            ]
-        },
-        "results": [
-            {
-                "metric": "Centralized",
-                "label": "Real Estate Operations"
-            },
-            {
-                "metric": "Automated",
-                "label": "Lead Engagement & Cadences"
-            },
-            {
-                "metric": "Integrated",
-                "label": "MLS & Transaction Workflows"
-            },
-            {
-                "metric": "Optimized",
-                "label": "Document & E-Sign Operations"
-            }
-        ],
-        "feedback": "The platform streamlined real estate operations by centralizing MLS synchronization, communication workflows, digital transaction processing, and accounting integrations within a scalable Salesforce ecosystem.",
-        "takeaways": [
-            "Centralized CRM ecosystems significantly improve real estate operational efficiency.",
-            "Automated cadences and communication workflows accelerate lead engagement.",
-            "Integrated digital signing and document automation streamline transaction lifecycles.",
-            "Scalable API-driven architecture improves long-term integration reliability and maintainability."
-        ],
-        "references": {
-            "bridgeDataOutput": "https://bridgedataoutput.com",
-            "bridgeApi": "https://api.bridgedataoutput.com/api/v2/OData/har/",
-            "realEstateApi": "https://www.realestateapi.com",
-            "realEstateSkipTraceApi": "https://api.realestateapi.com/v1/SkipTrace"
+        seo: {
+            description: "Enterprise Salesforce SharePoint integration for recursive document orchestration and automated opportunity workflows.",
+            keywords: "SharePoint Integration, Document Management, OAuth, Salesforce Opportunity, Enterprise CRM"
         }
     },
-    7: {
-        title: "Salesforce Experience Cloud Order & Shipment Management Platform",
-        niche: "Healthcare eCommerce / Order Management Automation",
-        whoIsThisFor: "Best for healthcare distributors, dental suppliers, and eCommerce-driven businesses requiring Salesforce-based order management, shipment tracking, customer portals, and automated communication workflows.",
+
+    6: {
+        title: "Enterprise Real Estate CRM & MLS Automation Ecosystem",
+        niche: "Real Estate Tech / Transaction Automation",
+        myRole: "Lead Solutions Architect",
+        technicalComplexity: ["Multi-Source API Synchronization", "Custom Cadence Builder", "Digital Signature Orchestration"],
+        whoIsThisFor: "Real estate brokerages and firms needing a unified platform for lead engagement, MLS property data, and transaction management.",
         metricsPreview: [
-            "Shipment Automation",
-            "Experience Cloud Order Management",
-            "Integrated Customer Engagement"
+            "Unified MLS Property Sync",
+            "Automated Sales Cadences",
+            "Paperless Transactions"
+        ],
+        client: {
+            industry: "Real Estate Technology",
+            size: "Enterprise",
+            location: "USA / Remote"
+        },
+        businessContext: "A large brokerage using 5+ disconnected tools for leads, MLS data, calling, signing, and accounting.",
+        operationalProblem: "Data fragmentation was killing productivity. Agents were manually re-entering data into different systems, lead follow-ups were missed, and transaction visibility was non-existent.",
+        solutionStrategy: "Architected a massive 'Single Source of Truth' on Salesforce. This involved building a custom Cadence Builder for automated follow-ups, integrating 3 different MLS APIs, and orchestrating digital signing and accounting workflows.",
+        objective: [
+            "Consolidate 5+ tools into a single Salesforce ecosystem",
+            "Automate property data synchronization from Bridge & Zillow",
+            "Build a custom Cadence engine for timezone-aware SMS/Calling",
+            "Enable end-to-end digital transaction and commission management"
+        ],
+        solution: {
+            description: "Developed a comprehensive Real Estate ecosystem integrating MLS data, communication services, and digital signing into a unified Salesforce platform.",
+            highlights: [
+                "Integrated Bridge Interactive and Zillow APIs for real-time MLS property synchronization",
+                "Built a custom 'Cadence Builder' LWC allowing agents to design multi-step automation flows",
+                "Orchestrated digital signing workflows with NaturalForms and OpenSign webhooks",
+                "Developed timezone-aware SMS/Call automation using Twilio and Dialpad",
+                "Integrated QuickBooks for automated commission tracking and financial reporting"
+            ]
+        },
+        techStack: {
+            salesforce: ["Sales Cloud", "Experience Cloud", "Service Cloud", "Apex"],
+            tools: ["LWC", "Flow Builder", "Webhooks", "Custom Cadence Logic"],
+            integrations: ["Bridge Interactive", "Zillow", "Twilio", "QuickBooks", "NaturalForms"]
+        },
+        results: [
+            { metric: "Unified", label: "Real Estate Ecosystem" },
+            { metric: "Automated", label: "Lead-to-Close Workflow" },
+            { metric: "Real-Time", label: "MLS Property Sync" },
+            { metric: "Paperless", label: "Transaction Management" }
+        ],
+        feedback: "We finally have a system that works as hard as our agents. Every tool we need is now in one tab, and our automation does the heavy lifting.",
+        takeaways: [
+            "Ecosystem consolidation is the ultimate productivity multiplier.",
+            "Custom cadence engines allow for highly specific industry workflows.",
+            "API orchestration across 10+ platforms requires robust error handling and logging."
+        ],
+        gallery: [
+            { url: "assets/images/projects/real-estate-arch.png", caption: "Enterprise Real Estate Ecosystem Architecture" }
+        ],
+        seo: {
+            description: "Unified Real Estate CRM ecosystem on Salesforce with MLS synchronization, custom cadences, and transaction automation.",
+            keywords: "Real Estate CRM, MLS Sync, Bridge Interactive, Twilio, Transaction Automation, Salesforce Brokerage"
+        }
+    },
+
+    7: {
+        title: "Healthcare eCommerce Order & Shipment Automation",
+        niche: "Medical Supply Chain / eCommerce",
+        myRole: "Salesforce Developer & Integration Specialist",
+        technicalComplexity: ["ShipStation API Integration", "Custom Email Orchestration", "Lead-to-Order Automation"],
+        whoIsThisFor: "Medical and dental suppliers needing to automate order fulfillment and customer communication within Salesforce.",
+        metricsPreview: [
+            "Automated Shipment Sync",
+            "Self-Service Order Portal",
+            "Lead Capture Integration"
         ],
         client: {
             industry: "Healthcare / Dental eCommerce",
-            size: "Mid-size / Enterprise",
-            location: "USA / Remote"
+            size: "Mid-size",
+            location: "USA"
         },
-        problem: {
-            description: "The organization required a centralized platform for order management, shipment tracking, customer communication, and lead capture across Salesforce Experience Cloud and external platforms.",
-            impact: "Disconnected shipment systems, manual communication workflows, and fragmented lead management processes reduced operational visibility, delayed order processing, and impacted customer experience."
-        },
+        businessContext: "A dental supplier struggling to keep up with order fulfillment and customer inquiries via email.",
+        operationalProblem: "Orders were manually tracked in ShipStation and Salesforce separately. Customers were calling to ask for tracking numbers, and leads from their WordPress site were manually entered by staff.",
+        solutionStrategy: "Built an automated order management bridge. Integrated ShipStation for tracking sync, WordPress for automated lead capture, and Experience Cloud to give customers a self-service portal for tracking their own shipments.",
         objective: [
-            "Centralize order and shipment management within Salesforce",
-            "Integrate ShipStation for automated shipment synchronization",
-            "Enable custom email communication workflows",
-            "Connect Wordpress lead capture with Salesforce",
-            "Improve customer self-service experience through Experience Cloud"
+            "Automate shipment tracking sync between ShipStation and Salesforce",
+            "Centralize customer communication through a custom email composer",
+            "Eliminate manual data entry for WordPress web leads",
+            "Improve customer experience with a self-service tracking portal"
         ],
         solution: {
-            description: "Designed and enhanced a Salesforce Experience Cloud-based order and shipment management platform integrating ShipStation, Wordpress lead capture, automated email workflows, and customer-facing order operations.",
+            description: "Developed an eCommerce automation platform connecting WordPress leads, Salesforce CRM, and ShipStation fulfillment into a unified workflow.",
             highlights: [
-                "Developed custom Salesforce email composer for personalized customer communication workflows",
-                "Integrated ShipStation APIs for shipment synchronization and tracking automation",
-                "Built shipment management workflows for order status visibility and operational tracking",
-                "Implemented Wordpress Contact Form and Salesforce Web-to-Lead integration",
-                "Designed Experience Cloud-based order management and customer self-service portal",
-                "Automated lead capture and customer onboarding workflows",
-                "Enhanced order lifecycle visibility using Apex automation and Flow Builder",
-                "Implemented secure REST API integrations between Salesforce and external platforms",
-                "Optimized customer communication and shipment notification workflows",
-                "Improved operational efficiency for dental product order management"
+                "Integrated ShipStation APIs for real-time shipment status and tracking number sync",
+                "Built a custom LWC Email Composer for personalized customer notifications",
+                "Developed a WordPress-to-Salesforce Lead capture bridge using Web-to-Lead and APIs",
+                "Designed an Experience Cloud portal for customer order history and tracking",
+                "Automated the order lifecycle from lead capture to shipment delivery"
             ]
         },
         techStack: {
-            salesforce: [
-                "Sales Cloud",
-                "Experience Cloud",
-                "Service Cloud"
-            ],
-            tools: [
-                "Apex",
-                "LWC",
-                "Flow Builder",
-                "SOQL",
-                "REST API",
-                "Web-to-Lead"
-            ],
-            integrations: [
-                "ShipStation API",
-                "Wordpress Contact Form",
-                "Salesforce Web-to-Lead"
-            ]
+            salesforce: ["Sales Cloud", "Experience Cloud", "Apex", "LWC"],
+            tools: ["REST API", "Email Service", "Flow Builder"],
+            integrations: ["ShipStation API", "WordPress API", "Web-to-Lead"]
         },
         results: [
-            { metric: "Automated", label: "Shipment Processing" },
-            { metric: "Centralized", label: "Order Management" },
-            { metric: "Integrated", label: "Lead Capture Workflows" },
-            { metric: "Optimized", label: "Customer Communication" }
+            { metric: "Automated", label: "Shipment Tracking" },
+            { metric: "Self-Service", label: "Customer Experience" },
+            { metric: "Real-Time", label: "Lead Capture" },
+            { metric: "Reduced", label: "Customer Support Calls" }
         ],
-        feedback: "The platform streamlined order processing, shipment visibility, customer communication, and lead capture operations through a unified Salesforce Experience Cloud ecosystem.",
+        feedback: "Our customers love the self-service portal, and our staff is no longer wasting time copy-pasting tracking numbers into emails.",
         takeaways: [
-            "Integrated shipment automation significantly improves operational efficiency.",
-            "Experience Cloud enables scalable customer self-service operations.",
-            "Automated communication workflows improve customer engagement and visibility.",
-            "Centralized order and shipment management reduces operational fragmentation."
+            "Integrating the fulfillment layer (ShipStation) is critical for eCommerce visibility.",
+            "Customer self-service significantly reduces operational support overhead.",
+            "Lead-to-order automation accelerates the sales cycle."
         ],
-        references: {
-            website: "https://ihomedental.com/"
+        seo: {
+            description: "Healthcare eCommerce automation on Salesforce Experience Cloud integrating ShipStation and WordPress lead capture.",
+            keywords: "Salesforce eCommerce, ShipStation Integration, Healthcare CRM, Order Management, Experience Cloud"
         }
     },
+
     8: {
-        title: "Salesforce Public Sector Licensing & Permitting Platform",
-        niche: "Government Licensing & Permit Management",
-        whoIsThisFor: "Best for government agencies and public sector organizations requiring centralized licensing, permit processing, citizen services, compliance tracking, and workflow automation within Salesforce.",
+        title: "Public Sector Licensing & Permit Modernization",
+        niche: "Government Solutions / Compliance",
+        myRole: "Technical Solutions Consultant",
+        technicalComplexity: ["Public Sector Solutions (PSS)", "OmniStudio", "Complex Approval Orchestration"],
+        whoIsThisFor: "Government agencies requiring a modernized, digital approach to citizen licensing and permit management.",
         metricsPreview: [
-            "Permit Workflow Automation",
-            "Citizen Self-Service",
-            "Public Sector Compliance"
+            "Digital Citizen Portal",
+            "Automated Permit Approvals",
+            "Compliance Visibility"
         ],
         client: {
-            industry: "USA Government / Public Sector",
+            industry: "Government / Public Sector",
             size: "Enterprise",
-            location: "USA / Remote"
+            location: "USA"
         },
-        problem: {
-            description: "The organization required a scalable platform to manage licensing, permitting, inspections, approvals, citizen applications, and compliance workflows across multiple public sector departments.",
-            impact: "Manual approval processes, disconnected systems, and fragmented citizen interactions reduced operational efficiency, delayed permit approvals, and limited visibility into government service operations."
-        },
+        businessContext: "A government agency processing thousands of paper-based permits and licenses through manual, multi-department approvals.",
+        operationalProblem: "Permit approvals were taking months. Citizens had no way to track status, and agency staff were overwhelmed by paper files and disconnected departmental silos.",
+        solutionStrategy: "Implemented Salesforce Public Sector Solutions (PSS) to digitize the entire permit lifecycle. I built a citizen portal for applications, automated the routing of approvals between departments, and enabled digital compliance tracking.",
         objective: [
-            "Centralize licensing and permitting operations",
-            "Enable citizen self-service experiences",
-            "Automate approval and compliance workflows",
-            "Improve operational visibility and case tracking",
-            "Support scalable public sector service delivery"
+            "Digitize the manual permit application process",
+            "Enable citizen self-service and application tracking",
+            "Automate complex multi-department approval workflows",
+            "Provide operational visibility into permit processing backlogs"
         ],
         solution: {
-            description: "Designed and enhanced a Salesforce Public Sector Solutions platform supporting licensing, permitting, inspections, application processing, workflow automation, and citizen engagement for government operations.",
+            description: "Modernized government licensing operations using Salesforce Public Sector Solutions, OmniStudio, and automated approval orchestration.",
             highlights: [
-                "Implemented Salesforce Public Sector Solutions for licensing and permitting workflows",
-                "Built Experience Cloud portals for citizen application submission and tracking",
-                "Developed automated approval processes using Flow Builder and Apex",
-                "Configured permit lifecycle management and compliance tracking",
-                "Implemented inspection scheduling and status management workflows",
-                "Built dynamic Lightning Web Components for government service operations",
-                "Enhanced case management and document handling processes",
-                "Optimized role-based access control and secure public sector workflows",
-                "Integrated REST APIs for external government and third-party system communication",
-                "Improved operational reporting and dashboard visibility for agency teams"
+                "Implemented PSS data model for licensing, permitting, and compliance",
+                "Built citizen-facing Experience Cloud portals for application submission",
+                "Developed automated approval workflows using Flow and OmniStudio",
+                "Designed inspection scheduling and field-staff status management tools",
+                "Optimized role-based access to ensure public sector security and compliance"
             ]
         },
         techStack: {
-            salesforce: [
-                "Public Sector Solutions",
-                "Experience Cloud",
-                "Service Cloud",
-                "Sales Cloud"
-            ],
-            tools: [
-                "Apex",
-                "LWC",
-                "Flow Builder",
-                "SOQL",
-                "REST API",
-                "OmniStudio"
-            ],
-            integrations: [
-                "Government APIs",
-                "External Compliance Systems",
-                "Document Management Integrations"
-            ]
+            salesforce: ["Public Sector Solutions", "Experience Cloud", "OmniStudio"],
+            tools: ["Apex", "LWC", "Flow Builder", "Compliance Tracking"],
+            integrations: ["Government Compliance APIs", "External Document Storage"]
         },
         results: [
-            {
-                metric: "Automated",
-                label: "Permit & License Workflows"
-            },
-            {
-                metric: "Centralized",
-                label: "Citizen Service Operations"
-            },
-            {
-                metric: "Optimized",
-                label: "Approval & Compliance Tracking"
-            },
-            {
-                metric: "Enhanced",
-                label: "Public Sector Visibility"
-            }
+            { metric: "Months -> Days", label: "Permit Approval Time" },
+            { metric: "100% Digital", label: "Citizen Application Experience" },
+            { metric: "Centralized", label: "Agency Operational Visibility" },
+            { metric: "Automated", label: "Compliance Verification" }
         ],
-        feedback: "The platform improved licensing operations, citizen engagement, workflow automation, and compliance visibility across public sector departments using Salesforce Public Sector Solutions.",
+        feedback: "The digital transformation improved our speed of service and gave citizens the transparency they expected from a modern government agency.",
         takeaways: [
             "Public Sector Solutions accelerates government digital transformation initiatives.",
             "Citizen self-service portals improve operational efficiency and transparency.",
             "Workflow automation significantly reduces permit processing delays.",
             "Secure role-based architecture is critical for government platforms."
-        ]
+        ],
+        seo: {
+            description: "Modernizing government licensing and permitting with Salesforce Public Sector Solutions and OmniStudio for citizen self-service.",
+            keywords: "Public Sector Solutions, Government CRM, OmniStudio, Permit Management, Licensing Automation"
+        }
     }
-
-
-
 };
 
 window.projectData = projectData;

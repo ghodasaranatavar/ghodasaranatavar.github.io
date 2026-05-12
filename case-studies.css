@@ -1,0 +1,391 @@
+/* case-studies.css - Enterprise Hub Design System 
+   Aligned with global styles.css and project-detail.css tokens
+*/
+
+:root {
+    /* Local Overrides (to be used sparingly) */
+    --hub-hero-bg: var(--lab-bg-hero-dark);
+    --hub-dark-solid: #1e3966;
+}
+
+/* 1. Global Navigation Refinement 
+   Ensure navigation looks consistent with project-detail.html
+*/
+.header {
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--lab-border-light);
+}
+
+/* 2. Hero Section - Re-Architected for Depth */
+.hub-hero {
+    background: var(--hub-hero-bg);
+    padding: var(--section-spacing) var(--full-width-padding);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.hub-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.hub-hero-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.hub-hero h1 {
+    font: var(--font-title1);
+    color: white;
+    margin-bottom: var(--card-gap-lg);
+    line-height: 1.1;
+}
+
+.hub-hero p {
+    font: var(--font-subtitle1);
+    color: #94a3b8;
+    max-width: 800px;
+    margin: 0 auto var(--card-gap-xl);
+}
+
+/* 3. Technology Strip */
+.tech-strip {
+    display: flex;
+    justify-content: center;
+    gap: var(--card-gap-lg);
+    flex-wrap: wrap;
+    margin-top: var(--card-gap-xl);
+    opacity: 0.8;
+}
+
+.tech-logo {
+    font: var(--font-caption);
+    color: #cbd5e1;
+    letter-spacing: 0.1em;
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 4. Proof Section */
+.proof-section {
+    margin-top: var(--card-gap-xl);
+    padding: var(--card-gap-lg) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--card-gap-lg);
+}
+
+.proof-val {
+    display: block;
+    font: var(--font-title3);
+    color: white;
+    margin-bottom: 4px;
+}
+
+.proof-label {
+    font: var(--font-caption);
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+/* 5. Section Rhythm & Editorial Layouts */
+.bg-dark { background: var(--hub-dark-solid); color: white; }
+.bg-light { background: var(--lab-bg-light); }
+.bg-white { background: var(--lab-bg-white); }
+
+section {
+    padding: var(--section-spacing) var(--full-width-padding);
+}
+
+.section-header h2 {
+    font: var(--font-title2);
+    margin-bottom: var(--card-gap-md);
+}
+
+.section-header p {
+    font: var(--font-body1);
+    color: var(--lab-text-light);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* 6. Operational Challenges - Grid Cards */
+.problems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--card-gap-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.problem-card {
+    background: var(--lab-bg-white);
+    padding: var(--card-gap-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--lab-border-light);
+    box-shadow: var(--lab-shadow-light);
+    transition: all 0.3s ease;
+}
+
+.problem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--lab-shadow-medium);
+    border-color: var(--lab-palette-primary-light);
+}
+
+.problem-icon {
+    font-size: 2rem;
+    color: var(--lab-palette-primary-main);
+    margin-bottom: var(--card-gap-md);
+}
+
+.problem-card h3 {
+    font: var(--font-title4);
+    margin-bottom: var(--card-gap-sm);
+    color: var(--lab-text-primary);
+}
+
+.problem-card p {
+    font: var(--font-body2);
+    color: var(--lab-text-muted);
+}
+
+/* 7. Case Study Grid - Rebuilt with Layered Depth */
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--card-gap-xl);
+}
+
+.case-card {
+    background: var(--lab-bg-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--lab-border-light);
+    box-shadow: var(--lab-shadow-medium);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.case-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--lab-shadow-heavy);
+    border-color: var(--lab-palette-primary-light);
+}
+
+.card-top-metric {
+    background: #f1f5f9;
+    padding: var(--card-gap-md) var(--card-gap-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--lab-border-light);
+}
+
+.primary-result {
+    font: var(--font-title3);
+    color: var(--lab-palette-primary-main);
+}
+
+.result-label {
+    font: var(--font-caption);
+    color: var(--lab-text-muted);
+    text-transform: uppercase;
+}
+
+.case-card-body {
+    padding: var(--card-gap-lg);
+    flex: 1;
+}
+
+.case-card-body h3 {
+    font: var(--font-title4);
+    margin-bottom: var(--card-gap-md);
+    color: var(--lab-text-primary);
+}
+
+.case-summary {
+    font: var(--font-body1);
+    color: var(--lab-text-muted);
+    margin-bottom: var(--card-gap-lg);
+    line-height: 1.5;
+}
+
+/* 7. Featured Spotlight - Editorial Layout */
+.spotlight-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.spotlight-content {
+    padding: var(--section-spacing);
+}
+
+.spotlight-content h3 {
+    font: var(--font-title2);
+    color: white;
+    margin-bottom: var(--card-gap-md);
+}
+
+.spotlight-content p {
+    font: var(--font-body1);
+    color: #cbd5e1;
+    margin-bottom: var(--card-gap-xl);
+}
+
+.spotlight-visual {
+    background: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--card-gap-xl);
+}
+
+/* 8. Engineering Depth - Structured Layout */
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--card-gap-lg);
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
+
+.challenge-item {
+    background: var(--lab-bg-white);
+    padding: var(--card-gap-lg);
+    border-left: 4px solid var(--lab-palette-accent-pink);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--lab-shadow-light);
+}
+
+.challenge-num {
+    font: var(--font-caption);
+    color: var(--lab-palette-accent-pink);
+    margin-bottom: var(--card-gap-xs);
+}
+
+.challenge-item h4 {
+    font: var(--font-title5);
+    margin-bottom: var(--card-gap-xs);
+    color: var(--lab-text-primary);
+}
+
+.challenge-item p {
+    font: var(--font-body2);
+    color: var(--lab-text-muted);
+}
+
+/* 9. Functional Components */
+.filter-bar {
+    background: #f1f5f9;
+    padding: 6px;
+    border-radius: 100px;
+    display: inline-flex;
+    gap: 4px;
+    margin-bottom: var(--card-gap-xl);
+}
+
+.filter-btn {
+    border: none;
+    background: transparent;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font: var(--font-body2);
+    font-weight: 700;
+    color: var(--lab-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn.active {
+    background: white;
+    color: var(--lab-palette-primary-main);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* 9. Floating Conversion CTA Styling (Standardized) */
+.floating-cta {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--lab-border-light);
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(51, 96, 173, 0.15);
+    z-index: 1000;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    width: fit-content;
+    pointer-events: none;
+}
+
+.floating-cta.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.floating-cta-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    white-space: nowrap;
+}
+
+.floating-cta-content p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--lab-text-primary);
+    margin: 0;
+}
+
+.floating-cta-content .btn-primary {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    border-radius: 25px;
+}
+
+/* 10. Responsive Overrides */
+@media (max-width: 1024px) {
+    .spotlight-card { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .hub-hero h1 { font: var(--font-title2); }
+    .section-header h2 { font: var(--font-title3); }
+    .case-study-grid { grid-template-columns: 1fr; }
+    .floating-cta { left: 15px; right: 15px; bottom: 20px; width: auto; transform: translateX(0) translateY(100px); border-radius: 20px; }
+    .floating-cta.visible { transform: translateX(0) translateY(0); }
+    .floating-cta-content { justify-content: space-between; width: 100%; gap: 10px; }
+    .floating-cta-content p { font-size: 0.8rem; }
+}

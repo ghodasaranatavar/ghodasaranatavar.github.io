@@ -1,9 +1,9 @@
 /* Project Detail Specific Styles */
 
 .project-hero {
-    background: linear-gradient(135deg, var(--lab-palette-primary-dark) 0%, var(--lab-palette-primary-main) 100%);
+    background: var(--lab-bg-hero-dark);
     color: white;
-    padding: clamp(60px, 10vw, 100px) var(--full-width-padding);
+    padding: clamp(60px, 10vw, 120px) var(--full-width-padding);
     text-align: center;
     position: relative;
     overflow: hidden;

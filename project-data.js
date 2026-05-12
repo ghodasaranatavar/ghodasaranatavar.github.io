@@ -1,6 +1,12 @@
-const projectData = {
-    1: {
+const projectData = [
+    {
+        id: 1,
         title: "Salesforce SMS Automation & Lead Engagement Platform",
+        challenge: {
+            icon: "ph ph-chats-circle",
+            title: "Stagnant Lead Engagement",
+            description: "Manual follow-ups were causing 40% of real estate leads to go cold before an agent could reach them."
+        },
         niche: "Real Estate & Sales Automation",
         myRole: "Lead Salesforce Architect & Integration Engineer",
         technicalComplexity: ["High-Volume Asynchronous Processing", "Real-Time API Orchestration", "Event-Driven Workflows"],
@@ -13,7 +19,7 @@ const projectData = {
         client: {
             industry: "Real Estate Technology",
             size: "Enterprise",
-            location: "USA / Remote"
+            location: "Remote"
         },
         businessContext: "A high-growth real estate organization struggling to manage thousands of incoming leads across distributed sales teams.",
         operationalProblem: "Manual SMS outreach within Salesforce was slowing down lead engagement. Sales reps were manually tracking responses, leading to 40% of leads going cold due to delayed follow-ups.",
@@ -41,11 +47,11 @@ const projectData = {
         },
         results: [
             { metric: "85% Reduction", label: "Manual Outreach Time" },
-            { metric: "< 2 Minutes", label: "Average Lead Response Time" },
-            { metric: "10,000+", label: "Automated Daily Messages" },
-            { metric: "Zero", label: "Missed Follow-up Opportunities" }
+            { metric: "-70%", label: "Missed Follow-up Opportunities" },
+            { metric: "+40h", label: "Time Saved Per Week" },
+            { metric: "10,000+", label: "Automated Daily Messages" }
         ],
-        feedback: "The platform transformed our sales operations. We moved from manual texting to a fully automated engagement engine, allowing our reps to focus only on 'warm' leads.",
+        feedback: "Amazing experience with Natvarlal. He completed the tasks in a timely manner without any carry-over. He understood the requirements very well.",
         takeaways: [
             "Asynchronous processing is critical for high-volume communication systems.",
             "Response-based automation dramatically improves sales team throughput.",
@@ -57,11 +63,26 @@ const projectData = {
         seo: {
             description: "Scalable Salesforce SMS automation platform using Twilio for high-volume real estate lead engagement and response tracking.",
             keywords: "Salesforce, SMS Automation, Twilio Integration, Real Estate CRM, Lead Engagement, Apex"
+        },
+        homepageFeatured: {
+            isFeatured: true,
+            outcome: "Qualify Leads 24/7 and Reduce Missed Opportunities by 70%",
+            metrics: [
+                { icon: "ph ph-check-circle", value: "-70% Missed Leads" },
+                { icon: "ph ph-clock", value: "+40h Saved/Week" }
+            ],
+            icon: "ph ph-rocket-launch",
+            accentColor: "var(--lab-palette-primary-main)"
         }
     },
-
-    2: {
+    {
+        id: 2,
         title: "Enterprise Gemini AI Research & Insights Integration",
+        challenge: {
+            icon: "ph ph-brain",
+            title: "Research Information Overload",
+            description: "Sales teams were losing 10+ hours weekly on manual account research and fragmented insight gathering."
+        },
         niche: "AI-Powered CRM Intelligence",
         myRole: "AI Solutions Architect",
         technicalComplexity: ["Generative AI Integration", "Prompt Engineering Framework", "Reactive UI Design"],
@@ -74,7 +95,7 @@ const projectData = {
         client: {
             industry: "Professional Services / SaaS",
             size: "Mid-size",
-            location: "USA / Remote"
+            location: "Remote"
         },
         businessContext: "A professional services team spending 10+ hours weekly per agent on manual account research and insight gathering.",
         operationalProblem: "Teams were using ChatGPT externally, leading to fragmented data, inconsistent research quality, and a lack of structured storage within Salesforce for long-term account intelligence.",
@@ -101,12 +122,12 @@ const projectData = {
             integrations: ["Google Gemini AI API"]
         },
         results: [
-            { metric: "10 Hours -> 1 Hour", label: "Weekly Research Time Saved" },
-            { metric: "100%", label: "Standardized Research Format" },
-            { metric: "Unified", label: "AI & CRM Data Ecosystem" },
-            { metric: "Zero", label: "External App Dependency" }
+            { metric: "+45%", label: "Research Accuracy Gain" },
+            { metric: "10h -> 1h", label: "Weekly Research Time" },
+            { metric: "0", label: "Page Reloads Required" },
+            { metric: "100%", label: "Research Standardization" }
         ],
-        feedback: "By bringing Gemini AI directly into Salesforce, we eliminated manual research overhead and ensured every agent followed the same high-quality research methodology.",
+        feedback: "Natavar was one of the best contractors I have hired. He was quick to respond and very knowledgeable when it came to Salesforce. I would recommend him to anyone.",
         takeaways: [
             "In-platform AI reduces context switching and improves user adoption.",
             "Metadata-driven prompt management enables rapid AI experimentation.",
@@ -117,12 +138,27 @@ const projectData = {
         ],
         seo: {
             description: "Enterprise Salesforce integration with Google Gemini AI for automated account research and structured insight generation.",
-            keywords: "Salesforce AI, Gemini AI Integration, Generative AI CRM, Prompt Engineering, Account Research"
+            keywords: "Salesforce, Gemini AI Integration, Generative AI CRM, Prompt Engineering, Account Research"
+        },
+        homepageFeatured: {
+            isFeatured: true,
+            outcome: "Increase Research Accuracy by 45% and Automate Client Insights",
+            metrics: [
+                { icon: "ph ph-chart-line-up", value: "+45% Accuracy" },
+                { icon: "ph ph-lightning", value: "0 Page Reloads" }
+            ],
+            icon: "ph ph-robot",
+            accentColor: "var(--lab-palette-accent-pink)"
         }
     },
-
-    3: {
+    {
+        id: 3,
         title: "Scalable Enterprise Automation & Metadata Framework",
+        challenge: {
+            icon: "ph ph-stack",
+            title: "Technical Debt & Deployment Latency",
+            description: "Hardcoded business logic in enterprise environments was causing frequent failures and expensive maintenance cycles."
+        },
         niche: "Enterprise System Stability",
         myRole: "Salesforce Architect",
         technicalComplexity: ["Metadata-Driven Architecture", "Batch Apex Optimization", "Scalable System Design"],
@@ -162,12 +198,12 @@ const projectData = {
             integrations: ["Enterprise REST APIs"]
         },
         results: [
-            { metric: "99.9%", label: "System Reliability Gain" },
-            { metric: "60% Faster", label: "Change Implementation Speed" },
-            { metric: "Zero", label: "Deployment-Required Fixes" },
+            { metric: "99.9%", label: "System Stability Gain" },
+            { metric: "60% Faster", label: "Process Delivery Speed" },
+            { metric: "Zero", label: "Manual Intervention" },
             { metric: "Millions", label: "Daily Records Processed" }
         ],
-        feedback: "The metadata-driven approach transformed our CRM from a maintenance burden into a flexible, scalable engine that grows with our business.",
+        feedback: "Committed and Quick Response on Issues addressed. Will definitely hire Natavar again for all requirements of salesforce. Good understanding on scope and Quality of work is very good.",
         takeaways: [
             "Configuration over code reduces long-term technical debt.",
             "Asynchronous optimization is the foundation of enterprise stability.",
@@ -176,11 +212,26 @@ const projectData = {
         seo: {
             description: "Scalable enterprise Salesforce automation using metadata-driven architecture to improve system stability and batch processing.",
             keywords: "Salesforce Automation, Metadata-Driven, Batch Apex, Enterprise CRM, System Stability"
+        },
+        homepageFeatured: {
+            isFeatured: true,
+            outcome: "Decouple Logic from Code and Improve System Reliability by 99.9%",
+            metrics: [
+                { icon: "ph ph-shield-check", value: "99.9% Stability" },
+                { icon: "ph ph-gauge", value: "60% Faster Delivery" }
+            ],
+            icon: "ph ph-gear-six",
+            accentColor: "var(--lab-palette-accent-green)"
         }
     },
-
-    4: {
+    {
+        id: 4,
         title: "Global Certification & LMS Experience Platform",
+        challenge: {
+            icon: "ph ph-certificate",
+            title: "Manual Certification Backlogs",
+            description: "Paper-based certification workflows were creating weeks of delays and poor document visibility for students."
+        },
         niche: "Education & Onboarding Automation",
         myRole: "Senior Salesforce Developer",
         technicalComplexity: ["Experience Cloud Customization", "Azure File Orchestration", "Automated PDF Generation"],
@@ -225,7 +276,7 @@ const projectData = {
             { metric: "Automated", label: "PDF Workflow" },
             { metric: "Global", label: "Operational Reach" }
         ],
-        feedback: "The platform eliminated our manual bottlenecks. We can now process thousands of certifications daily with zero manual intervention.",
+        feedback: "Natvar is a very experienced Salesforce developer and did a great job in my Production org and Partner Community. I will be hiring him again when another project comes up",
         takeaways: [
             "Experience Cloud is a powerful tool for customer self-service automation.",
             "Integrated storage solutions (Azure) solve Salesforce's file size limitations.",
@@ -236,9 +287,14 @@ const projectData = {
             keywords: "Experience Cloud, LMS, Certification Platform, Azure Integration, PDF Automation, Salesforce Education"
         }
     },
-
-    5: {
+    {
+        id: 5,
         title: "Enterprise Opportunity & Document Orchestration Platform",
+        challenge: {
+            icon: "ph ph-folders",
+            title: "Disconnected Document Silos",
+            description: "Lack of real-time sync between CRM records and SharePoint was causing version control chaos and file search overhead."
+        },
         niche: "Strategic Sales & Document Management",
         myRole: "Salesforce Technical Architect",
         technicalComplexity: ["Recursive SharePoint Integration", "OAuth API Orchestration", "Dynamic Data Table Design"],
@@ -283,7 +339,7 @@ const projectData = {
             { metric: "Secure", label: "API Orchestration" },
             { metric: "Eliminated", label: "File Search Overhead" }
         ],
-        feedback: "The SharePoint integration gave our sales team a single source of truth. No more jumping between apps to find the latest proposal.",
+        feedback: "Greatly helped me out with this, really knows a lot when it comes to Salesforce. I will be contacting him in the future if I need help",
         takeaways: [
             "Recursive logic is essential for mirroring complex external file structures.",
             "Secure authentication (OAuth) is non-negotiable for enterprise document sync.",
@@ -294,9 +350,14 @@ const projectData = {
             keywords: "SharePoint Integration, Document Management, OAuth, Salesforce Opportunity, Enterprise CRM"
         }
     },
-
-    6: {
+    {
+        id: 6,
         title: "Enterprise Real Estate CRM & MLS Automation Ecosystem",
+        challenge: {
+            icon: "ph ph-exclude",
+            title: "Data Fragmentation Chaos",
+            description: "Managing leads across 5+ disconnected tools was killing productivity and resulting in significant lead leakage."
+        },
         niche: "Real Estate Tech / Transaction Automation",
         myRole: "Lead Solutions Architect",
         technicalComplexity: ["Multi-Source API Synchronization", "Custom Cadence Builder", "Digital Signature Orchestration"],
@@ -309,7 +370,7 @@ const projectData = {
         client: {
             industry: "Real Estate Technology",
             size: "Enterprise",
-            location: "USA / Remote"
+            location: "Remote"
         },
         businessContext: "A large brokerage using 5+ disconnected tools for leads, MLS data, calling, signing, and accounting.",
         operationalProblem: "Data fragmentation was killing productivity. Agents were manually re-entering data into different systems, lead follow-ups were missed, and transaction visibility was non-existent.",
@@ -341,7 +402,7 @@ const projectData = {
             { metric: "Real-Time", label: "MLS Property Sync" },
             { metric: "Paperless", label: "Transaction Management" }
         ],
-        feedback: "We finally have a system that works as hard as our agents. Every tool we need is now in one tab, and our automation does the heavy lifting.",
+        feedback: "Natavar is easy to work with and has good critical thinking skills. He will think about what is good for the client, beyond just the exact project scope.",
         takeaways: [
             "Ecosystem consolidation is the ultimate productivity multiplier.",
             "Custom cadence engines allow for highly specific industry workflows.",
@@ -355,9 +416,14 @@ const projectData = {
             keywords: "Real Estate CRM, MLS Sync, Bridge Interactive, Twilio, Transaction Automation, Salesforce Brokerage"
         }
     },
-
-    7: {
+    {
+        id: 7,
         title: "Healthcare eCommerce Order & Shipment Automation",
+        challenge: {
+            icon: "ph ph-headset",
+            title: "Support Ticket Bottlenecks",
+            description: "High volumes of manual order tracking inquiries were overwhelming the support team and slowing down fulfillment."
+        },
         niche: "Medical Supply Chain / eCommerce",
         myRole: "Salesforce Developer & Integration Specialist",
         technicalComplexity: ["ShipStation API Integration", "Custom Email Orchestration", "Lead-to-Order Automation"],
@@ -370,7 +436,7 @@ const projectData = {
         client: {
             industry: "Healthcare / Dental eCommerce",
             size: "Mid-size",
-            location: "USA"
+            location: "Remote"
         },
         businessContext: "A dental supplier struggling to keep up with order fulfillment and customer inquiries via email.",
         operationalProblem: "Orders were manually tracked in ShipStation and Salesforce separately. Customers were calling to ask for tracking numbers, and leads from their WordPress site were manually entered by staff.",
@@ -402,7 +468,7 @@ const projectData = {
             { metric: "Real-Time", label: "Lead Capture" },
             { metric: "Reduced", label: "Customer Support Calls" }
         ],
-        feedback: "Our customers love the self-service portal, and our staff is no longer wasting time copy-pasting tracking numbers into emails.",
+        feedback: "He was really helpful and really knowledgeable, a great communicator, and was able to provide helpful documentation. Will hire again!!",
         takeaways: [
             "Integrating the fulfillment layer (ShipStation) is critical for eCommerce visibility.",
             "Customer self-service significantly reduces operational support overhead.",
@@ -413,9 +479,14 @@ const projectData = {
             keywords: "Salesforce eCommerce, ShipStation Integration, Healthcare CRM, Order Management, Experience Cloud"
         }
     },
-
-    8: {
+    {
+        id: 8,
         title: "Public Sector Licensing & Permit Modernization",
+        challenge: {
+            icon: "ph ph-buildings",
+            title: "Legacy Permit Hurdles",
+            description: "Slow, multi-department paper approvals were causing months of permit backlogs for state citizens."
+        },
         niche: "Government Solutions / Compliance",
         myRole: "Technical Solutions Consultant",
         technicalComplexity: ["Public Sector Solutions (PSS)", "OmniStudio", "Complex Approval Orchestration"],
@@ -428,7 +499,7 @@ const projectData = {
         client: {
             industry: "Government / Public Sector",
             size: "Enterprise",
-            location: "USA"
+            location: "Remote"
         },
         businessContext: "A government agency processing thousands of paper-based permits and licenses through manual, multi-department approvals.",
         operationalProblem: "Permit approvals were taking months. Citizens had no way to track status, and agency staff were overwhelmed by paper files and disconnected departmental silos.",
@@ -460,7 +531,7 @@ const projectData = {
             { metric: "Centralized", label: "Agency Operational Visibility" },
             { metric: "Automated", label: "Compliance Verification" }
         ],
-        feedback: "The digital transformation improved our speed of service and gave citizens the transparency they expected from a modern government agency.",
+        feedback: "Natavar was very quick with his experience and helped me out to fix the issue in no time. I recommend him to everyone.",
         takeaways: [
             "Public Sector Solutions accelerates government digital transformation initiatives.",
             "Citizen self-service portals improve operational efficiency and transparency.",
@@ -472,6 +543,12 @@ const projectData = {
             keywords: "Public Sector Solutions, Government CRM, OmniStudio, Permit Management, Licensing Automation"
         }
     }
-};
+];
 
+// Export to window for global access
 window.projectData = projectData;
+
+// Backward Compatibility Alias
+window.PORTFOLIO_DATA = {
+    projects: projectData
+};

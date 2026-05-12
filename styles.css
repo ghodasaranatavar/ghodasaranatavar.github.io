@@ -12,6 +12,9 @@
     --lab-palette-accent-pink: #ea1763;
     --lab-palette-accent-green: #208c72;
     --lab-palette-accent-orange: #f28520;
+
+    /* Enterprise Hero Theme */
+    --lab-bg-hero-dark: linear-gradient(135deg, #1e3966 0%, #3360ad 100%);
     
     /* Text colors */
     --lab-text-primary: #141414;
@@ -1209,12 +1212,34 @@ body {
     background: var(--lab-bg-light);
 }
 
+
+
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     max-width: 1400px;
+    margin: 0 auto 40px auto;
+}
+
+.featured-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px;
     margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    .featured-projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-projects-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .view-all-projects-container {

@@ -763,7 +763,7 @@
         </section>
     </main>
 
-    <!-- Footer Section -->
+    <!-- FIXED: Enhanced Footer Section Consistent with index.html -->
     <footer id="contact" class="footer-section">
         <div class="footer-container">
             <div class="footer-grid">
@@ -773,7 +773,7 @@
                     <div class="footer-contact-list">
                         <div class="footer-contact-item">
                             <div class="footer-contact-icon">
-                                <span>📧</span>
+                                <i class="ph ph-envelope"></i>
                             </div>
                             <div class="footer-contact-content">
                                 <span class="footer-contact-label">Email</span>
@@ -785,7 +785,7 @@
 
                         <div class="footer-contact-item">
                             <div class="footer-contact-icon">
-                                <span>📱</span>
+                                <i class="ph ph-phone"></i>
                             </div>
                             <div class="footer-contact-content">
                                 <span class="footer-contact-label">Phone</span>
@@ -797,7 +797,7 @@
 
                         <div class="footer-contact-item">
                             <div class="footer-contact-icon">
-                                <span>🌐</span>
+                                <i class="ph ph-globe"></i>
                             </div>
                             <div class="footer-contact-content">
                                 <span class="footer-contact-label">Location</span>
@@ -809,7 +809,7 @@
 
                         <div class="footer-contact-item">
                             <div class="footer-contact-icon">
-                                <span>⏰</span>
+                                <i class="ph ph-clock"></i>
                             </div>
                             <div class="footer-contact-content">
                                 <span class="footer-contact-label">Availability</span>
@@ -821,35 +821,34 @@
                     </div>
                 </div>
 
-                <!-- Column 2: Request a Demo -->
+                <!-- Column 2: Salesforce Strategy & Modernization -->
                 <div class="footer-column footer-demo">
-                    <h3 class="footer-column-title">Request a Demo</h3>
+                    <h3 class="footer-column-title">Salesforce Strategy & Modernization</h3>
                     <p class="footer-demo-description">
-                        Ready to optimize your Salesforce implementation? Let's schedule a consultation to explore how
-                        my expertise can boost efficiency, drive adoption, and deliver measurable business growth.
+                        Ready to transform your CRM into a high-performance automation engine? Let's discuss your modernization roadmap and build a scalable solution for your specific business needs.
                     </p>
 
                     <div class="footer-demo-benefits">
                         <div class="footer-benefit-item">
-                            <span class="footer-benefit-icon">✅</span>
-                            <span>Free consultation & strategy session</span>
+                            <span class="footer-benefit-icon"><i class="ph ph-strategy"></i></span>
+                            <span>Free architecture consultation</span>
                         </div>
                         <div class="footer-benefit-item">
-                            <span class="footer-benefit-icon">✅</span>
-                            <span>Custom solution recommendations</span>
+                            <span class="footer-benefit-icon"><i class="ph ph-lightning"></i></span>
+                            <span>Automation & integration strategy</span>
                         </div>
                         <div class="footer-benefit-item">
-                            <span class="footer-benefit-icon">✅</span>
-                            <span>Quick response within 24 hours</span>
+                            <span class="footer-benefit-icon"><i class="ph ph-chart-line-up"></i></span>
+                            <span>ROI-focused solution planning</span>
                         </div>
                     </div>
 
                     <div class="footer-demo-actions">
                         <button class="footer-demo-btn calendly-trigger" id="footer-demo-btn"
-                            aria-label="Schedule a demo appointment">
-                            Schedule Your Discovery or Consulting Call
+                            aria-label="Schedule a strategy call">
+                            Schedule Your Architecture Consultation
                         </button>
-                        <a href="https://wa.me/918980805269?text=Hi%20Natavar%2C%20I%20came%20from%20your%20website%20and%20would%20like%20to%20schedule%20a%20demo."
+                        <a href="https://wa.me/918980805269?text=Hi%20Natavar%2C%20I%20would%20like%20to%20discuss%20my%20Salesforce%20modernization%20roadmap."
                             target="_blank" rel="noopener" class="footer-demo-btn footer-demo-btn-secondary">
                             WhatsApp Chat
                         </a>
@@ -861,26 +860,27 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <p class="footer-copyright">
-                        © 2025 Natavar Ghodasara. All rights reserved. | 6X Salesforce Certified Professional
+                        © 2026 Natavar Ghodasara. All rights reserved. | 6X Salesforce Certified Professional
                     </p>
                     <div class="footer-social-links">
                         <a href="https://www.linkedin.com/in/natavarghodasara" target="_blank" rel="noopener"
                             class="footer-social-link" aria-label="LinkedIn Profile">
-                            <span>💼</span>
+                            <i class="ph ph-linkedin-logo"></i>
                         </a>
-                        <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank" rel="noopener"
-                            class="footer-social-link" aria-label="YouTube Channel">
-                            <span>🎥</span>
+                        <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank"
+                            rel="noopener" class="footer-social-link" aria-label="YouTube Channel">
+                            <i class="ph ph-youtube-logo"></i>
                         </a>
                         <a href="https://trailblazer.me/id/nghodasara" target="_blank" rel="noopener"
                             class="footer-social-link" aria-label="Trailhead Profile">
-                            <span>🏆</span>
+                            <i class="ph ph-medal"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+    <div id="review-toaster" class="review-toaster" aria-live="polite" aria-atomic="true"></div>
 
     <button id="scroll-to-top" class="scroll-to-top-btn" aria-label="Scroll to top">
         <svg class="scroll-to-top-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -890,16 +890,125 @@
         </svg>
     </button>
 
-    <!-- Add Calendly Modal -->
-    <div id="calendly-modal" class="calendly-modal" aria-hidden="true" role="dialog"
-        aria-labelledby="calendly-modal-title">
-        <div class="calendly-modal-overlay" id="calendly-modal-overlay"></div>
-        <div class="calendly-modal-content">
-            <button class="calendly-modal-close" id="calendly-modal-close" aria-label="Close booking calendar">
+    <!-- Custom Scheduler Modal Consistent with index.html -->
+    <div id="custom-scheduler-modal" class="scheduler-modal" aria-hidden="true" role="dialog"
+        aria-labelledby="scheduler-modal-title">
+        <div class="scheduler-modal-overlay" id="scheduler-modal-overlay"></div>
+        <div class="scheduler-modal-container">
+            <button class="scheduler-modal-close" id="scheduler-modal-close" aria-label="Close scheduler">
                 <span aria-hidden="true">×</span>
             </button>
-            <h2 id="calendly-modal-title" class="sr-only">Book a Demo Appointment</h2>
-            <div class="calendly-embed-container" id="calendly-embed"></div>
+
+            <div class="scheduler-layout">
+                <!-- Left Panel (Profile info) -->
+                <div class="scheduler-left-panel">
+                    <div class="scheduler-profile-compact">
+                        <img src="assets/images/avtaar.png" alt="Natavar Ghodasara" class="scheduler-avatar">
+                        <div class="scheduler-info">
+                            <h3 class="scheduler-name">Natavar Ghodasara</h3>
+                            <p class="scheduler-title">Salesforce Architect & AI Expert</p>
+                            <p class="scheduler-description">I help businesses increase revenue using Salesforce &
+                                AI-driven CRM automation. Book a call to discuss your project.</p>
+                            <div class="scheduler-duration-toggle" id="scheduler-duration-selector">
+                                <button class="duration-btn active" data-duration="30" type="button">30 Min</button>
+                                <button class="duration-btn" data-duration="15" type="button">15 Min</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scheduler-details-sidebar">
+                        <p class="scheduler-detail-item" id="scheduler-selected-datetime" style="display:none;">
+                            <i class="ph ph-calendar-blank"></i>
+                            <span>
+                                <span class="datetime-text"></span><br>
+                                <span class="timezone-text" id="scheduler-selected-timezone"
+                                    style="font-size: 0.8rem; opacity: 0.8;"></span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Panel (Interactive Steps) -->
+                <div class="scheduler-right-panel" id="scheduler-right-panel">
+                    <h2 id="scheduler-modal-title">Schedule Your Meeting</h2>
+
+                    <!-- Step 1: Split Calendar/Slots View -->
+                    <div class="scheduler-step active" id="scheduler-step-1">
+                        <div class="calendar-section">
+                            <div class="calendar-container" id="calendar-container"></div>
+                            <div class="timezone-container">
+                                <i class="ph ph-globe"></i>
+                                <select id="timezone-select" class="timezone-select" aria-label="Select Timezone">
+                                    <!-- Populated via JS -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="slots-side-panel" id="slots-side-panel">
+                            <h3 class="slots-date-header" id="slots-date-header"></h3>
+                            <div class="slots-container" id="slots-container"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Form View -->
+                    <div class="scheduler-step" id="scheduler-step-3">
+                        <button class="scheduler-back-btn" id="btn-back-to-slots">
+                            <i class="ph ph-arrow-left"></i> Back
+                        </button>
+                        <h3>Enter Details</h3>
+                        <form id="scheduler-booking-form" class="scheduler-form">
+                            <div id="booking-error-message" class="scheduler-error-alert" style="display: none;"></div>
+                            <div class="form-group">
+                                <label for="booking-name">Name *</label>
+                                <input type="text" id="booking-name" required placeholder="Jane Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-email">Email *</label>
+                                <input type="email" id="booking-email" required placeholder="jane@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Please share anything that will help prepare for our meeting. (Optional)</label>
+                                <div id="booking-notes-editor" class="rich-text-editor"></div>
+                            </div>
+                            <button type="submit" class="btn-primary scheduler-submit">Schedule Meeting</button>
+                        </form>
+                    </div>
+
+                    <div class="scheduler-step" id="scheduler-step-4">
+                        <div class="scheduler-success">
+                            <i class="ph ph-check-circle success-icon"></i>
+                            <h3>Meeting Scheduled!</h3>
+                            <p>A calendar invitation has been sent. Please check your email and <strong>accept the
+                                    invite</strong> to confirm the meeting on your calendar.</p>
+
+                            <div class="success-summary-card">
+                                <div class="success-detail-item">
+                                    <i class="ph ph-calendar-check"></i>
+                                    <div>
+                                        <span class="success-detail-label">Meeting Time</span>
+                                        <span class="success-detail-value" id="success-detail-timing-merged"></span>
+                                    </div>
+                                </div>
+                                <div class="success-detail-item">
+                                    <i class="ph ph-envelope-simple"></i>
+                                    <div>
+                                        <span class="success-detail-label">Sent to</span>
+                                        <span class="success-detail-value" id="success-detail-email"></span>
+                                    </div>
+                                </div>
+                                <div class="success-detail-item">
+                                    <i class="ph ph-notebook"></i>
+                                    <div style="width: 100%;">
+                                        <span class="success-detail-label">Agenda</span>
+                                        <div class="success-detail-agenda" id="success-detail-agenda"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn-secondary" id="btn-close-success">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -371,18 +371,24 @@
     </button>
 
     <!-- Custom Scheduler Modal Consistent with index.html -->
-    <div id="custom-scheduler-modal" class="scheduler-modal" aria-hidden="true" role="dialog" aria-labelledby="scheduler-modal-title">
+    <div id="custom-scheduler-modal" class="scheduler-modal" aria-hidden="true" role="dialog"
+        aria-labelledby="scheduler-modal-title">
         <div class="scheduler-modal-overlay" id="scheduler-modal-overlay"></div>
         <div class="scheduler-modal-container">
-            <button class="scheduler-modal-close" id="scheduler-modal-close" aria-label="Close scheduler">×</button>
+            <button class="scheduler-modal-close" id="scheduler-modal-close" aria-label="Close scheduler">
+                <span aria-hidden="true">×</span>
+            </button>
+
             <div class="scheduler-layout">
+                <!-- Left Panel (Profile info) -->
                 <div class="scheduler-left-panel">
                     <div class="scheduler-profile-compact">
                         <img src="assets/images/avtaar.png" alt="Natavar Ghodasara" class="scheduler-avatar">
                         <div class="scheduler-info">
                             <h3 class="scheduler-name">Natavar Ghodasara</h3>
                             <p class="scheduler-title">Salesforce Architect & AI Expert</p>
-                            <p class="scheduler-description">I help businesses increase revenue using Salesforce & AI-driven CRM automation.</p>
+                            <p class="scheduler-description">I help businesses increase revenue using Salesforce &
+                                AI-driven CRM automation. Book a call to discuss your project.</p>
                             <div class="scheduler-duration-toggle" id="scheduler-duration-selector">
                                 <button class="duration-btn active" data-duration="30" type="button">30 Min</button>
                                 <button class="duration-btn" data-duration="15" type="button">15 Min</button>
@@ -392,23 +398,93 @@
                     <div class="scheduler-details-sidebar">
                         <p class="scheduler-detail-item" id="scheduler-selected-datetime" style="display:none;">
                             <i class="ph ph-calendar-blank"></i>
-                            <span><span class="datetime-text"></span><br><span class="timezone-text" id="scheduler-selected-timezone"></span></span>
+                            <span>
+                                <span class="datetime-text"></span><br>
+                                <span class="timezone-text" id="scheduler-selected-timezone"
+                                    style="font-size: 0.8rem; opacity: 0.8;"></span>
+                            </span>
                         </p>
                     </div>
                 </div>
+
+                <!-- Right Panel (Interactive Steps) -->
                 <div class="scheduler-right-panel" id="scheduler-right-panel">
                     <h2 id="scheduler-modal-title">Schedule Your Meeting</h2>
+
+                    <!-- Step 1: Split Calendar/Slots View -->
                     <div class="scheduler-step active" id="scheduler-step-1">
                         <div class="calendar-section">
                             <div class="calendar-container" id="calendar-container"></div>
                             <div class="timezone-container">
                                 <i class="ph ph-globe"></i>
-                                <select id="timezone-select" class="timezone-select"></select>
+                                <select id="timezone-select" class="timezone-select" aria-label="Select Timezone">
+                                    <!-- Populated via JS -->
+                                </select>
                             </div>
                         </div>
+
                         <div class="slots-side-panel" id="slots-side-panel">
                             <h3 class="slots-date-header" id="slots-date-header"></h3>
                             <div class="slots-container" id="slots-container"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Form View -->
+                    <div class="scheduler-step" id="scheduler-step-3">
+                        <button class="scheduler-back-btn" id="btn-back-to-slots">
+                            <i class="ph ph-arrow-left"></i> Back
+                        </button>
+                        <h3>Enter Details</h3>
+                        <form id="scheduler-booking-form" class="scheduler-form">
+                            <div id="booking-error-message" class="scheduler-error-alert" style="display: none;"></div>
+                            <div class="form-group">
+                                <label for="booking-name">Name *</label>
+                                <input type="text" id="booking-name" required placeholder="Jane Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-email">Email *</label>
+                                <input type="email" id="booking-email" required placeholder="jane@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Please share anything that will help prepare for our meeting. (Optional)</label>
+                                <div id="booking-notes-editor" class="rich-text-editor"></div>
+                            </div>
+                            <button type="submit" class="btn-primary scheduler-submit">Schedule Meeting</button>
+                        </form>
+                    </div>
+
+                    <div class="scheduler-step" id="scheduler-step-4">
+                        <div class="scheduler-success">
+                            <i class="ph ph-check-circle success-icon"></i>
+                            <h3>Meeting Scheduled!</h3>
+                            <p>A calendar invitation has been sent. Please check your email and <strong>accept the
+                                    invite</strong> to confirm the meeting on your calendar.</p>
+
+                            <div class="success-summary-card">
+                                <div class="success-detail-item">
+                                    <i class="ph ph-calendar-check"></i>
+                                    <div>
+                                        <span class="success-detail-label">Meeting Time</span>
+                                        <span class="success-detail-value" id="success-detail-timing-merged"></span>
+                                    </div>
+                                </div>
+                                <div class="success-detail-item">
+                                    <i class="ph ph-envelope-simple"></i>
+                                    <div>
+                                        <span class="success-detail-label">Sent to</span>
+                                        <span class="success-detail-value" id="success-detail-email"></span>
+                                    </div>
+                                </div>
+                                <div class="success-detail-item">
+                                    <i class="ph ph-notebook"></i>
+                                    <div style="width: 100%;">
+                                        <span class="success-detail-label">Agenda</span>
+                                        <div class="success-detail-agenda" id="success-detail-agenda"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn-secondary" id="btn-close-success">Close</button>
                         </div>
                     </div>
                 </div>

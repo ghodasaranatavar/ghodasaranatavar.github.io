@@ -187,7 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Initialize Quill
-    if (!StateManager.quill) {
+    const quillContainer = document.getElementById('booking-notes-editor');
+    if (quillContainer && !StateManager.quill) {
         StateManager.quill = new Quill('#booking-notes-editor', {
             theme: 'snow',
             placeholder: 'Briefly describe the agenda or questions...',
@@ -481,6 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Form Handler ----
     const FormHandler = {
         init() {
+            if (!DOM.form) return;
             DOM.form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const btn = DOM.form.querySelector('button[type="submit"]');
@@ -607,25 +609,31 @@ document.addEventListener('DOMContentLoaded', () => {
     initExtras();
 
     // ---- Event Listeners (Use Delegation for Reliability) ----
-    DOM.triggers.forEach(trigger => {
-        trigger.addEventListener('click', async (e) => {
-            e.preventDefault();
-            await UIController.openModal();
+    if (DOM.triggers) {
+        DOM.triggers.forEach(trigger => {
+            trigger.addEventListener('click', async (e) => {
+                e.preventDefault();
+                await UIController.openModal();
+            });
         });
-    });
+    }
 
-    DOM.closeBtn.addEventListener('click', () => UIController.closeModal());
-    DOM.overlay.addEventListener('click', () => UIController.closeModal());
+    if (DOM.closeBtn) DOM.closeBtn.addEventListener('click', () => UIController.closeModal());
+    if (DOM.overlay) DOM.overlay.addEventListener('click', () => UIController.closeModal());
 
-    DOM.btnBackToSlots.addEventListener('click', () => {
-        StateManager.selectedTime = null;
-        UIController.updateSidebar();
-        UIController.showStep(0); // Back to Split View
-    });
+    if (DOM.btnBackToSlots) {
+        DOM.btnBackToSlots.addEventListener('click', () => {
+            StateManager.selectedTime = null;
+            UIController.updateSidebar();
+            UIController.showStep(0); // Back to Split View
+        });
+    }
 
-    DOM.btnCloseSuccess.addEventListener('click', () => {
-        UIController.closeModal();
-    });
+    if (DOM.btnCloseSuccess) {
+        DOM.btnCloseSuccess.addEventListener('click', () => {
+            UIController.closeModal();
+        });
+    }
 
     FormHandler.init();
 });

@@ -77,7 +77,7 @@ const projectData = [
     },
     {
         id: 2,
-        title: "Enterprise Gemini AI Research & Insights Integration",
+        title: "Enterprise Gemini AI Research & OCR Builder Integration",
         challenge: {
             icon: "ph ph-brain",
             title: "Research Information Overload",
@@ -107,8 +107,9 @@ const projectData = [
             "Improve research speed and quality across the organization"
         ],
         solution: {
-            description: "Developed a custom Salesforce AI platform integrating Google Gemini API with a reusable prompt framework and reactive LWC interfaces.",
+            description: "Developed a custom Salesforce AI platform (OCR Builder) integrating Google Gemini API with a reusable prompt framework and reactive LWC interfaces.",
             highlights: [
+                "Built 'OCR Builder' - a custom engine for extracting structured data from documents using Gemini AI",
                 "Designed a metadata-driven prompt manager allowing admins to update AI instructions without code",
                 "Built reactive LWC research interfaces that provide real-time AI response rendering",
                 "Implemented secure Apex REST callouts with robust JSON parsing for Gemini response mapping",
@@ -134,7 +135,7 @@ const projectData = [
             "Structured storage is essential for turning AI outputs into long-term business intelligence."
         ],
         gallery: [
-            { url: "assets/images/projects/ai-research-ui.png", caption: "Custom Gemini AI Prompt Manager Interface" }
+            { url: "assets/images/projects/OCR Builder.svg", caption: "OCR Builder - AI Research & Insights Architecture" }
         ],
         seo: {
             description: "Enterprise Salesforce integration with Google Gemini AI for automated account research and structured insight generation.",
@@ -282,6 +283,9 @@ const projectData = [
             "Integrated storage solutions (Azure) solve Salesforce's file size limitations.",
             "Workflow automation is the key to scaling global education programs."
         ],
+        gallery: [
+            { url: "assets/images/projects/Yoga Alliance.svg", caption: "Yoga Alliance - LMS & Certification Portal Architecture" }
+        ],
         seo: {
             description: "Global training and certification platform built on Salesforce Experience Cloud with Azure file integration and automated PDF generation.",
             keywords: "Experience Cloud, LMS, Certification Platform, Azure Integration, PDF Automation, Salesforce Education"
@@ -409,7 +413,7 @@ const projectData = [
             "API orchestration across 10+ platforms requires robust error handling and logging."
         ],
         gallery: [
-            { url: "assets/images/projects/real-estate-arch.png", caption: "Enterprise Real Estate Ecosystem Architecture" }
+            { url: "assets/images/projects/Cadence Builder.svg", caption: "Custom Cadence Builder - Automation Flow Interface" }
         ],
         seo: {
             description: "Unified Real Estate CRM ecosystem on Salesforce with MLS synchronization, custom cadences, and transaction automation.",

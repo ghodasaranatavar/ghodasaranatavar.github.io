@@ -5,24 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Details | Natavar Ghodasara</title>
-    
+
     <!-- Dynamic SEO Tags (Initial Placeholders) -->
     <meta name="description" content="Salesforce Case Study - Enterprise CRM Automation & Integration Solutions">
     <meta name="keywords" content="Salesforce, CRM, Automation, Integration, Apex, LWC">
-    
+
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Project Case Study | Natavar Ghodasara">
-    <meta property="og:description" content="Explore advanced Salesforce enterprise solutions and automation workflows.">
+    <meta property="og:description"
+        content="Explore advanced Salesforce enterprise solutions and automation workflows.">
     <meta property="og:image" content="/assets/images/portfolio-preview.png">
 
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/feviconicon.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="project-detail.css">
+    <link rel="stylesheet" href="assets/css/ai-consultant.css">
     <link rel="stylesheet" href="scheduler.css">
 
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    
+
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 </head>
@@ -219,16 +221,12 @@
                     <div id="takeaways-list" class="solution-list" style="grid-template-columns: 1fr;"></div>
                 </div>
 
-                <!-- NEW: Bottom High-Conversion CTA -->
-                <div class="bottom-cta-section reveal">
-                    <div class="bottom-cta-card">
-                        <h2>Ready to scale your business?</h2>
-                        <p>Let's build a tailored solution to your specific needs.</p>
-                        <div class="bottom-cta-buttons">
-                            <button class="btn-primary calendly-trigger">Get a Free Architecture Plan</button>
-                        </div>
-                    </div>
+                <!-- AI Consulting Accelerator (Guided Action) -->
+                <div class="section-block reveal" id="ai-consultant-section">
+                    <div id="ai-panel-placeholder"></div>
                 </div>
+
+
 
             </div>
 
@@ -238,8 +236,20 @@
                 <!-- NEW: Role & Expertise Widget -->
                 <div class="sidebar-widget reveal" id="role-widget">
                     <h3><i class="ph ph-user-focus"></i> My Role</h3>
-                    <p id="project-role" style="font-weight: 700; color: var(--lab-palette-primary-main); margin-bottom: 15px;">-</p>
+                    <p id="project-role"
+                        style="font-weight: 700; color: var(--lab-palette-primary-main); margin-bottom: 15px;">-</p>
                     <div id="complexity-pills" class="tech-pills"></div>
+                </div>
+
+                <!-- AI Consulting Suite Widget -->
+                <div class="sidebar-widget reveal ai-sidebar-widget" id="ai-consulting-widget">
+                    <h3><i class="ph ph-magic-wand"></i> AI Strategy Consultant</h3>
+                    <p style="font-size: 0.85rem; color: var(--lab-text-subtle); margin-bottom: 15px;">
+                        Interactive implementation advisory for this specific project.
+                    </p>
+                    <button class="btn-primary" onclick="window.aiConsultant.togglePanel(true)" style="width: 100%;">
+                        Start AI Assessment
+                    </button>
                 </div>
 
                 <!-- Results Widget -->
@@ -288,7 +298,8 @@
                             <div class="footer-contact-icon"><i class="ph ph-envelope"></i></div>
                             <div class="footer-contact-content">
                                 <span class="footer-contact-label">Email</span>
-                                <a href="mailto:ghodasaranatavar2011@gmail.com" class="footer-contact-value">ghodasaranatavar2011@gmail.com</a>
+                                <a href="mailto:ghodasaranatavar2011@gmail.com"
+                                    class="footer-contact-value">ghodasaranatavar2011@gmail.com</a>
                             </div>
                         </div>
                         <div class="footer-contact-item">
@@ -319,7 +330,8 @@
                 <div class="footer-column footer-demo">
                     <h3 class="footer-column-title">Salesforce Strategy & Modernization</h3>
                     <p class="footer-demo-description">
-                        Ready to transform your CRM into a high-performance automation engine? Let's discuss your modernization roadmap and build a scalable solution for your specific business needs.
+                        Ready to transform your CRM into a high-performance automation engine? Let's discuss your
+                        modernization roadmap and build a scalable solution for your specific business needs.
                     </p>
                     <div class="footer-demo-benefits">
                         <div class="footer-benefit-item">
@@ -339,7 +351,8 @@
                         <button class="footer-demo-btn calendly-trigger" id="footer-demo-btn">
                             Schedule Your Architecture Consultation
                         </button>
-                        <a href="https://wa.me/918980805269?text=Hi%20Natavar%2C%20I%20would%20like%20to%20discuss%20my%20Salesforce%20modernization%20roadmap." target="_blank" rel="noopener" class="footer-demo-btn footer-demo-btn-secondary">
+                        <a href="https://wa.me/918980805269?text=Hi%20Natavar%2C%20I%20would%20like%20to%20discuss%20my%20Salesforce%20modernization%20roadmap."
+                            target="_blank" rel="noopener" class="footer-demo-btn footer-demo-btn-secondary">
                             WhatsApp Chat
                         </a>
                     </div>
@@ -353,9 +366,12 @@
                         © 2026 Natavar Ghodasara. All rights reserved. | 6X Salesforce Certified Professional
                     </p>
                     <div class="footer-social-links">
-                        <a href="https://www.linkedin.com/in/natavarghodasara" target="_blank" rel="noopener" class="footer-social-link"><i class="ph ph-linkedin-logo"></i></a>
-                        <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank" rel="noopener" class="footer-social-link"><i class="ph ph-youtube-logo"></i></a>
-                        <a href="https://trailblazer.me/id/nghodasara" target="_blank" rel="noopener" class="footer-social-link"><i class="ph ph-medal"></i></a>
+                        <a href="https://www.linkedin.com/in/natavarghodasara" target="_blank" rel="noopener"
+                            class="footer-social-link"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="https://www.youtube.com/@natavarghodasara3409/videos" target="_blank" rel="noopener"
+                            class="footer-social-link"><i class="ph ph-youtube-logo"></i></a>
+                        <a href="https://trailblazer.me/id/nghodasara" target="_blank" rel="noopener"
+                            class="footer-social-link"><i class="ph ph-medal"></i></a>
                     </div>
                 </div>
             </div>
@@ -496,6 +512,7 @@
     <script src="script.js"></script>
     <script src="scheduler.js"></script>
     <script src="project-data.js"></script>
+    <script src="assets/js/ai-consultant.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
@@ -514,12 +531,12 @@
 
             // 1. Hero, Titles & SEO
             document.title = `${data.title} | Salesforce Solution Case Study`;
-            
+
             // Dynamic Meta Tags
             if (data.seo) {
                 document.querySelector('meta[name="description"]').setAttribute('content', data.seo.description);
                 document.querySelector('meta[name="keywords"]').setAttribute('content', data.seo.keywords);
-                
+
                 // Open Graph Tags
                 document.querySelector('meta[property="og:title"]').setAttribute('content', data.title);
                 document.querySelector('meta[property="og:description"]').setAttribute('content', data.seo.description);
@@ -538,7 +555,7 @@
 
             // 3. Problem Statement & Niche
             document.getElementById('who-is-this-for').innerText = data.whoIsThisFor;
-            
+
             // New Storytelling Fields
             if (data.businessContext) document.getElementById('business-context').innerText = data.businessContext;
             if (data.operationalProblem) document.getElementById('operational-problem').innerText = data.operationalProblem;
@@ -588,7 +605,7 @@
 
             // 7. Dynamic Tech Stack & Role
             const techContainer = document.getElementById('tech-sections-container');
-            
+
             // Populate Role Widget
             if (data.myRole) document.getElementById('project-role').innerText = data.myRole;
             const complexityContainer = document.getElementById('complexity-pills');
@@ -607,10 +624,10 @@
             if (data.gallery && data.gallery.length > 0) {
                 const gallerySection = document.getElementById('gallery-section');
                 const galleryGrid = document.getElementById('project-gallery');
-                
+
                 // Filter images based on visibility flag
                 const visibleImages = data.gallery.filter(item => item.showOnDetail !== false);
-                
+
                 if (visibleImages.length > 0) {
                     gallerySection.style.display = 'block';
                     galleryGrid.innerHTML = '';
@@ -663,7 +680,7 @@
             if (data.feedback) {
                 document.getElementById('client-feedback').innerText = `"${data.feedback}"`;
             }
-            
+
             const takeList = document.getElementById('takeaways-list');
             data.takeaways.forEach(take => {
                 const div = document.createElement('div');
@@ -700,6 +717,31 @@
                     floatingCta.classList.remove('visible');
                 }
             });
+
+            // Scroll-to-Top Button with Progress Fill
+            const scrollTopBtn = document.getElementById('scroll-to-top');
+            if (scrollTopBtn) {
+                const updateScrollBtn = () => {
+                    const scrollY = window.pageYOffset;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollProgress = docHeight > 0 ? scrollY / docHeight : 0;
+
+                    if (scrollY > 300) {
+                        scrollTopBtn.classList.add('visible');
+                        scrollTopBtn.style.setProperty('--scroll-progress', scrollProgress);
+                    } else {
+                        scrollTopBtn.classList.remove('visible');
+                    }
+                };
+
+                window.addEventListener('scroll', updateScrollBtn, { passive: true });
+
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+
+                updateScrollBtn(); // run once on load
+            }
         });
     </script>
 </body>

@@ -114,7 +114,13 @@ const projectData = [
             "accentColor": "var(--lab-palette-primary-main)"
         },
         "detailFeatured": false,
-        "hubFeatured": false
+        "hubFeatured": false,
+        "aiConfig": {
+            "title": "SMS Automation Advisor",
+            "primaryCTA": "Generate SMS Strategy",
+            "tools": ["roi-estimator", "discovery-call-prep", "architect-assistant", "agenda-generator"],
+            "context": "Lead engagement automation for Real Estate using Twilio and Salesforce."
+        }
     },
     {
         "id": 2,
@@ -231,7 +237,13 @@ const projectData = [
             "accentColor": "var(--lab-palette-accent-pink)"
         },
         "detailFeatured": false,
-        "hubFeatured": false
+        "hubFeatured": false,
+        "aiConfig": {
+            "title": "AI Research Architect",
+            "primaryCTA": "Plan AI Implementation",
+            "tools": ["cloud-recommendation", "integration-advisor", "architect-assistant", "roi-estimator"],
+            "context": "Enterprise Gemini AI integration for research and OCR automation."
+        }
     },
     {
         "id": 3,
@@ -347,7 +359,13 @@ const projectData = [
             "accentColor": "var(--lab-palette-accent-green)"
         },
         "detailFeatured": true,
-        "hubFeatured": false
+        "hubFeatured": false,
+        "aiConfig": {
+            "title": "Enterprise Logic Consultant",
+            "primaryCTA": "Optimize System Stability",
+            "tools": ["architect-assistant", "integration-advisor", "agenda-generator", "discovery-call-prep"],
+            "context": "Scalable metadata-driven frameworks and batch optimization."
+        }
     },
     {
         "id": 4,

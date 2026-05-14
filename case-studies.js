@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderFeaturedProject = () => {
         if (!window.projectData) return;
         
-        const featured = window.projectData.find(p => p.id == 6);
+        // Find project specifically marked as Hub Featured, fallback to ID 6
+        const featured = window.projectData.find(p => p.hubFeatured) || window.projectData.find(p => p.id == 6);
         if (!featured) return;
 
         featuredContainer.innerHTML = `
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <a href="project-detail.html?id=${featured.id}" class="btn-primary" style="background:var(--lab-palette-primary-main);">View Solution <i class="ph ph-arrow-right" style="margin-left:8px;"></i></a>
                 </div>
                 <div class="spotlight-visual">
-                    <img src="${featured.gallery[0].url}" alt="Architecture" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--lab-shadow-heavy);">
+                    <img src="${featured.gallery.find(img => img.showOnSpotlight)?.url || featured.gallery.find(img => img.showOnHub !== false)?.url || featured.gallery[0].url}" alt="Architecture" style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--lab-shadow-heavy);">
                 </div>
             </div>
         `;
@@ -98,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="card-visual" style="height: 200px; overflow: hidden; background: #f8fafc; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--lab-border-light);">
                     ${hasImage 
-                        ? `<img src="${project.gallery[0].url}" alt="${project.title}" style="width:100%; height:100%; object-fit: cover; transition: transform 0.5s ease;">`
+                        ? `<img src="${project.gallery.find(img => img.showOnHub !== false)?.url || project.gallery[0].url}" alt="${project.title}" style="width:100%; height:100%; object-fit: cover; transition: transform 0.5s ease;">`
                         : `<div style="text-align: center; color: #cbd5e1;"><i class="ph ph-image" style="font-size: 3rem; opacity: 0.5;"></i></div>`
                     }
                 </div>

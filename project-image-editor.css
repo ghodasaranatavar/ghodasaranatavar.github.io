@@ -321,6 +321,55 @@ summary i {
     box-shadow: 0 0 0 4px rgba(51, 96, 173, 0.1);
 }
 
+.featured-toggle-container {
+    margin-left: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.featured-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--lab-text-subtle);
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 100px;
+    background: white;
+    border: 1.5px solid var(--lab-border-light);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.featured-label:hover {
+    border-color: var(--lab-palette-primary-main);
+    color: var(--lab-palette-primary-main);
+}
+
+.featured-label.hub:has(input:checked) {
+    background: #fffbeb;
+    border-color: #f59e0b;
+    color: #b45309;
+}
+
+.featured-label.detail:has(input:checked) {
+    background: #ecfdf5;
+    border-color: #10b981;
+    color: #065f46;
+}
+
+.featured-label input:checked + i {
+    color: currentColor;
+}
+
+.featured-label input {
+    width: 12px;
+    height: 12px;
+}
+
 .remove-project-btn {
     background: none;
     border: none;
@@ -476,10 +525,54 @@ summary i {
     opacity: 0.5;
 }
 
+.visibility-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 10px;
+    display: flex;
+    gap: 12px;
+    border-top: 1px solid var(--lab-border-light);
+    z-index: 15;
+    transition: transform 0.2s ease;
+}
+
+.visibility-controls.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    backdrop-filter: blur(4px);
+    border-top: none;
+    transform: translateY(100%);
+}
+
+.image-preview:hover .visibility-controls.overlay {
+    transform: translateY(0);
+}
+
+.visibility-controls label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    color: inherit;
+}
+
+.visibility-controls input[type="checkbox"] {
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+
 .change-btn {
     position: absolute;
-    bottom: 10px;
+    top: 10px;
     right: 10px;
+    bottom: auto;
     background: rgba(0, 0, 0, 0.7);
     color: white;
     border: none;
@@ -620,11 +713,16 @@ summary i {
 /* Browser Controls */
 .browser-controls {
     margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .search-box {
     position: relative;
-    max-width: 400px;
+    flex: 1;
+    min-width: 250px;
 }
 
 .search-box i {
@@ -641,12 +739,46 @@ summary i {
     border: 2px solid var(--lab-border-light);
     border-radius: 100px;
     font-family: inherit;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .search-box input:focus {
     border-color: var(--lab-palette-primary-main);
     outline: none;
+    box-shadow: 0 0 0 4px rgba(51, 96, 173, 0.1);
+}
+
+.sort-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--lab-bg-light);
+    border-radius: 100px;
+    padding: 0 15px;
+    border: 2px solid var(--lab-border-light);
+    transition: all 0.2s ease;
+}
+
+.sort-box:focus-within {
+    border-color: var(--lab-palette-primary-main);
+    background: white;
+}
+
+.sort-box i {
+    color: var(--lab-text-subtle);
+    margin-right: 8px;
+}
+
+.sort-box select {
+    background: transparent;
+    border: none;
+    padding: 12px 0;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--lab-text-primary);
+    cursor: pointer;
+    outline: none;
+    font-size: 0.9rem;
 }
 
 /* Image Browser */
@@ -654,6 +786,36 @@ summary i {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 20px;
+    align-items: start;
+}
+
+.browser-group-header {
+    grid-column: 1 / -1;
+    padding: 15px 0 10px 0;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--lab-palette-primary-main);
+    border-bottom: 2px solid var(--lab-border-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: sticky;
+    top: -30px; /* Offset for modal padding */
+    background: white;
+    z-index: 5;
+}
+
+.browser-group-header:first-child {
+    margin-top: 0;
+}
+
+.browser-group-header::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--lab-palette-primary-main);
+    border-radius: 100px;
 }
 
 .browser-item {

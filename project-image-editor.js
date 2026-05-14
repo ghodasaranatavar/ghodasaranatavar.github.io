@@ -9,6 +9,9 @@ const saveBtn = document.getElementById('save-btn');
 const addProjectBtn = document.getElementById('add-project-btn');
 const toast = document.getElementById('toast');
 const searchInput = document.getElementById('image-search');
+const sortSelect = document.getElementById('image-sort');
+
+let currentSort = 'name'; // Default sort
 
 async function init() {
     if (typeof EnhancedAccessiblePortfolioApp !== 'undefined') {
@@ -53,6 +56,18 @@ function renderProjects() {
                 <button class="remove-project-btn" onclick="deleteProject(${project.id})" title="Delete Project">
                     <i class="ph ph-trash"></i>
                 </button>
+                <div class="featured-toggle-container">
+                    <label class="featured-label home" title="Feature on Homepage">
+                        <input type="checkbox" ${project.homepageFeatured?.isFeatured ? 'checked' : ''} 
+                            onchange="toggleFeaturedProject(${project.id}, 'home', this.checked)">
+                        <i class="ph ph-star"></i> Home
+                    </label>
+                    <label class="featured-label hub" title="Feature on Hub Spotlight">
+                        <input type="checkbox" ${project.hubFeatured ? 'checked' : ''} 
+                            onchange="toggleFeaturedProject(${project.id}, 'hub', this.checked)">
+                        <i class="ph ph-star"></i> Hub
+                    </label>
+                </div>
             </div>
 
             <div class="project-content-tabs">
@@ -175,6 +190,11 @@ function renderProjects() {
                                 <span class="slot-label">Portfolio Preview (Main)</span>
                                 <div class="image-preview" onclick="openImagePicker(${project.id}, 0)">
                                     ${previewImg ? `<img src="${previewImg}" alt="Preview">` : '<div class="placeholder"><i class="ph ph-image"></i><span>Select Image</span></div>'}
+                                    <div class="visibility-controls overlay">
+                                        <label title="Show on Hub Card"><input type="checkbox" ${project.gallery[0]?.showOnHub !== false ? 'checked' : ''} onchange="updateImageVisibility(${project.id}, 0, 'showOnHub', this.checked)"> Hub</label>
+                                        <label title="Show in Spotlight"><input type="checkbox" ${project.gallery[0]?.showOnSpotlight ? 'checked' : ''} onchange="updateImageVisibility(${project.id}, 0, 'showOnSpotlight', this.checked)"> Spot</label>
+                                        <label title="Show in Detail Gallery"><input type="checkbox" ${project.gallery[0]?.showOnDetail ? 'checked' : ''} onchange="updateImageVisibility(${project.id}, 0, 'showOnDetail', this.checked)"> Detail</label>
+                                    </div>
                                     <button class="change-btn">Change</button>
                                 </div>
                             </div>
@@ -184,6 +204,11 @@ function renderProjects() {
                                     ${detailImages.map((img, idx) => `
                                         <div class="image-preview detail-preview">
                                             <img src="${img.url}" alt="Detail ${idx + 1}" onclick="openImagePicker(${project.id}, ${idx + 1})">
+                                            <div class="visibility-controls">
+                                                <label title="Show on Hub Card"><input type="checkbox" ${img.showOnHub ? 'checked' : ''} onchange="updateImageVisibility(${project.id}, ${idx + 1}, 'showOnHub', this.checked)"> Hub</label>
+                                                <label title="Show in Spotlight"><input type="checkbox" ${img.showOnSpotlight ? 'checked' : ''} onchange="updateImageVisibility(${project.id}, ${idx + 1}, 'showOnSpotlight', this.checked)"> Spot</label>
+                                                <label title="Show in Detail Gallery"><input type="checkbox" ${img.showOnDetail !== false ? 'checked' : ''} onchange="updateImageVisibility(${project.id}, ${idx + 1}, 'showOnDetail', this.checked)"> Detail</label>
+                                            </div>
                                             <button class="remove-slot-btn" onclick="removeImageSlot(event, ${project.id}, ${idx + 1})" title="Remove Image">&times;</button>
                                             <button class="change-btn small">Change</button>
                                         </div>
@@ -260,6 +285,32 @@ function updateProjectField(projectId, path, value) {
     if (path === 'title') {
         if (!project.seo) project.seo = {};
         project.seo.keywords = value.split(' ').join(', ') + ', Salesforce, Architecture';
+    }
+}
+
+function toggleFeaturedProject(projectId, type, isFeatured) {
+    if (type === 'home') {
+        // Homepage allows multiple featured projects
+        const project = projectDataCopy.find(p => p.id === projectId);
+        if (project) {
+            if (!project.homepageFeatured) project.homepageFeatured = {};
+            project.homepageFeatured.isFeatured = isFeatured;
+        }
+    } else if (type === 'hub') {
+        // Hub Spotlight is exclusive (only one)
+        projectDataCopy.forEach(p => p.hubFeatured = false);
+        if (isFeatured) {
+            const project = projectDataCopy.find(p => p.id === projectId);
+            if (project) project.hubFeatured = true;
+        }
+    }
+    renderProjects();
+}
+
+function updateImageVisibility(projectId, slotIndex, field, value) {
+    const project = projectDataCopy.find(p => p.id === projectId);
+    if (project && project.gallery[slotIndex]) {
+        project.gallery[slotIndex][field] = value;
     }
 }
 
@@ -349,7 +400,8 @@ function createNewProject() {
         feedback: "Client feedback here...",
         takeaways: ["Takeaway 1"],
         seo: { description: "Project description for SEO", keywords: "Salesforce, Integration, Architecture" },
-        homepageFeatured: { isFeatured: false }
+        homepageFeatured: { isFeatured: false },
+        hubFeatured: false
     };
     
     projectDataCopy.unshift(newProject);
@@ -382,12 +434,42 @@ function renderImageBrowser(filter = '') {
         img.name.toLowerCase().includes(filter.toLowerCase())
     );
 
+    // Sort based on current group type
+    filteredImages.sort((a, b) => {
+        if (currentSort === 'name') {
+            return a.name.localeCompare(b.name);
+        } else {
+            const extA = a.name.split('.').pop().toLowerCase();
+            const extB = b.name.split('.').pop().toLowerCase();
+            // Sort by extension, then by name within extension
+            return extA.localeCompare(extB) || a.name.localeCompare(b.name);
+        }
+    });
+
     if (filteredImages.length === 0) {
         imageBrowser.innerHTML = '<div class="loading-state"><p>No images found matching your search.</p></div>';
         return;
     }
 
+    let lastGroup = '';
     filteredImages.forEach(img => {
+        let currentGroup = '';
+        if (currentSort === 'name') {
+            currentGroup = img.name.charAt(0).toUpperCase();
+            if (!/[A-Z]/.test(currentGroup)) currentGroup = '#'; // Group symbols/numbers together
+        } else {
+            currentGroup = '.' + img.name.split('.').pop().toUpperCase();
+        }
+
+        // Add group header if it's a new group
+        if (currentGroup !== lastGroup) {
+            const header = document.createElement('div');
+            header.className = 'browser-group-header';
+            header.innerText = currentGroup;
+            imageBrowser.appendChild(header);
+            lastGroup = currentGroup;
+        }
+
         const item = document.createElement('div');
         item.className = 'browser-item';
         item.innerHTML = `
@@ -407,6 +489,13 @@ function selectImage(url) {
             project.gallery.push({ url: '', caption: 'Project Visual' });
         }
         project.gallery[currentTarget.slotIndex].url = url;
+        // Default visibility if not set
+        if (project.gallery[currentTarget.slotIndex].showOnHub === undefined) {
+            project.gallery[currentTarget.slotIndex].showOnHub = (currentTarget.slotIndex === 0);
+        }
+        if (project.gallery[currentTarget.slotIndex].showOnDetail === undefined) {
+            project.gallery[currentTarget.slotIndex].showOnDetail = true;
+        }
         renderProjects();
         closeModal();
     }
@@ -416,7 +505,7 @@ function addNewImageSlot(projectId) {
     const project = projectDataCopy.find(p => p.id === projectId);
     if (project) {
         if (!project.gallery) project.gallery = [];
-        project.gallery.push({ url: '', caption: 'New Detail Visual' });
+        project.gallery.push({ url: '', caption: 'New Detail Visual', showOnHub: false, showOnDetail: true });
         const newIndex = project.gallery.length - 1;
         renderProjects();
         openImagePicker(projectId, newIndex);
@@ -436,6 +525,11 @@ function removeImageSlot(event, projectId, index) {
 function setupSearch() {
     searchInput.addEventListener('input', (e) => {
         renderImageBrowser(e.target.value);
+    });
+
+    sortSelect.addEventListener('change', (e) => {
+        currentSort = e.target.value;
+        renderImageBrowser(searchInput.value);
     });
 }
 

@@ -87,8 +87,10 @@ const projectData = [
         ],
         "gallery": [
             {
-                "url": "assets/images/projects/sms-flow.png",
-                "caption": "Event-Driven SMS Automation Logic"
+                "url": "assets/images/projects/1.Salesforce SMS Automation & Lead Engagement Platform Blue.svg",
+                "caption": "Event-Driven SMS Automation Logic",
+                "showOnHub": true,
+                "showOnDetail": true
             }
         ],
         "seo": {
@@ -110,7 +112,9 @@ const projectData = [
             ],
             "icon": "ph ph-rocket-launch",
             "accentColor": "var(--lab-palette-primary-main)"
-        }
+        },
+        "detailFeatured": false,
+        "hubFeatured": false
     },
     {
         "id": 2,
@@ -134,7 +138,7 @@ const projectData = [
             "Structured Research Storage"
         ],
         "client": {
-            "industry": "Professional Services / SaaS",
+            "industry": "Professional Services",
             "size": "Mid-size",
             "location": "Remote"
         },
@@ -200,21 +204,15 @@ const projectData = [
         ],
         "gallery": [
             {
-                "url": "assets/images/projects/OCR Builder.png",
-                "caption": "OCR Builder - AI Research & Insights Interface"
-            },
-            {
-                "url": "assets/images/projects/OCR Builder.svg",
-                "caption": "OCR Builder - AI Research & Insights Architecture"
-            },
-            {
-                "url": "assets/images/projects/Cadence Builder.svg",
-                "caption": "New Detail Visual"
+                "url": "assets/images/projects/2.Gemini_ResearchAI_with_Blue.svg",
+                "caption": "OCR Builder - AI Research & Insights Interface",
+                "showOnHub": true,
+                "showOnDetail": true
             }
         ],
         "seo": {
             "description": "Enterprise Salesforce integration with Google Gemini AI for automated account research and structured insight generation.",
-            "keywords": "Salesforce, Gemini AI Integration, Generative AI CRM, Prompt Engineering, Account Research"
+            "keywords": "Enterprise, Gemini, AI, Research, &, OCR, Builder, Integration, Salesforce, Architecture"
         },
         "homepageFeatured": {
             "isFeatured": true,
@@ -231,7 +229,9 @@ const projectData = [
             ],
             "icon": "ph ph-robot",
             "accentColor": "var(--lab-palette-accent-pink)"
-        }
+        },
+        "detailFeatured": false,
+        "hubFeatured": false
     },
     {
         "id": 3,
@@ -257,7 +257,7 @@ const projectData = [
         "client": {
             "industry": "IT Services",
             "size": "Enterprise",
-            "location": "Global"
+            "location": "Remote"
         },
         "businessContext": "An enterprise Salesforce environment plagued by failing batch jobs and expensive maintenance due to hardcoded business logic.",
         "operationalProblem": "Frequent scheduler failures and manual intervention requirements were slowing down business operations. Every process change required a full deployment cycle.",
@@ -322,7 +322,14 @@ const projectData = [
             "description": "Scalable enterprise Salesforce automation using metadata-driven architecture to improve system stability and batch processing.",
             "keywords": "Salesforce Automation, Metadata-Driven, Batch Apex, Enterprise CRM, System Stability"
         },
-        "gallery": [],
+        "gallery": [
+            {
+                "url": "assets/images/projects/3.Scalable Enterprise Automation & Metadata Framework Blue.svg",
+                "caption": "Project Visual",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
         "homepageFeatured": {
             "isFeatured": true,
             "outcome": "Decouple Logic from Code and Improve System Reliability by 99.9%",
@@ -338,7 +345,9 @@ const projectData = [
             ],
             "icon": "ph ph-gear-six",
             "accentColor": "var(--lab-palette-accent-green)"
-        }
+        },
+        "detailFeatured": true,
+        "hubFeatured": false
     },
     {
         "id": 4,
@@ -428,18 +437,21 @@ const projectData = [
         ],
         "gallery": [
             {
-                "url": "assets/images/projects/LMS - Training Program - White.png",
-                "caption": "LMS & Certification - Student Dashboard"
-            },
-            {
-                "url": "assets/images/projects/Yoga Alliance.svg",
-                "caption": "Yoga Alliance - LMS & Certification Portal Architecture"
+                "url": "assets/images/projects/4.Global Certification & LMS Experience Platform - Blue.svg",
+                "caption": "LMS & Certification - Student Dashboard",
+                "showOnHub": true,
+                "showOnDetail": true
             }
         ],
         "seo": {
             "description": "Global training and certification platform built on Salesforce Experience Cloud with Azure file integration and automated PDF generation.",
             "keywords": "Experience Cloud, LMS, Certification Platform, Azure Integration, PDF Automation, Salesforce Education"
-        }
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": false
     },
     {
         "id": 5,
@@ -531,7 +543,19 @@ const projectData = [
             "description": "Enterprise Salesforce SharePoint integration for recursive document orchestration and automated opportunity workflows.",
             "keywords": "SharePoint Integration, Document Management, OAuth, Salesforce Opportunity, Enterprise CRM"
         },
-        "gallery": []
+        "gallery": [
+            {
+                "url": "assets/images/projects/5.Opportunity & Document Orchestration Blue.svg",
+                "caption": "Project Visual",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": false
     },
     {
         "id": 6,
@@ -625,18 +649,21 @@ const projectData = [
         ],
         "gallery": [
             {
-                "url": "assets/images/projects/Cadence Builder Features - White.png",
-                "caption": "Custom Cadence Builder - Enterprise Feature Set"
-            },
-            {
-                "url": "assets/images/projects/Cadence Builder.svg",
-                "caption": "Custom Cadence Builder - Automation Flow Interface"
+                "url": "assets/images/projects/6.Real Estate CRM & MLS Automation Blue.svg",
+                "caption": "Custom Cadence Builder - Enterprise Feature Set",
+                "showOnHub": true,
+                "showOnDetail": true
             }
         ],
         "seo": {
             "description": "Unified Real Estate CRM ecosystem on Salesforce with MLS synchronization, custom cadences, and transaction automation.",
             "keywords": "Real Estate CRM, MLS Sync, Bridge Interactive, Twilio, Transaction Automation, Salesforce Brokerage"
-        }
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": true
     },
     {
         "id": 7,
@@ -729,7 +756,19 @@ const projectData = [
             "description": "Healthcare eCommerce automation on Salesforce Experience Cloud integrating ShipStation and WordPress lead capture.",
             "keywords": "Salesforce eCommerce, ShipStation Integration, Healthcare CRM, Order Management, Experience Cloud"
         },
-        "gallery": []
+        "gallery": [
+            {
+                "url": "assets/images/projects/7.Healthcare eCommerce Order & Shipment Automation Blue.svg",
+                "caption": "Project Visual",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": false
     },
     {
         "id": 8,
@@ -822,7 +861,19 @@ const projectData = [
             "description": "Modernizing government licensing and permitting with Salesforce Public Sector Solutions and OmniStudio for citizen self-service.",
             "keywords": "Public Sector Solutions, Government CRM, OmniStudio, Permit Management, Licensing Automation"
         },
-        "gallery": []
+        "gallery": [
+            {
+                "url": "assets/images/projects/8.Public Sector Licensing & Permit Modernization Blue.svg",
+                "caption": "Project Visual",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": false
     }
 ];
 

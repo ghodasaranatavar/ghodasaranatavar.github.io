@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Visual Manager | Natavar Ghodasara</title>
+    <meta name="description" content="Administrative tool to manage project images for Natavar Ghodasara's portfolio.">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/feviconicon.png">
+    
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="project-image-editor.css">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <!-- Enhanced Mobile-First Navigation Header -->
+    <header class="header sticky-header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <a href="index.html#home" class="logo" aria-label="Natavar Ghodasara - Homepage">
+                Natavar Ghodasara
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="desktop-nav" id="desktop-nav">
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="index.html#home" class="nav-link" role="menuitem">Home</a></li>
+                    <li role="none"><a href="case-studies.html" class="nav-link" role="menuitem">Portfolio</a></li>
+                    <li role="none"><a href="#" class="nav-link active" role="menuitem">Image Manager</a></li>
+                </ul>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+                <span class="hamburger-line" aria-hidden="true"></span>
+            </button>
+        </nav>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-navigation" id="mobile-navigation" aria-hidden="true">
+            <div class="mobile-nav-content">
+                <ul class="mobile-nav-menu" role="menu">
+                    <li role="none">
+                        <a href="index.html#home" class="mobile-nav-link" role="menuitem">
+                            <span class="nav-icon"><i class="ph ph-house"></i></span>
+                            <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="case-studies.html" class="mobile-nav-link" role="menuitem">
+                            <span class="nav-icon"><i class="ph ph-laptop"></i></span>
+                            <span class="nav-text">Portfolio</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mobile-nav-overlay" id="mobile-nav-overlay" aria-hidden="true"></div>
+    </header>
+
+    <main id="editor-content">
+        <!-- Hero Section -->
+        <section class="admin-hero">
+            <div class="hero-container">
+                <div class="hero-flex">
+                    <div class="hero-text-content">
+                        <span class="tech-logo" style="background:var(--lab-palette-accent-pink); color:white; border:none; margin-bottom: 20px;">Admin Console</span>
+                        <h1>Project Content Manager</h1>
+                        <p>End-to-end management of your enterprise portfolio. Modify project details, technical specs, and visual assets to keep your case studies up to date.</p>
+                    </div>
+                    <div class="hero-actions">
+                        <button id="add-project-btn" class="btn-secondary" style="background: white; border-color: white; color: var(--lab-palette-primary-main);">
+                            <i class="ph ph-plus-circle"></i> Create New Project
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editor Interface -->
+        <section class="editor-section bg-light">
+            <div class="container-full">
+                <div class="section-header">
+                    <h2>Enterprise Case Studies</h2>
+                    <p>Modify text content and visual assets for each high-authority solution.</p>
+                </div>
+
+                <div id="editor-grid" class="editor-grid">
+                    <!-- Projects will be loaded here dynamically -->
+                    <div class="loading-state">
+                        <i class="ph ph-spinner-gap ph-spin"></i>
+                        <p>Initializing project database...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Action Bar -->
+    <div class="floating-actions" id="floating-actions">
+        <div class="action-container">
+            <p class="action-info">Changes are stored locally until saved.</p>
+            <button id="save-btn" class="btn-primary">
+                <i class="ph ph-floppy-disk"></i> Save Changes
+            </button>
+        </div>
+    </div>
+
+    <!-- Image Selection Modal (matches scheduler style) -->
+    <div id="image-modal" class="modal-overlay" aria-hidden="true" role="dialog">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <i class="ph ph-image-square modal-icon"></i>
+                    <div>
+                        <h2>Select Image Asset</h2>
+                        <p>Choose from existing project images</p>
+                    </div>
+                </div>
+                <button class="close-modal" id="close-modal" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="browser-controls">
+                    <div class="search-box">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input type="text" id="image-search" placeholder="Search images...">
+                    </div>
+                </div>
+                <div id="image-browser" class="image-browser">
+                    <!-- Images will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Changes saved successfully!</div>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="footer-copyright">
+                        © 2026 Natavar Ghodasara. Admin Portal | Project Visual Manager
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script> <!-- For global UI like mobile menu -->
+    <script src="project-data.js"></script>
+    <script src="project-image-editor.js"></script>
+</body>
+
+</html>
+

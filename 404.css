@@ -1,0 +1,34 @@
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    text-align: center;
+    padding: var(--full-width-padding);
+}
+
+.error-code {
+    font-size: clamp(5rem, 15vw, 10rem);
+    font-weight: 900;
+    color: var(--lab-palette-primary-main);
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    font: var(--font-title2);
+    color: var(--lab-text-primary);
+    margin-bottom: 30px;
+}
+
+.error-description {
+    margin-bottom: 40px; 
+    color: var(--lab-text-muted); 
+    max-width: 500px;
+}
+
+.error-btn {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+}

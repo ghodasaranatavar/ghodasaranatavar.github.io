@@ -48,53 +48,47 @@ class EnhancedAccessiblePortfolioApp {
   // ========================================
 
   initReviewToaster() {
-    // Extract reviews from your review.html data
-    this.currentReviewIndex = 0; // ADD THIS LINE
+    this.currentReviewIndex = 0;
     this.reviews = [
       {
-        project: "Salesforce Dev",
-        review:
-          "Greatly helped me out with this, really knows a lot when it comes to Salesforce. I will be contacting him in the future if I need help",
+        id: 1,
+        project: "Salesforce SMS Automation",
+        review: "Amazing experience with Natvarlal. He completed the tasks in a timely manner without any carry-over. He understood the requirements very well.",
       },
       {
-        project: "Salesforce Development work",
-        review:
-          "Amazing experience with Natvarlal. He completed the tasks in a timely manner without any carry-over. He understood the requirements very well.",
+        id: 2,
+        project: "Enterprise Gemini AI Research",
+        review: "Natavar was one of the best contractors I have hired. He was quick to respond and very knowledgeable when it came to Salesforce.",
       },
       {
-        project: "B2C Commerce Cloud (SFCC) Sandbox",
-        review:
-          "He was really helpful and really knowledgeable, a great communicator, and was able to provide helpful documentation. Will hire again!!",
+        id: 3,
+        project: "Enterprise Automation Framework",
+        review: "Committed and Quick Response on Issues addressed. Will definitely hire Natavar again for all requirements of salesforce.",
       },
       {
-        project: "SalesForce Community Developer",
-        review:
-          "Natvarlal is a great fit. We had a few issues on our end and he was flexible in his response allowing us to get moving on the project faster/sooner.",
+        id: 4,
+        project: "LMS Experience Platform",
+        review: "Natvar is a very experienced Salesforce developer and did a great job in my Production org and Partner Community.",
       },
       {
-        project: "Salesforce Developer",
-        review:
-          "Committed and Quick Response on Issues addressed. Will definitely hire Natavar again for all requirements of salesforce. Good understanding on scope and Quality of work is very good.",
+        id: 5,
+        project: "Document Orchestration Platform",
+        review: "Greatly helped me out with this, really knows a lot when it comes to Salesforce. I will be contacting him in the future.",
       },
       {
-        project: "Salesforce Community License",
-        review:
-          "Natavar was very quick with his experience and helped me out to fix the issue in no time. I recommend him to everyone.",
+        id: 6,
+        project: "Real Estate CRM Ecosystem",
+        review: "Natavar is easy to work with and has good critical thinking skills. He will think about what is good for the client.",
       },
       {
-        project: "SalesForce Communities",
-        review:
-          "Natavar is easy to work with and has good critical thinking skills. He will think about what is good for the client, beyond just the exact project scope.",
+        id: 7,
+        project: "Healthcare Order Automation",
+        review: "He was really helpful and really knowledgeable, a great communicator, and was able to provide helpful documentation.",
       },
       {
-        project: "Einstein Analytics",
-        review:
-          "Natavar was one of the best contractors I have hired. He was quick to respond and very knowledgeable when it came to Salesforce. I would recommend him to anyone.",
-      },
-      {
-        project: "Salesforce Developer and Partner Community",
-        review:
-          "Natvar is a very experienced Salesforce developer and did a great job in my Production org and Partner Community. I will be hiring him again when another project comes up",
+        id: 8,
+        project: "Licensing & Permit Modernization",
+        review: "Natavar was very quick with his experience and helped me out to fix the issue in no time. I recommend him to everyone.",
       },
     ];
 
@@ -121,7 +115,7 @@ class EnhancedAccessiblePortfolioApp {
     toaster.innerHTML = `
             <div class="toaster-icon">⭐</div>
             <div class="toaster-content">
-                <div class="toaster-title">Just in: Client Review</div>
+                <div class="toaster-title">Just in: Client Feedback</div>
                 <div class="toaster-message">"${review.review}"</div>
                 <div class="toaster-project">Project: ${review.project}</div>
             </div>
@@ -137,7 +131,7 @@ class EnhancedAccessiblePortfolioApp {
     // Click to view more
     toaster.addEventListener("click", (e) => {
       if (!e.target.classList.contains("toaster-close")) {
-        window.location.href = "review.html";
+        window.location.href = `project-detail.html?id=${review.id}`;
       }
     });
 

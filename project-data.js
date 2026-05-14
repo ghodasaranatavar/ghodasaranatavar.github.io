@@ -87,7 +87,7 @@ const projectData = [
         ],
         "gallery": [
             {
-                "url": "assets/images/projects/1.Salesforce SMS Automation & Lead Engagement Platform Blue.svg",
+                "url": "assets/images/projects/1.Salesforce SMS Automation & Lead Engagement Platform Blue.png",
                 "caption": "Event-Driven SMS Automation Logic",
                 "showOnHub": true,
                 "showOnDetail": true
@@ -324,7 +324,7 @@ const projectData = [
         },
         "gallery": [
             {
-                "url": "assets/images/projects/3.Scalable Enterprise Automation & Metadata Framework Blue.svg",
+                "url": "assets/images/projects/3.Scalable Enterprise Automation & Metadata Framework Blue.png",
                 "caption": "Project Visual",
                 "showOnHub": true,
                 "showOnDetail": true
@@ -437,7 +437,7 @@ const projectData = [
         ],
         "gallery": [
             {
-                "url": "assets/images/projects/4.Global Certification & LMS Experience Platform - Blue.svg",
+                "url": "assets/images/projects/4.Global Certification & LMS Experience Platform - Blue.png",
                 "caption": "LMS & Certification - Student Dashboard",
                 "showOnHub": true,
                 "showOnDetail": true
@@ -649,7 +649,7 @@ const projectData = [
         ],
         "gallery": [
             {
-                "url": "assets/images/projects/6.Real Estate CRM & MLS Automation Blue.svg",
+                "url": "assets/images/projects/6.Real Estate CRM & MLS Automation Blue.png",
                 "caption": "Custom Cadence Builder - Enterprise Feature Set",
                 "showOnHub": true,
                 "showOnDetail": true
@@ -863,7 +863,7 @@ const projectData = [
         },
         "gallery": [
             {
-                "url": "assets/images/projects/8.Public Sector Licensing & Permit Modernization Blue.svg",
+                "url": "assets/images/projects/8.Public Sector Licensing & Permit Modernization Blue.png",
                 "caption": "Project Visual",
                 "showOnHub": true,
                 "showOnDetail": true

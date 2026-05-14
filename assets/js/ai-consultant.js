@@ -7,14 +7,116 @@ const AI_API_BASE_URL = (() => {
     return 'https://lightcloudcrm.com/api/';
 })();
 
-// Smart Component Base URL: for loading HTML partials
-const AI_COMPONENT_BASE_URL = (() => {
-    const host = window.location.hostname;
-    if (host === 'localhost' || host === '127.0.0.1' || host === '::1' || host === '') {
-        return 'components/';
-    }
-    return 'https://natavarghodasara.github.io/profile/components/';
-})();
+// Inline AI Panel HTML — avoids cross-origin fetch (GitHub Pages cannot send CORS headers)
+const AI_PANEL_HTML = `
+<!-- AI Consulting Accelerator Component -->
+<div class="ai-consulting-panel" id="aiConsultingPanel">
+    <div class="ai-panel-header">
+        <h3><i class="ph ph-briefcase"></i> AI Consulting Accelerator</h3>
+        <p>Access 8 specialized tools to architect your next Salesforce implementation.</p>
+    </div>
+
+    <!-- 8 Consulting Tools Grid -->
+    <div class="ai-tools-grid" id="aiToolsGrid">
+        <!-- Tools will be injected here via JS -->
+    </div>
+
+    <div class="ai-form-container">
+        <!-- Active Consulting Mode Badge -->
+        <div id="aiActiveMode" class="ai-active-mode-badge" style="display: none;">
+            <i class="ph-fill ph-shield-star"></i>
+            <span>Active Mode: AI Consulting Assistant</span>
+        </div>
+        
+        <div class="ai-form-divider"><span>Have a Specific Requirement? Ask for a Custom Inquiry</span></div>
+        <div class="ai-form-grid">
+            <div class="ai-field-group">
+                <label for="aiIndustry">Industry <span style="color: var(--ai-accent);">*</span></label>
+                <select id="aiIndustry">
+                    <option value="">Select Industry...</option>
+                    <!-- Options populated by JS -->
+                </select>
+            </div>
+
+            <div class="ai-field-group">
+                <label>Primary Goals <span style="color: var(--ai-accent);">*</span></label>
+                <div class="ai-search-container">
+                    <div class="ai-tags-input" id="aiGoalTags">
+                        <!-- Selected pills go here -->
+                        <input type="text" id="aiGoalSearch" placeholder="Type to find goals (e.g. Automation)..." autocomplete="off">
+                    </div>
+                    <div class="ai-suggestions" id="aiGoalSuggestions">
+                        <!-- Suggestions will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-field-group">
+                <label>Target Clouds</label>
+                <div class="ai-search-container">
+                    <div class="ai-tags-input" id="aiCloudTags">
+                        <!-- Selected pills go here -->
+                        <input type="text" id="aiCloudSearch" placeholder="e.g. Sales Cloud..." autocomplete="off">
+                    </div>
+                    <div class="ai-suggestions" id="aiCloudSuggestions">
+                        <!-- Suggestions will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-field-group">
+                <label for="aiTeamSize">Team Size</label>
+                <select id="aiTeamSize">
+                    <option value="1-10">1\u201310</option>
+                    <option value="10-50">10\u201350</option>
+                    <option value="50-200">50\u2013200</option>
+                    <option value="200+">200+</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="ai-field-group">
+            <label for="aiChallenge">Biggest Challenge <span style="color: var(--ai-accent);">*</span></label>
+            <textarea id="aiChallenge" placeholder="e.g. We manage leads manually and need automated follow-ups..."></textarea>
+        </div>
+
+        <div class="ai-action-area">
+            <button class="btn-ai-generate" id="btnAiGenerate" disabled>
+                <i class="fas fa-wand-magic-sparkles"></i> Generate Recommendation
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div class="ai-loading" id="aiLoading">
+        <div class="ai-spinner"></div>
+        <p>Analyzing industry patterns and consulting knowledge...</p>
+    </div>
+
+    <!-- Response Area -->
+    <div class="ai-response-container" id="aiResponse">
+        <!-- Action Header -->
+        <div class="ai-response-actions">
+            <button class="ai-response-close" id="aiResponseClose" title="Close Response">
+                <i class="ph ph-x"></i>
+            </button>
+        </div>
+
+        <div class="ai-response-content" id="aiResultContent">
+            <!-- AI Output rendered here -->
+        </div>
+
+        <!-- Unified Strategic CTA (Visible after Generation) -->
+        <div class="ai-unified-cta" id="aiUnifiedCTA">
+            <h2>Ready to Architect Your Success?</h2>
+            <p>Your custom strategy is just the beginning. Let's discuss how to turn these recommendations into a live, high-performing Salesforce ecosystem.</p>
+            <button class="btn-unified-book calendly-trigger">
+                <i class="ph ph-calendar-check"></i> Book Architecture Call
+            </button>
+        </div>
+    </div>
+</div>
+`;
 
 window.aiConsultant = {
     togglePanel: function() {
@@ -26,27 +128,22 @@ window.aiConsultant = {
     }
 };
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     const placeholder = document.getElementById('ai-panel-placeholder');
     if (!placeholder) return;
 
-    try {
-        const res = await fetch(AI_COMPONENT_BASE_URL + 'ai-panel.html');
-        const html = await res.text();
-        placeholder.innerHTML = html;
-        
-        // 2. Create and Inject FAB to Body
-        const fab = document.createElement('button');
-        fab.id = 'aiSideTrigger';
-        fab.className = 'ai-side-trigger';
-        fab.setAttribute('aria-label', 'Open AI Consultant');
-        fab.innerHTML = `<i class="ph-fill ph-sparkle"></i><span>AI Consultant</span>`;
-        document.body.appendChild(fab);
+    // Inject the inline panel HTML — no cross-origin fetch needed
+    placeholder.innerHTML = AI_PANEL_HTML;
 
-        initAI();
-    } catch (err) {
-        console.error('Failed to load AI panel component:', err);
-    }
+    // Create and Inject FAB to Body
+    const fab = document.createElement('button');
+    fab.id = 'aiSideTrigger';
+    fab.className = 'ai-side-trigger';
+    fab.setAttribute('aria-label', 'Open AI Consultant');
+    fab.innerHTML = `<i class="ph-fill ph-sparkle"></i><span>AI Consultant</span>`;
+    document.body.appendChild(fab);
+
+    initAI();
 
     function initAI() {
         const industrySelect = document.getElementById('aiIndustry');

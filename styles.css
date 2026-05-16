@@ -1851,6 +1851,320 @@ body.loaded {
     animation: fadeIn 1s ease-out;
 }
 
+/* Team Badge in Hero */
+.team-badge {
+    background: rgba(234, 23, 99, 0.1);
+    color: var(--lab-palette-accent-pink);
+    border: 1px solid rgba(234, 23, 99, 0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-left: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    vertical-align: middle;
+    animation: fadeIn 1.2s ease-out;
+}
+
+/* Strategic Consulting Framework */
+.framework-section {
+    background: var(--lab-bg-white);
+}
+
+.framework-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.framework-step {
+    background: var(--lab-bg-light);
+    padding: var(--card-gap-xl);
+    border-radius: var(--radius-lg);
+    position: relative;
+    border: 1px solid var(--lab-border-light);
+    transition: all 0.3s ease;
+}
+
+.framework-step:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--lab-shadow-medium);
+    border-color: var(--lab-palette-primary-main);
+}
+
+.step-number {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(51, 96, 173, 0.05);
+    line-height: 1;
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    color: var(--lab-palette-primary-main);
+    margin-bottom: var(--card-gap-md);
+}
+
+.framework-step h3 {
+    font: var(--font-title4);
+    color: var(--lab-text-primary);
+    margin-bottom: var(--card-gap-sm);
+}
+
+.framework-step p {
+    color: var(--lab-text-muted);
+    font: var(--font-body1);
+}
+
+/* Enterprise Security & Compliance */
+.security-section {
+    background: var(--lab-palette-primary-dark);
+    color: white;
+}
+
+.security-section .section-title {
+    color: white;
+}
+
+.security-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--card-gap-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.security-intro {
+    font: var(--font-subtitle1);
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--card-gap-xl);
+}
+
+.security-grid {
+    display: grid;
+    gap: var(--card-gap-lg);
+}
+
+.security-item {
+    display: flex;
+    gap: var(--card-gap-md);
+    align-items: flex-start;
+}
+
+.security-icon {
+    font-size: 2rem;
+    color: var(--lab-palette-accent-pink);
+    background: rgba(234, 23, 99, 0.1);
+    padding: 15px;
+    border-radius: var(--radius-md);
+}
+
+.security-item h3 {
+    font: var(--font-title5);
+    color: white;
+    margin-bottom: 5px;
+}
+
+.security-item p {
+    color: rgba(255, 255, 255, 0.7);
+    font: var(--font-body2);
+}
+
+.security-badge-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--card-gap-md);
+    justify-content: center;
+}
+
+.security-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 140px;
+    transition: all 0.3s ease;
+}
+
+.security-badge:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+.security-badge i {
+    font-size: 2rem;
+    color: var(--lab-palette-accent-pink);
+}
+
+.security-badge span {
+    font: var(--font-caption);
+    text-align: center;
+    color: white;
+}
+
+/* Trust Cloud / Industry Marquee */
+.trust-cloud-section {
+    background: var(--lab-bg-light);
+}
+
+.industry-marquee {
+    display: flex;
+    gap: var(--card-gap-xl);
+    overflow: hidden;
+    padding: var(--card-gap-lg) 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.industry-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: var(--font-subtitle1);
+    color: var(--lab-text-light);
+    background: var(--lab-bg-white);
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: var(--lab-shadow-light);
+    border: 1px solid var(--lab-border-light);
+    transition: all 0.3s ease;
+}
+
+.industry-item:hover {
+    color: var(--lab-palette-primary-main);
+    border-color: var(--lab-palette-primary-main);
+    transform: translateY(-5px);
+}
+
+.industry-item i {
+    font-size: 1.2rem;
+    color: var(--lab-palette-primary-main);
+}
+
+/* ROI Savings Calculator */
+.roi-section {
+    background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+}
+
+.roi-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.roi-card {
+    background: var(--lab-bg-white);
+    padding: var(--card-gap-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--lab-shadow-heavy);
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap-xl);
+    border: 1px solid var(--lab-border-light);
+}
+
+.roi-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap-lg);
+}
+
+.roi-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.roi-input-group label {
+    font: var(--font-caption);
+    color: var(--lab-text-light);
+}
+
+.roi-input-group input {
+    padding: 15px;
+    border: 2px solid var(--lab-border-light);
+    border-radius: var(--radius-sm);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--lab-palette-primary-main);
+    transition: border-color 0.3s ease;
+}
+
+.roi-input-group input:focus {
+    border-color: var(--lab-palette-primary-main);
+    outline: none;
+}
+
+.roi-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--card-gap-lg);
+    background: var(--lab-bg-light);
+    padding: var(--card-gap-lg);
+    border-radius: var(--radius-lg);
+}
+
+.roi-result-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.roi-result-value {
+    font: var(--font-title2);
+    font-weight: 800;
+    color: var(--lab-text-primary);
+}
+
+.roi-result-label {
+    font: var(--font-caption);
+    color: var(--lab-text-muted);
+}
+
+.roi-result-item.highlight .roi-result-value {
+    color: var(--lab-palette-accent-green);
+}
+
+.roi-cta {
+    text-align: center;
+}
+
+.roi-cta p {
+    font: var(--font-subtitle1);
+    color: var(--lab-text-secondary);
+    margin-bottom: var(--card-gap-md);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .framework-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .security-container {
+        grid-template-columns: 1fr;
+    }
+
+    .roi-inputs {
+        grid-template-columns: 1fr;
+    }
+    
+    .roi-results {
+        grid-template-columns: 1fr;
+    }
+}
+
 @keyframes button-shimmer {
     0% { background-position: -200%; }
     100% { background-position: 200%; }

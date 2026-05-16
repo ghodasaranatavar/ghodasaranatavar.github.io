@@ -120,7 +120,8 @@ const projectData = [
             "primaryCTA": "Generate SMS Strategy",
             "tools": ["roi-estimator", "discovery-call-prep", "architect-assistant", "agenda-generator"],
             "context": "Lead engagement automation for Real Estate using Twilio and Salesforce."
-        }
+        },
+        "architecture": "graph TD\n    subgraph Salesforce\n        Lead[Lead/Contact] --> Cadence[Sales Cadence]\n        Cadence --> ApexQ[Apex Queueable]\n        ApexQ --> Outbound[Twilio REST Outbound]\n    end\n    Outbound --> Twilio[Twilio API]\n    Twilio --> Recipient[Mobile Recipient]\n    Recipient --> Reply[SMS Reply]\n    Reply --> Webhook[Twilio Webhook]\n    subgraph Salesforce\n        Webhook --> Listener[Apex REST Listener]\n        Listener --> Router[Intelligent Lead Router]\n        Router --> Task[Create Task/Update Status]\n    end"
     },
     {
         "id": 2,
@@ -243,7 +244,8 @@ const projectData = [
             "primaryCTA": "Plan AI Implementation",
             "tools": ["cloud-recommendation", "integration-advisor", "architect-assistant", "roi-estimator"],
             "context": "Enterprise Gemini AI integration for research and OCR automation."
-        }
+        },
+        "architecture": "graph LR\n    subgraph Salesforce_UI\n        LWC[LWC Research Panel] --> PromptMgr[Metadata Prompt Manager]\n    end\n    subgraph Salesforce_Backend\n        PromptMgr --> ApexREST[Apex REST Callout]\n    end\n    ApexREST --> Gemini[Google Gemini AI API]\n    Gemini --> ApexREST\n    subgraph Salesforce_Backend\n        ApexREST --> Parser[JSON Response Parser]\n        Parser --> Storage[Structured Research Storage]\n    end\n    Storage --> LWC"
     },
     {
         "id": 3,

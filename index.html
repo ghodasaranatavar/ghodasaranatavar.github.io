@@ -35,6 +35,8 @@
                     <li role="none"><a href="#experience" class="nav-link" role="menuitem">Experience</a></li>
                     <li role="none"><a href="#certifications" class="nav-link" role="menuitem">Certifications</a></li>
                     <li role="none"><a href="#skills" class="nav-link" role="menuitem">Skills</a></li>
+                    <li role="none"><a href="#framework" class="nav-link" role="menuitem">Strategy</a></li>
+                    <li role="none"><a href="#security" class="nav-link" role="menuitem">Security</a></li>
                     <li role="none"><a href="#portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
                     <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
                 </ul>
@@ -62,43 +64,47 @@
                     </li>
                     <li role="none">
                         <a href="#experience" class="mobile-nav-link" role="menuitem" tabindex="-1">
-                            <span class="nav-icon"><i class="ph ph-briefcase"></i></span>
+                            <span class="nav-icon"><i class="ph ph-briefcase" aria-hidden="true"></i></span>
                             <span class="nav-text">Experience</span>
                         </a>
                     </li>
                     <li role="none">
                         <a href="#certifications" class="mobile-nav-link" role="menuitem" tabindex="-1">
-                            <span class="nav-icon"><i class="ph ph-medal"></i></span>
+                            <span class="nav-icon"><i class="ph ph-medal" aria-hidden="true"></i></span>
                             <span class="nav-text">Certifications</span>
                         </a>
                     </li>
                     <li role="none">
                         <a href="#skills" class="mobile-nav-link" role="menuitem" tabindex="-1">
-                            <span class="nav-icon"><i class="ph ph-lightning"></i></span>
+                            <span class="nav-icon"><i class="ph ph-lightning" aria-hidden="true"></i></span>
                             <span class="nav-text">Skills</span>
                         </a>
                     </li>
                     <li role="none">
+                        <a href="#framework" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon"><i class="ph ph-strategy" aria-hidden="true"></i></span>
+                            <span class="nav-text">Strategy</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#security" class="mobile-nav-link" role="menuitem" tabindex="-1">
+                            <span class="nav-icon"><i class="ph ph-shield-check" aria-hidden="true"></i></span>
+                            <span class="nav-text">Security</span>
+                        </a>
+                    </li>
+                    <li role="none">
                         <a href="#portfolio" class="mobile-nav-link" role="menuitem" tabindex="-1">
-                            <span class="nav-icon"><i class="ph ph-laptop"></i></span>
+                            <span class="nav-icon"><i class="ph ph-laptop" aria-hidden="true"></i></span>
                             <span class="nav-text">Portfolio</span>
                         </a>
                     </li>
                     <li role="none">
                         <a href="#contact" class="mobile-nav-link" role="menuitem" tabindex="-1">
-                            <span class="nav-icon"><i class="ph ph-phone"></i></span>
+                            <span class="nav-icon"><i class="ph ph-phone" aria-hidden="true"></i></span>
                             <span class="nav-text">Contact</span>
                         </a>
                     </li>
                 </ul>
-
-                <!-- Mobile CTA Button -->
-                <div class="mobile-nav-cta">
-                    <a href="mailto:ghodasaranatavar2011@gmail.com?subject=Schedule A Call - Salesforce Development Services"
-                        class="mobile-cta-btn">
-                        Schedule A Call
-                    </a>
-                </div>
             </div>
         </div>
         <!-- Mobile Navigation Overlay -->
@@ -153,6 +159,7 @@
                             <div class="hero-tagline animate-fade-in">
                                 6X Salesforce Certified Professional
                                 <span class="timezone-badge"><i class="ph ph-globe-hemisphere-west" aria-hidden="true"></i> USA-Aligned | GMT+5:30 (EST/PST Support)</span>
+                                <span class="team-badge" title="We lead a network of premium experts for enterprise-scale projects"><i class="ph ph-users-three" aria-hidden="true"></i> Boutique Agency Ready</span>
                             </div>
 
                             <h1 class="hero-title animate-fade-in">
@@ -166,10 +173,16 @@
                                 Architected systems that <strong>automate 20+ manual processes</strong>, saving clients significant operational costs while ensuring 99.9% data integrity.
                             </p>
 
-                            <div class="hero-cta-buttons hero-buttons animate-fade-in">
-                                <a href="#contact" class="btn-primary">Hire Me</a>
-                                <a href="#portfolio" class="btn-secondary">View Portfolio</a>
-                                <a href="#contact" class="btn-tertiary">Contact</a>
+                            <div class="hero-actions animate-fade-in">
+                                <button class="btn-primary calendly-trigger" aria-label="Book a free discovery call">
+                                    Book Free Consultation
+                                </button>
+                                <button class="btn-secondary" onclick="window.aiConsultant.togglePanel(true)" style="background: rgba(51, 96, 173, 0.1); color: var(--lab-palette-primary-main); border: 1px solid var(--lab-palette-primary-main);">
+                                    <i class="ph ph-sparkle" style="margin-right: 8px;"></i> Talk to My AI
+                                </button>
+                                <a href="#portfolio" class="btn-tertiary" aria-label="View expert case studies">
+                                    View Expert Solutions
+                                </a>
                             </div>
                         </div>
 
@@ -632,6 +645,137 @@
                         <div class="skill-item">
                             <span class="skill-name">Google Maps (Location) API</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Strategic Consulting Framework Section -->
+        <section id="framework" class="framework-section section-full">
+            <div class="section-header">
+                <h2 class="section-title"><i class="ph ph-strategy"></i> Strategic Consulting Framework</h2>
+                <p class="section-subtitle">
+                    Our proven 3-step process to transition your business from manual chaos to automated revenue growth.
+                </p>
+            </div>
+            <div class="framework-grid">
+                <div class="framework-step animate-fade-in">
+                    <div class="step-number">01</div>
+                    <div class="step-icon"><i class="ph ph-magnifying-glass"></i></div>
+                    <h3>Strategic Audit</h3>
+                    <p>We perform a deep-dive analysis of your current Salesforce bottlenecks and identify high-ROI automation opportunities.</p>
+                </div>
+                <div class="framework-step animate-fade-in" style="animation-delay: 0.1s;">
+                    <div class="step-number">02</div>
+                    <div class="step-icon"><i class="ph ph-blueprint"></i></div>
+                    <h3>Architectural Blueprint</h3>
+                    <p>We design a scalable, secure AI+Salesforce roadmap tailored to your specific business revenue engine.</p>
+                </div>
+                <div class="framework-step animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="step-number">03</div>
+                    <div class="step-icon"><i class="ph ph-rocket-launch"></i></div>
+                    <h3>Automated Execution</h3>
+                    <p>We deploy production-grade Agentic systems that automate workflows, drive efficiency, and maximize your CRM investment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Enterprise-Grade Security & Compliance Section -->
+        <section id="security" class="security-section section-full">
+            <div class="section-header">
+                <h2 class="section-title"><i class="ph ph-shield-checkered"></i> Enterprise-Grade Security & Compliance</h2>
+                <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.8);">
+                    Protecting your most valuable asset: your proprietary enterprise data.
+                </p>
+            </div>
+            <div class="security-container">
+                <div class="security-content">
+                    <p class="security-intro">
+                        In the age of AI, data integrity is your most valuable asset. We build with a security-first mindset to protect your enterprise reputation.
+                    </p>
+                    <div class="security-grid">
+                        <div class="security-item">
+                            <div class="security-icon"><i class="ph ph-lock-key"></i></div>
+                            <div>
+                                <h3>GDPR & SOC2 Alignment</h3>
+                                <p>12+ years experience architecting systems that meet rigorous international data privacy standards.</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <div class="security-icon"><i class="ph ph-database"></i></div>
+                            <div>
+                                <h3>Secure AI Architectures</h3>
+                                <p>Implementing Private RAG (Retrieval-Augmented Generation) to ensure your proprietary data never trains public models.</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <div class="security-icon"><i class="ph ph-check-square-offset"></i></div>
+                            <div>
+                                <h3>99.9% Data Integrity</h3>
+                                <p>Proven track record of maintaining absolute data accuracy in high-volume enterprise migrations and syncs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="security-badge-cloud">
+                    <div class="security-badge"><i class="ph ph-shield-check"></i> <span>Secure Integration</span></div>
+                    <div class="security-badge"><i class="ph ph-eye-slash"></i> <span>Privacy First</span></div>
+                    <div class="security-badge"><i class="ph ph-fingerprint"></i> <span>Zero Trust AI</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Global Trust & Industry Expertise (Logo Section Placeholder) -->
+        <section id="trust" class="trust-cloud-section section-full">
+            <div class="section-header">
+                <h2 class="section-title"><i class="ph ph-globe"></i> Global Trust & Industry Expertise</h2>
+                <p class="section-subtitle">Delivering high-value solutions across diverse enterprise sectors.</p>
+            </div>
+            <div class="industry-marquee">
+                <div class="industry-item"><i class="ph ph-buildings"></i> Real Estate Tech</div>
+                <div class="industry-item"><i class="ph ph-truck"></i> Logistics & Supply Chain</div>
+                <div class="industry-item"><i class="ph ph-bank"></i> FinTech & Banking</div>
+                <div class="industry-item"><i class="ph ph-first-aid"></i> Healthcare eCommerce</div>
+                <div class="industry-item"><i class="ph ph-graduation-cap"></i> Global Education</div>
+                <div class="industry-item"><i class="ph ph-factory"></i> IT Services</div>
+            </div>
+        </section>
+
+        <!-- NEW: ROI Savings Calculator -->
+        <section id="roi-calculator" class="roi-section section-full">
+            <div class="roi-container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="ph ph-calculator"></i> ROI Savings Calculator</h2>
+                    <p class="section-subtitle">Calculate how much manual time and cost we can automate for your team.</p>
+                </div>
+                <div class="roi-card">
+                    <div class="roi-inputs">
+                        <div class="roi-input-group">
+                            <label for="team-size">Team Size (Agents)</label>
+                            <input type="number" id="team-size" value="10" min="1">
+                        </div>
+                        <div class="roi-input-group">
+                            <label for="hours-manual">Manual Hours / Agent / Week</label>
+                            <input type="number" id="hours-manual" value="5" min="1">
+                        </div>
+                        <div class="roi-input-group">
+                            <label for="hourly-rate">Avg. Hourly Rate ($)</label>
+                            <input type="number" id="hourly-rate" value="50" min="1">
+                        </div>
+                    </div>
+                    <div class="roi-results">
+                        <div class="roi-result-item">
+                            <span class="roi-result-value" id="hours-saved">2,600</span>
+                            <span class="roi-result-label">Hours Saved / Year</span>
+                        </div>
+                        <div class="roi-result-item highlight">
+                            <span class="roi-result-value" id="cost-saved">$130,000</span>
+                            <span class="roi-result-label">Annual Cost Savings</span>
+                        </div>
+                    </div>
+                    <div class="roi-cta">
+                        <p>Imagine what your team could achieve with an extra <span id="hours-saved-text">2,600</span> hours.</p>
+                        <button class="btn-primary calendly-trigger">Schedule Your ROI Discovery</button>
                     </div>
                 </div>
             </div>

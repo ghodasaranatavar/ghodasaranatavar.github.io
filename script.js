@@ -31,6 +31,7 @@ class EnhancedAccessiblePortfolioApp {
     this.setupFooterAnimations();
     this.setupAccessibilityFeatures();
     this.setupSmoothScrolling();
+    this.setupROICalculator(); // NEW: ROI Calculator
     // Initialize Review Toaster
     this.initReviewToaster();
     this.setupScrollToTop(); // Add this line
@@ -637,6 +638,41 @@ class EnhancedAccessiblePortfolioApp {
     this.setupBasicTypingEffect();
     this.setupBasicLoadingState();
     this.setupBasicStatsAnimation();
+    this.setupROICalculator();
+  }
+
+  // NEW: ROI Savings Calculator Logic
+  setupROICalculator() {
+    const teamSizeInput = document.getElementById('team-size');
+    const hoursManualInput = document.getElementById('hours-manual');
+    const hourlyRateInput = document.getElementById('hourly-rate');
+    
+    if (!teamSizeInput || !hoursManualInput || !hourlyRateInput) return;
+
+    const updateROI = () => {
+      const teamSize = parseFloat(teamSizeInput.value) || 0;
+      const hoursManual = parseFloat(hoursManualInput.value) || 0;
+      const hourlyRate = parseFloat(hourlyRateInput.value) || 0;
+      
+      const weeklyHoursSaved = teamSize * hoursManual;
+      const annualHoursSaved = weeklyHoursSaved * 52;
+      const annualCostSaved = annualHoursSaved * hourlyRate;
+      
+      const hoursSavedEl = document.getElementById('hours-saved');
+      const costSavedEl = document.getElementById('cost-saved');
+      const hoursSavedTextEl = document.getElementById('hours-saved-text');
+      
+      if (hoursSavedEl) hoursSavedEl.innerText = annualHoursSaved.toLocaleString();
+      if (costSavedEl) costSavedEl.innerText = `$${annualCostSaved.toLocaleString()}`;
+      if (hoursSavedTextEl) hoursSavedTextEl.innerText = annualHoursSaved.toLocaleString();
+    };
+
+    [teamSizeInput, hoursManualInput, hourlyRateInput].forEach(input => {
+      input.addEventListener('input', updateROI);
+    });
+    
+    // Initial calculation
+    updateROI();
   }
 
   // Debug function to check section positions
@@ -892,6 +928,10 @@ class EnhancedAccessiblePortfolioApp {
       "experience",
       "certifications",
       "skills",
+      "framework",
+      "security",
+      "trust",
+      "roi-calculator",
       "portfolio",
       "contact",
     ];

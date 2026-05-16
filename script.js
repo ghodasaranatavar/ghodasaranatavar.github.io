@@ -918,7 +918,8 @@ class EnhancedAccessiblePortfolioApp {
         // Multiple thresholds for better detection
         threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
         // Adjusted root margin to account for header
-        rootMargin: `-${this.getHeaderHeight()}px 0px -20% 0px`,
+        // Adjusted root margin for better detection - trigger when section is in top half
+        rootMargin: "-100px 0px -50% 0px",
       }
     );
 
@@ -984,6 +985,10 @@ class EnhancedAccessiblePortfolioApp {
         "experience",
         "certifications",
         "skills",
+        "framework",
+        "security",
+        "trust",
+        "roi-calculator",
         "portfolio",
         "contact",
       ];
@@ -1066,17 +1071,23 @@ class EnhancedAccessiblePortfolioApp {
 
   // FIXED: Enhanced updateActiveNavigation method
   updateActiveNavigation(activeSection) {
-    if (this.currentSection === activeSection) return;
-
-    const previousSection = this.currentSection;
-    this.currentSection = activeSection;
+    // Map sub-sections to their primary navigation parent
+    const sectionAliases = {
+      "trust": "security",
+      "roi-calculator": "security"
+    };
+    
+    const primarySection = sectionAliases[activeSection] || activeSection;
+    
+    if (this.currentSection === primarySection) return;
+    this.currentSection = primarySection;
 
     // Update desktop navigation links
     const desktopNavLinks = document.querySelectorAll(".nav-menu .nav-link");
     desktopNavLinks.forEach((link) => {
       link.classList.remove("active");
       const href = link.getAttribute("href");
-      if (href === `#${activeSection}`) {
+      if (href === `#${primarySection}`) {
         link.classList.add("active");
       }
     });
@@ -1086,14 +1097,14 @@ class EnhancedAccessiblePortfolioApp {
     mobileNavLinks.forEach((link) => {
       link.classList.remove("active");
       const href = link.getAttribute("href");
-      if (href === `#${activeSection}`) {
+      if (href === `#${primarySection}`) {
         link.classList.add("active");
       }
     });
 
     // Update URL hash without triggering scroll
     if (history.replaceState) {
-      const newUrl = `${window.location.pathname}${window.location.search}#${activeSection}`;
+      const newUrl = `${window.location.pathname}${window.location.search}#${primarySection}`;
       history.replaceState(null, null, newUrl);
     }
   }

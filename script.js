@@ -900,9 +900,8 @@ class EnhancedAccessiblePortfolioApp {
       const section = document.getElementById(sectionId);
       if (section) {
         this.sectionObserver.observe(section);
-      } else {
-        console.warn(`⚠️ Section not found: ${sectionId}`);
       }
+      // Silently ignore missing sections to support sub-pages
     });
 
     // Enhanced manual scroll detection as primary method
@@ -1234,6 +1233,33 @@ class EnhancedAccessiblePortfolioApp {
     if (this.isMobile) {
       this.setupReducedMotionObserver();
     }
+
+    this.setupHeroVisibilityObserver();
+  }
+
+  // New method to track hero visibility for UI adjustments (like hiding the toaster)
+  setupHeroVisibilityObserver() {
+    const heroSection = document.getElementById("home");
+    const toasterContainer = document.getElementById("review-toaster");
+
+    if (!heroSection || !toasterContainer) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            toasterContainer.classList.add("hero-visible");
+          } else {
+            toasterContainer.classList.remove("hero-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of hero is visible
+      }
+    );
+
+    observer.observe(heroSection);
   }
 
   setupFullWidthObserver() {
@@ -1518,8 +1544,6 @@ class EnhancedAccessiblePortfolioApp {
       document.querySelector(".trust-section");
     if (statsSection) {
       statsObserver.observe(statsSection);
-    } else {
-      console.warn("⚠️ Stats section not found!");
     }
   }
 

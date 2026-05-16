@@ -1558,10 +1558,10 @@ body {
 
 .footer-contact-label {
     font: var(--font-caption);
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.95); /* Increased contrast from 0.7 */
     text-transform: uppercase;
-    letter-spacing: 0.02em;
-    font-weight: 700;
+    letter-spacing: 0.05em; /* Increased spacing for legibility */
+    font-weight: 800; /* Bolder for enterprise readability */
 }
 
 .footer-contact-value {
@@ -1834,6 +1834,34 @@ body.loaded {
     letter-spacing: 0.02em;
 }
 
+/* Timezone Badge in Hero */
+.timezone-badge {
+    background: rgba(51, 96, 173, 0.1);
+    color: var(--lab-palette-primary-main);
+    border: 1px solid rgba(51, 96, 173, 0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-left: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    vertical-align: middle;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes button-shimmer {
+    0% { background-position: -200%; }
+    100% { background-position: 200%; }
+}
+
+.calendly-trigger {
+    background: linear-gradient(90deg, var(--lab-palette-accent-pink), #ff4081, var(--lab-palette-accent-pink)) !important;
+    background-size: 200% auto !important;
+    animation: button-shimmer 4s linear infinite !important;
+}
+
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
@@ -1852,6 +1880,21 @@ body.loaded {
     z-index: 9999;
     max-width: 420px;
     pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+@media (min-width: 1024px) {
+    .review-toaster {
+        bottom: 30px;
+        left: 30px;
+        max-width: 380px;
+    }
+    
+    /* Hide toaster if hero buttons are in view to prevent overlap */
+    .review-toaster.hero-visible {
+        opacity: 0.15;
+        pointer-events: none;
+    }
 }
 
 /* Individual Toaster Notification */
@@ -2138,11 +2181,19 @@ body.loaded {
         right: 10px;
         bottom: 10px;
         max-width: none;
+        z-index: 1001; /* Ensure it's above other elements */
     }
     
     .toaster-notification {
         padding: var(--card-gap-sm);
         max-width: 100%;
+        font-size: 0.85rem;
+    }
+    
+    /* Ensure hero buttons are accessible above toaster on small screens */
+    .hero-buttons {
+        z-index: 1002;
+        position: relative;
     }
     
     .toaster-icon {

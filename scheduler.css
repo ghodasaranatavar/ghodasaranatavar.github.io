@@ -55,24 +55,40 @@
     position: absolute;
     top: 15px;
     right: 15px;
-    background: none;
-    border: none;
+    background: white;
+    border: 1px solid var(--lab-border-medium);
     font-size: 24px;
     cursor: pointer;
-    color: var(--lab-text-secondary);
-    z-index: 10;
-    width: 32px;
-    height: 32px;
+    color: var(--lab-text-primary);
+    z-index: 100;
+    width: 44px; /* Increased to 44px for thumb-friendly tap target */
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .scheduler-modal-close:hover {
-    background: rgba(0,0,0,0.05);
-    color: var(--lab-text-primary);
+    background: var(--lab-palette-accent-pink);
+    color: white;
+    border-color: var(--lab-palette-accent-pink);
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+    .scheduler-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 48px; /* Even larger on mobile */
+        height: 48px;
+        background: var(--lab-bg-light);
+        border: 2px solid var(--lab-palette-primary-main);
+        color: var(--lab-palette-primary-main);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
 }
 
 /* Layout */
@@ -605,27 +621,60 @@
     box-shadow: 0 0 0 3px rgba(51, 96, 173, 0.2);
 }
 
-/* Rich Text Editor */
-.rich-text-editor {
-    height: 120px;
-    background: white;
-    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-}
-
+/* Rich Text Editor Fixes */
 .ql-toolbar.ql-snow {
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    border-top-left-radius: var(--radius-sm);
+    border-top-right-radius: var(--radius-sm);
     border-color: var(--lab-border-medium) !important;
+    background: #f8f9fa;
+    padding: 8px 12px !important;
+    border-bottom: none !important;
+    display: block !important;
+    width: 100% !important;
 }
 
 .ql-container.ql-snow {
-    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    border-bottom-left-radius: var(--radius-sm);
+    border-bottom-right-radius: var(--radius-sm);
     border-color: var(--lab-border-medium) !important;
+    min-height: 120px;
+    height: auto !important;
+    font-family: inherit;
+    font-size: 1rem;
+    background: white;
+    width: 100% !important;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .ql-editor {
-    font-family: inherit;
-    font-size: 0.95rem;
+    min-height: 120px;
+    padding: 12px !important;
 }
+
+/* Fix for missing icons or weird colors */
+.ql-snow .ql-stroke {
+    stroke: #444 !important;
+}
+.ql-snow .ql-fill {
+    fill: #444 !important;
+}
+.ql-snow .ql-picker {
+    color: #444 !important;
+}
+
+/* Integrated Focus State */
+.ql-container.ql-snow:focus-within {
+    border-color: var(--lab-palette-primary-main) !important;
+    box-shadow: 0 0 0 3px rgba(51, 96, 173, 0.2);
+    outline: none !important;
+}
+
+/* Remove default focus ring on the container itself if present */
+#booking-notes-editor:focus {
+    outline: none !important;
+}
+
+
 
 .scheduler-submit {
     margin-top: 10px;

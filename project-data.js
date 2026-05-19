@@ -367,7 +367,8 @@ const projectData = [
             "primaryCTA": "Optimize System Stability",
             "tools": ["architect-assistant", "integration-advisor", "agenda-generator", "discovery-call-prep"],
             "context": "Scalable metadata-driven frameworks and batch optimization."
-        }
+        },
+        "architecture": "graph TD\n    subgraph Configuration\n        Config[\"Custom Metadata Types\"] --> Mapping[\"Dynamic Field Mappings\"]\n    end\n    subgraph Execution_Engine\n        Trigger[\"Trigger / Flow\"] --> Dispatcher[\"Queueable Dispatcher\"]\n        Dispatcher --> Batch[\"Batch Apex Execution\"]\n        Batch --> Engine[\"Dynamic Action Engine\"]\n        Mapping --> Engine\n    end\n    subgraph Outputs\n        Engine --> APIs[\"Enterprise REST APIs\"]\n        Engine --> Log[\"Custom Error Logger\"]\n        Log --> Slack[\"Slack/Email Alerts\"]\n    end"
     },
     {
         "id": 4,
@@ -471,7 +472,8 @@ const projectData = [
             "isFeatured": false
         },
         "detailFeatured": false,
-        "hubFeatured": false
+        "hubFeatured": false,
+        "architecture": "graph LR\n    subgraph Client_Experience\n        User[\"Applicant (Experience Cloud Portal)\"] --> Upload[\"LWC Upload Component\"]\n        User --> Form[\"Application Form LWC\"]\n    end\n    subgraph File_Management\n        Upload --> AzureREST[\"Azure Storage REST Callout\"]\n        AzureREST --> AzureBlob[\"Azure Blob Storage\"]\n    end\n    subgraph Application_Flow\n        Form --> Approval[\"State-Machine Approval Flow\"]\n        Approval --> TriggerPDF[\"Apex PDF Trigger\"]\n    end\n    subgraph Certificate_Delivery\n        TriggerPDF --> PDFEngine[\"Automated PDF Engine\"]\n        PDFEngine --> Email[\"Instant Certificate Delivery Email\"]\n    end"
     },
     {
         "id": 5,
@@ -575,7 +577,8 @@ const projectData = [
             "isFeatured": false
         },
         "detailFeatured": false,
-        "hubFeatured": false
+        "hubFeatured": false,
+        "architecture": "graph TD\n    subgraph Salesforce_UI\n        LWC[\"LWC Document Explorer\"] --> Auth[\"OAuth 2.0 Auth Handler\"]\n    end\n    subgraph SharePoint_API\n        Auth --> GraphAPI[\"MS Graph API / SharePoint\"]\n    end\n    subgraph Folder_Orchestration\n        OppTrigger[\"Opportunity Creation Flow\"] --> ApexOrch[\"Apex Folder Orchestrator\"]\n        ApexOrch --> RecursiveSync[\"Recursive Folder Builder (Graph API)\"]\n        RecursiveSync --> SharePointFolder[\"SharePoint Folder Hierarchy\"]\n    end\n    subgraph Native_Document_Viewer\n        SharePointFolder --> LWC\n    end"
     },
     {
         "id": 6,
@@ -683,7 +686,8 @@ const projectData = [
             "isFeatured": false
         },
         "detailFeatured": false,
-        "hubFeatured": true
+        "hubFeatured": true,
+        "architecture": "graph TD\n    subgraph Property_Sync\n        Bridge[\"Bridge Interactive API\"] --> MLS[\"MLS Property Sync Engine\"]\n        Zillow[\"Zillow API\"] --> MLS\n        MLS --> SFDb[\"Salesforce Database\"]\n    end\n    subgraph Lead_Nurture\n        SFDb --> Cadence[\"Custom Cadence Builder LWC\"]\n        Cadence --> TwilioAPI[\"Twilio SMS/Call API\"]\n    end\n    subgraph Transaction_Flow\n        SFDb --> OpenSign[\"NaturalForms / OpenSign Webhooks\"]\n        OpenSign --> Transaction[\"Digital Transaction Management\"]\n        Transaction --> QB[\"QuickBooks API (Commission Sync)\"]\n    end"
     },
     {
         "id": 7,
@@ -788,7 +792,8 @@ const projectData = [
             "isFeatured": false
         },
         "detailFeatured": false,
-        "hubFeatured": false
+        "hubFeatured": false,
+        "architecture": "graph LR\n    subgraph Lead_Inflow\n        WP[\"WordPress Dental Site\"] --> W2L[\"Web-to-Lead / REST API\"]\n        W2L --> SF[\"Salesforce CRM\"]\n    end\n    subgraph Order_Fulfillment\n        SF --> OrderAPI[\"ShipStation REST API\"]\n        OrderAPI --> ShipStation[\"ShipStation Fulfillment\"]\n    end\n    subgraph Shipping_Sync\n        ShipStation --> Webhook[\"Shipment Tracking Webhook\"]\n        Webhook --> TrackingSync[\"Apex Tracking Sync Engine\"]\n        TrackingSync --> Portal[\"Experience Cloud Customer Portal\"]\n    end"
     },
     {
         "id": 8,
@@ -893,7 +898,8 @@ const projectData = [
             "isFeatured": false
         },
         "detailFeatured": false,
-        "hubFeatured": false
+        "hubFeatured": false,
+        "architecture": "graph TD\n    subgraph Citizen_Experience\n        Citizen[\"Citizen (Experience Cloud)\"] --> App[\"OmniScript Form (OmniStudio)\"]\n    end\n    subgraph Public_Sector_Solutions\n        App --> PSS[\"PSS Data Model (Licenses/Permits)\"]\n        PSS --> Routing[\"Flow / OmniStudio Integration Procedures\"]\n    end\n    subgraph Regulatory_Compliance\n        Routing --> Approval[\"Multi-Department Approval Matrix\"]\n        Approval --> Schedule[\"Field Inspector Scheduler LWC\"]\n        Schedule --> Verify[\"Compliance Verification & Permit Issuance\"]\n    end"
     }
 ];
 

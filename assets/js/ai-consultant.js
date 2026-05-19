@@ -393,6 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             selectedGoals.clear();
                             renderTags();
                             window.aiConsultant.activeTool = tool.name;
+                            window.aiConsultant.activeToolSlug = tool.slug;
                             
                             // Update Active Mode Badge
                             if (activeModeBadge) {
@@ -503,6 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const payload = {
                 industry_id: industrySelect.value,
                 goal: finalGoal,
+                tool_slug: window.aiConsultant.activeToolSlug || '',
                 clouds: Array.from(selectedClouds).join(', '),
                 team_size: teamSizeSelect.value,
                 challenge: challengeText.value

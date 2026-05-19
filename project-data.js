@@ -915,6 +915,386 @@ const projectData = [
         "detailFeatured": false,
         "hubFeatured": false,
         "architecture": "graph TD\n    subgraph Citizen_Experience\n        Citizen[\"Citizen (Experience Cloud)\"] --> App[\"OmniScript Form (OmniStudio)\"]\n    end\n    subgraph Public_Sector_Solutions\n        App --> PSS[\"PSS Data Model (Licenses/Permits)\"]\n        PSS --> Routing[\"Flow / OmniStudio Integration Procedures\"]\n    end\n    subgraph Regulatory_Compliance\n        Routing --> Approval[\"Multi-Department Approval Matrix\"]\n        Approval --> Schedule[\"Field Inspector Scheduler LWC\"]\n        Schedule --> Verify[\"Compliance Verification & Permit Issuance\"]\n    end"
+    },
+    {
+        "id": 9,
+        "title": "Slack → Salesforce → QuickBooks Time Workforce Automation",
+        "challenge": {
+            "icon": "ph ph-timer",
+            "title": "Disconnected Workforce Time Tracking",
+            "description": "Manual timesheet entry across Slack, Salesforce, and payroll systems was creating payroll inaccuracies and operational inefficiencies."
+        },
+        "niche": "Field Service / Workforce Automation",
+        "myRole": "Lead Salesforce Integration Architect & Automation Engineer",
+        "technicalComplexity": [
+            "Slack Workflow Automation",
+            "QuickBooks Time API Synchronization",
+            "Event-Driven Workforce Tracking"
+        ],
+        "whoIsThisFor": "Organizations using Slack and Salesforce Field Service Lightning that require automated employee time tracking and payroll synchronization.",
+        "metricsPreview": [
+            "Automated Clock-In/Out Tracking",
+            "Real-Time QBT Synchronization",
+            "Zero Manual Timesheets"
+        ],
+        "client": {
+            "industry": "Field Service Operations",
+            "size": "Enterprise",
+            "location": "Remote"
+        },
+        "businessContext": "A field service organization managing distributed employees through Slack while tracking workforce operations in Salesforce and payroll in QuickBooks Time.",
+        "operationalProblem": "Employees were manually entering timesheets after completing work, causing payroll discrepancies, missing labor visibility, and delayed reporting.",
+        "solutionStrategy": "Architected a Slack-to-Salesforce workforce automation platform integrated with QuickBooks Time to automate employee clock-in, clock-out, and timesheet synchronization workflows.",
+        "objective": [
+            "Automate employee clock-in and clock-out workflows from Slack",
+            "Synchronize Slack users and channels into Salesforce automatically",
+            "Create and maintain QuickBooks Time users and job codes dynamically",
+            "Eliminate manual timesheet entry processes",
+            "Provide real-time workforce visibility through Salesforce dashboards"
+        ],
+        "solution": {
+            "description": "Developed a real-time workforce automation ecosystem integrating Slack, Salesforce Field Service Lightning, and QuickBooks Time using asynchronous event-driven architecture.",
+            "highlights": [
+                "Built Slack slash-command and interactive workflows for workforce clock-in and clock-out operations",
+                "Developed Salesforce middleware layer for Slack event ingestion and synchronization",
+                "Implemented automated QuickBooks Time user provisioning and job code synchronization",
+                "Built Queueable Apex synchronization framework for scalable timesheet processing",
+                "Designed Salesforce dashboards for labor analytics and workforce visibility",
+                "Implemented retry-based error handling and audit logging framework for failed API operations",
+                "Enabled mobile and desktop workforce tracking without requiring additional applications"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Field Service Lightning",
+                "Sales Cloud",
+                "Service Cloud",
+                "Apex",
+                "LWC"
+            ],
+            "tools": [
+                "Queueable Apex",
+                "Platform Events",
+                "Named Credentials",
+                "REST APIs",
+                "Flow Builder"
+            ],
+            "integrations": [
+                "Slack API",
+                "Slack Events API",
+                "QuickBooks Time API",
+                "Webhooks"
+            ]
+        },
+        "results": [
+            {
+                "metric": "100% Automated",
+                "label": "Timesheet Synchronization"
+            },
+            {
+                "metric": "Real-Time",
+                "label": "Workforce Visibility"
+            },
+            {
+                "metric": "Zero Manual Entry",
+                "label": "Payroll Tracking"
+            },
+            {
+                "metric": "Centralized",
+                "label": "Slack-to-QBT Operations"
+            }
+        ],
+        "feedback": "Natavar architected an extremely scalable workforce tracking system integrating Slack, Salesforce, and QuickBooks Time. The automation significantly reduced payroll overhead and improved operational visibility across our field teams.",
+        "takeaways": [
+            "Slack can serve as a workforce operations interface beyond communication.",
+            "Event-driven synchronization reduces payroll processing overhead.",
+            "Real-time labor tracking improves operational visibility and profitability.",
+            "Automated retry mechanisms are critical for enterprise-grade API orchestration."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/9.Slack Salesforce QuickBooks Time Workforce Automation Blue.png",
+                "caption": "Slack Workforce Time Tracking & QBT Synchronization",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Slack, Salesforce Field Service Lightning, and QuickBooks Time integration for automated workforce tracking and payroll synchronization.",
+            "keywords": "Slack Integration, Salesforce Field Service Lightning, QuickBooks Time API, Workforce Automation, Payroll Automation"
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": false,
+        "aiConfig": {
+            "title": "Workforce Automation Consultant",
+            "primaryCTA": "Generate Workforce Integration Strategy",
+            "tools": [
+                "integration-advisor",
+                "architect-assistant",
+                "roi-estimator",
+                "discovery-call-prep"
+            ],
+            "context": "Slack-based workforce automation integrated with Salesforce and QuickBooks Time."
+        },
+        "architecture": "graph TD\n    subgraph Slack_Workspace\n        Employee[\"Employee (Slack Mobile/Desktop)\"] --> ClockIn[\"Clock In / Clock Out Action\"]\n    end\n\n    subgraph Salesforce_Platform\n        ClockIn --> SlackAPI[\"Slack Events API\"]\n        SlackAPI --> Listener[\"Apex REST Listener\"]\n\n        Listener --> UserSync[\"Slack User Sync\"]\n        Listener --> ChannelSync[\"Slack Channel Sync\"]\n        Listener --> TimeLog[\"Time Log Records\"]\n\n        TimeLog --> Queueable[\"Queueable Sync Engine\"]\n    end\n\n    subgraph QuickBooks_Time\n        Queueable --> QBTUser[\"QBT User Creation\"]\n        Queueable --> QBTJob[\"QBT Job Code Creation\"]\n\n        QBTUser --> Timesheet[\"QBT Timesheet Creation\"]\n        QBTJob --> Timesheet\n\n        Timesheet --> ClockOut[\"Timesheet Update on Clock Out\"]\n    end\n\n    subgraph Monitoring\n        Queueable --> Audit[\"Audit Logs\"]\n        Queueable --> Retry[\"Retry/Error Workflow\"]\n        Audit --> Dashboard[\"Salesforce Dashboards\"]\n    end"
+    },
+    {
+        "id": 10,
+        "title": "Field Service Lightning ↔ Xero Invoice Synchronization for Passive Fire Protection Operations",
+        "challenge": {
+            "icon": "ph ph-fire-extinguisher",
+            "title": "Disconnected Field Service Billing Operations",
+            "description": "Manual invoice reconciliation between field technicians, Salesforce Field Service Lightning, and Xero accounting workflows was causing billing delays, compliance risks, and revenue leakage."
+        },
+        "niche": "Passive Fire Protection / Field Service Automation",
+        "myRole": "Salesforce Field Service & Financial Integration Architect",
+        "technicalComplexity": [
+            "Field Service Lightning Automation",
+            "Two-Way Xero Synchronization",
+            "Real-Time Work Order Billing",
+            "Compliance-Driven Financial Workflows"
+        ],
+        "whoIsThisFor": "Passive fire protection contractors managing inspections, compliance services, installations, and maintenance operations using Salesforce Field Service Lightning and Xero accounting.",
+        "metricsPreview": [
+            "Automated Work Order Billing",
+            "Real-Time Invoice Synchronization",
+            "Technician-to-Accounting Automation"
+        ],
+        "client": {
+            "industry": "Passive Fire Protection & Compliance Services",
+            "size": "Enterprise",
+            "location": "Remote"
+        },
+        "businessContext": "A passive fire protection contractor managing inspections, service appointments, compliance reports, technician dispatching, and invoicing across Salesforce Field Service Lightning and Xero accounting systems.",
+        "operationalProblem": "Field technicians completed fire inspection and maintenance work orders in Salesforce, but finance teams manually recreated invoices in Xero. Delayed invoice processing, inconsistent tax calculations, and disconnected field operations created operational bottlenecks and compliance risks.",
+        "solutionStrategy": "Architected a real-time Field Service Lightning and Xero synchronization platform enabling automated invoice generation directly from completed service appointments and work orders with bidirectional accounting synchronization.",
+        "objective": [
+            "Automate invoice generation directly from completed field service work orders",
+            "Synchronize service line items, labor hours, and materials into Xero automatically",
+            "Enable bidirectional invoice synchronization between Salesforce and Xero",
+            "Provide technicians and finance teams with real-time billing visibility",
+            "Reduce manual accounting reconciliation for compliance operations",
+            "Centralize field operations, invoicing, and financial reporting"
+        ],
+        "solution": {
+            "description": "Developed a comprehensive field-service financial automation platform integrating Salesforce Field Service Lightning with Xero Accounting APIs for passive fire protection operations.",
+            "highlights": [
+                "Built custom invoice generation workflows directly from Field Service Work Orders and Service Appointments",
+                "Developed technician-driven billing workflows using Lightning Web Components",
+                "Implemented automated Xero contact and customer account synchronization",
+                "Built two-way invoice synchronization between Salesforce and Xero accounting systems",
+                "Enabled automatic synchronization of labor hours, inspection services, compliance fees, and material costs",
+                "Designed financial dashboards for service revenue, technician billing, and compliance reporting",
+                "Implemented retry-based error handling and audit tracking for financial synchronization operations",
+                "Integrated field-service completion workflows with real-time invoice generation pipelines"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Field Service Lightning",
+                "Sales Cloud",
+                "Service Cloud",
+                "Apex",
+                "LWC"
+            ],
+            "tools": [
+                "Queueable Apex",
+                "Platform Events",
+                "Named Credentials",
+                "REST APIs",
+                "Flow Builder"
+            ],
+            "integrations": [
+                "Xero Accounting API",
+                "OAuth 2.0",
+                "Webhooks"
+            ]
+        },
+        "results": [
+            {
+                "metric": "100% Automated",
+                "label": "Work Order Billing"
+            },
+            {
+                "metric": "Real-Time",
+                "label": "Invoice Synchronization"
+            },
+            {
+                "metric": "Reduced",
+                "label": "Accounting Reconciliation"
+            },
+            {
+                "metric": "Centralized",
+                "label": "Field-to-Finance Operations"
+            }
+        ],
+        "feedback": "Natavar successfully connected our field technicians, dispatch workflows, and accounting operations into a single real-time billing ecosystem. Invoice processing became dramatically faster and more reliable.",
+        "takeaways": [
+            "Field Service Lightning becomes significantly more powerful when tightly integrated with accounting systems.",
+            "Automated invoice orchestration reduces revenue leakage in field operations.",
+            "Real-time synchronization improves operational and compliance visibility.",
+            "Bidirectional financial synchronization requires strong audit tracking and retry mechanisms."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/10.Field Service Lightning Xero Passive Fire Protection Blue.png",
+                "caption": "Field Service Lightning & Xero Financial Synchronization",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Salesforce Field Service Lightning and Xero integration for passive fire protection contractors with automated work order billing and invoice synchronization.",
+            "keywords": "Field Service Lightning, Xero Integration, Passive Fire Protection, Salesforce Work Orders, Invoice Automation, Compliance Billing"
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": true,
+        "aiConfig": {
+            "title": "Field Service Financial Automation Consultant",
+            "primaryCTA": "Generate Field Service Billing Strategy",
+            "tools": [
+                "integration-advisor",
+                "architect-assistant",
+                "roi-estimator",
+                "agenda-generator"
+            ],
+            "context": "Field Service Lightning and Xero accounting automation for passive fire protection contractors."
+        },
+        "architecture": "graph TD\n    subgraph Field_Service_Operations\n        Technician[\"Field Technician\"] --> Appointment[\"Service Appointment Completion\"]\n        Appointment --> WorkOrder[\"Field Service Work Order\"]\n        WorkOrder --> InvoiceWizard[\"Invoice Generation Wizard (LWC)\"]\n    end\n\n    subgraph Salesforce_Platform\n        InvoiceWizard --> Invoice[\"Salesforce Invoice Record\"]\n        Invoice --> LineItems[\"Labor / Materials / Compliance Fees\"]\n        Invoice --> Trigger[\"Invoice Sync Trigger\"]\n        Trigger --> Queueable[\"Queueable Sync Engine\"]\n    end\n\n    subgraph Xero_Accounting\n        Queueable --> ContactSync[\"Xero Customer Sync\"]\n        ContactSync --> XeroAPI[\"Xero Accounting API\"]\n        XeroAPI --> XeroInvoice[\"Xero Invoice Creation\"]\n        XeroInvoice --> Totals[\"Tax & Total Calculations\"]\n    end\n\n    subgraph Two_Way_Synchronization\n        XeroInvoice --> Webhook[\"Xero Webhooks\"]\n        Webhook --> ReverseSync[\"Salesforce Reverse Sync\"]\n        ReverseSync --> Invoice\n    end\n\n    subgraph Monitoring_Analytics\n        Queueable --> Audit[\"Audit Logs\"]\n        Queueable --> Retry[\"Retry/Error Workflow\"]\n        Audit --> Dashboard[\"Revenue & Billing Dashboards\"]\n    end"
+    },
+    {
+        "id": 11,
+        "title": "Salesforce Field Service Lightning ↔ Dashpivot Work Order Automation",
+        "challenge": {
+            "icon": "ph ph-tree-evergreen",
+            "title": "Disconnected Landscaping Field Operations",
+            "description": "Landscaping contractors were struggling with disconnected inspection forms, OHS documentation, field evidence tracking, and manual work order completion processes."
+        },
+        "niche": "Landscaping Operations / Field Service Automation",
+        "myRole": "Salesforce Field Service & Integration Architect",
+        "technicalComplexity": [
+            "Field Service Lightning Automation",
+            "Dashpivot API Orchestration",
+            "Document Synchronization Workflows",
+            "Mobile Field Operations"
+        ],
+        "whoIsThisFor": "Landscaping contractors using Salesforce Field Service Lightning for managing inspections, OHS compliance, field documentation, and work order lifecycle automation.",
+        "metricsPreview": [
+            "Automated Work Order Lifecycle",
+            "Real-Time Field Documentation",
+            "Mobile Inspection Synchronization"
+        ],
+        "client": {
+            "industry": "Landscaping & Field Service Operations",
+            "size": "Enterprise",
+            "location": "Remote"
+        },
+        "businessContext": "A landscaping contractor managing large-scale field operations, inspections, OHS compliance workflows, claims processing, and field documentation using Salesforce Field Service Lightning.",
+        "operationalProblem": "Field technicians were manually uploading inspection photos, OHS forms, signatures, and completion reports into multiple disconnected systems. Operations teams lacked real-time visibility into field-service progress and compliance workflows.",
+        "solutionStrategy": "Architected a fully automated Salesforce Field Service Lightning and Dashpivot integration ecosystem enabling real-time inspection synchronization, OHS tracking, claims handling, and automated work order PDF generation.",
+        "objective": [
+            "Automate Dashpivot form creation directly from Salesforce Work Orders",
+            "Synchronize field inspection data and documents into Salesforce automatically",
+            "Enable real-time OHS and claim tracking workflows",
+            "Automate work order lifecycle progression based on field submissions",
+            "Generate final PDF completion reports automatically",
+            "Provide centralized field-service operational visibility"
+        ],
+        "solution": {
+            "description": "Developed a scalable field-service automation platform integrating Salesforce Field Service Lightning with Dashpivot APIs for landscaping contractors and mobile field operations.",
+            "highlights": [
+                "Built automated Dashpivot form provisioning directly from Salesforce Work Orders",
+                "Implemented secure JWT-based authentication framework for Dashpivot API integration",
+                "Developed scheduler-based synchronization engine for field-service form updates",
+                "Enabled automatic synchronization of site photos, OHS documents, signatures, and inspection evidence",
+                "Built dynamic JSON parsing framework for Dashpivot form response processing",
+                "Automated work order lifecycle progression based on inspection and approval completion",
+                "Integrated Dashpivot PDF export workflows directly into Salesforce Work Order completion process",
+                "Designed operational dashboards for OHS tracking, inspection progress, and claims visibility",
+                "Implemented retry-based API synchronization and document retrieval framework"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Field Service Lightning",
+                "Service Cloud",
+                "Sales Cloud",
+                "Apex",
+                "LWC"
+            ],
+            "tools": [
+                "Queueable Apex",
+                "Scheduled Apex",
+                "JWT Authentication",
+                "REST APIs",
+                "Flow Builder"
+            ],
+            "integrations": [
+                "Dashpivot API",
+                "PDF Export APIs",
+                "Webhooks"
+            ]
+        },
+        "results": [
+            {
+                "metric": "Automated",
+                "label": "Field Documentation Workflows"
+            },
+            {
+                "metric": "Real-Time",
+                "label": "Inspection Visibility"
+            },
+            {
+                "metric": "Centralized",
+                "label": "OHS & Claims Tracking"
+            },
+            {
+                "metric": "Paperless",
+                "label": "Work Order Completion"
+            }
+        ],
+        "feedback": "Natavar successfully streamlined our landscaping field operations by connecting Salesforce Field Service Lightning and Dashpivot into a single operational ecosystem. Inspection tracking and compliance visibility improved dramatically.",
+        "takeaways": [
+            "Field-service organizations benefit significantly from real-time document synchronization.",
+            "Automated lifecycle progression improves operational efficiency and compliance tracking.",
+            "Mobile-first inspection workflows reduce field-service administration overhead.",
+            "Audit logging and retry mechanisms are essential for enterprise field-service integrations."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/11.Field Service Lightning Dashpivot Landscaping Automation Blue.png",
+                "caption": "Salesforce Field Service Lightning & Dashpivot Integration",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Salesforce Field Service Lightning and Dashpivot integration for landscaping contractors with automated inspections, OHS workflows, and work order lifecycle automation.",
+            "keywords": "Dashpivot Integration, Salesforce Field Service Lightning, Landscaping Contractors, OHS Tracking, Inspection Automation, Work Order Management"
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": true,
+        "aiConfig": {
+            "title": "Field Operations Automation Consultant",
+            "primaryCTA": "Generate Field Service Integration Strategy",
+            "tools": [
+                "integration-advisor",
+                "architect-assistant",
+                "roi-estimator",
+                "agenda-generator"
+            ],
+            "context": "Salesforce Field Service Lightning and Dashpivot automation for landscaping contractors."
+        },
+        "architecture": "graph TD\n    subgraph Salesforce_Field_Service\n        Ops[\"Operations Team\"] --> WorkOrder[\"Field Service Work Order\"]\n        WorkOrder --> Trigger[\"Dashpivot Sync Trigger\"]\n    end\n\n    subgraph Integration_Engine\n        Trigger --> ApexAPI[\"Apex REST Integration\"]\n        ApexAPI --> JWT[\"JWT Authentication\"]\n    end\n\n    subgraph Dashpivot_Platform\n        JWT --> Forms[\"Dashpivot Inspection Forms\"]\n        Forms --> Technician[\"Mobile Field Technicians\"]\n        Technician --> Uploads[\"Photos / OHS Docs / Signatures\"]\n    end\n\n    subgraph Salesforce_Synchronization\n        Scheduler[\"Scheduled Apex Polling\"] --> DashpivotAPI[\"Dashpivot APIs\"]\n        DashpivotAPI --> Parser[\"Dynamic JSON Parser\"]\n        Parser --> WorkOrderUpdates[\"Work Order Status Updates\"]\n    end\n\n    subgraph Completion_Workflow\n        WorkOrderUpdates --> PDFExport[\"Dashpivot PDF Export API\"]\n        PDFExport --> PDF[\"Final Work Order PDF\"]\n        PDF --> SalesforceAttach[\"Attach PDF to Work Order\"]\n    end\n\n    subgraph Monitoring_Analytics\n        Parser --> Audit[\"Audit Logs\"]\n        Parser --> Retry[\"Retry/Error Handling\"]\n        Audit --> Dashboard[\"Operational Dashboards\"]\n    end"
     }
 ];
 

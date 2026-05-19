@@ -950,7 +950,10 @@ const projectData = [
             "Synchronize Slack users and channels into Salesforce automatically",
             "Create and maintain QuickBooks Time users and job codes dynamically",
             "Eliminate manual timesheet entry processes",
-            "Provide real-time workforce visibility through Salesforce dashboards"
+            "Provide real-time workforce visibility through Salesforce dashboards",
+            "Establish Twilio SMS integrations for automated two-way customer messaging",
+            "Build call tracking setup with direct source-to-lead attribution in Salesforce",
+            "Integrate Wix website lead intake with automated CRM capture and pipeline routing"
         ],
         "solution": {
             "description": "Developed a real-time workforce automation ecosystem integrating Slack, Salesforce Field Service Lightning, and QuickBooks Time using asynchronous event-driven architecture.",
@@ -961,7 +964,11 @@ const projectData = [
                 "Built Queueable Apex synchronization framework for scalable timesheet processing",
                 "Designed Salesforce dashboards for labor analytics and workforce visibility",
                 "Implemented retry-based error handling and audit logging framework for failed API operations",
-                "Enabled mobile and desktop workforce tracking without requiring additional applications"
+                "Enabled mobile and desktop workforce tracking without requiring additional applications",
+                "Developed Wix lead capture webhook processing engine for immediate CRM entry",
+                "Integrated Twilio SMS Gateway for two-way notifications and status alerts",
+                "Implemented call tracking log ingestion, transforming calls directly to routed CRM leads",
+                "Configured Mailchimp marketing sync for automated list updating and campaign tracking"
             ]
         },
         "techStack": {
@@ -983,7 +990,11 @@ const projectData = [
                 "Slack API",
                 "Slack Events API",
                 "QuickBooks Time API",
-                "Webhooks"
+                "Webhooks",
+                "Twilio Messaging API",
+                "Wix Integration",
+                "Call Tracking API",
+                "Mailchimp API"
             ]
         },
         "results": [
@@ -1021,7 +1032,7 @@ const projectData = [
         ],
         "seo": {
             "description": "Slack, Salesforce Field Service Lightning, and QuickBooks Time integration for automated workforce tracking and payroll synchronization.",
-            "keywords": "Slack Integration, Salesforce Field Service Lightning, QuickBooks Time API, Workforce Automation, Payroll Automation"
+            "keywords": "Slack Integration, Salesforce Field Service Lightning, QuickBooks Time API, Workforce Automation, Payroll Automation, Wix Integration, Twilio SMS, Call Tracking, Mailchimp Sync"
         },
         "homepageFeatured": {
             "isFeatured": false
@@ -1077,7 +1088,10 @@ const projectData = [
             "Enable bidirectional invoice synchronization between Salesforce and Xero",
             "Provide technicians and finance teams with real-time billing visibility",
             "Reduce manual accounting reconciliation for compliance operations",
-            "Centralize field operations, invoicing, and financial reporting"
+            "Centralize field operations, invoicing, and financial reporting",
+            "Design Salesforce-based estimate system featuring a flat-rate + add-ons product catalog",
+            "Orchestrate DocuSign integration for automated digital estimate approvals",
+            "Implement QuickBooks Online integration for bidirectional invoice creation and synchronization"
         ],
         "solution": {
             "description": "Developed a comprehensive field-service financial automation platform integrating Salesforce Field Service Lightning with Xero Accounting APIs for passive fire protection operations.",
@@ -1089,7 +1103,10 @@ const projectData = [
                 "Enabled automatic synchronization of labor hours, inspection services, compliance fees, and material costs",
                 "Designed financial dashboards for service revenue, technician billing, and compliance reporting",
                 "Implemented retry-based error handling and audit tracking for financial synchronization operations",
-                "Integrated field-service completion workflows with real-time invoice generation pipelines"
+                "Integrated field-service completion workflows with real-time invoice generation pipelines",
+                "Built Salesforce-based estimate system integrated with dynamic flat-rate product and service catalogs",
+                "Orchestrated DocuSign API integration, allowing clients to sign estimates and auto-generate work orders",
+                "Developed a QuickBooks Online synchronization engine for real-time invoice and customer mapping"
             ]
         },
         "techStack": {
@@ -1110,7 +1127,9 @@ const projectData = [
             "integrations": [
                 "Xero Accounting API",
                 "OAuth 2.0",
-                "Webhooks"
+                "Webhooks",
+                "QuickBooks Online API",
+                "DocuSign API"
             ]
         },
         "results": [
@@ -1148,7 +1167,7 @@ const projectData = [
         ],
         "seo": {
             "description": "Salesforce Field Service Lightning and Xero integration for passive fire protection contractors with automated work order billing and invoice synchronization.",
-            "keywords": "Field Service Lightning, Xero Integration, Passive Fire Protection, Salesforce Work Orders, Invoice Automation, Compliance Billing"
+            "keywords": "Field Service Lightning, Xero Integration, Passive Fire Protection, Salesforce Work Orders, Invoice Automation, Compliance Billing, QuickBooks Online, DocuSign Integration, Flat-rate Catalog"
         },
         "homepageFeatured": {
             "isFeatured": false
@@ -1204,7 +1223,10 @@ const projectData = [
             "Enable real-time OHS and claim tracking workflows",
             "Automate work order lifecycle progression based on field submissions",
             "Generate final PDF completion reports automatically",
-            "Provide centralized field-service operational visibility"
+            "Provide centralized field-service operational visibility",
+            "Build an Experience Cloud customer portal for self-service job, estimate, and invoice tracking",
+            "Configure scheduling & dispatch board with optimization rules for field technicians",
+            "Develop data migration pipeline to import customers, jobs, and invoices from legacy systems"
         ],
         "solution": {
             "description": "Developed a scalable field-service automation platform integrating Salesforce Field Service Lightning with Dashpivot APIs for landscaping contractors and mobile field operations.",
@@ -1217,7 +1239,10 @@ const projectData = [
                 "Automated work order lifecycle progression based on inspection and approval completion",
                 "Integrated Dashpivot PDF export workflows directly into Salesforce Work Order completion process",
                 "Designed operational dashboards for OHS tracking, inspection progress, and claims visibility",
-                "Implemented retry-based API synchronization and document retrieval framework"
+                "Implemented retry-based API synchronization and document retrieval framework",
+                "Designed Experience Cloud customer portal with secure login for viewing estimates, jobs, and invoices",
+                "Configured Field Service Dispatch Board with scheduling automation rules and tech mobile app setup",
+                "Developed data migration scripts to import 10,000+ historical records from old software"
             ]
         },
         "techStack": {
@@ -1238,7 +1263,10 @@ const projectData = [
             "integrations": [
                 "Dashpivot API",
                 "PDF Export APIs",
-                "Webhooks"
+                "Webhooks",
+                "Experience Cloud",
+                "Data Loader",
+                "Legacy Import Tools"
             ]
         },
         "results": [
@@ -1276,7 +1304,7 @@ const projectData = [
         ],
         "seo": {
             "description": "Salesforce Field Service Lightning and Dashpivot integration for landscaping contractors with automated inspections, OHS workflows, and work order lifecycle automation.",
-            "keywords": "Dashpivot Integration, Salesforce Field Service Lightning, Landscaping Contractors, OHS Tracking, Inspection Automation, Work Order Management"
+            "keywords": "Dashpivot Integration, Salesforce Field Service Lightning, Landscaping Contractors, OHS Tracking, Inspection Automation, Work Order Management, Experience Cloud, Customer Portal, Scheduling & Dispatch, Data Migration"
         },
         "homepageFeatured": {
             "isFeatured": false

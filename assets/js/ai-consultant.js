@@ -11,137 +11,192 @@ const AI_API_BASE_URL = (() => {
 const AI_PANEL_HTML = `
 <!-- AI Consulting Accelerator Component -->
 <div class="ai-consulting-panel" id="aiConsultingPanel">
-    <div class="ai-panel-header">
-        <h3><i class="ph ph-briefcase"></i> AI Consulting Accelerator</h3>
-        <p>Access 8 specialized tools to architect your next Salesforce implementation.</p>
-    </div>
-
-    <!-- 8 Consulting Tools Grid -->
-    <div class="ai-tools-grid" id="aiToolsGrid">
-        <!-- Tools will be injected here via JS -->
-    </div>
-
-    <div class="ai-form-container">
-        <!-- Active Consulting Mode Badge -->
-        <div id="aiActiveMode" class="ai-active-mode-badge" style="display: none;">
-            <i class="ph-fill ph-shield-star"></i>
-            <span>Active Mode: AI Consulting Assistant</span>
-        </div>
-        
-        <div class="ai-form-divider"><span>Have a Specific Requirement? Ask for a Custom Inquiry</span></div>
-        <div class="ai-form-grid">
-            <div class="ai-field-group">
-                <label for="aiIndustry">Industry <span style="color: var(--ai-accent);">*</span></label>
-                <select id="aiIndustry">
-                    <option value="">Select Industry...</option>
-                    <!-- Options populated by JS -->
-                </select>
+    <button class="ai-modal-close-global" id="aiModalCloseGlobal" aria-label="Close AI Consultant">
+        <i class="ph ph-x"></i>
+    </button>
+    
+    <div class="ai-panel-layout">
+        <!-- Left Panel: Context & Mode Selection -->
+        <div class="ai-panel-left">
+            <div class="ai-form-divider" style="margin: 5px 0 15px;"><span>Select Tool</span></div>
+            
+            <!-- 8 Consulting Tools Grid (Left) -->
+            <div class="ai-tools-grid" id="aiToolsGrid">
+                <!-- Tools injected here -->
             </div>
+        </div>
 
-            <div class="ai-field-group">
-                <label>Primary Goals <span style="color: var(--ai-accent);">*</span></label>
-                <div class="ai-search-container">
-                    <div class="ai-tags-input" id="aiGoalTags">
-                        <!-- Selected pills go here -->
-                        <input type="text" id="aiGoalSearch" placeholder="Type to find goals (e.g. Automation)..." autocomplete="off">
+        <!-- Right Panel: Dynamic Inquiry Form -->
+        <div class="ai-panel-right">
+            <div class="ai-form-container">
+                <!-- Unified Header: Replaces both Badge and Strategic Inquiry -->
+                <div class="ai-panel-header" style="margin-bottom: 25px; border-bottom: 1px solid rgba(51, 96, 173, 0.08); padding-bottom: 15px;">
+                    <h3 id="aiInquiryTitle" style="color: var(--ai-primary); font-size: 1.4rem; font-weight: 800; margin: 0;">
+                        <i class="ph ph-strategy"></i> Strategic Inquiry
+                    </h3>
+                    <p id="aiInquirySubtitle" style="font-size: 0.9rem; margin-top: 5px; color: var(--lab-text-subtle);">Provide details to generate a production-grade Salesforce blueprint.</p>
+                </div>
+
+                <div class="ai-form-grid">
+                    <div class="ai-field-group">
+                        <label for="aiIndustry">Industry <span style="color: var(--ai-accent);">*</span></label>
+                        <select id="aiIndustry">
+                            <option value="">Select Industry...</option>
+                            <!-- Options populated by JS -->
+                        </select>
                     </div>
-                    <div class="ai-suggestions" id="aiGoalSuggestions">
-                        <!-- Suggestions will appear here -->
+
+                    <div class="ai-field-group">
+                        <label>Primary Goals <span style="color: var(--ai-accent);">*</span></label>
+                        <div class="ai-search-container">
+                            <div class="ai-tags-input" id="aiGoalTags">
+                                <input type="text" id="aiGoalSearch" placeholder="e.g. Automation..." autocomplete="off">
+                            </div>
+                            <div class="ai-suggestions" id="aiGoalSuggestions"></div>
+                        </div>
                     </div>
+
+                    <div class="ai-field-group">
+                        <label>Target Clouds</label>
+                        <div class="ai-search-container">
+                            <div class="ai-tags-input" id="aiCloudTags">
+                                <input type="text" id="aiCloudSearch" placeholder="e.g. Sales Cloud..." autocomplete="off">
+                            </div>
+                            <div class="ai-suggestions" id="aiCloudSuggestions"></div>
+                        </div>
+                    </div>
+
+                    <div class="ai-field-group">
+                        <label for="aiTeamSize">Team Size</label>
+                        <select id="aiTeamSize">
+                            <option value="1-10">1\u201310</option>
+                            <option value="10-50">10\u201350</option>
+                            <option value="50-200">50\u2013200</option>
+                            <option value="200+">200+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="ai-field-group">
+                    <label for="aiChallenge">Biggest Challenge <span style="color: var(--ai-accent);">*</span></label>
+                    <textarea id="aiChallenge" placeholder="Describe your technical bottleneck or business requirement..."></textarea>
+                </div>
+
+                <div class="ai-action-area">
+                    <button class="btn-ai-generate" id="btnAiGenerate" disabled>
+                        <i class="fas fa-wand-magic-sparkles"></i> Generate Recommendation
+                    </button>
                 </div>
             </div>
 
-            <div class="ai-field-group">
-                <label>Target Clouds</label>
-                <div class="ai-search-container">
-                    <div class="ai-tags-input" id="aiCloudTags">
-                        <!-- Selected pills go here -->
-                        <input type="text" id="aiCloudSearch" placeholder="e.g. Sales Cloud..." autocomplete="off">
-                    </div>
-                    <div class="ai-suggestions" id="aiCloudSuggestions">
-                        <!-- Suggestions will appear here -->
-                    </div>
+            <!-- Loading State -->
+            <div class="ai-loading" id="aiLoading">
+                <div class="ai-spinner-box">
+                    <div class="ai-spinner"></div>
+                    <p>Analyzing industry patterns/knowledge...</p>
                 </div>
             </div>
 
-            <div class="ai-field-group">
-                <label for="aiTeamSize">Team Size</label>
-                <select id="aiTeamSize">
-                    <option value="1-10">1\u201310</option>
-                    <option value="10-50">10\u201350</option>
-                    <option value="50-200">50\u2013200</option>
-                    <option value="200+">200+</option>
-                </select>
+            <!-- Response Area -->
+            <div class="ai-response-container" id="aiResponse">
+                <div class="ai-response-actions">
+                    <button class="ai-response-close" id="aiResponseClose" title="Close Response">
+                        <i class="ph ph-x"></i>
+                    </button>
+                </div>
+                <div class="ai-response-content" id="aiResultContent"></div>
+                
+                <div class="ai-unified-cta" id="aiUnifiedCTA">
+                    <h2>Ready to Architect Your Success?</h2>
+                    <p>Let's discuss how to turn these recommendations into a live, high-performing Salesforce ecosystem.</p>
+                    <button class="btn-unified-book calendly-trigger">
+                        <i class="ph ph-calendar-check"></i> Book Architecture Call
+                    </button>
+                </div>
             </div>
-        </div>
-
-        <div class="ai-field-group">
-            <label for="aiChallenge">Biggest Challenge <span style="color: var(--ai-accent);">*</span></label>
-            <textarea id="aiChallenge" placeholder="e.g. We manage leads manually and need automated follow-ups..."></textarea>
-        </div>
-
-        <div class="ai-action-area">
-            <button class="btn-ai-generate" id="btnAiGenerate" disabled>
-                <i class="fas fa-wand-magic-sparkles"></i> Generate Recommendation
-            </button>
-        </div>
-    </div>
-
-    <!-- Loading State -->
-    <div class="ai-loading" id="aiLoading">
-        <div class="ai-spinner"></div>
-        <p>Analyzing industry patterns and consulting knowledge...</p>
-    </div>
-
-    <!-- Response Area -->
-    <div class="ai-response-container" id="aiResponse">
-        <!-- Action Header -->
-        <div class="ai-response-actions">
-            <button class="ai-response-close" id="aiResponseClose" title="Close Response">
-                <i class="ph ph-x"></i>
-            </button>
-        </div>
-
-        <div class="ai-response-content" id="aiResultContent">
-            <!-- AI Output rendered here -->
-        </div>
-
-        <!-- Unified Strategic CTA (Visible after Generation) -->
-        <div class="ai-unified-cta" id="aiUnifiedCTA">
-            <h2>Ready to Architect Your Success?</h2>
-            <p>Your custom strategy is just the beginning. Let's discuss how to turn these recommendations into a live, high-performing Salesforce ecosystem.</p>
-            <button class="btn-unified-book calendly-trigger">
-                <i class="ph ph-calendar-check"></i> Book Architecture Call
-            </button>
         </div>
     </div>
 </div>
 `;
 
 window.aiConsultant = {
-    togglePanel: function() {
+    togglePanel: function (isOpen) {
         const panel = document.getElementById('aiConsultingPanel');
-        if (panel) {
-            panel.scrollIntoView({ behavior: 'smooth' });
+        const overlay = document.getElementById('aiModalOverlay');
+        const isActive = panel.classList.contains('active');
+        const shouldOpen = isOpen !== undefined ? isOpen : !isActive;
+
+        if (shouldOpen) {
             panel.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Context-Aware Pre-fill Logic
+            this.handleContextualPrefill();
+        } else {
+            panel.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    },
+
+    handleContextualPrefill: function () {
+        const industrySelect = document.getElementById('aiIndustry');
+        if (!industrySelect) return;
+
+        // 1. More robust detection: Look for 'Industry' label specifically
+        let projectIndustry = "";
+        const metaValues = document.querySelectorAll('.meta-item');
+        metaValues.forEach(item => {
+            const label = item.querySelector('label')?.innerText || "";
+            if (label.toLowerCase().includes('industry')) {
+                projectIndustry = item.querySelector('.meta-value')?.innerText || "";
+            }
+        });
+
+        if (projectIndustry) {
+            const options = Array.from(industrySelect.options);
+            const match = options.find(opt =>
+                projectIndustry.toLowerCase().includes(opt.text.toLowerCase()) ||
+                opt.text.toLowerCase().includes(projectIndustry.toLowerCase())
+            );
+            if (match) {
+                industrySelect.value = match.value;
+                // Trigger validation after pre-fill
+                if (typeof this.checkFormValidity === 'function') this.checkFormValidity();
+            }
         }
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const placeholder = document.getElementById('ai-panel-placeholder');
-    if (!placeholder) return;
+    // BUG FIX: Initialization Guard - prevent duplicates
+    if (document.getElementById('aiModalOverlay')) return;
 
-    // Inject the inline panel HTML — no cross-origin fetch needed
-    placeholder.innerHTML = AI_PANEL_HTML;
+    // 1. Create Modal Infrastructure
+    const overlay = document.createElement('div');
+    overlay.id = 'aiModalOverlay';
+    overlay.className = 'ai-modal-overlay';
+    document.body.appendChild(overlay);
 
-    // Create and Inject FAB to Body
+    const panelContainer = document.createElement('div');
+    panelContainer.id = 'aiPanelGlobalContainer';
+    panelContainer.innerHTML = AI_PANEL_HTML;
+    document.body.appendChild(panelContainer);
+
+    // 2. Create and Inject FAB
     const fab = document.createElement('button');
     fab.id = 'aiSideTrigger';
     fab.className = 'ai-side-trigger';
     fab.setAttribute('aria-label', 'Open AI Consultant');
     fab.innerHTML = `<i class="ph-fill ph-sparkle"></i><span>AI Consultant</span>`;
     document.body.appendChild(fab);
+
+    // 3. Event Listeners for Closing
+    overlay.addEventListener('click', () => window.aiConsultant.togglePanel(false));
+
+    const closeBtn = document.getElementById('aiModalCloseGlobal');
+    if (closeBtn) closeBtn.addEventListener('click', () => window.aiConsultant.togglePanel(false));
 
     initAI();
 
@@ -150,12 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const goalTagsContainer = document.getElementById('aiGoalTags');
         const goalSearchInput = document.getElementById('aiGoalSearch');
         const goalSuggestions = document.getElementById('aiGoalSuggestions');
-        
+
         // Cloud Tags Elements
         const cloudTagsContainer = document.getElementById('aiCloudTags');
         const cloudSearchInput = document.getElementById('aiCloudSearch');
         const cloudSuggestions = document.getElementById('aiCloudSuggestions');
-        
+
         const teamSizeSelect = document.getElementById('aiTeamSize');
         const challengeText = document.getElementById('aiChallenge');
         const generateBtn = document.getElementById('btnAiGenerate');
@@ -165,35 +220,41 @@ document.addEventListener('DOMContentLoaded', () => {
         const responseArea = document.getElementById('aiResponse');
         const resultContent = document.getElementById('aiResultContent');
         const unifiedCTA = document.getElementById('aiUnifiedCTA');
-        const activeModeBadge = document.getElementById('aiActiveMode');
         const btnDownloadPdf = document.getElementById('btnDownloadPdf');
         const aiResponseClose = document.getElementById('aiResponseClose');
+        
+        // Expose validation for global access
+        window.aiConsultant.checkFormValidity = checkFormValidity;
 
         if (!generateBtn) return;
-        
+
         // --- Form Validation Logic ---
         function checkFormValidity() {
             const ind = industrySelect.value;
             const hasGoals = selectedGoals.size > 0;
             const chall = challengeText.value.trim();
-            
+
             if (ind !== '' && hasGoals && chall !== '') {
                 generateBtn.removeAttribute('disabled');
             } else {
                 generateBtn.setAttribute('disabled', 'true');
             }
         }
-        
+
         industrySelect.addEventListener('change', checkFormValidity);
         challengeText.addEventListener('input', checkFormValidity);
 
         // Define Standard Goals
         const standardGoals = [
-            "Lead Management", "Customer Support", "Partner Portal", 
-            "Automation", "Reporting", "CRM Modernization", 
+            "Lead Management", "Customer Support", "Partner Portal",
+            "Automation", "Reporting", "CRM Modernization",
             "Integration", "Sales Operations", "Service Operations",
             "Field Service", "Marketing Automation", "CPQ Implementation",
-            "Data Migration", "Security Audit", "User Training"
+            "Data Migration", "Security Audit", "User Training",
+            "Workforce Automation", "Billing & Invoicing", "Document Orchestration",
+            "Licensing & Permitting", "E-commerce Integration", "MLS Synchronization",
+            "OHS Compliance", "Asynchronous Processing", "Generative AI Integration",
+            "OCR Automation"
         ];
 
         let selectedGoals = new Set();
@@ -240,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const matches = standardGoals.filter(g => 
+            const matches = standardGoals.filter(g =>
                 g.toLowerCase().includes(query) && !selectedGoals.has(g)
             );
 
@@ -271,13 +332,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- Cloud Search & Tags Logic ---
         const standardClouds = [
-            "Sales Cloud", "Service Cloud", "Marketing Cloud", 
-            "Commerce Cloud", "Financial Services Cloud", "Health Cloud", 
-            "Experience Cloud", "Data Cloud", "MuleSoft", "Tableau", "Slack"
+            "Sales Cloud", "Service Cloud", "Marketing Cloud",
+            "Commerce Cloud", "Financial Services Cloud", "Health Cloud",
+            "Experience Cloud", "Data Cloud", "MuleSoft", "Tableau", "Slack",
+            "Public Sector Solutions", "Field Service Lightning"
         ];
-        
+
         let selectedClouds = new Set();
-        
+
         function renderCloudTags() {
             if (!cloudTagsContainer) return;
             const existingPills = cloudTagsContainer.querySelectorAll('.ai-pill');
@@ -312,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                const matches = standardClouds.filter(c => 
+                const matches = standardClouds.filter(c =>
                     c.toLowerCase().includes(query) && !selectedClouds.has(c)
                 );
 
@@ -351,11 +413,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         opt.textContent = ind.name;
                         industrySelect.appendChild(opt);
                     });
-                    
+
                     // Contextual pre-fill
                     const currentIndustry = document.getElementById('client-industry')?.innerText;
                     if (currentIndustry) {
-                        const match = Array.from(industrySelect.options).find(o => 
+                        const match = Array.from(industrySelect.options).find(o =>
                             o.text.toLowerCase().includes(currentIndustry.toLowerCase())
                         );
                         if (match) industrySelect.value = match.value;
@@ -381,27 +443,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         card.className = 'ai-tool-card';
                         card.innerHTML = `
                             <div class="ai-tool-icon"><i class="${icons[tool.slug] || 'ph ph-sparkle'}"></i></div>
-                            <h4>${tool.name}</h4>
-                            <p>${tool.description}</p>
+                            <div class="ai-tool-content">
+                                <h4>${tool.name}</h4>
+                                <p>${tool.description}</p>
+                            </div>
                         `;
 
                         card.addEventListener('click', () => {
                             document.querySelectorAll('.ai-tool-card').forEach(c => c.classList.remove('active'));
                             card.classList.add('active');
-                            
+
                             // Reset tags when a specialized tool is chosen
                             selectedGoals.clear();
                             renderTags();
                             window.aiConsultant.activeTool = tool.name;
                             window.aiConsultant.activeToolSlug = tool.slug;
-                            
-                            // Update Active Mode Badge
-                            if (activeModeBadge) {
-                                activeModeBadge.style.display = 'inline-flex';
-                                activeModeBadge.querySelector('span').textContent = `Active Mode: ${tool.name}`;
-                            }
-                            
+
+                            // Update Header Dynamically to save space
+                            const titleEl = document.getElementById('aiInquiryTitle');
+                            if (titleEl) titleEl.innerHTML = `<i class="ph ph-sparkle"></i> ${tool.name}`;
+
+                            const subtitleEl = document.getElementById('aiInquirySubtitle');
+                            if (subtitleEl) subtitleEl.textContent = `Using a specialized Gen-AI tool to architect your ${tool.name} requirements.`;
+
                             challengeText.placeholder = `Describe your ${tool.name} requirements...`;
+                            
+                            // BUG FIX: Immediate validation on tool click
+                            checkFormValidity();
+
                             if (!isInitialLoad) {
                                 challengeText.scrollIntoView({ behavior: 'smooth', block: 'center' });
                             }
@@ -422,85 +491,53 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('AI Options Load Error:', err);
             }
         }
-        
+
         // --- Close Response Logic ---
         if (aiResponseClose) {
             aiResponseClose.addEventListener('click', () => {
                 responseArea.classList.remove('active');
                 if (unifiedCTA) unifiedCTA.classList.remove('active');
                 // Optional: clear content so next generation doesn't show old stuff
-                setTimeout(() => resultContent.innerHTML = '', 500); 
+                setTimeout(() => resultContent.innerHTML = '', 500);
             });
         }
+
+        // --- Download PDF Logic (Currently Disabled) ---
+
+        // --- AI to Scheduler Bridge ---
+        const btnBookCall = document.getElementById('aiUnifiedCTA')?.querySelector('.btn-unified-book');
         
-        // --- Download PDF Logic ---
-        /*
-        if (btnDownloadPdf) {
-            btnDownloadPdf.addEventListener('click', () => {
-                // Add a small loading state to button
-                const originalText = btnDownloadPdf.innerHTML;
-                btnDownloadPdf.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Generating...';
-                btnDownloadPdf.disabled = true;
-
-                // Clone the container to exclude buttons and CTA for the PDF
-                const sourceContainer = document.getElementById('aiResponse');
-                const clone = sourceContainer.cloneNode(true);
-                
-                // Clean up the clone for printing
-                const cloneActions = clone.querySelector('.ai-response-actions');
-                const cloneCTA = clone.querySelector('#aiUnifiedCTA');
-                if (cloneActions) cloneActions.remove();
-                if (cloneCTA) cloneCTA.remove();
-                
-                // Remove animation class to prevent layout shifts during render
-                clone.style.animation = 'none';
-                clone.style.transform = 'none';
-                clone.style.boxShadow = 'none'; // Better for PDF
-                
-                // Wrap in a div that forces white background and proper width
-                const printWrapper = document.createElement('div');
-                printWrapper.style.position = 'absolute';
-                printWrapper.style.left = '-9999px';
-                printWrapper.style.top = '0';
-                printWrapper.style.width = '800px'; 
-                printWrapper.style.background = '#ffffff';
-                printWrapper.style.padding = '20px'; // Give some breathing room
-                
-                printWrapper.appendChild(clone);
-                document.body.appendChild(printWrapper);
-
-                const opt = {
-                    margin:       0.5,
-                    filename:     'Enterprise_Architecture_Blueprint.pdf',
-                    image:        { type: 'jpeg', quality: 0.98 },
-                    html2canvas:  { scale: 2, useCORS: true, logging: false },
-                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-                };
-
-                const finishDownload = () => {
-                    document.body.removeChild(printWrapper);
-                    btnDownloadPdf.innerHTML = originalText;
-                    btnDownloadPdf.disabled = false;
-                };
-
-                if (!window.html2pdf) {
-                    const script = document.createElement('script');
-                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-                    script.onload = () => {
-                        html2pdf().set(opt).from(clone).save().then(finishDownload);
-                    };
-                    document.head.appendChild(script);
-                } else {
-                    html2pdf().set(opt).from(clone).save().then(finishDownload);
+        // Use delegation for buttons inside the response area
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.btn-unified-book')) {
+                const consult = window.aiConsultant.lastConsultation;
+                if (!consult) {
+                    if (window.openSchedulerWithAI) window.openSchedulerWithAI("");
+                    return;
                 }
-            });
-        }
-        */
+
+                const agendaLines = [
+                    `<strong>Discovery Agenda: AI-Driven Architecture Review</strong>`,
+                    `<ul>`,
+                    `<li><strong>Industry Focus:</strong> ${consult.industry}</li>`,
+                    `<li><strong>Consulting Category:</strong> ${consult.goal}</li>`,
+                    `<li><strong>Target Ecosystem:</strong> ${consult.clouds || 'Not Specified'}</li>`,
+                    `<li><strong>Operational Challenge:</strong> ${consult.challenge}</li>`,
+                    `<li><strong>AI Preliminary Focus:</strong> ${consult.recommendation}</li>`,
+                    `</ul>`,
+                    `<p><i>Automated discovery notes from AI Consulting Assistant.</i></p>`
+                ];
+
+                const agendaHtml = agendaLines.join('');
+                window.aiConsultant.togglePanel(false);
+                if (window.openSchedulerWithAI) {
+                    window.openSchedulerWithAI(agendaHtml);
+                }
+            }
+        });
 
         async function generateConsultation() {
-            // Final goal is either the active tool OR the joined pills
             const finalGoal = window.aiConsultant.activeTool || Array.from(selectedGoals).join(', ');
-
             const payload = {
                 industry_id: industrySelect.value,
                 goal: finalGoal,
@@ -510,14 +547,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 challenge: challengeText.value
             };
 
-            console.log('AI Consulting Request:', payload);
-
             if (!payload.industry_id || !payload.goal) {
-                alert('Please select an Industry and at least one Goal (or click a Tool Card above).');
+                alert('Please select an Industry and at least one Goal.');
                 return;
             }
 
             generateBtn.disabled = true;
+            const rightPanel = document.querySelector('.ai-panel-right');
+            if (rightPanel) {
+                rightPanel.scrollTop = 0;
+                rightPanel.style.overflowY = 'hidden';
+            }
+
             loadingArea.classList.add('active');
             responseArea.classList.remove('active');
 
@@ -529,12 +570,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
                 const data = await response.json();
-                console.log('AI Consulting Response:', data);
 
                 if (data.success) {
-                    // Improved Markdown-to-HTML formatting
+                    window.aiConsultant.lastConsultation = {
+                        industry: industrySelect.options[industrySelect.selectedIndex].text,
+                        goal: finalGoal,
+                        clouds: Array.from(selectedClouds).join(', '),
+                        challenge: challengeText.value,
+                        recommendation: data.recommendation.substring(0, 300) + '...'
+                    };
+
                     let html = data.recommendation
                         .replace(/^# (.*?)$/gm, '<h1>$1</h1>')
                         .replace(/^## (.*?)$/gm, '<h3>$1</h3>')
@@ -545,28 +591,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         .replace(/\n\n/g, '</p><p>')
                         .replace(/\n/g, '<br>');
 
-                    // Wrap lists properly if they exist
-                    html = html.replace(/(<li>.*?<\/li>)/gs, '<ul>$1</ul>');
-                    // Remove double ULs caused by global match
-                    html = html.replace(/<\/ul><ul>/g, '');
-                    
+                    html = html.replace(/(<li>.*?<\/li>)/gs, '<ul>$1</ul>').replace(/<\/ul><ul>/g, '');
                     resultContent.innerHTML = `<p>${html}</p>`;
                     responseArea.classList.add('active');
                     unifiedCTA?.classList.add('active');
-
-                    // Hide the redundant global "Jump Start" section if it exists on the page
+                    
                     const globalCTA = document.querySelector('.cta-section, #ready-to-jump-start');
                     if (globalCTA) globalCTA.style.display = 'none';
 
                     responseArea.scrollIntoView({ behavior: 'smooth' });
                 } else {
-                    alert('Backend Error: ' + (data.error || 'Unknown error occurred.'));
+                    alert('Backend Error: ' + (data.error || 'Unknown error.'));
                 }
             } catch (err) {
-                console.error('AI Consulting Fetch Error:', err);
-                alert('Connection Error: Could not reach the AI Consultant API.');
+                console.error('AI Consulting Error:', err);
             } finally {
                 loadingArea.classList.remove('active');
+                if (rightPanel) rightPanel.style.overflowY = 'auto';
                 checkFormValidity();
             }
         }

@@ -50,57 +50,70 @@ class EnhancedAccessiblePortfolioApp {
 
   initReviewToaster() {
     this.currentReviewIndex = 0;
-    this.reviews = [
-      {
-        id: 1,
-        project: "Salesforce SMS Automation",
-        review: "Amazing experience with Natvarlal. He completed the tasks in a timely manner without any carry-over. He understood the requirements very well.",
-      },
-      {
-        id: 2,
-        project: "Enterprise Gemini AI Research",
-        review: "Natavar was one of the best contractors I have hired. He was quick to respond and very knowledgeable when it came to Salesforce.",
-      },
-      {
-        id: 3,
-        project: "Enterprise Automation Framework",
-        review: "Committed and Quick Response on Issues addressed. Will definitely hire Natavar again for all requirements of salesforce.",
-      },
-      {
-        id: 4,
-        project: "LMS Experience Platform",
-        review: "Natvar is a very experienced Salesforce developer and did a great job in my Production org and Partner Community.",
-      },
-      {
-        id: 5,
-        project: "Document Orchestration Platform",
-        review: "Greatly helped me out with this, really knows a lot when it comes to Salesforce. I will be contacting him in the future.",
-      },
-      {
-        id: 6,
-        project: "Real Estate CRM Ecosystem",
-        review: "Natavar is easy to work with and has good critical thinking skills. He will think about what is good for the client.",
-      },
-      {
-        id: 7,
-        project: "Healthcare Order Automation",
-        review: "He was really helpful and really knowledgeable, a great communicator, and was able to provide helpful documentation.",
-      },
-      {
-        id: 8,
-        project: "Licensing & Permit Modernization",
-        review: "Natavar was very quick with his experience and helped me out to fix the issue in no time. I recommend him to everyone.",
-      },
-    ];
+    
+    // Dynamically pull reviews from project-data.js if available
+    if (window.projectData && window.projectData.length > 0) {
+      this.reviews = window.projectData
+        .filter(p => p.feedback)
+        .map(p => ({
+          id: p.id,
+          project: p.title,
+          review: p.feedback
+        }));
+    } else {
+      // Fallback reviews if data not loaded yet or missing
+      this.reviews = [
+        {
+          id: 1,
+          project: "Salesforce SMS Automation",
+          review: "Amazing experience with Natvarlal. He completed the tasks in a timely manner without any carry-over. He understood the requirements very well.",
+        },
+        {
+          id: 2,
+          project: "Enterprise Gemini AI Research",
+          review: "Natavar was one of the best contractors I have hired. He was quick to respond and very knowledgeable when it came to Salesforce.",
+        },
+        {
+          id: 3,
+          project: "Enterprise Automation Framework",
+          review: "Committed and Quick Response on Issues addressed. Will definitely hire Natavar again for all requirements of salesforce.",
+        },
+        {
+          id: 4,
+          project: "LMS Experience Platform",
+          review: "Natvar is a very experienced Salesforce developer and did a great job in my Production org and Partner Community.",
+        },
+        {
+          id: 5,
+          project: "Document Orchestration Platform",
+          review: "Greatly helped me out with this, really knows a lot when it comes to Salesforce. I will be contacting him in the future.",
+        },
+        {
+          id: 6,
+          project: "Real Estate CRM Ecosystem",
+          review: "Natavar is easy to work with and has good critical thinking skills. He will think about what is good for the client.",
+        },
+        {
+          id: 7,
+          project: "Healthcare Order Automation",
+          review: "He was really helpful and really knowledgeable, a great communicator, and was able to provide helpful documentation.",
+        },
+        {
+          id: 8,
+          project: "Licensing & Permit Modernization",
+          review: "Natavar was very quick with his experience and helped me out to fix the issue in no time. I recommend him to everyone.",
+        },
+      ];
+    }
 
     // Start showing toasters after a delay
     setTimeout(() => {
       this.showReviewToaster();
-      // Show new toaster every 8 seconds
+      // Show new toaster every 12 seconds (slightly longer for better readability)
       this.toasterInterval = setInterval(() => {
         this.showReviewToaster();
-      }, 8000);
-    }, 3000); // Initial delay of 3 seconds
+      }, 12000);
+    }, 4000); // Initial delay
   }
 
   showReviewToaster() {
@@ -1916,11 +1929,9 @@ class EnhancedAccessiblePortfolioApp {
 
     const toggleScrollButton = () => {
       const scrollY = window.pageYOffset;
-      if (!this._cachedDocHeight) {
-        this._cachedDocHeight = document.documentElement.scrollHeight;
-      }
-      const docHeight = this._cachedDocHeight - window.innerHeight;
-      const scrollProgress = scrollY / docHeight;
+      const currentDocHeight = document.documentElement.scrollHeight;
+      const docHeight = currentDocHeight - window.innerHeight;
+      const scrollProgress = docHeight > 0 ? scrollY / docHeight : 0;
 
       if (scrollY > 300) {
         scrollBtn.classList.add("visible");

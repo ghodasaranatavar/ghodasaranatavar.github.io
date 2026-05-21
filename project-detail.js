@@ -38,8 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (data.gallery && data.gallery.length > 0) {
             const ogImage = document.querySelector('meta[property="og:image"]');
-            if (ogImage) {
-                ogImage.setAttribute('content', window.location.origin + '/' + data.gallery[0].url);
+            const validOgImage = data.gallery.find(img => !img.url.includes('XXXXXX'));
+            if (ogImage && validOgImage) {
+                ogImage.setAttribute('content', window.location.origin + '/' + validOgImage.url);
             }
         }
     }
@@ -155,8 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const gallerySection = document.getElementById('gallery-section');
         const galleryGrid = document.getElementById('project-gallery');
 
-        // Filter images based on visibility flag
-        const visibleImages = data.gallery.filter(item => item.showOnDetail !== false);
+        // Filter images based on visibility flag and placeholder tags
+        const visibleImages = data.gallery.filter(item => item.showOnDetail !== false && !item.url.includes('XXXXXX'));
 
         if (visibleImages.length > 0 && gallerySection && galleryGrid) {
             gallerySection.style.display = 'block';
@@ -165,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const div = document.createElement('div');
                 div.className = 'gallery-item';
                 div.innerHTML = `
-                    <img src="${item.url}" alt="${item.caption}" class="gallery-img">
+                    <img src="${item.url}" alt="${item.caption}" class="gallery-img" onerror="this.parentElement.style.display='none';">
                     <p class="gallery-caption">${item.caption}</p>
                 `;
                 galleryGrid.appendChild(div);

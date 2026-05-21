@@ -798,7 +798,7 @@ const projectData = [
         "gallery": [
             {
                 "url": "assets/images/projects/7.Healthcare eCommerce Order & Shipment Automation Blue.svg",
-                "caption": "Project Visual",
+                "caption": "Healthcare Order Lifecycle & Shipment Tracking Automation",
                 "showOnHub": true,
                 "showOnDetail": true
             }
@@ -1022,14 +1022,7 @@ const projectData = [
             "Real-time labor tracking improves operational visibility and profitability.",
             "Automated retry mechanisms are critical for enterprise-grade API orchestration."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/9.Slack Salesforce QuickBooks Time Workforce Automation Blue.png",
-                "caption": "Slack Workforce Time Tracking & QBT Synchronization",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Slack, Salesforce Field Service Lightning, and QuickBooks Time integration for automated workforce tracking and payroll synchronization.",
             "keywords": "Slack Integration, Salesforce Field Service Lightning, QuickBooks Time API, Workforce Automation, Payroll Automation, Wix Integration, Twilio SMS, Call Tracking, Mailchimp Sync"
@@ -1157,14 +1150,7 @@ const projectData = [
             "Real-time synchronization improves operational and compliance visibility.",
             "Bidirectional financial synchronization requires strong audit tracking and retry mechanisms."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/10.Field Service Lightning Xero Passive Fire Protection Blue.png",
-                "caption": "Field Service Lightning & Xero Financial Synchronization",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Salesforce Field Service Lightning and Xero integration for passive fire protection contractors with automated work order billing and invoice synchronization.",
             "keywords": "Field Service Lightning, Xero Integration, Passive Fire Protection, Salesforce Work Orders, Invoice Automation, Compliance Billing, QuickBooks Online, DocuSign Integration, Flat-rate Catalog"
@@ -1294,14 +1280,7 @@ const projectData = [
             "Mobile-first inspection workflows reduce field-service administration overhead.",
             "Audit logging and retry mechanisms are essential for enterprise field-service integrations."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/11.Field Service Lightning Dashpivot Landscaping Automation Blue.png",
-                "caption": "Salesforce Field Service Lightning & Dashpivot Integration",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Salesforce Field Service Lightning and Dashpivot integration for landscaping contractors with automated inspections, OHS workflows, and work order lifecycle automation.",
             "keywords": "Dashpivot Integration, Salesforce Field Service Lightning, Landscaping Contractors, OHS Tracking, Inspection Automation, Work Order Management, Experience Cloud, Customer Portal, Scheduling & Dispatch, Data Migration"
@@ -1411,14 +1390,7 @@ const projectData = [
             "Modular LWC architecture allows decoupling checkout steps from underlying pricing logic.",
             "Caching static ERP prices at the Apex layer mitigates governor limit issues under peak load."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/1.Salesforce B2B Commerce Cloud Checkout & SSO Ecosystem.png",
-                "caption": "Enterprise B2B Checkout & Identity Flow",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Enterprise-grade B2B Commerce Cloud checkout modernization and Auth-based SSO integration for global industrial distributors.",
             "keywords": "B2B Commerce Cloud, SSO, Salesforce Community, LWC Checkout, ERP Integration, Identity Management"
@@ -1541,14 +1513,7 @@ const projectData = [
             "Using Invocable Apex in bots enables seamless, real-time CRM updates.",
             "Omni-channel presence tracking gives supervisor teams full staffing visibility."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/2.Salesforce Service Cloud & Einstein Bot Engagement Platform.png",
-                "caption": "Einstein Bot Ingestion & Routing Architecture",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Enterprise Service Cloud setup with Einstein Bots, Omni-Channel routing, and customized digital engagement snap-ins.",
             "keywords": "Service Cloud, Einstein Bot, Digital Engagement, Live Agent, LWC Snap-in, Omni-Channel Routing"
@@ -1669,14 +1634,7 @@ const projectData = [
             "Experience Cloud customization with AngularJS enables a modern web experience within Salesforce.",
             "Batch Apex design is critical when processing high-volume calculations on strict schedules."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/3.Salesforce Vehicle Reimbursement & Mileage Automation Platform.png",
-                "caption": "TripLog API Integration and Reimbursement Pipeline",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Experience Cloud travel expense portal integrating TripLog REST APIs and Batch Apex for automated vehicle reimbursement.",
             "keywords": "Experience Cloud, TripLog API, Vehicle Reimbursement, Batch Apex, Salesforce Integration, IRS Compliance"
@@ -1797,14 +1755,7 @@ const projectData = [
             "Using custom integration queues in Apex prevents transaction failures under API load.",
             "Synchronizing product catalogs ensures absolute pricing alignment across departments."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/4.Salesforce ERP & Accounting Synchronization Hub.png",
-                "caption": "MYOB & Jiwa ERP Bidirectional Data Sync",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Sales Cloud integration with MYOB Accounting and Jiwa ERP, automating invoicing and customer payments.",
             "keywords": "MYOB Integration, Jiwa ERP, Salesforce REST API, Financial Sync, Apex Batch, Accounting CRM"
@@ -1912,14 +1863,7 @@ const projectData = [
             "Using JSON contracts for third-party logistics updates ensures robust tracking visibility.",
             "Automated validations prevent incorrect information from entering the triage queue."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/5.Salesforce Customer Service & Warranty Portal.png",
-                "caption": "Experience Cloud Warranty Claims Portal UI",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Salesforce Service Cloud and Experience Cloud portal for automated warranty registration and case management.",
             "keywords": "Warranty Portal, Service Cloud, Experience Cloud, Visualforce, Apex Claims, Case Management"
@@ -2026,14 +1970,7 @@ const projectData = [
             "Using custom metadata configurations allows updating external API routes without code deployments.",
             "Scheduled batch processing handles license imports without reaching Salesforce limits."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/6.Salesforce Autodesk Subscription Management Integration.png",
-                "caption": "Autodesk Subscription API Sync Engine",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Salesforce Sales Cloud integration with Autodesk Subscription API for automated renewals and license management.",
             "keywords": "Autodesk Integration, Subscription Management, Renewal Automation, Sales Cloud, REST API, Contract Renewal"
@@ -2141,14 +2078,7 @@ const projectData = [
             "Using scalable webhook listener architectures avoids Salesforce poll limit exhaustion.",
             "Parsing unstructured data into clean JSON schemas ensures database validation compliance."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/7.Salesforce Social Media Engagement Automation.png",
-                "caption": "Chatter and Social API Communication Flow",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Salesforce social integration with Facebook and LinkedIn APIs to automate Chatter postings and Case creation.",
             "keywords": "Social CRM, Facebook Graph API, LinkedIn API, Chatter Automation, Salesforce Case, Webhook Listener"
@@ -2255,14 +2185,7 @@ const projectData = [
             "Using strict JSON contract validators reduces target system exceptions.",
             "Developing detailed audit log tables simplifies debugging across systems."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/8.Salesforce Sage 300 ERP Integration Framework.png",
-                "caption": "Salesforce to Sage 300 Integration Workflow",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Salesforce Sales Cloud integration with Sage 300 (Accpac) ERP for outbound opportunity and ledger synchronization.",
             "keywords": "Sage 300 Integration, Accpac ERP, Salesforce REST Sync, JSON Outbound, Apex Queueable, Opportunity Automation"
@@ -2370,14 +2293,7 @@ const projectData = [
             "Using JavaScript visualization libraries like Google Charts improves executive system engagement.",
             "Custom matching algorithms are vital when consolidating records from multiple ERP feeds."
         ],
-        "gallery": [
-            {
-                "url": "assets/images/projects/9.Enterprise Supplier Management & KPI Analytics Platform.png",
-                "caption": "Supplier Invoice & Performance Dashboards",
-                "showOnHub": true,
-                "showOnDetail": true
-            }
-        ],
+        "gallery": [],
         "seo": {
             "description": "Enterprise Supplier Management (ESM) and KPI Analytics platform with custom invoice workflows and Google Charts.",
             "keywords": "Enterprise Supplier Management, ESM, KPI Analytics, Google Charts, Procure to Pay, Visualforce Dashboards"

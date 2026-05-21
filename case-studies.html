@@ -185,21 +185,34 @@
                 <h2>Explore All Solutions</h2>
                 <p>Filter by industry or technology specialization to see specific project outcomes.</p>
             </div>
-            <div class="filter-bar-container" style="text-align: center; margin-top: 40px; margin-bottom: 60px;">
-                <div class="filter-bar">
-                    <button class="filter-btn active" data-filter="all">All Solutions</button>
-                    <button class="filter-btn" data-filter="Real Estate">Real Estate</button>
-                    <button class="filter-btn" data-filter="Logistics">Logistics</button>
-                    <button class="filter-btn" data-filter="LMS">Education/LMS</button>
-                    <button class="filter-btn" data-filter="Healthcare">Healthcare</button>
-                    <button class="filter-btn" data-filter="AI">AI & Automation</button>
-                    <button class="filter-btn" data-filter="Salesforce">Salesforce Core</button>
-                    <button class="filter-btn" data-filter="Integration">Integrations</button>
+            <div class="case-controls-wrapper">
+                <div class="case-controls-bar reveal">
+                    <div class="filter-group">
+                        <span class="filter-label">Filter by:</span>
+                        <div id="dynamic-filters" class="dynamic-filters">
+                            <!-- Dynamically generated industry/tech chips -->
+                        </div>
+                    </div>
+                    
+                    <div class="sort-group">
+                        <span class="filter-label">Sort by:</span>
+                        <select id="project-sort" class="sort-select">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="title-asc">Title A-Z</option>
+                            <option value="title-desc">Title Z-A</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <div class="case-study-grid" id="case-study-grid">
                 <!-- Dynamically populated by JS -->
+            </div>
+
+            <!-- Pagination Controls -->
+            <div id="pagination-container" class="pagination-container reveal">
+                <!-- Dynamically generated pagination -->
             </div>
         </section>
 

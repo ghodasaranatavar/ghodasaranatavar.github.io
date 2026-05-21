@@ -1323,6 +1323,1080 @@ const projectData = [
             "context": "Salesforce Field Service Lightning and Dashpivot automation for landscaping contractors."
         },
         "architecture": "graph TD\n    subgraph Salesforce_Field_Service\n        Ops[\"Operations Team\"] --> WorkOrder[\"Field Service Work Order\"]\n        WorkOrder --> Trigger[\"Dashpivot Sync Trigger\"]\n    end\n\n    subgraph Integration_Engine\n        Trigger --> ApexAPI[\"Apex REST Integration\"]\n        ApexAPI --> JWT[\"JWT Authentication\"]\n    end\n\n    subgraph Dashpivot_Platform\n        JWT --> Forms[\"Dashpivot Inspection Forms\"]\n        Forms --> Technician[\"Mobile Field Technicians\"]\n        Technician --> Uploads[\"Photos / OHS Docs / Signatures\"]\n    end\n\n    subgraph Salesforce_Synchronization\n        Scheduler[\"Scheduled Apex Polling\"] --> DashpivotAPI[\"Dashpivot APIs\"]\n        DashpivotAPI --> Parser[\"Dynamic JSON Parser\"]\n        Parser --> WorkOrderUpdates[\"Work Order Status Updates\"]\n    end\n\n    subgraph Completion_Workflow\n        WorkOrderUpdates --> PDFExport[\"Dashpivot PDF Export API\"]\n        PDFExport --> PDF[\"Final Work Order PDF\"]\n        PDF --> SalesforceAttach[\"Attach PDF to Work Order\"]\n    end\n\n    subgraph Monitoring_Analytics\n        Parser --> Audit[\"Audit Logs\"]\n        Parser --> Retry[\"Retry/Error Handling\"]\n        Audit --> Dashboard[\"Operational Dashboards\"]\n    end"
+    },
+	{
+        "id": 12,
+        "title": "Enterprise B2B Commerce Cloud Checkout & SSO Ecosystem",
+        "challenge": {
+            "icon": "ph ph-shopping-cart-simple",
+            "title": "High Checkout Abandonment & Siloed Portals",
+            "description": "Wholesale buyers faced high friction due to duplicate login barriers and rigid checkout flows, leading to a 35% cart abandonment rate."
+        },
+        "niche": "B2B Commerce & Identity Access Management",
+        "myRole": "Lead B2B Commerce Architect & SSO Specialist",
+        "technicalComplexity": [
+            "Custom LWC Checkout Flow",
+            "Auth-Based Single Sign-On (SSO)",
+            "Real-time ERP Pricing Sync"
+        ],
+        "whoIsThisFor": "Wholesale distributors and B2B manufacturers looking to simplify client purchasing and unify partner portal security.",
+        "metricsPreview": [
+            "40% Faster Checkout Process",
+            "99.9% Authentication Uptime",
+            "$2M Annual Order Value Uplift"
+        ],
+        "client": {
+            "industry": "Industrial Supply Distribution",
+            "size": "Enterprise",
+            "location": "Global / Multi-region"
+        },
+        "businessContext": "The client operated a complex B2B catalog across multiple geographic divisions with strict, customer-specific pricing matrix rules.",
+        "operationalProblem": "Duplicate client records across systems required buyers to re-authenticate when shifting from marketing sites to purchasing portals. Furthermore, legacy Aura components in checkout did not support dynamic calculations, causing order backlogs.",
+        "solutionStrategy": "Designed a secure Single Sign-On (SSO) architecture utilizing Salesforce Community as the Identity Provider (IdP) with SAML/OIDC. Built a reactive checkout workflow using custom LWC components that dynamically pull real-time pricing from SAP via middleware APIs.",
+        "objective": [
+            "Establish seamless SSO across customer and partner portals",
+            "Develop custom LWC checkout components replacing legacy layouts",
+            "Orchestrate real-time pricing and tax integrations with SAP ERP",
+            "Ensure high transactional throughput and zero cart state loss"
+        ],
+        "solution": {
+            "description": "Architected and delivered a modernized checkout pipeline on B2B Commerce with unified identity security, boosting client adoption and sales efficiency.",
+            "highlights": [
+                "Configured Auth-based SSO with Salesforce Community as IdP, enabling federated logins for 5,000+ corporate buyers",
+                "Developed responsive, modular checkout LWCs, streamlining the checkout wizard steps from 6 screens to 3",
+                "Implemented high-concurrency Apex handlers executing asynchronous pricing checks on ERP databases",
+                "Built client-side validation rules enforcing wholesale Purchase Order formatting limits",
+                "Architected custom error boundary controls in LWC to maintain offline cart persistence during system sync delays"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Commerce Cloud (B2B)",
+                "Experience Cloud",
+                "Apex",
+                "Lightning Web Components"
+            ],
+            "tools": [
+                "Flow Builder",
+                "Identity Provider (IdP)",
+                "Connected Apps",
+                "SAML/OIDC"
+            ],
+            "integrations": [
+                "SAP ERP Gateway API",
+                "Vertex Tax Engine REST API"
+            ]
+        },
+        "results": [
+            {
+                "metric": "-35%",
+                "label": "Cart Abandonment Rate"
+            },
+            {
+                "metric": "99.99%",
+                "label": "SSO Sign-in Reliability"
+            },
+            {
+                "metric": "+40h",
+                "label": "Weekly Admin Support Saved"
+            },
+            {
+                "metric": "10,000+",
+                "label": "Daily Checkout Transactions"
+            }
+        ],
+        "feedback": "The checkout redesign and SSO integration solved a major bottleneck. Buyer adoption skyrocketed, and manual order adjustments have dropped to nearly zero.",
+        "takeaways": [
+            "SSO is the cornerstone of partner loyalty in B2B portals.",
+            "Modular LWC architecture allows decoupling checkout steps from underlying pricing logic.",
+            "Caching static ERP prices at the Apex layer mitigates governor limit issues under peak load."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/1.Salesforce B2B Commerce Cloud Checkout & SSO Ecosystem.png",
+                "caption": "Enterprise B2B Checkout & Identity Flow",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Enterprise-grade B2B Commerce Cloud checkout modernization and Auth-based SSO integration for global industrial distributors.",
+            "keywords": "B2B Commerce Cloud, SSO, Salesforce Community, LWC Checkout, ERP Integration, Identity Management"
+        },
+        "homepageFeatured": {
+            "isFeatured": true,
+            "outcome": "Streamline wholesale purchases and secure partner portals with 99.9% SSO reliability.",
+            "metrics": [
+                {
+                    "icon": "ph ph-shopping-bag",
+                    "value": "-35% Abandonment"
+                },
+                {
+                    "icon": "ph ph-key",
+                    "value": "99.9% SSO Uptime"
+                }
+            ],
+            "icon": "ph ph-shopping-cart",
+            "accentColor": "var(--lab-palette-primary-main)"
+        },
+        "detailFeatured": true,
+        "hubFeatured": true,
+        "architecture": "graph TD\n    subgraph Corporate_Buyer\n        User[Buyer Browser] -->|Auth Request| SSO[SAML/OIDC SSO]\n    end\n    subgraph Salesforce_Experience_Cloud\n        SSO -->|Federated Access| IdP[Salesforce Identity Provider]\n        IdP -->|Render UI| Portal[B2B Community Portal]\n        Portal -->|LWC Checkout| ApexController[Apex Controller]\n    end\n    subgraph Middleware_Layer\n        ApexController -->|Secure REST Callout| Mule[MuleSoft ESB]\n    end\n    subgraph Backend_Systems\n        Mule -->|Query Pricing| SAP[SAP ERP Database]\n        Mule -->|Query Tax| Vertex[Vertex Tax Engine]\n    end\n    Vertex -->|Tax Payload| Mule\n    SAP -->|Pricing Matrix| Mule\n    Mule -->|JSON Response| ApexController\n    ApexController -->|Reactive Update| Portal",
+        "aiConfig": {
+            "title": "B2B Commerce Architect",
+            "primaryCTA": "Analyze Checkout Flow",
+            "tools": [
+                "roi-estimator",
+                "architect-assistant"
+            ],
+            "context": "B2B Commerce checkout and SSO architecture integration."
+        }
+    },
+    {
+        "id": 13,
+        "title": "Salesforce Service Cloud & Einstein Bot Engagement Platform",
+        "challenge": {
+            "icon": "ph ph-headset",
+            "title": "Overwhelming Customer Support Ticket Spikes",
+            "description": "SaaS support teams were experiencing high volumes of routine inquiries, resulting in 48-hour response delays and low agent utilization."
+        },
+        "niche": "Conversational AI & Customer Support Automation",
+        "myRole": "Service Cloud Architect & Conversational AI Engineer",
+        "technicalComplexity": [
+            "Einstein Bot Dialog Scripting",
+            "Digital Engagement Channels",
+            "LWC Snap-ins & Presence Routing"
+        ],
+        "whoIsThisFor": "High-volume customer support operations aiming to automate ticket deflection and route escalations dynamically.",
+        "metricsPreview": [
+            "65% Support Case Deflection",
+            "24/7 Agent Availability",
+            "94% Customer CSAT Score"
+        ],
+        "client": {
+            "industry": "SaaS & Software Technology",
+            "size": "Enterprise",
+            "location": "Global / Remote Support"
+        },
+        "businessContext": "A leading global SaaS enterprise with over 100k active subscribers saw exponential chat support inquiries.",
+        "operationalProblem": "Agents spent 70% of their shifts answering basic account recovery and password reset requests. The native chat interface did not collect pre-chat context, leading to long triage times and misrouted tickets.",
+        "solutionStrategy": "Configured an enterprise Service Cloud solution implementing Live Agent, Einstein Bots, and digital engagement routes. Resolved bot capabilities gaps by designing custom Apex callout actions that query the core subscriber DB.",
+        "objective": [
+            "Deflect routine customer queries using conversational AI",
+            "Route high-priority support issues automatically to specialized tiers",
+            "Design custom pre-chat and message snap-in interfaces",
+            "Provide agents with Einstein Sales Opportunity indicators on screen"
+        ],
+        "solution": {
+            "description": "Engineered a robust, bot-assisted support ecosystem using Service Cloud and custom LWC snap-ins that provides instant solutions to customers and reduces triage delays.",
+            "highlights": [
+                "Deployed Einstein Bots across Web, SMS, and WhatsApp channels with customized chat flows",
+                "Developed invocable Apex methods that bypassed Einstein Bot limits, querying Salesforce database variables on the fly",
+                "Designed pre-chat and message snap-in LWCs to capture key details (emails, products) before agent routing",
+                "Configured Omni-Channel routing workflows, presence statuses, and skills-based agent assignments",
+                "Configured Einstein Opportunity scoring models, displaying high-value sales recommendations directly to support agents"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Service Cloud",
+                "Digital Engagement",
+                "Einstein Bots",
+                "Apex",
+                "LWC"
+            ],
+            "tools": [
+                "Omni-Channel",
+                "Skills-Based Routing",
+                "Pre-chat Snap-ins",
+                "Chatter"
+            ],
+            "integrations": [
+                "WhatsApp Business API",
+                "Twilio Messaging Gateway",
+                "SaaS Licensing REST API"
+            ]
+        },
+        "results": [
+            {
+                "metric": "65%",
+                "label": "Deflection of Basic Support Cases"
+            },
+            {
+                "metric": "-50%",
+                "label": "Average Support Response Time"
+            },
+            {
+                "metric": "94%",
+                "label": "Customer CSAT Score Increase"
+            },
+            {
+                "metric": "15,000+",
+                "label": "Automated Chats Handled Monthly"
+            }
+        ],
+        "feedback": "The combination of Einstein bots and smart Omni-Channel routing saved our support organization. Response delays have evaporated and agent morale has dramatically improved.",
+        "takeaways": [
+            "Einstein bots should gather metadata rather than try to solve complex problems directly.",
+            "Using Invocable Apex in bots enables seamless, real-time CRM updates.",
+            "Omni-channel presence tracking gives supervisor teams full staffing visibility."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/2.Salesforce Service Cloud & Einstein Bot Engagement Platform.png",
+                "caption": "Einstein Bot Ingestion & Routing Architecture",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Enterprise Service Cloud setup with Einstein Bots, Omni-Channel routing, and customized digital engagement snap-ins.",
+            "keywords": "Service Cloud, Einstein Bot, Digital Engagement, Live Agent, LWC Snap-in, Omni-Channel Routing"
+        },
+        "homepageFeatured": {
+            "isFeatured": true,
+            "outcome": "Automate support ticket deflection by 65% with Einstein Chatbots and skills-based routing.",
+            "metrics": [
+                {
+                    "icon": "ph ph-chats",
+                    "value": "65% Deflection Rate"
+                },
+                {
+                    "icon": "ph ph-clock",
+                    "value": "-50% Triage Time"
+                }
+            ],
+            "icon": "ph ph-robot",
+            "accentColor": "var(--lab-palette-accent-pink)"
+        },
+        "detailFeatured": true,
+        "hubFeatured": false,
+        "architecture": "graph TD\n    subgraph Chat_Channels\n        Customer[Customer on Web/WhatsApp/SMS] -->|Initiates Chat| SnapIn[LWC Pre-chat Snap-in]\n    end\n    subgraph Bot_Deflection\n        SnapIn -->|Launches Dialog| Einstein[Einstein Bot Engine]\n        Einstein -->|Query CRM Data| Invocable[Invocable Apex Handler]\n        Invocable -->|Check Entitlements| DB[(Salesforce DB)]\n    end\n    subgraph Live_Agent_Escalation\n        Einstein -->|Failed Resolution| Router[Omni-Channel Router]\n        Router -->|Skills-Based Check| Queue[Specialized Support Queue]\n        Queue -->|Assign Activity| Agent[Support Agent Console]\n        Agent -->|Suggest Offer| Score[Einstein Opportunity Score]\n    end",
+        "aiConfig": {
+            "title": "Conversational AI Consultant",
+            "primaryCTA": "Design Bot Architecture",
+            "tools": [
+                "architect-assistant",
+                "discovery-call-prep"
+            ],
+            "context": "Service Cloud and Einstein Bot automation architecture."
+        }
+    },
+    {
+        "id": 14,
+        "title": "Experience Cloud Vehicle Reimbursement & Mileage Automation Platform",
+        "challenge": {
+            "icon": "ph ph-car",
+            "title": "Manual Expense Tracking & Tax Inefficiencies",
+            "description": "Field employees were receiving fixed, taxable car allowances while manually logging miles, resulting in $1M+ in excess tax costs and audit risks."
+        },
+        "niche": "Field Operations & Travel Automation",
+        "myRole": "Lead Solutions Architect & Integration Engineer",
+        "technicalComplexity": [
+            "AngularJS Experience Cloud UI",
+            "TripLog API Integration",
+            "Bulkified Scheduled Batch Apex"
+        ],
+        "whoIsThisFor": "Enterprises with nationwide field forces seeking to automate travel compliance and reduce vehicle allowance tax burdens.",
+        "metricsPreview": [
+            "$1.2M Annual Tax Savings",
+            "80% Reduction in Audit Hours",
+            "100% Automated Mileage Captures"
+        ],
+        "client": {
+            "industry": "Field Services & Infrastructure",
+            "size": "Enterprise (10k+ Employees)",
+            "location": "North America"
+        },
+        "businessContext": "A company with thousands of technicians traveling daily for equipment maintenance was paying taxable flat-rate car allowances, resulting in high tax leakage.",
+        "operationalProblem": "Relying on self-reported mileage spreadsheets created security risks, compliance loopholes, and thousands of hours in manual finance reconciliations.",
+        "solutionStrategy": "Deployed a customized Experience Cloud portal utilizing AngularJS and Bootstrap. Integrated TripLog REST APIs to automate mileage logging, and built scheduled batch Apex to process monthly calculations.",
+        "objective": [
+            "Transition taxable car allowances to IRS-compliant reimbursement models",
+            "Build a responsive self-service Experience Cloud portal",
+            "Automate real-time trip synchronization from mobile devices",
+            "Optimize high-volume data batching to prevent governor limit overruns"
+        ],
+        "solution": {
+            "description": "Architected a secure, compliant vehicle reimbursement ecosystem on Salesforce, eliminating manual mileage reports and saving millions in tax expenses.",
+            "highlights": [
+                "Designed and launched an Experience Cloud community using AngularJS and Bootstrap for the front-end interface",
+                "Integrated TripLog REST APIs for real-time mobile tracking and trip data ingestion",
+                "Developed bulkified Apex triggers and scheduled batch classes processing 200,000+ travel logs monthly",
+                "Configured secure Sharing Rules and Permission Sets protecting employee financial data",
+                "Built automated email alert templates communicating reimbursement status to users"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Experience Cloud",
+                "Sales Cloud",
+                "Apex",
+                "SOQL/SOSL"
+            ],
+            "tools": [
+                "Scheduled Batches",
+                "Bulkified Triggers",
+                "Sharing Settings",
+                "Email Templates"
+            ],
+            "integrations": [
+                "TripLog REST API",
+                "IRS Tax Compliance Engine"
+            ]
+        },
+        "results": [
+            {
+                "metric": "$1.2M",
+                "label": "Annual Tax Savings"
+            },
+            {
+                "metric": "-80%",
+                "label": "Expense Auditing Time"
+            },
+            {
+                "metric": "100%",
+                "label": "Mileage Sync Compliance"
+            },
+            {
+                "metric": "200k+",
+                "label": "Monthly Logged Trips"
+            }
+        ],
+        "feedback": "The mileage automation saved us over a million dollars in taxes in the first year alone. The interface is intuitive, and our field reps love the instant tracking.",
+        "takeaways": [
+            "Replacing manual tracking with automated GPS integrations eliminates expense padding.",
+            "Experience Cloud customization with AngularJS enables a modern web experience within Salesforce.",
+            "Batch Apex design is critical when processing high-volume calculations on strict schedules."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/3.Salesforce Vehicle Reimbursement & Mileage Automation Platform.png",
+                "caption": "TripLog API Integration and Reimbursement Pipeline",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Experience Cloud travel expense portal integrating TripLog REST APIs and Batch Apex for automated vehicle reimbursement.",
+            "keywords": "Experience Cloud, TripLog API, Vehicle Reimbursement, Batch Apex, Salesforce Integration, IRS Compliance"
+        },
+        "homepageFeatured": {
+            "isFeatured": true,
+            "outcome": "Automate travel compliance and save $1.2M in annual tax liabilities with automated mileage sync.",
+            "metrics": [
+                {
+                    "icon": "ph ph-money",
+                    "value": "$1.2M Saved"
+                },
+                {
+                    "icon": "ph ph-checkbox",
+                    "value": "100% Tax Compliant"
+                }
+            ],
+            "icon": "ph ph-car",
+            "accentColor": "var(--lab-palette-accent-green)"
+        },
+        "detailFeatured": true,
+        "hubFeatured": false,
+        "architecture": "graph TD\n    subgraph Mobile_Device\n        Reps[Field Rep App] -->|Logs Mileage| TripLog[TripLog Cloud Engine]\n    end\n    subgraph Experience_Cloud_Portal\n        Portal[AngularJS Portal Interface] -->|View/Adjust Logs| ApexController[Apex Integration Controller]\n    end\n    subgraph Salesforce_Core\n        ApexController -->|Fetch Updates| SyncJob[Scheduled Apex Batch]\n        SyncJob -->|GET Request| TripLog\n        TripLog -->|Trip Data Payload| SyncJob\n        SyncJob -->|Bulk Upsert| TravelLogs[Travel Log Objects]\n        TravelLogs -->|Triggers Payout Logic| ReimbursementEngine[Reimbursement Calc Engine]\n        ReimbursementEngine -->|Create Record| Reimbursement[Reimbursement Record]\n    end",
+        "aiConfig": {
+            "title": "Mileage System Architect",
+            "primaryCTA": "Design Expense Model",
+            "tools": [
+                "roi-estimator",
+                "architect-assistant"
+            ],
+            "context": "Salesforce Experience Cloud vehicle reimbursement and TripLog integration."
+        }
+    },
+    {
+        "id": 15,
+        "title": "Salesforce ERP & Accounting Synchronization Hub (MYOB & Jiwa)",
+        "challenge": {
+            "icon": "ph ph-plugs",
+            "title": "Disconnected Sales & Accounting Pipelines",
+            "description": "Siloed financial records in MYOB and project costings in Jiwa ERP led to manual data sync errors, duplicate invoicing, and a 45-day Days Sales Outstanding (DSO) delay."
+        },
+        "niche": "ERP Integration & Financial Orchestration",
+        "myRole": "Lead Integration Architect & Developer",
+        "technicalComplexity": [
+            "Bi-directional REST Sync",
+            "Asynchronous Processing Queues",
+            "Dynamic SOQL/SOSL Queries"
+        ],
+        "whoIsThisFor": "Enterprises needing to bridge CRM sales operations with financial ledger and resource management ERPs.",
+        "metricsPreview": [
+            "15-Day DSO Reduction",
+            "99.9% Financial Sync Uptime",
+            "Zero Double-Keying Efforts"
+        ],
+        "client": {
+            "industry": "Logistics & Professional Services",
+            "size": "Enterprise",
+            "location": "APAC Region"
+        },
+        "businessContext": "The client managed complex customer contracts requiring real-time updates on client payments, invoice reminders, and resource planning across departments.",
+        "operationalProblem": "Sales reps frequently closed deals for accounts that had unpaid bills, while project estimators spent 10+ hours weekly manually duplicating data across MYOB and Jiwa systems.",
+        "solutionStrategy": "Engineered a centralized Sales Cloud Integration Hub utilizing secure Apex REST endpoints, scheduled synchronization routines, and automated email alerts to align CRM with MYOB and Jiwa ERP databases.",
+        "objective": [
+            "Automate invoice tracking and payment sync from MYOB",
+            "Bridge project estimation inputs from Jiwa ERP to Salesforce",
+            "Develop asynchronous synchronization processes for high volumes",
+            "Provide real-time dashboard visibility into payment statuses"
+        ],
+        "solution": {
+            "description": "Delivered a high-integrity, real-time integration hub connecting Salesforce Sales Cloud with MYOB and Jiwa ERP platforms.",
+            "highlights": [
+                "Built secure Apex REST interfaces handling bidirectional transactions for accounts and products",
+                "Developed automated workflow rules triggering client payment notifications and updates",
+                "Programmed scheduled batch routines managing large ledger sync volumes with zero API timeouts",
+                "Constructed custom SOQL/SOSL query libraries extracting complex account payment structures",
+                "Designed CRM reporting dashboards displaying active jobs, payments, and receivables data"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Sales Cloud",
+                "Apex",
+                "SOQL/SOSL"
+            ],
+            "tools": [
+                "Scheduled Batches",
+                "Workflow Rules",
+                "Developer Console",
+                "Data Loader"
+            ],
+            "integrations": [
+                "MYOB Accounting API",
+                "Jiwa ERP REST API",
+                "JSON Webhooks"
+            ]
+        },
+        "results": [
+            {
+                "metric": "-15 Days",
+                "label": "Days Sales Outstanding (DSO)"
+            },
+            {
+                "metric": "99.99%",
+                "label": "Data Ledger Accuracy"
+            },
+            {
+                "metric": "+25h",
+                "label": "Weekly Admin Hours Saved"
+            },
+            {
+                "metric": "Zero",
+                "label": "Duplicate Invoices Sent"
+            }
+        ],
+        "feedback": "The MYOB and Jiwa integration brought complete financial visibility to our sales team. We've eliminated manual billing errors and accelerated payment cycles.",
+        "takeaways": [
+            "Tightly aligning accounting and CRM systems drives down DSO metrics.",
+            "Using custom integration queues in Apex prevents transaction failures under API load.",
+            "Synchronizing product catalogs ensures absolute pricing alignment across departments."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/4.Salesforce ERP & Accounting Synchronization Hub.png",
+                "caption": "MYOB & Jiwa ERP Bidirectional Data Sync",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Sales Cloud integration with MYOB Accounting and Jiwa ERP, automating invoicing and customer payments.",
+            "keywords": "MYOB Integration, Jiwa ERP, Salesforce REST API, Financial Sync, Apex Batch, Accounting CRM"
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": false,
+        "architecture": "graph LR\n    subgraph Salesforce_CRM\n        Opp[Closed-Won Opportunity] -->|Trigger Outbound| ApexQ[Queueable Sync Engine]\n        InvoiceObj[Invoice Custom Object] -->|Update UI| Dash[Financial Dashboard]\n    end\n    subgraph Middleware\n        ApexQ -->|REST JSON Payload| API[MuleSoft Integration Router]\n    end\n    subgraph ERP_Systems\n        API -->|Create Customer Invoice| MYOB[MYOB Accounting]\n        API -->|Query Job Costings| Jiwa[Jiwa ERP]\n    end\n    MYOB -->|Payment Confirmation| API\n    Jiwa -->|Resource Allocations| API\n    API -->|Sync Data| InvoiceObj",
+        "aiConfig": {
+            "title": "ERP Integration Lead",
+            "primaryCTA": "Design ERP Sync Hub",
+            "tools": [
+                "integration-advisor",
+                "architect-assistant"
+            ],
+            "context": "MYOB and Jiwa ERP integration with Sales Cloud."
+        }
+    },
+    {
+        "id": 16,
+        "title": "Salesforce Customer Service & Warranty Portal",
+        "challenge": {
+            "icon": "ph ph-wrench",
+            "title": "Frictional Warranty Claim Processing",
+            "description": "Manual email and phone-based product warranty registrations and repair requests led to processing backlogs, missing inventory updates, and delayed service responses."
+        },
+        "niche": "Customer Experience & Warranty Operations",
+        "myRole": "Salesforce Consultant & Lead Developer",
+        "technicalComplexity": [
+            "Visualforce Page Design",
+            "JSON Request/Response Handling",
+            "Apex Triggers & Approval Processes"
+        ],
+        "whoIsThisFor": "Manufacturers and retail networks wanting to automate post-purchase support, product tracking, and repair approvals.",
+        "metricsPreview": [
+            "50% Case Backlog Reduction",
+            "30% Faster Claim Decisions",
+            "4.8/5 Customer Portal CSAT"
+        ],
+        "client": {
+            "industry": "Consumer Electronics & Appliances",
+            "size": "Enterprise",
+            "location": "USA / National Retail"
+        },
+        "businessContext": "The client distributed hardware products nationally, requiring an efficient self-service pipeline for clients to log product registrations and submit repairs.",
+        "operationalProblem": "Support staff were manually checking purchase orders and warranty terms. The lack of structured inputs meant incomplete claims delayed repair approvals by weeks.",
+        "solutionStrategy": "Implemented Experience Cloud integrated with Service Cloud. Developed customized Visualforce layouts, complex validation rules, and multi-department approvals to automate the claims lifecycle.",
+        "objective": [
+            "Digitize warranty registration and service requests via a customer portal",
+            "Automate claim routing based on product classification rules",
+            "Build customized Visualforce screens for detail entry",
+            "Establish incoming JSON parsing routines for tracking integration updates"
+        ],
+        "solution": {
+            "description": "Built a comprehensive customer warranty lifecycle portal on Experience Cloud, automating validation checks and streamlining claim decisions.",
+            "highlights": [
+                "Designed responsive Visualforce pages providing a seamless interface for customers",
+                "Developed Apex controllers and Triggers enforcing automated warranty validations",
+                "Configured multi-tier Approval Processes routing claims based on product price",
+                "Created JSON parser logic mapping incoming logistics payloads to case files",
+                "Established custom report types tracking claim processing times and agent loads"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Service Cloud",
+                "Experience Cloud",
+                "Apex",
+                "Visualforce Pages"
+            ],
+            "tools": [
+                "Approval Processes",
+                "Validation Rules",
+                "Page Layouts",
+                "Custom Fields"
+            ],
+            "integrations": [
+                "Logistics Tracking API",
+                "Product Master Database API"
+            ]
+        },
+        "results": [
+            {
+                "metric": "-50%",
+                "label": "Claims Processing Backlog"
+            },
+            {
+                "metric": "30% Faster",
+                "label": "Claim Resolution Times"
+            },
+            {
+                "metric": "4.8/5",
+                "label": "Customer CSAT Score"
+            },
+            {
+                "metric": "100%",
+                "label": "Product Traceability"
+            }
+        ],
+        "feedback": "The warranty portal automated our entire service department. Customers log their own repairs, and the approval matrix handles validation in minutes instead of days.",
+        "takeaways": [
+            "Enabling self-service registrations lowers call center volumes.",
+            "Using JSON contracts for third-party logistics updates ensures robust tracking visibility.",
+            "Automated validations prevent incorrect information from entering the triage queue."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/5.Salesforce Customer Service & Warranty Portal.png",
+                "caption": "Experience Cloud Warranty Claims Portal UI",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Salesforce Service Cloud and Experience Cloud portal for automated warranty registration and case management.",
+            "keywords": "Warranty Portal, Service Cloud, Experience Cloud, Visualforce, Apex Claims, Case Management"
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": false,
+        "architecture": "graph TD\n    subgraph Customer_Portal\n        User[Customer Browser] -->|Submits Claim| VF[Visualforce Claim Screen]\n        VF -->|Execute Checks| ApexCtrl[Apex Portal Controller]\n    end\n    subgraph Case_Automation\n        ApexCtrl -->|Insert Case| Case[Case Record]\n        Case -->|Trigger Rules| Route[Case Assignment Rules]\n        Route -->|Auto Assign| Queue[Regional Repair Queue]\n    end\n    subgraph Verification_Logistics\n        Case -->|Validate Age| Approval[Warranty Approval Process]\n        Approval -->|Auto-Approve / Manual Review| Decision{Claim Approved?}\n        Decision -->|Yes| Shipping[JSON Integration: Logistics Shipping Label]\n    end",
+        "aiConfig": {
+            "title": "Service Operations Architect",
+            "primaryCTA": "Design Claims Portal",
+            "tools": [
+                "roi-estimator",
+                "architect-assistant"
+            ],
+            "context": "Service Cloud and Experience Cloud warranty portal setup."
+        }
+    },
+    {
+        "id": 17,
+        "title": "Salesforce Autodesk Subscription Management Integration",
+        "challenge": {
+            "icon": "ph ph-arrows-clockwise",
+            "title": "High Customer Churn & Manual Renewal Audits",
+            "description": "Siloed Autodesk license data forced account managers to manually track software expirations, resulting in missed renewal windows and customer subscription churn."
+        },
+        "niche": "Subscription Lifecycle & API Integration",
+        "myRole": "Integration Architect",
+        "technicalComplexity": [
+            "REST API Integrations",
+            "Asynchronous Processing Engine",
+            "Automated Renewal Opportunity Triggers"
+        ],
+        "whoIsThisFor": "VARs and software resellers aiming to automate renewal pipeline creations and subscription data updates.",
+        "metricsPreview": [
+            "98% Subscription Renewal Rate",
+            "$2.5M Revenue Churn Defended",
+            "Zero Manual License Audits"
+        ],
+        "client": {
+            "industry": "Software Value-Added Reseller (VAR)",
+            "size": "Enterprise",
+            "location": "North America"
+        },
+        "businessContext": "The client distributed thousands of Autodesk subscriptions across multiple business segments, requiring automated renewal management.",
+        "operationalProblem": "Manually monitoring Autodesk contract end-dates resulted in sales reps missing renewal targets, while client licensing gaps disrupted client projects.",
+        "solutionStrategy": "Developed a real-time Autodesk API integration with Sales Cloud. Designed JSON payload handling scripts and programmed automated workflows to trigger renewal opportunities 90 days before subscription expiry.",
+        "objective": [
+            "Integrate Autodesk REST API to sync licensing records",
+            "Automate renewal opportunity generation in Salesforce",
+            "Develop validation rules maintaining data ledger alignment",
+            "Establish Apex triggers for dynamic Account association mappings"
+        ],
+        "solution": {
+            "description": "Architected a real-time Autodesk integration framework, automating renewal generation, decreasing contract admin effort, and defending core recurring revenues.",
+            "highlights": [
+                "Built Apex REST callout modules querying Autodesk APIs with OAuth authentication",
+                "Developed asynchronous scheduled Apex jobs processing subscription contract databases",
+                "Programmed triggers creating renewal opportunities with correct product line items",
+                "Configured page layouts, custom fields, and record types tracking active license states",
+                "Implemented robust error logging tracking REST callout timeouts and system status"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Sales Cloud",
+                "Apex",
+                "SOQL/SOSL"
+            ],
+            "tools": [
+                "Apex Triggers",
+                "Scheduled Apex",
+                "Workflow Rules",
+                "Validation Rules"
+            ],
+            "integrations": [
+                "Autodesk Subscription API",
+                "REST JSON Webhooks"
+            ]
+        },
+        "results": [
+            {
+                "metric": "98%",
+                "label": "Renewal Capture Rate"
+            },
+            {
+                "metric": "$2.5M",
+                "label": "Annual Revenue Defended"
+            },
+            {
+                "metric": "Zero",
+                "label": "Manual License Audits"
+            },
+            {
+                "metric": "+30h",
+                "label": "Monthly Rep Time Restored"
+            }
+        ],
+        "feedback": "The Autodesk integration modernized our sales cycle. Renewals generate automatically, allowing our team to focus on customer engagement instead of spreadsheet audits.",
+        "takeaways": [
+            "Integrating subscription events directly into opportunities prevents pipeline leakage.",
+            "Using custom metadata configurations allows updating external API routes without code deployments.",
+            "Scheduled batch processing handles license imports without reaching Salesforce limits."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/6.Salesforce Autodesk Subscription Management Integration.png",
+                "caption": "Autodesk Subscription API Sync Engine",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Salesforce Sales Cloud integration with Autodesk Subscription API for automated renewals and license management.",
+            "keywords": "Autodesk Integration, Subscription Management, Renewal Automation, Sales Cloud, REST API, Contract Renewal"
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": true,
+        "architecture": "graph LR\n    subgraph Autodesk_Cloud\n        Licensing[Autodesk License DB] -->|Contract Expiry Event| Webhook[Autodesk Webhook Gateway]\n    end\n    subgraph Salesforce_REST_Gateway\n        Webhook -->|POST Request: JSON Payload| Auth[OAuth 2.0 Auth Provider]\n        Auth -->|Ingest Data| APIListener[Apex REST API Listener]\n    end\n    subgraph Opportunity_Orchestration\n        APIListener -->|Verify Accounts| AccountMatcher[Apex Account Matcher]\n        AccountMatcher -->|Update Asset Status| AssetObj[Asset Record]\n        AssetObj -->|Contract Expiry <= 90 Days| OppGenerator[Apex Opportunity Generator]\n        OppGenerator -->|Create Renewal| RenewOpp[Renewal Opportunity Record]\n    end",
+        "aiConfig": {
+            "title": "Subscription Architect",
+            "primaryCTA": "Design Renewal Flow",
+            "tools": [
+                "integration-advisor",
+                "architect-assistant"
+            ],
+            "context": "Autodesk API integration and subscription management workflow."
+        }
+    },
+    {
+        "id": 18,
+        "title": "Salesforce Social Media Engagement Automation",
+        "challenge": {
+            "icon": "ph ph-share-network",
+            "title": "Delayed Social Crisis Responses",
+            "description": "Fragmented social media channels prevented customer service teams from seeing critical brand mentions and customer issues, causing public PR risks."
+        },
+        "niche": "Social CRM & Brand Engagement",
+        "myRole": "Salesforce Integration Engineer",
+        "technicalComplexity": [
+            "Facebook Graph API Callouts",
+            "LinkedIn API Posting Engines",
+            "Chatter Feed Post Ingestions"
+        ],
+        "whoIsThisFor": "Consumer brands and marketing departments wanting to centralize social tracking and respond directly from Salesforce.",
+        "metricsPreview": [
+            "15-Min Response SLA Achieved",
+            "40% Higher Social Conversions",
+            "Zero Missed Brand Mentions"
+        ],
+        "client": {
+            "industry": "Digital Media & Brand Management",
+            "size": "Enterprise",
+            "location": "Remote Support"
+        },
+        "businessContext": "A major enterprise managing global consumer brands had disconnected social marketing channels and customer support teams.",
+        "operationalProblem": "Support representatives could not track client issues raised on corporate Facebook or LinkedIn pages, leading to public complaints going unresolved.",
+        "solutionStrategy": "Engineered a Social CRM automation hub integrating Facebook Graph and LinkedIn REST APIs with Salesforce, parsing incoming payloads to auto-generate Cases and log updates in Chatter.",
+        "objective": [
+            "Bridge Facebook and LinkedIn REST APIs with Sales Cloud",
+            "Parse incoming social payloads into structured JSON streams",
+            "Automate Salesforce Case creation for negative customer mentions",
+            "Post CRM marketing updates directly to external pages"
+        ],
+        "solution": {
+            "description": "Delivered a centralized Social Media CRM Hub, allowing representatives to track brand updates, resolve issues, and engage customers directly from Salesforce.",
+            "highlights": [
+                "Developed secure REST integration scripts parsing Facebook Page Webhooks",
+                "Programmed LinkedIn API callouts facilitating corporate post publishings",
+                "Coded Apex handlers translating raw JSON social events into Chatter Feed items",
+                "Configured assignment rule engines directing negative mentions to Support teams",
+                "Wrote optimized SOQL queries mapping social profiles to existing Contacts"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Sales Cloud",
+                "Service Cloud",
+                "Apex",
+                "Chatter API"
+            ],
+            "tools": [
+                "Apex Triggers",
+                "JSON Parsing Engine",
+                "Connected Apps",
+                "Custom Settings"
+            ],
+            "integrations": [
+                "Facebook Graph API",
+                "LinkedIn Developer API"
+            ]
+        },
+        "results": [
+            {
+                "metric": "15 Min",
+                "label": "Critical Response SLA"
+            },
+            {
+                "metric": "+40%",
+                "label": "Customer Resolution Speed"
+            },
+            {
+                "metric": "100%",
+                "label": "Social Ticket Visibility"
+            },
+            {
+                "metric": "10,000+",
+                "label": "Social Chats Logged"
+            }
+        ],
+        "feedback": "The social integration brought our customer service directly into the digital age. We now resolve public customer issues in minutes instead of days.",
+        "takeaways": [
+            "Connecting social listening directly to CRM cases mitigates brand PR risks.",
+            "Using scalable webhook listener architectures avoids Salesforce poll limit exhaustion.",
+            "Parsing unstructured data into clean JSON schemas ensures database validation compliance."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/7.Salesforce Social Media Engagement Automation.png",
+                "caption": "Chatter and Social API Communication Flow",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Salesforce social integration with Facebook and LinkedIn APIs to automate Chatter postings and Case creation.",
+            "keywords": "Social CRM, Facebook Graph API, LinkedIn API, Chatter Automation, Salesforce Case, Webhook Listener"
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": false,
+        "architecture": "graph TD\n    subgraph External_Social_Platforms\n        FB[Facebook Page Comment] -->|Webhook Event| Listener[Apex REST Webhook Endpoint]\n        LI[LinkedIn Post Mention] -->|Webhook Event| Listener\n    end\n    subgraph Salesforce_Ingest_Engine\n        Listener -->|Parse JSON| PayloadParser[Apex Payload Parser]\n        PayloadParser -->|Sentiment Analysis| Triage{Negative Sentiment?}\n        Triage -->|Yes| CaseCreator[Apex Case Creator]\n        Triage -->|No| ChatterPoster[Chatter Feed Poster]\n    end\n    subgraph Resolution_Workflow\n        CaseCreator -->|Route Case| AgentConsole[Support Agent Console]\n        ChatterPoster -->|Log Update| AccountFeed[Account Chatter Feed]\n        AgentConsole -->|Reply via API| FB\n    end",
+        "aiConfig": {
+            "title": "Social CRM Architect",
+            "primaryCTA": "Design Social Routing",
+            "tools": [
+                "roi-estimator",
+                "architect-assistant"
+            ],
+            "context": "Facebook and LinkedIn REST integrations with Sales Cloud."
+        }
+    },
+    {
+        "id": 19,
+        "title": "Salesforce Sage 300 ERP Integration Framework",
+        "challenge": {
+            "icon": "ph ph-currency-dollar",
+            "title": "Manual Opportunity Sync & Accounting Latency",
+            "description": "Siloed sales data in Salesforce and billing data in Sage 300 ERP resulted in manual order keying, delayed invoice processing, and financial reporting lags."
+        },
+        "niche": "Financial Sync & ERP Modernization",
+        "myRole": "Lead Integration Developer",
+        "technicalComplexity": [
+            "One-way ERP Sync Design",
+            "Outbound JSON Serializers",
+            "Bulkified Apex Queueables"
+        ],
+        "whoIsThisFor": "B2B suppliers and wholesalers looking to synchronize Salesforce Opportunity and Account details with Sage 300 ERP.",
+        "metricsPreview": [
+            "100% Billing Sync Accuracy",
+            "Zero Manual Order Entries",
+            "40% Faster Order Processing"
+        ],
+        "client": {
+            "industry": "Wholesale Distribution & Manufacturing",
+            "size": "Enterprise",
+            "location": "North America"
+        },
+        "businessContext": "The client ran a national wholesale operations team requiring real-time order transmissions to Sage 300 (Accpac) ERP upon deal closure.",
+        "operationalProblem": "Manually re-keying 100+ opportunities daily from CRM to ERP caused delivery delays, billing errors, and customer disputes.",
+        "solutionStrategy": "Architected a secure, robust one-way synchronization engine utilizing Apex Triggers, JSON serialization utilities, and outbound REST callout handlers to sync opportunity objects upon winning.",
+        "objective": [
+            "Establish automated one-way Opportunity sync from CRM to Sage 300",
+            "Serialize complex multi-line opportunities into clean JSON contracts",
+            "Develop validation checks preventing incomplete order syncs",
+            "Design logging mechanisms audit tracking integration payloads"
+        ],
+        "solution": {
+            "description": "Engineered a high-throughput, transactional integration framework connecting Salesforce with Sage 300 ERP, ensuring zero billing errors and accelerating order fulfillment.",
+            "highlights": [
+                "Designed custom Apex JSON serialization models mapping Opportunity Line Items to Sage schema",
+                "Developed transaction-safe Apex Triggers queueing integration payloads in custom objects",
+                "Programmed API callout retry managers handling ERP service downtime gracefully",
+                "Constructed custom SOQL libraries extracting customer pricing rules dynamically",
+                "Maintained 92%+ unit test coverage implementing robust mock HTTP handlers"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Sales Cloud",
+                "Apex",
+                "SOQL/SOSL"
+            ],
+            "tools": [
+                "Connected Apps",
+                "Custom Settings",
+                "Workflow Rules",
+                "Validation Rules"
+            ],
+            "integrations": [
+                "Sage 300 (Accpac) API",
+                "REST Outbound Webhooks"
+            ]
+        },
+        "results": [
+            {
+                "metric": "100%",
+                "label": "Invoice Sync Accuracy"
+            },
+            {
+                "metric": "Zero",
+                "label": "Manual Data Entry Errors"
+            },
+            {
+                "metric": "40% Faster",
+                "label": "Fulfillment Cycle Times"
+            },
+            {
+                "metric": "92%+",
+                "label": "Apex Unit Test Coverage"
+            }
+        ],
+        "feedback": "The Sage 300 integration eliminated our order entry delays. Deals close in Salesforce, and orders appear instantly in our warehouse ledger.",
+        "takeaways": [
+            "Decoupling API transmissions via database queues protects Salesforce limits.",
+            "Using strict JSON contract validators reduces target system exceptions.",
+            "Developing detailed audit log tables simplifies debugging across systems."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/8.Salesforce Sage 300 ERP Integration Framework.png",
+                "caption": "Salesforce to Sage 300 Integration Workflow",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Salesforce Sales Cloud integration with Sage 300 (Accpac) ERP for outbound opportunity and ledger synchronization.",
+            "keywords": "Sage 300 Integration, Accpac ERP, Salesforce REST Sync, JSON Outbound, Apex Queueable, Opportunity Automation"
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": false,
+        "architecture": "graph LR\n    subgraph Salesforce_Sales_Cloud\n        Opp[Closed-Won Opportunity] -->|Execute Trigger| QueueManager[Apex Queue Manager]\n        QueueManager -->|Log Record| LogObj[Integration Log Custom]\n        QueueManager -->|Queue Job| Queueable[Apex Queueable Job]\n    end\n    subgraph REST_API_Gateway\n        Queueable -->|Send JSON Payload| SageGateway[Sage 300 API Gateway]\n    end\n    subgraph Sage_300_ERP\n        SageGateway -->|Verify Invoice| Accpac[Accpac ERP Engine]\n        Accpac -->|Generate Ledger Entry| GL[General Ledger]\n    end\n    Accpac -->|Success Response| Queueable",
+        "aiConfig": {
+            "title": "Financial Integration Architect",
+            "primaryCTA": "Plan Sage Sync",
+            "tools": [
+                "roi-estimator",
+                "architect-assistant"
+            ],
+            "context": "Salesforce Sales Cloud integration with Sage 300 ERP."
+        }
+    },
+    {
+        "id": 20,
+        "title": "Enterprise Supplier Management & KPI Analytics Platform",
+        "challenge": {
+            "icon": "ph ph-chart-line-up",
+            "title": "Siloed Supplier Operations & Poor Process Transparency",
+            "description": "Legacy procurement tools lacked unified operational metrics, causing duplicate billing issues, slow invoice lifecycles, and a lack of executive supplier KPI transparency."
+        },
+        "niche": "Supply Chain & Process Intelligence",
+        "myRole": "Senior Solutions Architect & Analytics Engineer",
+        "technicalComplexity": [
+            "Google Charts JavaScript Integrations",
+            "Duplication Detection Algorithms",
+            "RTR/PTP/OTC Process Analytics"
+        ],
+        "whoIsThisFor": "Procurement directors and supply chain executives wanting to centralize vendor management and measure metric outputs.",
+        "metricsPreview": [
+            "75% Duplicate Invoice Deflection",
+            "50% Faster Vendor Onboarding",
+            "Live KPI Dashboards Installed"
+        ],
+        "client": {
+            "industry": "Global Manufacturing & Logistics",
+            "size": "Enterprise (20k+ Employees)",
+            "location": "USA / Global Offices"
+        },
+        "businessContext": "The client managed a massive international supplier network (ESM) and wanted to track execution metrics (EPA) across multiple ERP sources.",
+        "operationalProblem": "Overlapping invoice submissions across purchase orders (PO) and non-PO lines led to duplicate payment leakage, while management lacked visual tools to analyze team cycle delays.",
+        "solutionStrategy": "Developed the Enterprise Supplier Management (ESM) and Enterprise Performance Analytics (EPA) platforms on Salesforce. Built custom duplicate matching algorithms and integrated Google Charts using Visualforce.",
+        "objective": [
+            "Modernize supply chain processes (PTP, OTC, RTR)",
+            "Deploy interactive Google Charts dashboards within Salesforce",
+            "Implement duplicate invoice detection and Flip PO tools",
+            "Configure customized record types and validation engines"
+        ],
+        "solution": {
+            "description": "Delivered a centralized ESM portal and EPA analytics platform, improving invoice processing, preventing duplicate entries, and providing global KPI visibility.",
+            "highlights": [
+                "Built custom invoice workflow components managing PO, Credit, and Recurring invoice streams",
+                "Developed Apex duplication match rules scanning incoming payloads for repeating variables",
+                "Integrated interactive Google Charts widgets using custom Visualforce and JavaScript controllers",
+                "Configured assignment rule engines directing help-desk vendor inquiries to correct agents",
+                "Designed detailed KPI reporting models tracking RTR, PTP, and OTC processing metrics"
+            ]
+        },
+        "techStack": {
+            "salesforce": [
+                "Sales Cloud",
+                "Apex",
+                "SOQL/SOSL",
+                "Visualforce Pages"
+            ],
+            "tools": [
+                "Google Charts",
+                "Validation Rules",
+                "Page Layouts",
+                "Custom Metadata"
+            ],
+            "integrations": [
+                "Procurement ERP APIs",
+                "External Financial Databases"
+            ]
+        },
+        "results": [
+            {
+                "metric": "75%",
+                "label": "Duplicate Invoice Reductions"
+            },
+            {
+                "metric": "50% Faster",
+                "label": "Supplier Onboarding Cycles"
+            },
+            {
+                "metric": "Live",
+                "label": "RTR/PTP/OTC KPI Dashboards"
+            },
+            {
+                "metric": "100%",
+                "label": "Invoice Auditing Visibility"
+            }
+        ],
+        "feedback": "The ESM portal and Visualforce dashboards centralized our global vendor tracking. We've eliminated duplicate billing leakage and dramatically speeded up onboarding.",
+        "takeaways": [
+            "Consolidating vendor interactions into a structured CRM portal reduces invoicing friction.",
+            "Using JavaScript visualization libraries like Google Charts improves executive system engagement.",
+            "Custom matching algorithms are vital when consolidating records from multiple ERP feeds."
+        ],
+        "gallery": [
+            {
+                "url": "assets/images/projects/9.Enterprise Supplier Management & KPI Analytics Platform.png",
+                "caption": "Supplier Invoice & Performance Dashboards",
+                "showOnHub": true,
+                "showOnDetail": true
+            }
+        ],
+        "seo": {
+            "description": "Enterprise Supplier Management (ESM) and KPI Analytics platform with custom invoice workflows and Google Charts.",
+            "keywords": "Enterprise Supplier Management, ESM, KPI Analytics, Google Charts, Procure to Pay, Visualforce Dashboards"
+        },
+        "homepageFeatured": {
+            "isFeatured": false
+        },
+        "detailFeatured": false,
+        "hubFeatured": false,
+        "architecture": "graph TD\n    subgraph Invoice_Ingestion\n        Vendor[Vendor Invoicing Portal] -->|Upload Invoice| APIListener[Apex API Ingestion Listener]\n    end\n    subgraph Validation_Duplicate_Check\n        APIListener -->|Verify Attributes| DuplicateEngine[Apex Duplicate Match Engine]\n        DuplicateEngine -->|Scan Databases| DB[(Salesforce DB)]\n        DuplicateEngine -->|Check Duplicates| Rule{Is Duplicate?}\n    end\n    subgraph Invoice_Processing\n        Rule -->|Yes| Alert[Flag Invoice & Email Vendor]\n        Rule -->|No| Calc[Process Payments (PO/Non-PO/Credit)]\n    end\n    subgraph Executive_KPI_Analytics\n        Calc -->|Aggregate Metrics| Dashboard[EPA Reporting Engine]\n        Dashboard -->|Render Visuals| VF[Visualforce Google Charts View]\n    end",
+        "aiConfig": {
+            "title": "Supply Chain Solutions Lead",
+            "primaryCTA": "Design ESM Dashboard",
+            "tools": [
+                "roi-estimator",
+                "architect-assistant"
+            ],
+            "context": "Enterprise Supplier Management and process performance analytics."
+        }
     }
 ];
 

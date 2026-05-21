@@ -636,4 +636,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     FormHandler.init();
+
+    // ---- AI ADVISOR BRIDGE ----
+    // Expose a global function to open scheduler with pre-filled AI data
+    window.openSchedulerWithAI = async (agendaHtml) => {
+        // 1. Reset and Open Modal
+        await UIController.openModal();
+        
+        // 2. Inject Agenda into Quill
+        if (StateManager.quill) {
+            StateManager.quill.root.innerHTML = agendaHtml;
+        }
+        
+        console.log("Scheduler opened with AI context.");
+    };
 });

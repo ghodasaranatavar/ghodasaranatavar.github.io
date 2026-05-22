@@ -1,20 +1,4 @@
-/**
- * ================================================================================
- * MODULE SPECIFICATION (RULE[user_global]): Case Study Static Data Repository
- * 1. Implementation Code: c:/xampp/htdocs/profile/project-data.js
- * 2. Folder Structure:
- *    c:/xampp/htdocs/profile/
- *      - project-data.js
- *      - project-detail.js
- *      - project-detail.html
- * 3. API Routes: N/A (Static JS repository)
- * 4. Browser Testing Instructions:
- *    - Verify database arrays are loaded inside project-detail.js by looking up global window.projectData.
- *    - Open browser dev console on project-detail.html and type `window.projectData` to view values.
- * 5. Expected Output: Fully loaded array of project objects with meta metadata, names, niches, and complexity tags.
- * ================================================================================
- */
-
+// Project Data Store
 const projectData = [
     {
         "id": 1,
@@ -143,7 +127,17 @@ const projectData = [
             ],
             "context": "Lead engagement automation for Real Estate using Twilio and Salesforce."
         },
-        "architecture": "graph TD\n    subgraph Salesforce\n        Lead[\"Lead/Contact\"] --> Cadence[\"Sales Cadence\"]\n        Cadence --> ApexQ[\"Apex Queueable\"]\n        ApexQ --> Outbound[\"Twilio REST Outbound\"]\n    end\n    Outbound --> Twilio[\"Twilio API\"]\n    Twilio --> Recipient[\"Mobile Recipient\"]\n    Recipient --> Reply[\"SMS Reply\"]\n    Reply --> Webhook[\"Twilio Webhook\"]\n    subgraph Salesforce\n        Webhook --> Listener[\"Apex REST Listener\"]\n        Listener --> Router[\"Intelligent Lead Router\"]\n        Router --> Task[\"Create Task/Update Status\"]\n    end"
+        "architecture": "graph TD\n    subgraph Salesforce\n        Lead[\"Lead/Contact\"] --> Cadence[\"Sales Cadence\"]\n        Cadence --> ApexQ[\"Apex Queueable\"]\n        ApexQ --> Outbound[\"Twilio REST Outbound\"]\n    end\n    Outbound --> Twilio[\"Twilio API\"]\n    Twilio --> Recipient[\"Mobile Recipient\"]\n    Recipient --> Reply[\"SMS Reply\"]\n    Reply --> Webhook[\"Twilio Webhook\"]\n    subgraph Salesforce\n        Webhook --> Listener[\"Apex REST Listener\"]\n        Listener --> Router[\"Intelligent Lead Router\"]\n        Router --> Task[\"Create Task/Update Status\"]\n    end",
+        "technicalImplementation": {
+            "apexArchitecture": "Engineered Queueable Apex classes with self-chaining algorithms to process outbound messages asynchronously in bulk.",
+            "lwcStructure": "Built a reactive LWC panel for templates mapping, utilizing custom properties and event-driven data streaming.",
+            "scalability": "Implemented platform cache and dynamic API key rotation to handle 10,000+ daily outbound payloads without database lockups."
+        },
+        "aiOpportunities": [
+            "Integrate generative AI to draft hyper-personalized SMS responses based on lead interaction history.",
+            "Deploy autonomous agentic workflows to schedule calendar events automatically upon detecting positive intent.",
+            "Utilize sentiment analysis on inbound SMS responses to automatically flag hot leads."
+        ]
     },
     {
         "id": 2,
@@ -272,7 +266,17 @@ const projectData = [
             ],
             "context": "Enterprise Gemini AI integration for research and OCR automation."
         },
-        "architecture": "graph LR\n    subgraph Salesforce_UI\n        LWC[LWC Research Panel] --> PromptMgr[Metadata Prompt Manager]\n    end\n    subgraph Salesforce_Backend\n        PromptMgr --> ApexREST[Apex REST Callout]\n    end\n    ApexREST --> Gemini[Google Gemini AI API]\n    Gemini --> ApexREST\n    subgraph Salesforce_Backend\n        ApexREST --> Parser[JSON Response Parser]\n        Parser --> Storage[Structured Research Storage]\n    end\n    Storage --> LWC"
+        "architecture": "graph LR\n    subgraph Salesforce_UI\n        LWC[LWC Research Panel] --> PromptMgr[Metadata Prompt Manager]\n    end\n    subgraph Salesforce_Backend\n        PromptMgr --> ApexREST[Apex REST Callout]\n    end\n    ApexREST --> Gemini[Google Gemini AI API]\n    Gemini --> ApexREST\n    subgraph Salesforce_Backend\n        ApexREST --> Parser[JSON Response Parser]\n        Parser --> Storage[Structured Research Storage]\n    end\n    Storage --> LWC",
+        "technicalImplementation": {
+            "apexArchitecture": "Developed highly optimized Apex callout handlers managing token-based authorization and payload compression for the Gemini API.",
+            "lwcStructure": "Designed a clean, tabbed LWC card that displays AI insights, raw OCR text, and suggested prompts with skeleton loaders.",
+            "scalability": "Implemented an Apex retry framework with custom exceptions to handle third-party AI rate limiting gracefully."
+        },
+        "aiOpportunities": [
+            "Enable autonomous matching of competitor keywords in prospect decks to trigger defensive battlecards.",
+            "Apply predictive lead scoring by comparing Gemini-extracted account insights with historical win patterns.",
+            "Deploy voice-to-text AI agents to listen to sales calls and automatically update CRM fields."
+        ]
     },
     {
         "id": 3,
@@ -400,7 +404,17 @@ const projectData = [
             ],
             "context": "Scalable metadata-driven frameworks and batch optimization."
         },
-        "architecture": "graph TD\n    subgraph Configuration\n        Config[\"Custom Metadata Types\"] --> Mapping[\"Dynamic Field Mappings\"]\n    end\n    subgraph Execution_Engine\n        Trigger[\"Trigger / Flow\"] --> Dispatcher[\"Queueable Dispatcher\"]\n        Dispatcher --> Batch[\"Batch Apex Execution\"]\n        Batch --> Engine[\"Dynamic Action Engine\"]\n        Mapping --> Engine\n    end\n    subgraph Outputs\n        Engine --> APIs[\"Enterprise REST APIs\"]\n        Engine --> Log[\"Custom Error Logger\"]\n        Log --> Slack[\"Slack/Email Alerts\"]\n    end"
+        "architecture": "graph TD\n    subgraph Configuration\n        Config[\"Custom Metadata Types\"] --> Mapping[\"Dynamic Field Mappings\"]\n    end\n    subgraph Execution_Engine\n        Trigger[\"Trigger / Flow\"] --> Dispatcher[\"Queueable Dispatcher\"]\n        Dispatcher --> Batch[\"Batch Apex Execution\"]\n        Batch --> Engine[\"Dynamic Action Engine\"]\n        Mapping --> Engine\n    end\n    subgraph Outputs\n        Engine --> APIs[\"Enterprise REST APIs\"]\n        Engine --> Log[\"Custom Error Logger\"]\n        Log --> Slack[\"Slack/Email Alerts\"]\n    end",
+        "technicalImplementation": {
+            "apexArchitecture": "Engineered a metadata reflection engine in Apex that parses Custom Metadata Types and executes dynamic class instantiations.",
+            "lwcStructure": "Created an administrative UI for rule creation, featuring drag-and-drop rule ordering and syntax highlighting.",
+            "scalability": "Leveraged Custom Cache partitions to store configuration data, reducing database query overhead to near zero."
+        },
+        "aiOpportunities": [
+            "Train an AI model to detect optimization bottlenecks in routing metadata and suggest rule merges.",
+            "Deploy self-healing code generators that write and deploy XML metadata files based on verbal business requirements.",
+            "Use anomaly detection algorithms to flag routing cycles or infinite loops before they execute."
+        ]
     },
     {
         "id": 4,
@@ -430,7 +444,7 @@ const projectData = [
         },
         "businessContext": "A global training organization managing thousands of certifications and training documents manually across different regions.",
         "operationalProblem": "Certification processing was fragmented. Applicants had to email documents, and staff manually generated PDFs, leading to weeks of delay in issuing certifications and poor document visibility.",
-        "solutionStrategy": "Built a centralized Experience Cloud portal that automated the entire lifecycle\u2014from application and document upload (Azure) to automated PDF certificate generation and delivery.",
+        "solutionStrategy": "Built a centralized Experience Cloud portal that automated the entire lifecycle—from application and document upload (Azure) to automated PDF certificate generation and delivery.",
         "objective": [
             "Centralize the applicant experience into a secure portal",
             "Automate document storage using Azure File Integration",
@@ -505,7 +519,17 @@ const projectData = [
         },
         "detailFeatured": false,
         "hubFeatured": false,
-        "architecture": "graph LR\n    subgraph Client_Experience\n        User[\"Applicant (Experience Cloud Portal)\"] --> Upload[\"LWC Upload Component\"]\n        User --> Form[\"Application Form LWC\"]\n    end\n    subgraph File_Management\n        Upload --> AzureREST[\"Azure Storage REST Callout\"]\n        AzureREST --> AzureBlob[\"Azure Blob Storage\"]\n    end\n    subgraph Application_Flow\n        Form --> Approval[\"State-Machine Approval Flow\"]\n        Approval --> TriggerPDF[\"Apex PDF Trigger\"]\n    end\n    subgraph Certificate_Delivery\n        TriggerPDF --> PDFEngine[\"Automated PDF Engine\"]\n        PDFEngine --> Email[\"Instant Certificate Delivery Email\"]\n    end"
+        "architecture": "graph LR\n    subgraph Client_Experience\n        User[\"Applicant (Experience Cloud Portal)\"] --> Upload[\"LWC Upload Component\"]\n        User --> Form[\"Application Form LWC\"]\n    end\n    subgraph File_Management\n        Upload --> AzureREST[\"Azure Storage REST Callout\"]\n        AzureREST --> AzureBlob[\"Azure Blob Storage\"]\n    end\n    subgraph Application_Flow\n        Form --> Approval[\"State-Machine Approval Flow\"]\n        Approval --> TriggerPDF[\"Apex PDF Trigger\"]\n    end\n    subgraph Certificate_Delivery\n        TriggerPDF --> PDFEngine[\"Automated PDF Engine\"]\n        PDFEngine --> Email[\"Instant Certificate Delivery Email\"]\n    end",
+        "technicalImplementation": {
+            "apexArchitecture": "Designed transaction-safe Apex controllers managing Azure File Storage SAS token validation and lifecycle callbacks.",
+            "lwcStructure": "Built multi-step Experience Cloud application forms with LWC file upload wrappers and reactive status indicators.",
+            "scalability": "Offloaded heavy PDF generation and file storage tasks to Azure Blob Storage to keep CRM database transaction times low."
+        },
+        "aiOpportunities": [
+            "Deploy generative AI to automatically review uploaded OHS and certificate files for initial compliance verification.",
+            "Implement an intelligent agent to guide applicants through filling the forms by answering queries in real-time.",
+            "Predict application approval cycles using historical certification throughput metadata."
+        ]
     },
     {
         "id": 5,
@@ -610,7 +634,17 @@ const projectData = [
         },
         "detailFeatured": false,
         "hubFeatured": false,
-        "architecture": "graph TD\n    subgraph Salesforce_UI\n        LWC[\"LWC Document Explorer\"] --> Auth[\"OAuth 2.0 Auth Handler\"]\n    end\n    subgraph SharePoint_API\n        Auth --> GraphAPI[\"MS Graph API / SharePoint\"]\n    end\n    subgraph Folder_Orchestration\n        OppTrigger[\"Opportunity Creation Flow\"] --> ApexOrch[\"Apex Folder Orchestrator\"]\n        ApexOrch --> RecursiveSync[\"Recursive Folder Builder (Graph API)\"]\n        RecursiveSync --> SharePointFolder[\"SharePoint Folder Hierarchy\"]\n    end\n    subgraph Native_Document_Viewer\n        SharePointFolder --> LWC\n    end"
+        "architecture": "graph TD\n    subgraph Salesforce_UI\n        LWC[\"LWC Document Explorer\"] --> Auth[\"OAuth 2.0 Auth Handler\"]\n    end\n    subgraph SharePoint_API\n        Auth --> GraphAPI[\"MS Graph API / SharePoint\"]\n    end\n    subgraph Folder_Orchestration\n        OppTrigger[\"Opportunity Creation Flow\"] --> ApexOrch[\"Apex Folder Orchestrator\"]\n        ApexOrch --> RecursiveSync[\"Recursive Folder Builder (Graph API)\"]\n        RecursiveSync --> SharePointFolder[\"SharePoint Folder Hierarchy\"]\n    end\n    subgraph Native_Document_Viewer\n        SharePointFolder --> LWC\n    end",
+        "technicalImplementation": {
+            "apexArchitecture": "Developed recursive Apex classes executing bulk SharePoint Folder tree hierarchy building via Microsoft Graph APIs.",
+            "lwcStructure": "Designed an interactive SharePoint file explorer LWC with inline PDF rendering and drag-and-drop file uploading.",
+            "scalability": "Utilized Salesforce Platform Cache and session storage to prevent redundant folder hierarchy queries to Microsoft Graph."
+        },
+        "aiOpportunities": [
+            "Integrate AI-driven document categorizers to automatically tag uploaded proposals and resumes into SharePoint folders.",
+            "Build an LLM-based parsing assistant to extract key clauses, pricing details, and expiry dates from uploaded contracts.",
+            "Utilize sentiment analysis on client correspondence logs to predict account health and renewability."
+        ]
     },
     {
         "id": 6,
@@ -719,7 +753,17 @@ const projectData = [
         },
         "detailFeatured": false,
         "hubFeatured": true,
-        "architecture": "graph TD\n    subgraph Property_Sync\n        Bridge[\"Bridge Interactive API\"] --> MLS[\"MLS Property Sync Engine\"]\n        Zillow[\"Zillow API\"] --> MLS\n        MLS --> SFDb[\"Salesforce Database\"]\n    end\n    subgraph Lead_Nurture\n        SFDb --> Cadence[\"Custom Cadence Builder LWC\"]\n        Cadence --> TwilioAPI[\"Twilio SMS/Call API\"]\n    end\n    subgraph Transaction_Flow\n        SFDb --> OpenSign[\"NaturalForms / OpenSign Webhooks\"]\n        OpenSign --> Transaction[\"Digital Transaction Management\"]\n        Transaction --> QB[\"QuickBooks API (Commission Sync)\"]\n    end"
+        "architecture": "graph TD\n    subgraph Property_Sync\n        Bridge[\"Bridge Interactive API\"] --> MLS[\"MLS Property Sync Engine\"]\n        Zillow[\"Zillow API\"] --> MLS\n        MLS --> SFDb[\"Salesforce Database\"]\n    end\n    subgraph Lead_Nurture\n        SFDb --> Cadence[\"Custom Cadence Builder LWC\"]\n        Cadence --> TwilioAPI[\"Twilio SMS/Call API\"]\n    end\n    subgraph Transaction_Flow\n        SFDb --> OpenSign[\"NaturalForms / OpenSign Webhooks\"]\n        OpenSign --> Transaction[\"Digital Transaction Management\"]\n        Transaction --> QB[\"QuickBooks API (Commission Sync)\"]\n    end",
+        "technicalImplementation": {
+            "apexArchitecture": "Built scheduler-driven Apex classes synchronizing large real estate listings from Bridge Interactive and Zillow APIs.",
+            "lwcStructure": "Created a timezone-aware drag-and-drop workflow designer LWC for custom outreach cadences.",
+            "scalability": "Implemented a custom queuing framework with exponential backoff handlers to avoid rate limits from third-party MLS endpoints."
+        },
+        "aiOpportunities": [
+            "Implement predictive real estate valuation models matching MLS records with local historical pricing trends.",
+            "Deploy virtual AI assistants to handle initial MLS scheduling inquiries via SMS and calendar links.",
+            "Analyze agent speech patterns and communication scripts using speech-to-text to suggest optimal sales cadence steps."
+        ]
     },
     {
         "id": 7,
@@ -825,7 +869,17 @@ const projectData = [
         },
         "detailFeatured": false,
         "hubFeatured": false,
-        "architecture": "graph LR\n    subgraph Lead_Inflow\n        WP[\"WordPress Dental Site\"] --> W2L[\"Web-to-Lead / REST API\"]\n        W2L --> SF[\"Salesforce CRM\"]\n    end\n    subgraph Order_Fulfillment\n        SF --> OrderAPI[\"ShipStation REST API\"]\n        OrderAPI --> ShipStation[\"ShipStation Fulfillment\"]\n    end\n    subgraph Shipping_Sync\n        ShipStation --> Webhook[\"Shipment Tracking Webhook\"]\n        Webhook --> TrackingSync[\"Apex Tracking Sync Engine\"]\n        TrackingSync --> Portal[\"Experience Cloud Customer Portal\"]\n    end"
+        "architecture": "graph LR\n    subgraph Lead_Inflow\n        WP[\"WordPress Dental Site\"] --> W2L[\"Web-to-Lead / REST API\"]\n        W2L --> SF[\"Salesforce CRM\"]\n    end\n    subgraph Order_Fulfillment\n        SF --> OrderAPI[\"ShipStation REST API\"]\n        OrderAPI --> ShipStation[\"ShipStation Fulfillment\"]\n    end\n    subgraph Shipping_Sync\n        ShipStation --> Webhook[\"Shipment Tracking Webhook\"]\n        Webhook --> TrackingSync[\"Apex Tracking Sync Engine\"]\n        TrackingSync --> Portal[\"Experience Cloud Customer Portal\"]\n    end",
+        "technicalImplementation": {
+            "apexArchitecture": "Developed Apex trigger-handlers mapping WordPress lead payloads directly to custom Opportunity and Order records in Salesforce.",
+            "lwcStructure": "Designed a custom lightning email composer panel featuring template-selection lists and live attachment previews.",
+            "scalability": "Built bulk-safe REST callouts that batch shipping records before transmission to ShipStation, saving monthly API execution costs."
+        },
+        "aiOpportunities": [
+            "Implement machine learning models to forecast shipping delays and proactively send email alerts to patients.",
+            "Incorporate AI-based product recommendations into the customer tracking portal based on order histories.",
+            "Automate email reply drafts using generative AI to handle common tracking and delay queries."
+        ]
     },
     {
         "id": 8,
@@ -931,7 +985,17 @@ const projectData = [
         },
         "detailFeatured": false,
         "hubFeatured": false,
-        "architecture": "graph TD\n    subgraph Citizen_Experience\n        Citizen[\"Citizen (Experience Cloud)\"] --> App[\"OmniScript Form (OmniStudio)\"]\n    end\n    subgraph Public_Sector_Solutions\n        App --> PSS[\"PSS Data Model (Licenses/Permits)\"]\n        PSS --> Routing[\"Flow / OmniStudio Integration Procedures\"]\n    end\n    subgraph Regulatory_Compliance\n        Routing --> Approval[\"Multi-Department Approval Matrix\"]\n        Approval --> Schedule[\"Field Inspector Scheduler LWC\"]\n        Schedule --> Verify[\"Compliance Verification & Permit Issuance\"]\n    end"
+        "architecture": "graph TD\n    subgraph Citizen_Experience\n        Citizen[\"Citizen (Experience Cloud)\"] --> App[\"OmniScript Form (OmniStudio)\"]\n    end\n    subgraph Public_Sector_Solutions\n        App --> PSS[\"PSS Data Model (Licenses/Permits)\"]\n        PSS --> Routing[\"Flow / OmniStudio Integration Procedures\"]\n    end\n    subgraph Regulatory_Compliance\n        Routing --> Approval[\"Multi-Department Approval Matrix\"]\n        Approval --> Schedule[\"Field Inspector Scheduler LWC\"]\n        Schedule --> Verify[\"Compliance Verification & Permit Issuance\"]\n    end",
+        "technicalImplementation": {
+            "apexArchitecture": "Configured complex OmniStudio Integration Procedures and custom Apex hooks for multi-stage government approvals.",
+            "lwcStructure": "Built citizen-facing Experience Cloud portals using custom LWC skins over standard OmniScript elements.",
+            "scalability": "Optimized SOQL query indexing and sharing calculations across large-scale public sector license records."
+        },
+        "aiOpportunities": [
+            "Deploy AI triage engines to verify government application form completeness before routing to case officers.",
+            "Utilize predictive modeling to forecast peak permitting seasons and optimize inspector schedules.",
+            "Integrate natural language search for citizens searching for municipal regulations and licensing steps."
+        ]
     },
     {
         "id": 9,
@@ -1060,7 +1124,17 @@ const projectData = [
             ],
             "context": "Slack-based workforce automation integrated with Salesforce and QuickBooks Time."
         },
-        "architecture": "graph TD\n    subgraph Slack_Workspace\n        Employee[\"Employee (Slack Mobile/Desktop)\"] --> ClockIn[\"Clock In / Clock Out Action\"]\n    end\n\n    subgraph Salesforce_Platform\n        ClockIn --> SlackAPI[\"Slack Events API\"]\n        SlackAPI --> Listener[\"Apex REST Listener\"]\n\n        Listener --> UserSync[\"Slack User Sync\"]\n        Listener --> ChannelSync[\"Slack Channel Sync\"]\n        Listener --> TimeLog[\"Time Log Records\"]\n\n        TimeLog --> Queueable[\"Queueable Sync Engine\"]\n    end\n\n    subgraph QuickBooks_Time\n        Queueable --> QBTUser[\"QBT User Creation\"]\n        Queueable --> QBTJob[\"QBT Job Code Creation\"]\n\n        QBTUser --> Timesheet[\"QBT Timesheet Creation\"]\n        QBTJob --> Timesheet\n\n        Timesheet --> ClockOut[\"Timesheet Update on Clock Out\"]\n    end\n\n    subgraph Monitoring\n        Queueable --> Audit[\"Audit Logs\"]\n        Queueable --> Retry[\"Retry/Error Workflow\"]\n        Audit --> Dashboard[\"Salesforce Dashboards\"]\n    end"
+        "architecture": "graph TD\n    subgraph Slack_Workspace\n        Employee[\"Employee (Slack Mobile/Desktop)\"] --> ClockIn[\"Clock In / Clock Out Action\"]\n    end\n\n    subgraph Salesforce_Platform\n        ClockIn --> SlackAPI[\"Slack Events API\"]\n        SlackAPI --> Listener[\"Apex REST Listener\"]\n\n        Listener --> UserSync[\"Slack User Sync\"]\n        Listener --> ChannelSync[\"Slack Channel Sync\"]\n        Listener --> TimeLog[\"Time Log Records\"]\n\n        TimeLog --> Queueable[\"Queueable Sync Engine\"]\n    end\n\n    subgraph QuickBooks_Time\n        Queueable --> QBTUser[\"QBT User Creation\"]\n        Queueable --> QBTJob[\"QBT Job Code Creation\"]\n\n        QBTUser --> Timesheet[\"QBT Timesheet Creation\"]\n        QBTJob --> Timesheet\n\n        Timesheet --> ClockOut[\"Timesheet Update on Clock Out\"]\n    end\n\n    subgraph Monitoring\n        Queueable --> Audit[\"Audit Logs\"]\n        Queueable --> Retry[\"Retry/Error Workflow\"]\n        Audit --> Dashboard[\"Salesforce Dashboards\"]\n    end",
+        "technicalImplementation": {
+            "apexArchitecture": "Engineered custom Apex REST listeners consuming Slack interactive payloads and routing to event-driven Queueables.",
+            "lwcStructure": "Created an internal timesheet management LWC enabling real-time audits and manual adjustments for administrators.",
+            "scalability": "Utilized Platform Events to decouple Slack interaction ingestion from QuickBooks Time synchronization, ensuring high uptime."
+        },
+        "aiOpportunities": [
+            "Implement anomaly detection on timesheet entries to flag suspicious clock-ins or overtime spikes automatically.",
+            "Deploy an agentic Slackbot answering employee queries about timesheet policies and shift allocations.",
+            "Analyze project labor trends to forecast staffing requirements for seasonal field operations."
+        ]
     },
     {
         "id": 10,
@@ -1188,7 +1262,17 @@ const projectData = [
             ],
             "context": "Field Service Lightning and Xero accounting automation for passive fire protection contractors."
         },
-        "architecture": "graph TD\n    subgraph Field_Service_Operations\n        Technician[\"Field Technician\"] --> Appointment[\"Service Appointment Completion\"]\n        Appointment --> WorkOrder[\"Field Service Work Order\"]\n        WorkOrder --> InvoiceWizard[\"Invoice Generation Wizard (LWC)\"]\n    end\n\n    subgraph Salesforce_Platform\n        InvoiceWizard --> Invoice[\"Salesforce Invoice Record\"]\n        Invoice --> LineItems[\"Labor / Materials / Compliance Fees\"]\n        Invoice --> Trigger[\"Invoice Sync Trigger\"]\n        Trigger --> Queueable[\"Queueable Sync Engine\"]\n    end\n\n    subgraph Xero_Accounting\n        Queueable --> ContactSync[\"Xero Customer Sync\"]\n        ContactSync --> XeroAPI[\"Xero Accounting API\"]\n        XeroAPI --> XeroInvoice[\"Xero Invoice Creation\"]\n        XeroInvoice --> Totals[\"Tax & Total Calculations\"]\n    end\n\n    subgraph Two_Way_Synchronization\n        XeroInvoice --> Webhook[\"Xero Webhooks\"]\n        Webhook --> ReverseSync[\"Salesforce Reverse Sync\"]\n        ReverseSync --> Invoice\n    end\n\n    subgraph Monitoring_Analytics\n        Queueable --> Audit[\"Audit Logs\"]\n        Queueable --> Retry[\"Retry/Error Workflow\"]\n        Audit --> Dashboard[\"Revenue & Billing Dashboards\"]\n    end"
+        "architecture": "graph TD\n    subgraph Field_Service_Operations\n        Technician[\"Field Technician\"] --> Appointment[\"Service Appointment Completion\"]\n        Appointment --> WorkOrder[\"Field Service Work Order\"]\n        WorkOrder --> InvoiceWizard[\"Invoice Generation Wizard (LWC)\"]\n    end\n\n    subgraph Salesforce_Platform\n        InvoiceWizard --> Invoice[\"Salesforce Invoice Record\"]\n        Invoice --> LineItems[\"Labor / Materials / Compliance Fees\"]\n        Invoice --> Trigger[\"Invoice Sync Trigger\"]\n        Trigger --> Queueable[\"Queueable Sync Engine\"]\n    end\n\n    subgraph Xero_Accounting\n        Queueable --> ContactSync[\"Xero Customer Sync\"]\n        ContactSync --> XeroAPI[\"Xero Accounting API\"]\n        XeroAPI --> XeroInvoice[\"Xero Invoice Creation\"]\n        XeroInvoice --> Totals[\"Tax & Total Calculations\"]\n    end\n\n    subgraph Two_Way_Synchronization\n        XeroInvoice --> Webhook[\"Xero Webhooks\"]\n        Webhook --> ReverseSync[\"Salesforce Reverse Sync\"]\n        ReverseSync --> Invoice\n    end\n\n    subgraph Monitoring_Analytics\n        Queueable --> Audit[\"Audit Logs\"]\n        Queueable --> Retry[\"Retry/Error Workflow\"]\n        Audit --> Dashboard[\"Revenue & Billing Dashboards\"]\n    end",
+        "technicalImplementation": {
+            "apexArchitecture": "Developed transaction-safe Apex invoice generation classes calling the Xero REST API using custom authorization handlers.",
+            "lwcStructure": "Created a technician invoice wizard LWC supporting line item adjustments, signature captures, and live totals.",
+            "scalability": "Engineered a custom ledger sync buffer that groups invoice payloads to prevent hitting Xero rate limits during peak hours."
+        },
+        "aiOpportunities": [
+            "Incorporate intelligent item categorization to suggest invoicing components based on technician notes and job duration.",
+            "Predict client invoice dispute probability using historical payment times and customer profile data.",
+            "Deploy automated follow-up agents to draft and send payment reminders based on payment delays."
+        ]
     },
     {
         "id": 11,
@@ -1318,9 +1402,19 @@ const projectData = [
             ],
             "context": "Salesforce Field Service Lightning and Dashpivot automation for landscaping contractors."
         },
-        "architecture": "graph TD\n    subgraph Salesforce_Field_Service\n        Ops[\"Operations Team\"] --> WorkOrder[\"Field Service Work Order\"]\n        WorkOrder --> Trigger[\"Dashpivot Sync Trigger\"]\n    end\n\n    subgraph Integration_Engine\n        Trigger --> ApexAPI[\"Apex REST Integration\"]\n        ApexAPI --> JWT[\"JWT Authentication\"]\n    end\n\n    subgraph Dashpivot_Platform\n        JWT --> Forms[\"Dashpivot Inspection Forms\"]\n        Forms --> Technician[\"Mobile Field Technicians\"]\n        Technician --> Uploads[\"Photos / OHS Docs / Signatures\"]\n    end\n\n    subgraph Salesforce_Synchronization\n        Scheduler[\"Scheduled Apex Polling\"] --> DashpivotAPI[\"Dashpivot APIs\"]\n        DashpivotAPI --> Parser[\"Dynamic JSON Parser\"]\n        Parser --> WorkOrderUpdates[\"Work Order Status Updates\"]\n    end\n\n    subgraph Completion_Workflow\n        WorkOrderUpdates --> PDFExport[\"Dashpivot PDF Export API\"]\n        PDFExport --> PDF[\"Final Work Order PDF\"]\n        PDF --> SalesforceAttach[\"Attach PDF to Work Order\"]\n    end\n\n    subgraph Monitoring_Analytics\n        Parser --> Audit[\"Audit Logs\"]\n        Parser --> Retry[\"Retry/Error Handling\"]\n        Audit --> Dashboard[\"Operational Dashboards\"]\n    end"
+        "architecture": "graph TD\n    subgraph Salesforce_Field_Service\n        Ops[\"Operations Team\"] --> WorkOrder[\"Field Service Work Order\"]\n        WorkOrder --> Trigger[\"Dashpivot Sync Trigger\"]\n    end\n\n    subgraph Integration_Engine\n        Trigger --> ApexAPI[\"Apex REST Integration\"]\n        ApexAPI --> JWT[\"JWT Authentication\"]\n    end\n\n    subgraph Dashpivot_Platform\n        JWT --> Forms[\"Dashpivot Inspection Forms\"]\n        Forms --> Technician[\"Mobile Field Technicians\"]\n        Technician --> Uploads[\"Photos / OHS Docs / Signatures\"]\n    end\n\n    subgraph Salesforce_Synchronization\n        Scheduler[\"Scheduled Apex Polling\"] --> DashpivotAPI[\"Dashpivot APIs\"]\n        DashpivotAPI --> Parser[\"Dynamic JSON Parser\"]\n        Parser --> WorkOrderUpdates[\"Work Order Status Updates\"]\n    end\n\n    subgraph Completion_Workflow\n        WorkOrderUpdates --> PDFExport[\"Dashpivot PDF Export API\"]\n        PDFExport --> PDF[\"Final Work Order PDF\"]\n        PDF --> SalesforceAttach[\"Attach PDF to Work Order\"]\n    end\n\n    subgraph Monitoring_Analytics\n        Parser --> Audit[\"Audit Logs\"]\n        Parser --> Retry[\"Retry/Error Handling\"]\n        Audit --> Dashboard[\"Operational Dashboards\"]\n    end",
+        "technicalImplementation": {
+            "apexArchitecture": "Designed JWT-authenticated Apex service wrappers executing document downloads and PDF generations from Dashpivot.",
+            "lwcStructure": "Built an interactive Dispatch Board LWC showcasing technician routes and job statuses dynamically.",
+            "scalability": "Implemented a batch processing queue for heavy media attachments, avoiding transaction limits on Salesforce attachments."
+        },
+        "aiOpportunities": [
+            "Use computer vision on uploaded site photos to automatically verify task completion and safety compliance.",
+            "Optimize technician scheduling and route dispatching using machine learning models factoring in traffic and job complexities.",
+            "Analyze historical safety documents using NLP to predict worksite hazard indices."
+        ]
     },
-	{
+    {
         "id": 12,
         "title": "Enterprise B2B Commerce Cloud Checkout & SSO Ecosystem",
         "challenge": {
@@ -1439,7 +1533,17 @@ const projectData = [
                 "architect-assistant"
             ],
             "context": "B2B Commerce checkout and SSO architecture integration."
-        }
+        },
+        "technicalImplementation": {
+            "apexArchitecture": "Developed wholesale-optimized B2B checkout controllers integrating real-time tax and pricing callouts to SAP.",
+            "lwcStructure": "Designed a compact, 3-step checkout LWC wizard featuring dynamic cart recalculations and shipping summaries.",
+            "scalability": "Optimized Apex platform cache to store active cart configurations, maintaining zero performance lag during peak seasons."
+        },
+        "aiOpportunities": [
+            "Deploy predictive checkout search suggestions matching B2B purchase histories and current trends.",
+            "Implement autonomous tax compliance updates matching global changes using integrated tax AI engines.",
+            "Recommend wholesale product bundles in the checkout cart to increase average order values."
+        ]
     },
     {
         "id": 13,
@@ -1562,7 +1666,17 @@ const projectData = [
                 "discovery-call-prep"
             ],
             "context": "Service Cloud and Einstein Bot automation architecture."
-        }
+        },
+        "technicalImplementation": {
+            "apexArchitecture": "Programmed invocable Apex handlers query-optimized to fetch CRM records for Einstein Bot dialogue routes.",
+            "lwcStructure": "Built a custom pre-chat LWC capturing customer authentication details securely before initiating chats.",
+            "scalability": "Configured Omni-Channel routing rules with skills-based assignments, balancing high-concurrency chat distributions."
+        },
+        "aiOpportunities": [
+            "Deploy Einstein Copilot to draft real-time agent responses matching verified knowledge base files.",
+            "Analyze live chat conversations for real-time customer sentiment changes to flag potential escalations.",
+            "Train NLU intent classifiers to handle industry-specific jargon and regional dialect expressions."
+        ]
     },
     {
         "id": 14,
@@ -1683,7 +1797,17 @@ const projectData = [
                 "architect-assistant"
             ],
             "context": "Salesforce Experience Cloud vehicle reimbursement and TripLog integration."
-        }
+        },
+        "technicalImplementation": {
+            "apexArchitecture": "Developed high-throughput scheduled Apex batch routines processing thousands of daily mileage data streams from TripLog.",
+            "lwcStructure": "Built custom Experience Cloud dashboards using AngularJS wrappers integrated with Salesforce Apex services.",
+            "scalability": "Implemented sharing rule optimizations and bulkified database triggers to process large travel log volumes with zero lockups."
+        },
+        "aiOpportunities": [
+            "Implement automated audit engines flagging trip routes that deviate from expected commercial pathways.",
+            "Predict monthly travel expenses using historical travel trends and seasonal logistics data.",
+            "Deploy a conversational AI agent in the portal to answer mileage validation questions from drivers."
+        ]
     },
     {
         "id": 15,
@@ -1791,7 +1915,17 @@ const projectData = [
                 "architect-assistant"
             ],
             "context": "MYOB and Jiwa ERP integration with Sales Cloud."
-        }
+        },
+        "technicalImplementation": {
+            "apexArchitecture": "Created secure Apex REST APIs handling asynchronous ledger and payment synchronization from MYOB and Jiwa.",
+            "lwcStructure": "Designed an administrative sync console LWC displaying status indicators and sync failure recovery options.",
+            "scalability": "Utilized transaction-safe queuing models managing high volumes of ledger data without API timeouts."
+        },
+        "aiOpportunities": [
+            "Deploy predictive revenue analytics to estimate business cash flow based on historical payment synchronization trends.",
+            "Implement automated AI reconciliation mapping mismatched ledger entries to correct accounts.",
+            "Analyze invoice cycle times using ML to identify payment delay bottlenecks."
+        ]
     },
     {
         "id": 16,
@@ -1899,7 +2033,17 @@ const projectData = [
                 "architect-assistant"
             ],
             "context": "Service Cloud and Experience Cloud warranty portal setup."
-        }
+        },
+        "technicalImplementation": {
+            "apexArchitecture": "Coded Apex triggers and verification logic validating warranty conditions against custom metadata.",
+            "lwcStructure": "Created dynamic Visualforce page layouts optimized for consumer claims and image attachments.",
+            "scalability": "Utilized custom report types and optimized SOQL to keep service dashboard load times low under high database sizes."
+        },
+        "aiOpportunities": [
+            "Analyze uploaded warranty claim descriptions using NLP to automatically determine eligibility category.",
+            "Incorporate AI-based visual inspectors scanning uploaded product photos for damage verification.",
+            "Predict warranty repair timelines using historical warranty logs and product categories."
+        ]
     },
     {
         "id": 17,
@@ -2006,7 +2150,17 @@ const projectData = [
                 "architect-assistant"
             ],
             "context": "Autodesk API integration and subscription management workflow."
-        }
+        },
+        "technicalImplementation": {
+            "apexArchitecture": "Built OAuth-authenticated Apex callout modules querying active subscription counts from Autodesk APIs.",
+            "lwcStructure": "Created custom account layouts displaying subscription indicators and licensing histories.",
+            "scalability": "Scheduled Apex jobs to run during off-peak hours, processing licensing updates without impacting business hours CRM performance."
+        },
+        "aiOpportunities": [
+            "Predict renewal rates and forecast contract drop-offs using subscription usage and event history.",
+            "Identify license expansion opportunities using predictive models tracking contract milestones.",
+            "Automate personalized renewal communications matching contract anniversaries and product usage."
+        ]
     },
     {
         "id": 18,
@@ -2114,7 +2268,17 @@ const projectData = [
                 "architect-assistant"
             ],
             "context": "Facebook and LinkedIn REST integrations with Sales Cloud."
-        }
+        },
+        "technicalImplementation": {
+            "apexArchitecture": "Developed custom Webhook listeners parsing incoming JSON updates from Facebook and LinkedIn Graph APIs.",
+            "lwcStructure": "Created an inline Chatter feed custom viewer LWC highlighting social mentions and customer sentiment levels.",
+            "scalability": "Leveraged Platform Events and asynchronous processing queues to insulate Salesforce from social media traffic spikes."
+        },
+        "aiOpportunities": [
+            "Deploy advanced NLP sentiment classifiers to route highly critical negative social mentions to crisis PR queues.",
+            "Incorporate generative AI agents to draft suggested replies for common social media inquiries.",
+            "Analyze social engagement patterns to suggest ideal posting times for outbound CRM marketing campaigns."
+        ]
     },
     {
         "id": 19,
@@ -2221,7 +2385,17 @@ const projectData = [
                 "architect-assistant"
             ],
             "context": "Salesforce Sales Cloud integration with Sage 300 ERP."
-        }
+        },
+        "technicalImplementation": {
+            "apexArchitecture": "Designed optimized Apex JSON serialization logic converting multi-line opportunities into Sage 300 schemas.",
+            "lwcStructure": "Built an interactive LWC tracking real-time sync progress and listing ledger validation logs.",
+            "scalability": "Engineered transaction-safe Apex queueables with self-chaining properties, preventing database transaction lockups."
+        },
+        "aiOpportunities": [
+            "Deploy predictive billing intelligence to match incoming customer invoices with Sage 300 general ledgers.",
+            "Incorporate automated audit systems detecting account and order mismatches before ERP transmission.",
+            "Forecast potential credit risk by matching historical payment trends with sales opportunities."
+        ]
     },
     {
         "id": 20,
@@ -2329,7 +2503,17 @@ const projectData = [
                 "architect-assistant"
             ],
             "context": "Enterprise Supplier Management and process performance analytics."
-        }
+        },
+        "technicalImplementation": {
+            "apexArchitecture": "Developed bulk-safe Apex duplication algorithms matching inbound invoice payloads with active database records.",
+            "lwcStructure": "Integrated Visualforce pages with custom Google Charts widgets using JS controller hooks.",
+            "scalability": "Utilized custom metadata rules determining routing thresholds, minimizing heavy custom code execution."
+        },
+        "aiOpportunities": [
+            "Deploy AI-based duplication matching engines comparing invoice line items and detecting near-duplicate entries.",
+            "Analyze RTR, PTP, OTC cycle times to flag vendor processing bottlenecks before SLA timeouts occur.",
+            "Implement autonomous conversational agents handling vendor queries about payment status."
+        ]
     }
 ];
 

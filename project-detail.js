@@ -52,16 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { before: "Agents manually sent and tracked SMS outreach, losing up to 40% of cold leads.", after: "AI-ready response-branching engine qualifies leads 24/7 with zero agent effort." },
             { before: "SMS delivery tracking was siloed outside Salesforce with no central dashboards.", after: "Real-time delivery status tracking and engagement dashboards built directly in Salesforce LWC." }
         ];
-        data.technicalImplementation = {
-            apexArchitecture: "Engineered Queueable Apex classes with self-chaining algorithms to process outbound messages asynchronously in bulk.",
-            lwcStructure: "Built a reactive LWC panel for templates mapping, utilizing custom properties and event-driven data streaming.",
-            scalability: "Implemented platform cache and dynamic API key rotation to handle 10,000+ daily outbound payloads without database lockups."
-        };
-        data.aiOpportunities = [
-            "Integrate generative AI to draft hyper-personalized SMS responses based on lead interaction history.",
-            "Deploy autonomous agentic workflows to schedule calendar events automatically upon detecting positive intent.",
-            "Utilize sentiment analysis on inbound SMS responses to automatically flag hot leads."
-        ];
     } else if (projectId == 2) {
         data.executiveSummary = {
             businessProblem: "Enterprise sales representatives were wasting over 10 hours per week doing manual background research on prospect companies.",
@@ -77,16 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { before: "Sales reps manually researched prospects, taking 30+ minutes per account.", after: "One-click Gemini AI panel generates a full, structured dossier in less than 5 seconds." },
             { before: "Manual upload and transcription of prospect pitch decks.", after: "Drag-and-drop OCR tool reads PDF text and automatically populates custom fields." }
         ];
-        data.technicalImplementation = {
-            apexArchitecture: "Developed highly optimized Apex callout handlers managing token-based authorization and payload compression for the Gemini API.",
-            lwcStructure: "Designed a clean, tabbed LWC card that displays AI insights, raw OCR text, and suggested prompts with skeleton loaders.",
-            scalability: "Implemented an Apex retry framework with custom exceptions to handle third-party AI rate limiting gracefully."
-        };
-        data.aiOpportunities = [
-            "Enable autonomous matching of competitor keywords in prospect decks to trigger defensive battlecards.",
-            "Apply predictive lead scoring by comparing Gemini-extracted account insights with historical win patterns.",
-            "Deploy voice-to-text AI agents to listen to sales calls and automatically update CRM fields."
-        ];
     } else if (projectId == 3) {
         data.executiveSummary = {
             businessProblem: "Hardcoded routing logic and tightly-coupled integrations were creating high technical debt and frequent deployment failures.",
@@ -101,16 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
         data.beforeAfter = [
             { before: "Hardcoded Apex triggers required deployment windows and code coverage checks for minor changes.", after: "Business analyst dashboard allows point-and-click edits to active routing records." },
             { before: "Database lockups and governor limit failures during bulk record updates.", after: "Metadata engine dynamically queues execution pathways, preventing limit overflows." }
-        ];
-        data.technicalImplementation = {
-            apexArchitecture: "Engineered a metadata reflection engine in Apex that parses Custom Metadata Types and executes dynamic class instantiations.",
-            lwcStructure: "Created an administrative UI for rule creation, featuring drag-and-drop rule ordering and syntax highlighting.",
-            scalability: "Leveraged Custom Cache partitions to store configuration data, reducing database query overhead to near zero."
-        };
-        data.aiOpportunities = [
-            "Train an AI model to detect optimization bottlenecks in routing metadata and suggest rule merges.",
-            "Deploy self-healing code generators that write and deploy XML metadata files based on verbal business requirements.",
-            "Use anomaly detection algorithms to flag routing cycles or infinite loops before they execute."
         ];
     }
 

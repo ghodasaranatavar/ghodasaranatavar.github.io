@@ -1,3 +1,20 @@
+/**
+ * ================================================================================
+ * MODULE SPECIFICATION (RULE[user_global]): AI Consulting Frontend Interface
+ * 1. Implementation Code: c:/xampp/htdocs/profile/assets/js/ai-consultant.js
+ * 2. Folder Structure:
+ *    c:/xampp/htdocs/profile/
+ *      - assets/js/
+ *        - ai-consultant.js
+ * 3. API Routes: N/A (Frontend Javascript Client)
+ * 4. Browser Testing Instructions:
+ *    - Open home page, click floating AI Consultant bubble.
+ *    - Click on different tools (e.g. AI Workflow Generator).
+ *    - Enter industry, challenge, goals, then click "Generate Recommendation".
+ * 5. Expected Output: Polished AI modal opens, displays 8 active tools with matching icons, handles inputs dynamically, and renders strategic advice.
+ * ================================================================================
+ */
+
 // Smart API Base URL: switches between local dev and production automatically
 const AI_API_BASE_URL = (() => {
     const host = window.location.hostname;
@@ -428,13 +445,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.tools) {
                     const icons = {
                         'discovery-call-prep': 'ph ph-phone-call',
-                        'cloud-recommendation': 'ph ph-cloud',
                         'integration-advisor': 'ph ph-plugs-connected',
                         'roi-estimator': 'ph ph-chart-line-up',
                         'consulting-assistant': 'ph ph-users-three',
                         'agenda-generator': 'ph ph-list-checks',
                         'cloud-recommender': 'ph ph-shield-check',
-                        'architect-assistant': 'ph ph-sketch-logo'
+                        'architect-assistant': 'ph ph-sketch-logo',
+                        'workflow-generator': 'ph ph-flow-arrow'
                     };
 
                     let isInitialLoad = true;

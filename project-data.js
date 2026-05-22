@@ -1,3 +1,20 @@
+/**
+ * ================================================================================
+ * MODULE SPECIFICATION (RULE[user_global]): Case Study Static Data Repository
+ * 1. Implementation Code: c:/xampp/htdocs/profile/project-data.js
+ * 2. Folder Structure:
+ *    c:/xampp/htdocs/profile/
+ *      - project-data.js
+ *      - project-detail.js
+ *      - project-detail.html
+ * 3. API Routes: N/A (Static JS repository)
+ * 4. Browser Testing Instructions:
+ *    - Verify database arrays are loaded inside project-detail.js by looking up global window.projectData.
+ *    - Open browser dev console on project-detail.html and type `window.projectData` to view values.
+ * 5. Expected Output: Fully loaded array of project objects with meta metadata, names, niches, and complexity tags.
+ * ================================================================================
+ */
+
 const projectData = [
     {
         "id": 1,

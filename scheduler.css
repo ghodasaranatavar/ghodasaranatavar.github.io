@@ -184,7 +184,7 @@
     display: flex;
     background: var(--lab-bg-white);
     border: 1px solid var(--lab-border-medium);
-    border-radius: 25px;
+    border-radius: var(--radius-primary);
     overflow: hidden;
     margin-top: 15px;
     max-width: 140px;

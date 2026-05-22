@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <a href="project-detail.html?id=${project.id}" target="_blank" rel="noopener noreferrer" 
-               style="background: ${accent}; color: white; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 800; text-align: center; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; width: fit-content; border: none;">
+               style="background: ${accent}; color: white; padding: 12px 24px; border-radius: var(--radius-primary); font-weight: 800; text-align: center; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; width: fit-content; border: none;">
                 View Case Study <i class="ph ph-arrow-right"></i>
             </a>
         `;

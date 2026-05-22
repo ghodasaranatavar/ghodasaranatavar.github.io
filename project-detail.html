@@ -1,3 +1,19 @@
+<!--
+================================================================================
+MODULE SPECIFICATION (RULE[user_global]): Case Study Detail Page
+1. Implementation Code: c:/xampp/htdocs/profile/project-detail.html
+2. Folder Structure:
+   c:/xampp/htdocs/profile/
+     - project-detail.html
+     - project-detail.js
+     - project-detail.css
+3. API Routes: N/A (Static HTML)
+4. Browser Testing Instructions:
+   - Load project-detail.html?id=1 in a browser.
+   - Verify layout sections: Executive Summary, Detailed Challenge, Before vs After, System Architecture, Technical Implementation, and AI Opportunity Layer.
+5. Expected Output: Responsive case study layout containing narrative, structural tables, and interactive modules.
+================================================================================
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +34,10 @@
     <meta property="og:image" content="/assets/images/portfolio-preview.png">
 
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/feviconicon.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="project-detail.css">
-    <link rel="stylesheet" href="assets/css/ai-consultant.css">
-    <link rel="stylesheet" href="scheduler.css">
+    <link rel="stylesheet" href="styles.css?v=1.2">
+    <link rel="stylesheet" href="project-detail.css?v=1.2">
+    <link rel="stylesheet" href="assets/css/ai-consultant.css?v=1.2">
+    <link rel="stylesheet" href="scheduler.css?v=1.2">
 
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
@@ -65,8 +81,8 @@
                 <span class="hamburger-line" aria-hidden="true"></span>
             </button>
 
-            <button class="nav-cta calendly-trigger" id="book-demo-btn" aria-label="Book a demo appointment">
-                Book A Call
+            <button class="nav-cta calendly-trigger" id="book-demo-btn" aria-label="Book AI Consultation">
+                <i class="ph ph-calendar-blank" aria-hidden="true"></i>
             </button>
         </nav>
 
@@ -158,6 +174,25 @@
             <!-- Left Column: Narratives -->
             <div class="main-column">
 
+                <!-- NEW: Executive Summary Callout Card -->
+                <div class="section-block executive-summary-card reveal" id="executive-summary-section" style="display: none;">
+                    <h2><i class="ph ph-file-text"></i> Executive Summary</h2>
+                    <div class="exec-summary-grid">
+                        <div class="exec-item">
+                            <div class="exec-label"><i class="ph ph-warning-circle"></i> Business Problem</div>
+                            <div class="exec-value" id="exec-business-problem">-</div>
+                        </div>
+                        <div class="exec-item">
+                            <div class="exec-label"><i class="ph ph-sparkle"></i> Transformation</div>
+                            <div class="exec-value" id="exec-transformation">-</div>
+                        </div>
+                        <div class="exec-item">
+                            <div class="exec-label"><i class="ph ph-chart-line"></i> Business Impact</div>
+                            <div class="exec-value" id="exec-business-impact">-</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- NEW: Who This Is For (Niche Relatability) -->
                 <div class="section-block niche-block reveal">
                     <h2><i class="ph ph-users-three"></i> Who This Is For</h2>
@@ -179,6 +214,25 @@
                     <p id="operational-problem">-</p>
                 </div>
 
+                <!-- NEW: Detailed Challenge Section -->
+                <div class="section-block reveal" id="challenge-detail-section" style="display: none;">
+                    <h2><i class="ph ph-shield-warning"></i> Operational Challenges & Bottlenecks</h2>
+                    <div class="challenge-details-grid">
+                        <div class="challenge-detail-card">
+                            <h4>Inefficiencies</h4>
+                            <p id="challenge-inefficiencies">-</p>
+                        </div>
+                        <div class="challenge-detail-card">
+                            <h4>Manual Processes</h4>
+                            <p id="challenge-manual-processes">-</p>
+                        </div>
+                        <div class="challenge-detail-card">
+                            <h4>Bottlenecks</h4>
+                            <p id="challenge-bottlenecks">-</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Client Overview -->
                 <div class="section-block reveal">
                     <h2><i class="ph ph-buildings"></i> Client Overview</h2>
@@ -195,6 +249,24 @@
                             <label>Location</label>
                             <span id="overview-location">-</span>
                         </div>
+                    </div>
+                </div>
+
+                <!-- NEW: Before vs After Comparison Table -->
+                <div class="section-block reveal" id="before-after-section" style="display: none;">
+                    <h2><i class="ph ph-arrows-left-right"></i> Transformation Journey (Before vs. After)</h2>
+                    <div class="table-responsive">
+                        <table class="before-after-table">
+                            <thead>
+                                <tr>
+                                    <th>Before (Manual / Legacy)</th>
+                                    <th>After (Automated / Optimized)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="before-after-tbody">
+                                <!-- Dynamically populated -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -226,6 +298,25 @@
                     </div>
                 </div>
 
+                <!-- NEW: Technical Implementation Details -->
+                <div class="section-block reveal" id="technical-implementation-section" style="display: none;">
+                    <h2><i class="ph ph-code"></i> Technical Architecture & Implementation</h2>
+                    <div class="tech-impl-content">
+                        <div class="tech-impl-card">
+                            <h4>Apex Architecture</h4>
+                            <p id="tech-apex-architecture">-</p>
+                        </div>
+                        <div class="tech-impl-card">
+                            <h4>LWC Structure</h4>
+                            <p id="tech-lwc-structure">-</p>
+                        </div>
+                        <div class="tech-impl-card">
+                            <h4>Scalability & Governance</h4>
+                            <p id="tech-scalability">-</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- NEW: Project Gallery (Visual Evidence) -->
                 <div class="section-block reveal" id="gallery-section" style="display: none;">
                     <h2><i class="ph ph-image"></i> Technical Evidence & Architecture</h2>
@@ -238,6 +329,13 @@
                 <div class="section-block reveal">
                     <h2><i class="ph ph-lightbulb"></i> Key Takeaways</h2>
                     <div id="takeaways-list" class="solution-list" style="grid-template-columns: 1fr;"></div>
+                </div>
+
+                <!-- NEW: AI Opportunity Layer -->
+                <div class="section-block reveal" id="ai-opportunities-section" style="display: none;">
+                    <h2><i class="ph ph-sparkle"></i> AI Opportunity Layer</h2>
+                    <p style="margin-bottom: 20px;">Strategic opportunities to enhance this solution with Enterprise AI agents, predictive models, and autonomous process loops:</p>
+                    <ul id="ai-opportunities-list" class="solution-list" style="grid-template-columns: 1fr;"></ul>
                 </div>
 
                 <!-- AI Consulting Accelerator (Guided Action) -->
@@ -528,11 +626,11 @@
     </div>
 
     <!-- Scripts -->
-    <script src="script.js"></script>
-    <script src="scheduler.js"></script>
+    <script src="script.js?v=1.4"></script>
+    <script src="scheduler.js?v=1.2"></script>
     <script src="project-data.js"></script>
-    <script src="assets/js/ai-consultant.js"></script>
-    <script src="project-detail.js"></script>
+    <script src="assets/js/ai-consultant.js?v=1.2"></script>
+    <script src="project-detail.js?v=1.2"></script>
 </body>
 
 </html>

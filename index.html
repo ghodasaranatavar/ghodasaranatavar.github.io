@@ -1,3 +1,23 @@
+<!--
+================================================================================
+MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showcase
+1. Implementation Code: c:/xampp/htdocs/profile/index.html
+2. Folder Structure:
+   c:/xampp/htdocs/profile/
+     - index.html
+     - styles.css
+     - script.js
+3. API Routes: N/A (Static HTML Page)
+4. Browser Testing Instructions:
+   - Load http://localhost/profile/index.html.
+   - Inspect top header nav button (says "Book AI Consultation").
+   - Scroll down to see animated count-ups on the Metrics Dashboard.
+   - Click on Salesforce, Gemini, REST APIs, or Twilio/Slack nodes in the Interactive Architecture Explorer.
+   - Check that description panel updates.
+   - Look for the floating "Talk AI Strategy" CTA at bottom-left on scroll.
+5. Expected Output: A premium enterprise portfolio page showing dynamic metrics, architectural node selection, robust delivery timeline, and direct CTA triggers to the AI modal.
+================================================================================
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,9 +30,9 @@
         Businesses Increase Revenue Using Salesforce & AI-Driven CRM Automation| 12 Years Experience - Natavar
         Ghodasara</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/feviconicon.png" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="assets/css/ai-consultant.css" />
-    <link rel="stylesheet" href="scheduler.css" />
+    <link rel="stylesheet" href="styles.css?v=1.2" />
+    <link rel="stylesheet" href="assets/css/ai-consultant.css?v=1.2" />
+    <link rel="stylesheet" href="scheduler.css?v=1.2" />
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
@@ -48,8 +68,8 @@
                 <span class="hamburger-line" aria-hidden="true"></span>
                 <span class="hamburger-line" aria-hidden="true"></span>
             </button>
-            <button class="nav-cta calendly-trigger" id="book-demo-btn" aria-label="Book a demo appointment">
-                Book A Call
+            <button class="nav-cta calendly-trigger" id="book-demo-btn" aria-label="Book AI Consultation">
+                <i class="ph ph-calendar-blank" aria-hidden="true"></i>
             </button>
         </nav>
         <!-- Full-Width Mobile Navigation Menu -->
@@ -650,6 +670,51 @@
             </div>
         </section>
 
+        <!-- NEW: Visual Metrics Dashboard Section -->
+        <section id="metrics-dashboard" class="metrics-dashboard-section section-full">
+            <div class="section-header">
+                <h2 class="section-title"><i class="ph ph-chart-line-up"></i> Enterprise Automation Impact</h2>
+                <p class="section-subtitle">Delivering measurable business value through strategic CRM and AI orchestration.</p>
+            </div>
+            <div class="metrics-dashboard-grid">
+                <div class="metric-dashboard-card animate-scale" data-target="100000">
+                    <div class="metric-icon"><i class="ph ph-cpu"></i></div>
+                    <div class="metric-val">0</div>
+                    <div class="metric-suffix">+</div>
+                    <h3 class="metric-name">Automations Processed Daily</h3>
+                    <p class="metric-desc">High-volume transactional event runs and trigger execution flows.</p>
+                </div>
+                <div class="metric-dashboard-card animate-scale" data-target="5000">
+                    <div class="metric-icon"><i class="ph ph-clock"></i></div>
+                    <div class="metric-val">0</div>
+                    <div class="metric-suffix">+</div>
+                    <h3 class="metric-name">Hours Saved Annually</h3>
+                    <p class="metric-desc">Operational work hours reclaimed through intelligent process automation.</p>
+                </div>
+                <div class="metric-dashboard-card animate-scale" data-target="20">
+                    <div class="metric-icon"><i class="ph ph-plugs-connected"></i></div>
+                    <div class="metric-val">0</div>
+                    <div class="metric-suffix">+</div>
+                    <h3 class="metric-name">Systems Integrated</h3>
+                    <p class="metric-desc">Seamless API syncs between Salesforce, ERPs, AI models, and document vaults.</p>
+                </div>
+                <div class="metric-dashboard-card animate-scale" data-target="52">
+                    <div class="metric-icon"><i class="ph ph-trend-up"></i></div>
+                    <div class="metric-val">0</div>
+                    <div class="metric-suffix">%</div>
+                    <h3 class="metric-name">Lead Routing Speedup</h3>
+                    <p class="metric-desc">Improvement in prospect routing and qualification touchpoints.</p>
+                </div>
+                <div class="metric-dashboard-card animate-scale" data-target="15">
+                    <div class="metric-icon"><i class="ph ph-flow-arrow"></i></div>
+                    <div class="metric-val">0</div>
+                    <div class="metric-suffix">+</div>
+                    <h3 class="metric-name">AI Workflows Designed</h3>
+                    <p class="metric-desc">Production-ready AI integration prompts, OCRs, and conversational nodes.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- NEW: Strategic Consulting Framework Section -->
         <section id="framework" class="framework-section section-full">
             <div class="section-header">
@@ -781,6 +846,80 @@
             </div>
         </section>
 
+        <!-- NEW: Interactive Architecture Explorer Section -->
+        <section id="architecture-explorer" class="architecture-explorer-section section-full">
+            <div class="arch-explorer-container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="ph ph-squares-four"></i> Interactive Architecture Explorer</h2>
+                    <p class="section-subtitle">Click on the nodes below to inspect our enterprise integration patterns and data flow guardrails.</p>
+                </div>
+                <div class="arch-explorer-layout">
+                    <!-- Left: Visual Nodes Map -->
+                    <div class="arch-visual-map">
+                        <div class="arch-node-group">
+                            <div class="arch-node active" data-node="salesforce" tabindex="0">
+                                <div class="node-icon"><i class="ph ph-cloud"></i></div>
+                                <span class="node-label">Salesforce CRM</span>
+                                <div class="node-badge">Core Engine</div>
+                            </div>
+                        </div>
+                        
+                        <div class="arch-connector-line"></div>
+                        
+                        <div class="arch-node-group">
+                            <div class="arch-node" data-node="gemini" tabindex="0">
+                                <div class="node-icon"><i class="ph ph-sparkle"></i></div>
+                                <span class="node-label">Google Gemini AI</span>
+                                <div class="node-badge">Intelligence Layer</div>
+                            </div>
+                        </div>
+                        
+                        <div class="arch-connector-line"></div>
+                        
+                        <div class="arch-node-group">
+                            <div class="arch-node" data-node="apis" tabindex="0">
+                                <div class="node-icon"><i class="ph ph-plugs-connected"></i></div>
+                                <span class="node-label">REST/ERP APIs</span>
+                                <div class="node-badge">Data Connectors</div>
+                            </div>
+                        </div>
+                        
+                        <div class="arch-connector-line"></div>
+                        
+                        <div class="arch-node-group">
+                            <div class="arch-node" data-node="messaging" tabindex="0">
+                                <div class="node-icon"><i class="ph ph-phone-call"></i></div>
+                                <span class="node-label">Twilio & Slack</span>
+                                <div class="node-badge">Alerts & Messaging</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Node Description Panel -->
+                    <div class="arch-details-panel">
+                        <div id="arch-details-content">
+                            <h3 class="arch-details-title">Select an architectural node</h3>
+                            <p class="arch-details-subtitle">Click any system node to inspect its integration blueprint, scalability guardrails, and business transformation value.</p>
+                            <div class="arch-spec-box">
+                                <div class="spec-item">
+                                    <strong>Integration Pattern:</strong>
+                                    <span id="spec-pattern">Select a node</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Scale Guardrail:</strong>
+                                    <span id="spec-guardrail">Select a node</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Business Value:</strong>
+                                    <span id="spec-value">Select a node</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Portfolio Section with Full Width -->
         <section id="portfolio" class="portfolio-section section-full">
             <div class="section-header">
@@ -853,6 +992,66 @@
                 <a href="case-studies.html" class="btn-primary">
                     View All Case Studies <i class="ph ph-arrow-square-out" style="margin-left: 8px;"></i>
                 </a>
+            </div>
+        </section>
+
+        <!-- NEW: Delivery Methodology Section -->
+        <section id="methodology" class="delivery-section section-full">
+            <div class="section-header">
+                <h2 class="section-title"><i class="ph ph-tree-structure"></i> Enterprise Delivery Methodology</h2>
+                <p class="section-subtitle">A highly structured, audit-proof delivery model built for scalability, compliance, and velocity.</p>
+            </div>
+            <div class="delivery-grid">
+                <div class="delivery-card">
+                    <div class="delivery-step-num">01</div>
+                    <h3>Discovery & Strategic Audit</h3>
+                    <p>Analyze business challenges, catalog technical debt, inspect existing flows, and establish hard baseline KPIs (e.g. lead leakage %, transaction latency).</p>
+                </div>
+                <div class="delivery-card">
+                    <div class="delivery-step-num">02</div>
+                    <h3>Architecture & Schema Planning</h3>
+                    <p>Draft schema relationships, document metadata-driven triggers, design async processing structures, and define integration security maps.</p>
+                </div>
+                <div class="delivery-card">
+                    <div class="delivery-step-num">03</div>
+                    <h3>High-Fidelity Development</h3>
+                    <p>Write bulkified Apex, build responsive LWC components, orchestrate API requests, and integrate AI prompts with robust error handling.</p>
+                </div>
+                <div class="delivery-card">
+                    <div class="delivery-step-num">04</div>
+                    <h3>Rigorous Quality Assurance</h3>
+                    <p>Stress-test governor limits, perform dry runs with high-volume data payloads, audit security sharing settings, and run regression flows.</p>
+                </div>
+                <div class="delivery-card">
+                    <div class="delivery-step-num">05</div>
+                    <h3>Deployment & Optimization</h3>
+                    <p>Promote code via clean CI/CD pipelines, configure live event monitoring, gather telemetry, and refine AI prompting and response parameters.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Why Work With Me Section -->
+        <section id="why-work-with-me" class="why-work-with-me-section section-full">
+            <div class="section-header">
+                <h2 class="section-title"><i class="ph ph-handshake"></i> Why Partner With Me</h2>
+                <p class="section-subtitle">Bridging the gap between elite Salesforce engineering and bottom-line enterprise results.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon"><i class="ph ph-layout"></i></div>
+                    <h3>Architecture-First Mindset</h3>
+                    <p>We decouple logic using Custom Metadata, design clean trigger handlers, and enforce rigorous naming conventions to guarantee zero technical debt.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="ph ph-currency-dollar"></i></div>
+                    <h3>Business-Value Driven</h3>
+                    <p>We focus on metrics that matter. Every flow is built with a clear purpose: increasing lead conversions, saving team hours, or optimizing billing.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="ph ph-shield-check"></i></div>
+                    <h3>Enterprise Scale & Integrity</h3>
+                    <p>Experienced with strict data governance, secure endpoints, async queueing, and robust platform architectures handling millions of annual operations.</p>
+                </div>
             </div>
         </section>
 
@@ -1105,10 +1304,11 @@
         </div>
     </div>
     <script src="project-data.js"></script>
-    <script src="script.js"></script>
-    <script src="scheduler.js"></script>
-    <script src="featured-projects.js"></script>
-    <script src="assets/js/ai-consultant.js"></script>
+    <script src="script.js?v=1.4"></script>
+    <script src="scheduler.js?v=1.2"></script>
+    <script src="featured-projects.js?v=1.2"></script>
+    <script src="assets/js/ai-consultant.js?v=1.2"></script>
+
 </body>
 
 </html>

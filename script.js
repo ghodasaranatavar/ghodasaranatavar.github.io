@@ -1,3 +1,21 @@
+// ================================================================================
+// MODULE SPECIFICATION (RULE[user_global]): Interactive Logic & Funnel Wiring
+// 1. Implementation Code: c:/xampp/htdocs/profile/script.js
+// 2. Folder Structure:
+//    c:/xampp/htdocs/profile/
+//      - script.js
+//      - index.html
+//      - styles.css
+// 3. API Routes: N/A (Client-side interactive scripts)
+// 4. Browser Testing Instructions:
+//    - Load http://localhost/profile/index.html.
+//    - Scroll down past 300px and verify that the floating CTA `#floating-strategy-cta` appears.
+//    - Click on the floating CTA and confirm that it launches the AI Consulting Suite modal.
+//    - Scroll to the "Enterprise Automation Impact" metrics section and check if counters animate up.
+//    - Navigate to the "Interactive Architecture Explorer" and click on nodes to verify details panel updates.
+// 5. Expected Output: Flawless front-end interactive behaviors: count-ups, architectural details updating on node click, and floating CTA scroll toggle.
+// ================================================================================
+
 // Enhanced Portfolio Interactive Features with FIXED Mobile Navigation
 class EnhancedAccessiblePortfolioApp {
   constructor() {
@@ -35,6 +53,8 @@ class EnhancedAccessiblePortfolioApp {
     // Initialize Review Toaster
     this.initReviewToaster();
     this.setupScrollToTop(); // Add this line
+    this.setupMetricsDashboard();
+    this.setupArchitectureExplorer();
     // Debug section positions
     document.addEventListener("keydown", (e) => {
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "D") {
@@ -1002,7 +1022,10 @@ class EnhancedAccessiblePortfolioApp {
         "security",
         "trust",
         "roi-calculator",
+        "architecture-explorer",
         "portfolio",
+        "methodology",
+        "why-work-with-me",
         "contact",
       ];
       const headerHeight = this.getHeaderHeight();
@@ -1087,7 +1110,10 @@ class EnhancedAccessiblePortfolioApp {
     // Map sub-sections to their primary navigation parent
     const sectionAliases = {
       "trust": "security",
-      "roi-calculator": "security"
+      "roi-calculator": "security",
+      "architecture-explorer": "security",
+      "methodology": "portfolio",
+      "why-work-with-me": "portfolio"
     };
     
     const primarySection = sectionAliases[activeSection] || activeSection;
@@ -1968,6 +1994,128 @@ class EnhancedAccessiblePortfolioApp {
     });
 
     toggleScrollButton();
+  }
+
+  setupMetricsDashboard() {
+    const metricsSection = document.getElementById("metrics-dashboard");
+    if (!metricsSection) return;
+
+    const cards = metricsSection.querySelectorAll(".metric-dashboard-card");
+    const observerOptions = {
+      threshold: this.isMobile ? 0.1 : 0.3,
+      rootMargin: this.isMobile ? "0px 0px -50px 0px" : "0px",
+    };
+
+    const metricsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const valEl = entry.target.querySelector(".metric-val");
+          const targetValStr = entry.target.getAttribute("data-target");
+          if (valEl && targetValStr) {
+            const targetVal = parseInt(targetValStr, 10);
+            this.animateCounter(valEl, 0, targetVal, 2000, "");
+          }
+          metricsObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    cards.forEach((card) => {
+      metricsObserver.observe(card);
+    });
+  }
+
+  setupArchitectureExplorer() {
+    const explorerSection = document.getElementById("architecture-explorer");
+    if (!explorerSection) return;
+
+    const nodes = explorerSection.querySelectorAll(".arch-node");
+    const specPattern = document.getElementById("spec-pattern");
+    const specGuardrail = document.getElementById("spec-guardrail");
+    const specValue = document.getElementById("spec-value");
+    const detailsTitle = explorerSection.querySelector(".arch-details-title");
+    const detailsSubtitle = explorerSection.querySelector(".arch-details-subtitle");
+
+    if (!nodes.length || !specPattern || !specGuardrail || !specValue) return;
+
+    const nodeData = {
+      salesforce: {
+        title: "Salesforce CRM Engine",
+        subtitle: "The centralized hub orchestrating automated client metadata and business databases.",
+        pattern: "Apex Triggers, LWC Controllers, custom REST endpoints, asynchronous processing (Queueable & Batchable Apex).",
+        guardrail: "Bulkified trigger designs, governor limit checks (SOQL query & DML limits), automated unit test coverage.",
+        value: "Centralized database, automated lead and ticket routing pipelines, absolute data integrity across operations."
+      },
+      gemini: {
+        title: "Google Gemini AI",
+        subtitle: "The intelligent processing layer evaluating customer intent and system options dynamically.",
+        pattern: "REST integration using structured JSON payloads, API key rotation, structured response parsing.",
+        guardrail: "Rate-limiting, token tracking, token budget management, secure credential storage via Named Credentials.",
+        value: "Conversational triage, automated context-aware options generator, next best action prediction."
+      },
+      apis: {
+        title: "REST & ERP APIs",
+        subtitle: "The pipeline framework connecting external services and legacy tools synchronously.",
+        pattern: "Synchronous/Asynchronous callouts, payload encryption/decryption, error retry mechanisms.",
+        guardrail: "120-second timeout enforcement, transaction boundary limits, OAuth 2.0 flow validation.",
+        value: "Real-time sync of Salesforce data with external ERP, databases, and third-party SaaS platforms."
+      },
+      messaging: {
+        title: "Twilio & Slack Hub",
+        subtitle: "The instant feedback channel broadcasting notifications and system alerts.",
+        pattern: "Webhook listeners, event-driven messaging, push notifications.",
+        guardrail: "Reconnection policies, platform event stream tracking, deduplication of incoming events.",
+        value: "Immediate customer/developer notifications, channel routing, automatic ticket alerts."
+      }
+    };
+
+    const updateDetails = (nodeKey) => {
+      const data = nodeData[nodeKey];
+      if (!data) return;
+
+      // Add a fade effect to details content
+      const contentBox = document.getElementById("arch-details-content");
+      if (contentBox) {
+        contentBox.style.opacity = "0.3";
+        contentBox.style.transition = "opacity 0.2s ease";
+      }
+
+      setTimeout(() => {
+        if (detailsTitle) detailsTitle.textContent = data.title;
+        if (detailsSubtitle) detailsSubtitle.textContent = data.subtitle;
+        specPattern.textContent = data.pattern;
+        specGuardrail.textContent = data.guardrail;
+        specValue.textContent = data.value;
+
+        if (contentBox) {
+          contentBox.style.opacity = "1";
+        }
+      }, 200);
+    };
+
+    const activateNode = (node) => {
+      nodes.forEach((n) => n.classList.remove("active"));
+      node.classList.add("active");
+      const key = node.getAttribute("data-node");
+      updateDetails(key);
+    };
+
+    nodes.forEach((node) => {
+      node.addEventListener("click", () => activateNode(node));
+      node.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          activateNode(node);
+        }
+      });
+    });
+
+    // Initialize with first active node
+    const activeNode = explorerSection.querySelector(".arch-node.active");
+    if (activeNode) {
+      const key = activeNode.getAttribute("data-node");
+      updateDetails(key);
+    }
   }
 }
 

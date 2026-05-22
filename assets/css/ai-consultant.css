@@ -1,4 +1,20 @@
-/* AI Consulting Accelerator Styles */
+/*
+================================================================================
+MODULE SPECIFICATION (RULE[user_global]): AI Consultant Stylesheet
+1. Implementation Code: c:/xampp/htdocs/profile/assets/css/ai-consultant.css
+2. Folder Structure:
+   c:/xampp/htdocs/profile/
+     - assets/
+       - css/
+         - ai-consultant.css
+3. API Routes: N/A (Frontend Styling)
+4. Browser Testing Instructions:
+   - Open index.html in a web browser.
+   - Click on the AI Consultant FAB on the bottom right.
+   - Verify that all buttons ("Generate Recommendation", "Book Architecture Call"), pills, tags, dropdowns, and textareas have consistent rectangular rounded corners (12px, mapping to var(--radius-primary)).
+5. Expected Output: Clean, premium, and uniform rectangular rounded borders on all buttons, tags, and inputs within the AI Consultant panel.
+================================================================================
+*/
 :root {
     --ai-primary: var(--lab-palette-primary-main);
     --ai-primary-dark: var(--lab-palette-primary-dark);
@@ -20,7 +36,7 @@
     background: var(--ai-primary);
     color: white;
     border: none;
-    border-radius: 50px;
+    border-radius: var(--radius-primary) !important;
     padding: 0 25px;
     height: var(--ai-fab-size);
     display: flex;
@@ -102,7 +118,7 @@
 .ai-tool-card {
     background: white;
     border: 1px solid var(--lab-border-light);
-    border-radius: 12px;
+    border-radius: var(--radius-primary) !important;
     padding: 12px 15px; /* Slightly more compact */
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -165,7 +181,7 @@
 .ai-tags-input {
     background: var(--ai-input-bg);
     border: 2px solid transparent;
-    border-radius: 12px;
+    border-radius: var(--radius-primary) !important;
     padding: 8px 12px;
     display: flex;
     flex-wrap: wrap;
@@ -196,7 +212,7 @@
     background: var(--ai-primary);
     color: white;
     padding: 6px 12px;
-    border-radius: 50px;
+    border-radius: var(--radius-primary) !important;
     font-size: 0.85rem;
     font-weight: 700;
     display: flex;
@@ -245,7 +261,7 @@
     background: var(--ai-accent); /* Portfolio Pink */
     color: white;
     padding: 18px 40px;
-    border-radius: 100px;
+    border-radius: var(--radius-primary) !important;
     font-family: inherit;
     font-weight: 800;
     font-size: 1rem;
@@ -291,7 +307,7 @@
     right: 0;
     background: white;
     border: 1px solid var(--ai-glass-border);
-    border-radius: 12px;
+    border-radius: var(--radius-primary) !important;
     margin-top: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -316,7 +332,7 @@
     color: var(--ai-accent);
     background: rgba(234, 23, 99, 0.05);
     padding: 4px 12px;
-    border-radius: 50px;
+    border-radius: var(--radius-primary) !important;
     border: 1px solid rgba(234, 23, 99, 0.1);
     margin-bottom: 8px;
 }
@@ -522,7 +538,7 @@
 .ai-field-group textarea {
     background: var(--ai-input-bg);
     border: 2px solid transparent;
-    border-radius: 12px;
+    border-radius: var(--radius-primary) !important;
     padding: 14px 18px;
     color: var(--ai-text-main);
     font-family: inherit;
@@ -569,7 +585,7 @@
     color: white;
     border: none;
     padding: 16px 32px;
-    border-radius: 100px;
+    border-radius: var(--radius-primary) !important;
     font-weight: 800;
     font-size: 0.95rem;
     cursor: pointer;
@@ -686,7 +702,7 @@
     background: var(--ai-primary);
     color: white;
     padding: 6px 20px;
-    border-radius: 50px;
+    border-radius: var(--radius-primary) !important;
     font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.1em;
@@ -718,7 +734,7 @@
     background: rgba(51, 96, 173, 0.08);
     color: var(--ai-primary);
     padding: 10px 20px;
-    border-radius: 12px;
+    border-radius: var(--radius-primary) !important;
     font-size: 0.9rem;
     font-weight: 800;
     margin-bottom: 30px;
@@ -749,7 +765,7 @@
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: var(--radius-primary) !important;
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;

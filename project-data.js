@@ -143,7 +143,7 @@ const projectData = [
             ],
             "context": "Lead engagement automation for Real Estate using Twilio and Salesforce."
         },
-        "architecture": "graph TD\n    subgraph Salesforce\n        Lead[Lead/Contact] --> Cadence[Sales Cadence]\n        Cadence --> ApexQ[Apex Queueable]\n        ApexQ --> Outbound[Twilio REST Outbound]\n    end\n    Outbound --> Twilio[Twilio API]\n    Twilio --> Recipient[Mobile Recipient]\n    Recipient --> Reply[SMS Reply]\n    Reply --> Webhook[Twilio Webhook]\n    subgraph Salesforce\n        Webhook --> Listener[Apex REST Listener]\n        Listener --> Router[Intelligent Lead Router]\n        Router --> Task[Create Task/Update Status]\n    end"
+        "architecture": "graph TD\n    subgraph Salesforce\n        Lead[\"Lead/Contact\"] --> Cadence[\"Sales Cadence\"]\n        Cadence --> ApexQ[\"Apex Queueable\"]\n        ApexQ --> Outbound[\"Twilio REST Outbound\"]\n    end\n    Outbound --> Twilio[\"Twilio API\"]\n    Twilio --> Recipient[\"Mobile Recipient\"]\n    Recipient --> Reply[\"SMS Reply\"]\n    Reply --> Webhook[\"Twilio Webhook\"]\n    subgraph Salesforce\n        Webhook --> Listener[\"Apex REST Listener\"]\n        Listener --> Router[\"Intelligent Lead Router\"]\n        Router --> Task[\"Create Task/Update Status\"]\n    end"
     },
     {
         "id": 2,
@@ -1430,7 +1430,7 @@ const projectData = [
         },
         "detailFeatured": true,
         "hubFeatured": true,
-        "architecture": "graph TD\n    subgraph Corporate_Buyer\n        User[Buyer Browser] -->|Auth Request| SSO[SAML/OIDC SSO]\n    end\n    subgraph Salesforce_Experience_Cloud\n        SSO -->|Federated Access| IdP[Salesforce Identity Provider]\n        IdP -->|Render UI| Portal[B2B Community Portal]\n        Portal -->|LWC Checkout| ApexController[Apex Controller]\n    end\n    subgraph Middleware_Layer\n        ApexController -->|Secure REST Callout| Mule[MuleSoft ESB]\n    end\n    subgraph Backend_Systems\n        Mule -->|Query Pricing| SAP[SAP ERP Database]\n        Mule -->|Query Tax| Vertex[Vertex Tax Engine]\n    end\n    Vertex -->|Tax Payload| Mule\n    SAP -->|Pricing Matrix| Mule\n    Mule -->|JSON Response| ApexController\n    ApexController -->|Reactive Update| Portal",
+        "architecture": "graph TD\n    subgraph Corporate_Buyer\n        User[\"Buyer Browser\"] -->|Auth Request| SSO[\"SAML/OIDC SSO\"]\n    end\n    subgraph Salesforce_Experience_Cloud\n        SSO -->|Federated Access| IdP[\"Salesforce Identity Provider\"]\n        IdP -->|Render UI| Portal[\"B2B Community Portal\"]\n        Portal -->|LWC Checkout| ApexController[\"Apex Controller\"]\n    end\n    subgraph Middleware_Layer\n        ApexController -->|Secure REST Callout| Mule[\"MuleSoft ESB\"]\n    end\n    subgraph Backend_Systems\n        Mule -->|Query Pricing| SAP[\"SAP ERP Database\"]\n        Mule -->|Query Tax| Vertex[\"Vertex Tax Engine\"]\n    end\n    Vertex -->|Tax Payload| Mule\n    SAP -->|Pricing Matrix| Mule\n    Mule -->|JSON Response| ApexController\n    ApexController -->|Reactive Update| Portal",
         "aiConfig": {
             "title": "B2B Commerce Architect",
             "primaryCTA": "Analyze Checkout Flow",
@@ -1553,7 +1553,7 @@ const projectData = [
         },
         "detailFeatured": true,
         "hubFeatured": false,
-        "architecture": "graph TD\n    subgraph Chat_Channels\n        Customer[Customer on Web/WhatsApp/SMS] -->|Initiates Chat| SnapIn[LWC Pre-chat Snap-in]\n    end\n    subgraph Bot_Deflection\n        SnapIn -->|Launches Dialog| Einstein[Einstein Bot Engine]\n        Einstein -->|Query CRM Data| Invocable[Invocable Apex Handler]\n        Invocable -->|Check Entitlements| DB[(Salesforce DB)]\n    end\n    subgraph Live_Agent_Escalation\n        Einstein -->|Failed Resolution| Router[Omni-Channel Router]\n        Router -->|Skills-Based Check| Queue[Specialized Support Queue]\n        Queue -->|Assign Activity| Agent[Support Agent Console]\n        Agent -->|Suggest Offer| Score[Einstein Opportunity Score]\n    end",
+        "architecture": "graph TD\n    subgraph Chat_Channels\n        Customer[\"Customer on Web/WhatsApp/SMS\"] -->|Initiates Chat| SnapIn[\"LWC Pre-chat Snap-in\"]\n    end\n    subgraph Bot_Deflection\n        SnapIn -->|Launches Dialog| Einstein[\"Einstein Bot Engine\"]\n        Einstein -->|Query CRM Data| Invocable[\"Invocable Apex Handler\"]\n        Invocable -->|Check Entitlements| DB[(\"Salesforce DB\")]\n    end\n    subgraph Live_Agent_Escalation\n        Einstein -->|Failed Resolution| Router[\"Omni-Channel Router\"]\n        Router -->|Skills-Based Check| Queue[\"Specialized Support Queue\"]\n        Queue -->|Assign Activity| Agent[\"Support Agent Console\"]\n        Agent -->|Suggest Offer| Score[\"Einstein Opportunity Score\"]\n    end",
         "aiConfig": {
             "title": "Conversational AI Consultant",
             "primaryCTA": "Design Bot Architecture",
@@ -1890,7 +1890,7 @@ const projectData = [
         },
         "detailFeatured": false,
         "hubFeatured": false,
-        "architecture": "graph TD\n    subgraph Customer_Portal\n        User[Customer Browser] -->|Submits Claim| VF[Visualforce Claim Screen]\n        VF -->|Execute Checks| ApexCtrl[Apex Portal Controller]\n    end\n    subgraph Case_Automation\n        ApexCtrl -->|Insert Case| Case[Case Record]\n        Case -->|Trigger Rules| Route[Case Assignment Rules]\n        Route -->|Auto Assign| Queue[Regional Repair Queue]\n    end\n    subgraph Verification_Logistics\n        Case -->|Validate Age| Approval[Warranty Approval Process]\n        Approval -->|Auto-Approve / Manual Review| Decision{Claim Approved?}\n        Decision -->|Yes| Shipping[JSON Integration: Logistics Shipping Label]\n    end",
+        "architecture": "graph TD\n    subgraph Customer_Portal\n        User[\"Customer Browser\"] -->|Submits Claim| VF[\"Visualforce Claim Screen\"]\n        VF -->|Execute Checks| ApexCtrl[\"Apex Portal Controller\"]\n    end\n    subgraph Case_Automation\n        ApexCtrl -->|Insert Case| Case[\"Case Record\"]\n        Case -->|Trigger Rules| Route[\"Case Assignment Rules\"]\n        Route -->|Auto Assign| Queue[\"Regional Repair Queue\"]\n    end\n    subgraph Verification_Logistics\n        Case -->|Validate Age| Approval[\"Warranty Approval Process\"]\n        Approval -->|Auto-Approve / Manual Review| Decision{\"Claim Approved?\"}\n        Decision -->|Yes| Shipping[\"JSON Integration: Logistics Shipping Label\"]\n    end",
         "aiConfig": {
             "title": "Service Operations Architect",
             "primaryCTA": "Design Claims Portal",
@@ -2105,7 +2105,7 @@ const projectData = [
         },
         "detailFeatured": false,
         "hubFeatured": false,
-        "architecture": "graph TD\n    subgraph External_Social_Platforms\n        FB[Facebook Page Comment] -->|Webhook Event| Listener[Apex REST Webhook Endpoint]\n        LI[LinkedIn Post Mention] -->|Webhook Event| Listener\n    end\n    subgraph Salesforce_Ingest_Engine\n        Listener -->|Parse JSON| PayloadParser[Apex Payload Parser]\n        PayloadParser -->|Sentiment Analysis| Triage{Negative Sentiment?}\n        Triage -->|Yes| CaseCreator[Apex Case Creator]\n        Triage -->|No| ChatterPoster[Chatter Feed Poster]\n    end\n    subgraph Resolution_Workflow\n        CaseCreator -->|Route Case| AgentConsole[Support Agent Console]\n        ChatterPoster -->|Log Update| AccountFeed[Account Chatter Feed]\n        AgentConsole -->|Reply via API| FB\n    end",
+        "architecture": "graph TD\n    subgraph External_Social_Platforms\n        FB[\"Facebook Page Comment\"] -->|Webhook Event| Listener[\"Apex REST Webhook Endpoint\"]\n        LI[\"LinkedIn Post Mention\"] -->|Webhook Event| Listener\n    end\n    subgraph Salesforce_Ingest_Engine\n        Listener -->|Parse JSON| PayloadParser[\"Apex Payload Parser\"]\n        PayloadParser -->|Sentiment Analysis| Triage{\"Negative Sentiment?\"}\n        Triage -->|Yes| CaseCreator[\"Apex Case Creator\"]\n        Triage -->|No| ChatterPoster[\"Chatter Feed Poster\"]\n    end\n    subgraph Resolution_Workflow\n        CaseCreator -->|Route Case| AgentConsole[\"Support Agent Console\"]\n        ChatterPoster -->|Log Update| AccountFeed[\"Account Chatter Feed\"]\n        AgentConsole -->|Reply via API| FB\n    end",
         "aiConfig": {
             "title": "Social CRM Architect",
             "primaryCTA": "Design Social Routing",
@@ -2320,7 +2320,7 @@ const projectData = [
         },
         "detailFeatured": false,
         "hubFeatured": false,
-        "architecture": "graph TD\n    subgraph Invoice_Ingestion\n        Vendor[Vendor Invoicing Portal] -->|Upload Invoice| APIListener[Apex API Ingestion Listener]\n    end\n    subgraph Validation_Duplicate_Check\n        APIListener -->|Verify Attributes| DuplicateEngine[Apex Duplicate Match Engine]\n        DuplicateEngine -->|Scan Databases| DB[(Salesforce DB)]\n        DuplicateEngine -->|Check Duplicates| Rule{Is Duplicate?}\n    end\n    subgraph Invoice_Processing\n        Rule -->|Yes| Alert[Flag Invoice & Email Vendor]\n        Rule -->|No| Calc[Process Payments (PO/Non-PO/Credit)]\n    end\n    subgraph Executive_KPI_Analytics\n        Calc -->|Aggregate Metrics| Dashboard[EPA Reporting Engine]\n        Dashboard -->|Render Visuals| VF[Visualforce Google Charts View]\n    end",
+        "architecture": "graph TD\n    subgraph Invoice_Ingestion\n        Vendor[\"Vendor Invoicing Portal\"] -->|Upload Invoice| APIListener[\"Apex API Ingestion Listener\"]\n    end\n    subgraph Validation_Duplicate_Check\n        APIListener -->|Verify Attributes| DuplicateEngine[\"Apex Duplicate Match Engine\"]\n        DuplicateEngine -->|Scan Databases| DB[(\"Salesforce DB\")]\n        DuplicateEngine -->|Check Duplicates| Rule{\"Is Duplicate?\"}\n    end\n    subgraph Invoice_Processing\n        Rule -->|Yes| Alert[\"Flag Invoice & Email Vendor\"]\n        Rule -->|No| Calc[\"Process Payments (PO/Non-PO/Credit)\"]\n    end\n    subgraph Executive_KPI_Analytics\n        Calc -->|Aggregate Metrics| Dashboard[\"EPA Reporting Engine\"]\n        Dashboard -->|Render Visuals| VF[\"Visualforce Google Charts View\"]\n    end",
         "aiConfig": {
             "title": "Supply Chain Solutions Lead",
             "primaryCTA": "Design ESM Dashboard",

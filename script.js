@@ -55,6 +55,7 @@ class EnhancedAccessiblePortfolioApp {
     this.setupScrollToTop(); // Add this line
     this.setupMetricsDashboard();
     this.setupArchitectureExplorer();
+    this.setupEcosystemWidget(); // NEW: Salesforce AI Ecosystem widget
     // Debug section positions
     document.addEventListener("keydown", (e) => {
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "D") {
@@ -1222,6 +1223,9 @@ class EnhancedAccessiblePortfolioApp {
     this.updateStatsLayout();
     this.updateHeroLayout();
     this.optimizeFullWidthSections();
+    if (this.drawEcosystemConnections) {
+      this.drawEcosystemConnections();
+    }
 
     // Invalidate cached measurements
     this._cachedHeaderHeight = null;
@@ -2116,6 +2120,361 @@ class EnhancedAccessiblePortfolioApp {
       const key = activeNode.getAttribute("data-node");
       updateDetails(key);
     }
+  }
+
+  // ========================================
+  // SALESFORCE REVENUE ECOSYSTEM WIDGET
+  // ========================================
+  setupEcosystemWidget() {
+    const card = document.querySelector(".ecosystem-card");
+    if (!card) return;
+
+    const nodes = card.querySelectorAll(".ecosystem-node");
+    const consoleOutput = document.getElementById("ecosystem-console-output");
+    const timelineSteps = card.querySelectorAll(".journey-step");
+    const mobileTabs = card.querySelectorAll(".mobile-tab-btn");
+    const columns = card.querySelectorAll(".ecosystem-column");
+    const conversionVal = document.getElementById("analytics-conversion-rate");
+    const progressBar = card.querySelector(".conversions-widget .progress-bar");
+    const tickerItems = card.querySelectorAll(".ticker-item");
+
+    // Node descriptions
+    const nodeDescriptions = {
+      "website-forms": "STAGE: [Lead Capture]\nFUNCTION: Capture contact details from websites. Automatically routes entries to Salesforce Lead queues via secure Web-to-Lead protocol, triggering immediate email notifications.",
+      "facebook-ads": "STAGE: [Lead Capture]\nFUNCTION: Lead Ad payloads are synced via Webhooks. Triggers Campaign Member mapping in Salesforce, tracking direct cost-per-lead (CPL) metrics.",
+      "linkedin-ads": "STAGE: [Lead Capture]\nFUNCTION: Direct API synchronization of LinkedIn Lead Gen Forms. Matches company profiles instantly against Salesforce Accounts for targeted ABM campaigns.",
+      "google-ads": "STAGE: [Lead Capture]\nFUNCTION: Capture keyword UTMs and GCLID markers. Tracks ROI from click to Opportunity Closed Won, calculating customer acquisition cost (CAC).",
+      "whatsapp": "STAGE: [Lead Capture]\nFUNCTION: Twilio API for WhatsApp conversational triage. Chat transcripts are automatically recorded in Salesforce Activity logs to build continuous customer history.",
+      "twilio-sms": "STAGE: [Lead Capture]\nFUNCTION: Direct SMS integration via Twilio REST API. Outbound status updates and inbound SMS replies auto-update Salesforce Lead states.",
+      "email-campaigns": "STAGE: [Lead Capture]\nFUNCTION: Track email delivery, open rates, and click engagement. Auto-scores engagement metrics and pushes data to Marketing Cloud journeys.",
+      "landing-pages": "STAGE: [Lead Capture]\nFUNCTION: Forms on high-conversion landing pages submit lead data directly. Automatically tags campaigns and records referral parameters.",
+      "sales-cloud": "STAGE: [Salesforce Core]\nFUNCTION: The global standard CRM engine. Tracks account portfolios, contacts, lead status, and pipeline stages with automated task creation and dashboard reporting.",
+      "service-cloud": "STAGE: [Salesforce Core]\nFUNCTION: Comprehensive Case Management. Supports email-to-case, case queues, milestone SLA timers, and escalation routing rule flows.",
+      "experience-cloud": "STAGE: [Salesforce Core]\nFUNCTION: Dynamic client and partner portals. Enables direct case submission, order tracking, and knowledge base search via a responsive, authenticated portal.",
+      "cpq": "STAGE: [Salesforce Core]\nFUNCTION: Configure, Price, Quote engine. Custom quoting layouts enforcing product dependency rules, multi-tier discounts, and automated contract document creation.",
+      "agentforce": "STAGE: [Salesforce Core]\nFUNCTION: Salesforce Agentforce Autonomous AI Agents. Accesses real-time Data Cloud feeds to automatically resolve customer cases and schedules meetings.",
+      "data-cloud": "STAGE: [Salesforce Core]\nFUNCTION: Real-time data harmonization. Unifies telemetry, database, and marketing streams into a single Unified Profile for immediate AI access.",
+      "marketing-cloud": "STAGE: [Salesforce Core]\nFUNCTION: High-volume customer journey personalization. Orchestrates email marketing, SMS, and WhatsApp alerts triggered by Salesforce status changes.",
+      "ai-lead-qual": "STAGE: [AI Automation]\nFUNCTION: Einstein AI lead scoring. Evaluates prospective buyer fields, filtering spam and assigning qualified sales leads directly to executive reps.",
+      "predictive-scoring": "STAGE: [AI Automation]\nFUNCTION: Opportunity scoring machine. Evaluates historical win metrics to calculate win likelihood (1-99), prioritizing focus for pipeline velocity.",
+      "ai-voice": "STAGE: [AI Automation]\nFUNCTION: Einstein Voice Assistant. Sales reps dictate meeting summaries; natural language processing auto-updates Salesforce fields and schedules follow-up tasks.",
+      "sms-automation": "STAGE: [AI Automation]\nFUNCTION: Outbound SMS sequences. Apex classes trigger Twilio SMS automatically when opportunity stages advance or reminders are needed.",
+      "workflow-automation": "STAGE: [AI Automation]\nFUNCTION: Core engine workflows using Flow Builder, Orchestrators, and Apex Triggers. Automates business approvals, calculations, and data transfers.",
+      "einstein-ai": "STAGE: [AI Automation]\nFUNCTION: Native Salesforce AI engine. Infuses predictions, analytics, and intelligent warnings into standard page layouts.",
+      "recommendation-engine": "STAGE: [AI Automation]\nFUNCTION: Next Best Action. Recommends up-sell products and loyalty discounts dynamically based on current customer history and profile metrics.",
+      "rest-apis": "STAGE: [Integration Layer]\nFUNCTION: Custom web services. Enables high-performance JSON/XML communication, supporting API key rotations and OAuth 2.0 validation.",
+      "erp-systems": "STAGE: [Integration Layer]\nFUNCTION: Bidirectional sync with inventory databases. Ensures Salesforce product and order quantities match warehouse ERP figures.",
+      "quickbooks": "STAGE: [Integration Layer]\nFUNCTION: Automatically pushes invoice data and customer details to QuickBooks when opportunity flags hit 'Closed Won', updating bill status in Salesforce.",
+      "xero": "STAGE: [Integration Layer]\nFUNCTION: Direct billing sync with Xero. Triggers real-time invoice matching, updating accounts receivable metrics directly inside sales dashboards.",
+      "google-calendar": "STAGE: [Integration Layer]\nFUNCTION: Bidirectional calendar sync. Schedules booked through Calendly auto-log as Tasks and Events on corresponding CRM record timelines.",
+      "slack-notifications": "STAGE: [Integration Layer]\nFUNCTION: Instant messaging webhook sync. Pushes alerts to sales and support Slack channels on important milestones (e.g. high-value deals won, urgent SLA flags).",
+      "sharepoint": "STAGE: [Integration Layer]\nFUNCTION: File Connect integration. Offloads heavy contract PDFs and media files to SharePoint document folders to avoid Salesforce storage overages.",
+      "docusign": "STAGE: [Integration Layer]\nFUNCTION: DocuSign envelope status tracking. Triggers signature requests upon contract generation, auto-attaching signed PDFs to Salesforce records."
+    };
+
+    const journeyStepDescriptions = {
+      "lead-capture": "JOURNEY STAGE: [Lead Capture]\nPROCESS: Prospects engage through Ads, Web Forms, or SMS. Salesforce captures metadata and initiates campaign attribution.",
+      "qualification": "JOURNEY STAGE: [Qualification]\nPROCESS: Einstein AI and Agentforce evaluate lead fields and conversation intent. Scores opportunities, filtering unqualified requests.",
+      "nurturing": "JOURNEY STAGE: [Nurturing]\nPROCESS: Marketing Cloud launches customized multi-channel journeys (email, SMS, WhatsApp) based on user interaction trends.",
+      "opportunity": "JOURNEY STAGE: [Opportunity]\nPROCESS: Qualified leads convert to Contacts and Accounts. Sales reps track pipeline stages in Sales Cloud with real-time analytics.",
+      "proposal": "JOURNEY STAGE: [Proposal]\nPROCESS: Salesforce CPQ configures product bundles, applies discounts, and auto-generates custom quotation PDFs for review.",
+      "closed-won": "JOURNEY STAGE: [Closed Won]\nPROCESS: DocuSign API logs signed approvals. Integrations trigger QuickBooks/Xero invoicing and sync warehouse inventory status.",
+      "support": "JOURNEY STAGE: [Support]\nPROCESS: Case creation in Service Cloud triggers automated routing. Experience Cloud portal allows self-service client help.",
+      "retention": "JOURNEY STAGE: [Retention]\nPROCESS: Service SLAs are tracked. Einstein Recommendation Engine presents loyalty incentives on customer health indicators.",
+      "upsell": "JOURNEY STAGE: [Upsell]\nPROCESS: Real-time profiles in Data Cloud identify cross-sell thresholds, launching targeted expansion flows automatically."
+    };
+
+    // Update Detail Console
+    const updateConsole = (text) => {
+      if (!consoleOutput) return;
+      consoleOutput.style.opacity = "0.2";
+      consoleOutput.style.transition = "opacity 0.15s ease";
+      setTimeout(() => {
+        consoleOutput.textContent = text;
+        consoleOutput.style.opacity = "1";
+      }, 150);
+    };
+
+    // Dynamic Connections Drawing
+    this.drawEcosystemConnections = () => {
+      if (window.innerWidth <= 768) return; // Hidden on mobile
+
+      const svg = card.querySelector(".ecosystem-connections-svg");
+      if (!svg) return;
+
+      const svgRect = svg.getBoundingClientRect();
+
+      // Find active nodes or default to first/middle nodes
+      const getActiveOrMiddleNode = (columnStage) => {
+        const col = card.querySelector(`.ecosystem-column[data-stage="${columnStage}"]`);
+        if (!col) return null;
+        let node = col.querySelector(".ecosystem-node.active");
+        if (!node) {
+          const allColNodes = col.querySelectorAll(".ecosystem-node");
+          node = allColNodes[Math.floor(allColNodes.length / 2)];
+        }
+        return node;
+      };
+
+      const n1 = getActiveOrMiddleNode("lead-sources");
+      const n2 = getActiveOrMiddleNode("salesforce-core");
+      const n3 = getActiveOrMiddleNode("ai-automation");
+      const n4 = getActiveOrMiddleNode("integrations");
+
+      const drawPathBetween = (pathId, elStart, elEnd) => {
+        const path = svg.getElementById(pathId);
+        if (!path || !elStart || !elEnd) return;
+
+        const startRect = elStart.getBoundingClientRect();
+        const endRect = elEnd.getBoundingClientRect();
+
+        // Calculate relative coordinates in SVG space
+        const x1 = startRect.right - svgRect.left;
+        const y1 = startRect.top + startRect.height / 2 - svgRect.top;
+        const x2 = endRect.left - svgRect.left;
+        const y2 = endRect.top + endRect.height / 2 - svgRect.top;
+
+        // Smooth Bezier curve control points
+        const dx = (x2 - x1) * 0.45;
+        const dStr = `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
+        path.setAttribute("d", dStr);
+
+        // Highlight active connections
+        const isStartActive = elStart.classList.contains("active");
+        const isEndActive = elEnd.classList.contains("active");
+        if (isStartActive || isEndActive) {
+          path.classList.add("active");
+        } else {
+          path.classList.remove("active");
+        }
+      };
+
+      drawPathBetween("flow-path-1", n1, n2);
+      drawPathBetween("flow-path-2", n2, n3);
+      drawPathBetween("flow-path-3", n3, n4);
+      // Extra path from core direct to integrations (e.g. Salesforce -> Slack/QuickBooks bypassing AI)
+      drawPathBetween("flow-path-4", n2, n4);
+    };
+
+    // Autoplay configuration
+    let isAutoplayActive = true;
+    let autoplayInterval = null;
+    const stepsArray = ["lead-capture", "qualification", "nurturing", "opportunity", "proposal", "closed-won", "support", "retention", "upsell"];
+    const toggleBtn = card.querySelector("#autoplay-toggle");
+
+    const updateAutoplayUI = () => {
+      if (!toggleBtn) return;
+      const icon = toggleBtn.querySelector("i");
+      if (isAutoplayActive) {
+        toggleBtn.classList.add("active");
+        if (icon) {
+          icon.className = "ph-fill ph-pause";
+        }
+      } else {
+        toggleBtn.classList.remove("active");
+        if (icon) {
+          icon.className = "ph-fill ph-play";
+        }
+      }
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+      isAutoplayActive = true;
+      updateAutoplayUI();
+      autoplayInterval = setInterval(() => {
+        let activeIndex = -1;
+        const currentActive = card.querySelector(".journey-step.active");
+        if (currentActive) {
+          const stepKey = currentActive.getAttribute("data-step");
+          activeIndex = stepsArray.indexOf(stepKey);
+        }
+        const nextIndex = (activeIndex + 1) % stepsArray.length;
+        const nextStepEl = card.querySelector(`.journey-step[data-step="${stepsArray[nextIndex]}"]`);
+        if (nextStepEl) {
+          selectStep(nextStepEl, false);
+        }
+      }, 5000);
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
+      isAutoplayActive = false;
+      updateAutoplayUI();
+    };
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        if (isAutoplayActive) {
+          stopAutoplay();
+        } else {
+          startAutoplay();
+        }
+      });
+    }
+
+    const selectStep = (stepEl, isManual = true) => {
+      if (isManual) {
+        stopAutoplay();
+      }
+
+      timelineSteps.forEach((s) => s.classList.remove("active"));
+      stepEl.classList.add("active");
+
+      // Auto-scroll the timeline steps horizontally inside their container to keep them in view on mobile
+      const scrollContainer = card.querySelector(".journey-scroll-container");
+      if (scrollContainer) {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const stepRect = stepEl.getBoundingClientRect();
+        const scrollLeft = scrollContainer.scrollLeft + (stepRect.left - containerRect.left) - (containerRect.width / 2) + (stepRect.width / 2);
+        scrollContainer.scrollTo({ left: scrollLeft, behavior: "smooth" });
+      }
+
+      const stepKey = stepEl.getAttribute("data-step");
+      const desc = journeyStepDescriptions[stepKey] || "Journey step description not found.";
+      updateConsole(desc);
+
+      // Pulse the related columns/nodes based on journey step
+      nodes.forEach((n) => n.classList.remove("active"));
+      let targetColStage = "";
+      let targetNodeKey = "";
+
+      if (stepKey === "lead-capture") {
+        targetColStage = "lead-sources";
+        targetNodeKey = "website-forms";
+      } else if (stepKey === "qualification") {
+        targetColStage = "ai-automation";
+        targetNodeKey = "ai-lead-qual";
+      } else if (stepKey === "nurturing") {
+        targetColStage = "salesforce-core";
+        targetNodeKey = "marketing-cloud";
+      } else if (stepKey === "opportunity") {
+        targetColStage = "salesforce-core";
+        targetNodeKey = "sales-cloud";
+      } else if (stepKey === "proposal") {
+        targetColStage = "salesforce-core";
+        targetNodeKey = "cpq";
+      } else if (stepKey === "closed-won") {
+        targetColStage = "integrations";
+        targetNodeKey = "quickbooks";
+      } else if (stepKey === "support") {
+        targetColStage = "salesforce-core";
+        targetNodeKey = "service-cloud";
+      } else if (stepKey === "retention") {
+        targetColStage = "ai-automation";
+        targetNodeKey = "recommendation-engine";
+      } else if (stepKey === "upsell") {
+        targetColStage = "salesforce-core";
+        targetNodeKey = "agentforce";
+      }
+
+      if (targetColStage) {
+        if (window.innerWidth <= 768) {
+          const targetBtn = card.querySelector(`.mobile-tab-btn[data-target="${targetColStage}"]`);
+          if (targetBtn) targetBtn.click();
+        }
+        const targetNode = card.querySelector(`.ecosystem-node[data-node="${targetNodeKey}"]`);
+        if (targetNode) {
+          targetNode.classList.add("active");
+        }
+      }
+
+      requestAnimationFrame(this.drawEcosystemConnections);
+    };
+
+    // Node Interaction
+    nodes.forEach((node) => {
+      const handleNodeClick = () => {
+        stopAutoplay();
+        nodes.forEach((n) => n.classList.remove("active"));
+        node.classList.add("active");
+
+        const nodeKey = node.getAttribute("data-node");
+        const desc = nodeDescriptions[nodeKey] || "Node description not found.";
+        updateConsole(desc);
+
+        requestAnimationFrame(this.drawEcosystemConnections);
+      };
+
+      node.addEventListener("click", handleNodeClick);
+      node.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleNodeClick();
+        }
+      });
+    });
+
+    // Timeline Interaction
+    timelineSteps.forEach((step) => {
+      step.addEventListener("click", () => {
+        selectStep(step, true);
+      });
+    });
+
+    // Mobile Tabs Interaction
+    mobileTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        stopAutoplay(); // Manual tab switching pauses autoplay
+        mobileTabs.forEach((t) => {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
+        });
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
+
+        const targetStage = tab.getAttribute("data-target");
+        columns.forEach((col) => {
+          if (col.getAttribute("data-stage") === targetStage) {
+            col.classList.add("active");
+          } else {
+            col.classList.remove("active");
+          }
+        });
+
+        requestAnimationFrame(this.drawEcosystemConnections);
+      });
+    });
+
+    // Simulated Analytics KPI Ticker
+    let conversionRate = 42.8;
+    setInterval(() => {
+      const delta = (Math.random() - 0.5) * 0.15;
+      conversionRate = Math.max(42.0, Math.min(44.5, conversionRate + delta));
+      if (conversionVal) {
+        conversionVal.textContent = `${conversionRate.toFixed(1)}%`;
+      }
+      if (progressBar) {
+        progressBar.style.width = `${conversionRate.toFixed(1)}%`;
+      }
+    }, 4000);
+
+    // Insights Live Ticker Cycle
+    let tickerIndex = 0;
+    setInterval(() => {
+      if (tickerItems.length === 0) return;
+      tickerItems.forEach((item) => item.classList.remove("active"));
+      tickerIndex = (tickerIndex + 1) % tickerItems.length;
+      tickerItems[tickerIndex].classList.add("active");
+    }, 3000);
+
+    // Initial Connections Drawing after render
+    setTimeout(() => {
+      requestAnimationFrame(this.drawEcosystemConnections);
+    }, 500);
+
+    // Redraw connections on window resize to maintain coordinate alignment
+    window.addEventListener("resize", () => {
+      requestAnimationFrame(this.drawEcosystemConnections);
+    });
+
+    // Start Autoplay loop on load
+    setTimeout(() => {
+      startAutoplay();
+    }, 1000);
   }
 }
 

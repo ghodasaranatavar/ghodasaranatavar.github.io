@@ -30,7 +30,7 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
         Businesses Increase Revenue Using Salesforce & AI-Driven CRM Automation| 12 Years Experience - Natavar
         Ghodasara</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/feviconicon.png" />
-    <link rel="stylesheet" href="styles.css?v=1.2" />
+    <link rel="stylesheet" href="styles.css?v=2.9" />
     <link rel="stylesheet" href="assets/css/ai-consultant.css?v=1.2" />
     <link rel="stylesheet" href="scheduler.css?v=1.2" />
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -137,50 +137,10 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
             <div class="hero-container">
                 <!-- Main Hero Grid: Profile Card + Hero Content with Trust Section -->
                 <div class="hero-main-grid">
-                    <!-- Profile Card (Left Side) -->
-                    <div class="profile-card">
-                        <div class="profile-image">
-                            <img src="assets/images/avtaar.png"
-                                alt="Natavar Ghodasara - Salesforce Architect & AI Expert" class="profile-img"
-                                fetchpriority="high" loading="eager">
-                        </div>
-                        <div class="profile-info">
-                            <h2>Natavar Ghodasara</h2>
-                            <p class="profile-title">AI Automation Expert | 6X Salesforce Certified | Salesforce
-                                Architect,
-                                Developer, Administrator &
-                                Consultant | Master of Computer Application - 2014 from GTU</p>
-
-                            <div class="profile-section">
-                                <h3>Communication Skills (R,W,S)</h3>
-                                <div class="skill-entry">
-                                    <span class="skill-label">English</span>
-                                    <div class="star-rating">
-                                        <i class="ph-fill ph-star"></i>
-                                        <i class="ph-fill ph-star"></i>
-                                        <i class="ph-fill ph-star"></i>
-                                        <i class="ph-fill ph-star"></i>
-                                        <i class="ph-fill ph-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- <div class="profile-section">
-                                <h3>Education</h3>
-                                <p>Master in Computer Application - Gujarat Technological University (2014)</p>
-                            </div> -->
-                        </div>
-                    </div>
-
-                    <!-- Hero Content (Right Side) - Contains Hero Text + Trust Section -->
+                    <!-- Hero Content (Left Side) - Contains Hero Text + Trust Section + Bio Badge -->
                     <div class="hero-content">
                         <!-- Hero Text Section -->
                         <div class="hero-text-section">
-                            <div class="hero-tagline animate-fade-in">
-                                6X Salesforce Certified Professional
-                                <span class="timezone-badge"><i class="ph ph-globe-hemisphere-west" aria-hidden="true"></i> USA-Aligned | GMT+5:30 (EST/PST Support)</span>
-                                <span class="team-badge" title="We lead a network of premium experts for enterprise-scale projects"><i class="ph ph-users-three" aria-hidden="true"></i> Boutique Agency Ready</span>
-                            </div>
 
                             <h1 class="hero-title animate-fade-in">
                                 <span class="highlight typed-text">I Help Businesses Increase Revenue</span>
@@ -189,44 +149,358 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
                             </h1>
 
                             <p class="hero-subtitle animate-fade-in">
-                                12+ Years of enterprise experience delivering ROI-focused Salesforce solutions. 
-                                Architected systems that <strong>automate 20+ manual processes</strong>, saving clients significant operational costs while ensuring 99.9% data integrity.
+                                12+ Years of enterprise experience delivering ROI-focused Salesforce solutions.
+                                Architected systems that <strong>automate 20+ manual processes</strong>, saving clients
+                                significant operational costs while ensuring 99.9% data integrity.
                             </p>
 
-                            <div class="hero-actions animate-fade-in">
+                            <div class="hero-cta-buttons animate-fade-in">
                                 <button class="btn-primary calendly-trigger" aria-label="Book a free discovery call">
                                     Book Free Consultation
                                 </button>
-                                <button class="btn-secondary ai-button-pulse" onclick="window.aiConsultant.togglePanel(true)" style="background: rgba(51, 96, 173, 0.1); color: var(--lab-palette-primary-main); border: 1px solid var(--lab-palette-primary-main);">
-                                    <i class="ph ph-sparkle" style="margin-right: 8px;"></i> Talk to My AI
-                                </button>
-                                <a href="#portfolio" class="btn-tertiary" aria-label="View expert case studies">
-                                    View Expert Solutions
-                                </a>
+                            </div>
+
+                            <!-- Mini "Expert Architect Bio Badge" (Relocated & Consolidated, without Profile Photo) -->
+                            <div class="expert-bio-badge animate-fade-in">
+                                <div class="bio-badge-details">
+                                    <h4 class="bio-badge-name">Natavar Ghodasara</h4>
+                                    <p class="bio-badge-title">AI Automation Expert | 6X Salesforce Certified | Master of
+                                        Computer Application (GTU 2014)</p>
+                                    <div class="hero-tagline animate-fade-in" style="margin: 8px 0 12px 0;">
+                                        <span class="tagline-main-badge"><i class="ph ph-medal" aria-hidden="true"></i> 6X Salesforce Certified Professional</span>
+                                        <span class="timezone-badge"><i class="ph ph-globe-hemisphere-west" aria-hidden="true"></i> USA-Aligned | GMT+5:30 (EST/PST Support)</span>
+                                        <span class="team-badge" title="We lead a network of premium experts for enterprise-scale projects"><i class="ph ph-users-three" aria-hidden="true"></i> Boutique Agency Ready</span>
+                                    </div>
+                                    <div class="bio-badge-skills">
+                                        <span class="skill-label">English Communication (R,W,S):</span>
+                                        <div class="star-rating">
+                                            <i class="ph-fill ph-star"></i>
+                                            <i class="ph-fill ph-star"></i>
+                                            <i class="ph-fill ph-star"></i>
+                                            <i class="ph-fill ph-star"></i>
+                                            <i class="ph-fill ph-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Trust Indicators Section - Small Integrated Layout -->
+                            <div class="trust-section stats-integrated">
+                                <div class="trust-tagline">Trusted by organizations worldwide. Proven results delivered.</div>
+                                
+                                <div class="metrics-grid stats-grid">
+                                    <div class="metric-item stat-item animate-scale">
+                                        <span class="metric-number stat-number">12+</span>
+                                        <div class="metric-label stat-label">Years Experience</div>
+                                    </div>
+                                    <div class="metric-item stat-item animate-scale">
+                                        <span class="metric-number stat-number">30+</span>
+                                        <div class="metric-label stat-label">Projects Delivered</div>
+                                    </div>
+                                    <div class="metric-item stat-item animate-scale">
+                                        <span class="metric-number stat-number">6X</span>
+                                        <div class="metric-label stat-label">Certified Professional</div>
+                                    </div>
+                                    <div class="metric-item stat-item animate-scale">
+                                        <span class="metric-number stat-number">20+</span>
+                                        <div class="metric-label stat-label">Satisfied Clients</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI-Powered Salesforce Revenue Ecosystem Widget (Right Side) -->
+                    <!--
+                    ================================================================================
+                    MODULE SPECIFICATION (RULE[user_global]): Salesforce Revenue Ecosystem Widget
+                    1. Implementation Code: c:/xampp/htdocs/profile/index.html (Component Markup)
+                    2. Folder Structure:
+                       c:/xampp/htdocs/profile/
+                         - index.html
+                         - styles.css
+                         - script.js
+                    3. API Routes: N/A (Static HTML Page component)
+                    4. Browser Testing Instructions:
+                       - Open http://localhost/profile/index.html.
+                       - Verify Salesforce Revenue Ecosystem dashboard shows on the right side of hero.
+                       - Click nodes under columns to view full functional description console updates.
+                       - Check vertical reflow stacks on viewport resize.
+                    5. Expected Output: A highly polished, responsive enterprise-grade interactive ecosystem mapping Lead Capture to Integrations.
+                    ================================================================================
+                    -->
+                    <div class="ecosystem-card glassmorphism-card animate-fade-in">
+                        <div class="ecosystem-header">
+                            <span class="ecosystem-badge"><i class="ph ph-sparkle"></i> Solution Architecture
+                                Explorer</span>
+                            <h3 class="ecosystem-title">Salesforce & AI Revenue Ecosystem</h3>
+                            <p class="ecosystem-subtitle">Click nodes to trace automated flows</p>
+                        </div>
+
+                        <!-- Active Connections SVG overlay -->
+                        <div class="ecosystem-svg-container" aria-hidden="true">
+                            <svg class="ecosystem-connections-svg" xmlns="http://www.w3.org/2000/svg">
+                                <path id="flow-path-1" class="connection-path flow-anim" d="" />
+                                <path id="flow-path-2" class="connection-path flow-anim" d="" />
+                                <path id="flow-path-3" class="connection-path flow-anim" d="" />
+                                <path id="flow-path-4" class="connection-path flow-anim" d="" />
+                            </svg>
+                        </div>
+
+                        <!-- Tab controls for mobile filters -->
+                        <div class="ecosystem-mobile-tabs" role="tablist">
+                            <button class="mobile-tab-btn active" role="tab" aria-selected="true"
+                                data-target="lead-sources">Leads</button>
+                            <button class="mobile-tab-btn" role="tab" aria-selected="false"
+                                data-target="salesforce-core">Core</button>
+                            <button class="mobile-tab-btn" role="tab" aria-selected="false"
+                                data-target="ai-automation">AI Engine</button>
+                            <button class="mobile-tab-btn" role="tab" aria-selected="false"
+                                data-target="integrations">Integrate</button>
+                        </div>
+
+                        <div class="ecosystem-flow-grid">
+                            <!-- Column 1: Lead Sources -->
+                            <div class="ecosystem-column active" data-stage="lead-sources" role="tabpanel">
+                                <h4 class="column-title"><i class="ph ph-funnel"></i> Lead Sources</h4>
+                                <div class="nodes-list">
+                                    <div class="ecosystem-node" data-node="website-forms">
+                                        <span class="node-icon"><i class="ph ph-browser"></i></span>
+                                        <span class="node-label">Website Forms</span>
+                                    </div>
+                                    <div class="ecosystem-node" data-node="facebook-ads">
+                                        <span class="node-icon"><i class="ph ph-facebook-logo"></i></span>
+                                        <span class="node-label">Facebook Ads</span>
+                                    </div>
+                                    <div class="ecosystem-node" data-node="linkedin-ads">
+                                        <span class="node-icon"><i class="ph ph-linkedin-logo"></i></span>
+                                        <span class="node-label">LinkedIn Ads</span>
+                                    </div>
+                                    <div class="ecosystem-node" data-node="google-ads">
+                                        <span class="node-icon"><i class="ph ph-google-logo"></i></span>
+                                        <span class="node-label">Google Ads</span>
+                                    </div>
+                                    <div class="ecosystem-node" data-node="whatsapp">
+                                        <span class="node-icon"><i class="ph ph-whatsapp-logo"></i></span>
+                                        <span class="node-label">WhatsApp</span>
+                                    </div>
+                                    <div class="ecosystem-node" data-node="twilio-sms">
+                                        <span class="node-icon"><i class="ph ph-chat-circle-dots"></i></span>
+                                        <span class="node-label">Twilio SMS</span>
+                                    </div>
+                                    <div class="ecosystem-node" data-node="email-campaigns">
+                                        <span class="node-icon"><i class="ph ph-envelope-simple"></i></span>
+                                        <span class="node-label">Email Campaigns</span>
+                                    </div>
+                                    <div class="ecosystem-node" data-node="landing-pages">
+                                        <span class="node-icon"><i class="ph ph-layout"></i></span>
+                                        <span class="node-label">Landing Pages</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Column 2: Salesforce Core -->
+                            <div class="ecosystem-column" data-stage="salesforce-core" role="tabpanel">
+                                <h4 class="column-title"><i class="ph ph-cloud"></i> Salesforce Core</h4>
+                                <div class="nodes-list">
+                                    <div class="ecosystem-node core-node" data-node="sales-cloud">
+                                        <span class="node-icon"><i class="ph ph-trend-up"></i></span>
+                                        <span class="node-label">Sales Cloud</span>
+                                    </div>
+                                    <div class="ecosystem-node core-node" data-node="service-cloud">
+                                        <span class="node-icon"><i class="ph ph-headset"></i></span>
+                                        <span class="node-label">Service Cloud</span>
+                                    </div>
+                                    <div class="ecosystem-node core-node" data-node="experience-cloud">
+                                        <span class="node-icon"><i class="ph ph-users"></i></span>
+                                        <span class="node-label">Experience Cloud</span>
+                                    </div>
+                                    <div class="ecosystem-node core-node" data-node="cpq">
+                                        <span class="node-icon"><i class="ph ph-receipt"></i></span>
+                                        <span class="node-label">CPQ (Quoting)</span>
+                                    </div>
+                                    <div class="ecosystem-node core-node agentforce-node" data-node="agentforce">
+                                        <span class="node-icon"><i class="ph ph-robot"></i></span>
+                                        <span class="node-label">Agentforce AI</span>
+                                    </div>
+                                    <div class="ecosystem-node core-node" data-node="data-cloud">
+                                        <span class="node-icon"><i class="ph ph-database"></i></span>
+                                        <span class="node-label">Data Cloud</span>
+                                    </div>
+                                    <div class="ecosystem-node core-node" data-node="marketing-cloud">
+                                        <span class="node-icon"><i class="ph ph-megaphone"></i></span>
+                                        <span class="node-label">Marketing Cloud</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Column 3: AI Automation -->
+                            <div class="ecosystem-column" data-stage="ai-automation" role="tabpanel">
+                                <h4 class="column-title"><i class="ph ph-cpu"></i> AI Automation</h4>
+                                <div class="nodes-list">
+                                    <div class="ecosystem-node ai-node" data-node="ai-lead-qual">
+                                        <span class="node-icon"><i class="ph ph-shield-check"></i></span>
+                                        <span class="node-label">Lead Qualification</span>
+                                    </div>
+                                    <div class="ecosystem-node ai-node" data-node="predictive-scoring">
+                                        <span class="node-icon"><i class="ph ph-chart-bar"></i></span>
+                                        <span class="node-label">Predictive Scoring</span>
+                                    </div>
+                                    <div class="ecosystem-node ai-node" data-node="ai-voice">
+                                        <span class="node-icon"><i class="ph ph-microphone"></i></span>
+                                        <span class="node-label">AI Voice Assistant</span>
+                                    </div>
+                                    <div class="ecosystem-node ai-node" data-node="sms-automation">
+                                        <span class="node-icon"><i class="ph ph-chat-text"></i></span>
+                                        <span class="node-label">SMS Automation</span>
+                                    </div>
+                                    <div class="ecosystem-node ai-node" data-node="workflow-automation">
+                                        <span class="node-icon"><i class="ph ph-git-merge"></i></span>
+                                        <span class="node-label">Workflows</span>
+                                    </div>
+                                    <div class="ecosystem-node ai-node einstein-node" data-node="einstein-ai">
+                                        <span class="node-icon"><i class="ph ph-sparkles"></i></span>
+                                        <span class="node-label">Einstein AI</span>
+                                    </div>
+                                    <div class="ecosystem-node ai-node" data-node="recommendation-engine">
+                                        <span class="node-icon"><i class="ph ph-lightbulb"></i></span>
+                                        <span class="node-label">Recommendations</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Column 4: Integrations -->
+                            <div class="ecosystem-column" data-stage="integrations" role="tabpanel">
+                                <h4 class="column-title"><i class="ph ph-plugs-connected"></i> Integrations</h4>
+                                <div class="nodes-list">
+                                    <div class="ecosystem-node integration-node" data-node="rest-apis">
+                                        <span class="node-icon"><i class="ph ph-code"></i></span>
+                                        <span class="node-label">REST APIs</span>
+                                    </div>
+                                    <div class="ecosystem-node integration-node" data-node="erp-systems">
+                                        <span class="node-icon"><i class="ph ph-factory"></i></span>
+                                        <span class="node-label">ERP Systems</span>
+                                    </div>
+                                    <div class="ecosystem-node integration-node" data-node="quickbooks">
+                                        <span class="node-icon"><i class="ph ph-coins"></i></span>
+                                        <span class="node-label">QuickBooks</span>
+                                    </div>
+                                    <div class="ecosystem-node integration-node" data-node="xero">
+                                        <span class="node-icon"><i class="ph ph-currency-dollar"></i></span>
+                                        <span class="node-label">Xero Sync</span>
+                                    </div>
+                                    <div class="ecosystem-node integration-node" data-node="google-calendar">
+                                        <span class="node-icon"><i class="ph ph-calendar"></i></span>
+                                        <span class="node-label">Google Calendar</span>
+                                    </div>
+                                    <div class="ecosystem-node integration-node" data-node="slack-notifications">
+                                        <span class="node-icon"><i class="ph ph-slack-logo"></i></span>
+                                        <span class="node-label">Slack Alerts</span>
+                                    </div>
+                                    <div class="ecosystem-node integration-node" data-node="sharepoint">
+                                        <span class="node-icon"><i class="ph ph-folder-open"></i></span>
+                                        <span class="node-label">SharePoint</span>
+                                    </div>
+                                    <div class="ecosystem-node integration-node" data-node="docusign">
+                                        <span class="node-icon"><i class="ph ph-signature"></i></span>
+                                        <span class="node-label">DocuSign API</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Trust Indicators Section - Fixed Class Names -->
-                        <div class="trust-section stats-integrated">
-                            <div class="trust-tagline">Trusted by organizations worldwide. Proven results delivered.
+                        <!-- Customer Journey Horizontal Lifecycle Timeline -->
+                        <div class="journey-timeline-wrapper">
+                            <h4 class="timeline-title">
+                                <span class="timeline-title-text"><i class="ph ph-arrows-left-right"></i> Customer
+                                    Revenue Journey Timeline</span>
+                                <button class="autoplay-toggle-btn active" id="autoplay-toggle"
+                                    aria-label="Toggle autoplay tour" title="Toggle autoplay tour">
+                                    <i class="ph-fill ph-pause"></i>
+                                </button>
+                            </h4>
+                            <div class="journey-scroll-container">
+                                <div class="journey-timeline">
+                                    <div class="journey-step active" data-step="lead-capture">
+                                        <div class="step-dot"></div>
+                                        <span class="step-label">Lead Capture</span>
+                                    </div>
+                                    <div class="journey-step" data-step="qualification">
+                                        <div class="step-dot"></div>
+                                        <span class="step-label">Qualification</span>
+                                    </div>
+                                    <div class="journey-step" data-step="nurturing">
+                                        <div class="step-dot"></div>
+                                        <span class="step-label">Nurturing</span>
+                                    </div>
+                                    <div class="journey-step" data-step="opportunity">
+                                        <div class="step-dot"></div>
+                                        <span class="step-label">Opportunity</span>
+                                    </div>
+                                    <div class="journey-step" data-step="proposal">
+                                        <div class="step-dot"></div>
+                                        <span class="step-label">Proposal</span>
+                                    </div>
+                                    <div class="journey-step" data-step="closed-won">
+                                        <div class="step-dot"></div>
+                                        <span class="step-label">Closed Won</span>
+                                    </div>
+                                    <div class="journey-step" data-step="support">
+                                        <div class="step-dot"></div>
+                                        <span class="step-label">Support</span>
+                                    </div>
+                                    <div class="journey-step" data-step="retention">
+                                        <div class="step-dot"></div>
+                                        <span class="step-label">Retention</span>
+                                    </div>
+                                    <div class="journey-step" data-step="upsell">
+                                        <div class="step-dot"></div>
+                                        <span class="step-label">Upsell</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="metrics-grid stats-grid">
-                                <div class="metric-item stat-item animate-scale">
-                                    <span class="metric-number stat-number">12+</span>
-                                    <div class="metric-label stat-label">Years Experience</div>
+                        </div>
+
+                        <!-- Live Analytics & Insights Widgets -->
+                        <div class="ecosystem-analytics-section">
+                            <div class="mini-widget conversions-widget">
+                                <div class="widget-header">
+                                    <span class="widget-title"><i class="ph ph-chart-pie"></i> Capture Conversion
+                                        Rate</span>
+                                    <span class="widget-value text-green" id="analytics-conversion-rate">42.8%</span>
                                 </div>
-                                <div class="metric-item stat-item animate-scale">
-                                    <span class="metric-number stat-number">30+</span>
-                                    <div class="metric-label stat-label">Projects Delivered</div>
+                                <div class="widget-progress">
+                                    <div class="progress-bar" style="width: 42.8%;"></div>
                                 </div>
-                                <div class="metric-item stat-item animate-scale">
-                                    <span class="metric-number stat-number">6X</span>
-                                    <div class="metric-label stat-label">Certified Professional</div>
+                            </div>
+                            <div class="mini-widget insights-widget">
+                                <div class="widget-header">
+                                    <span class="widget-title"><i class="ph ph-lightning"></i> Einstein AI Live
+                                        Operations Log</span>
                                 </div>
-                                <div class="metric-item stat-item animate-scale">
-                                    <span class="metric-number stat-number">20+</span>
-                                    <div class="metric-label stat-label">Satisfied Clients</div>
+                                <div class="insights-ticker-container">
+                                    <ul class="insights-ticker-list" id="insights-ticker">
+                                        <li class="ticker-item active">AI qualified new Web Lead #2143 (Score: 92)</li>
+                                        <li class="ticker-item">Agentforce automated Twilio follow-up scheduled</li>
+                                        <li class="ticker-item">REST API synced contract template to QuickBooks</li>
+                                        <li class="ticker-item">Slack channel #sales-wins notified of Opportunity deal
+                                        </li>
+                                        <li class="ticker-item">Service Cloud auto-created customer onboarding portal
+                                        </li>
+                                    </ul>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Ecosystem Console details panel -->
+                        <div class="ecosystem-console">
+                            <div class="console-tab-header">
+                                <span class="console-title"><i class="ph ph-terminal-window"></i> Solution Architecture
+                                    Detail Console</span>
+                            </div>
+                            <div class="console-body" id="ecosystem-console-output">
+                                Click any system node above (e.g. Einstein AI, Salesforce Sales Cloud, Twilio SMS) to
+                                explore its connection and role in the automated business revenue chain.
                             </div>
                         </div>
                     </div>
@@ -234,35 +508,25 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
             </div>
         </section>
 
-        <!-- FIXED: Combined Experience Section with Both Timeline and Summary -->
+        <!-- FIXED: Combined Experience & Summary Section -->
         <section id="experience" class="experience-section section-full">
-            <!-- Professional Experience Timeline -->
-            <div class="timeline-container">
-                <div class="section-header">
-                    <h2 class="section-title"><i class="ph ph-briefcase"></i> Professional Experience Timeline</h2>
-                    <p class="section-subtitle">
-                        Over a decade of progressive growth in Salesforce development and administration across diverse
-                        industries.
-                    </p>
-                </div>
-                <div class="education-content">
+            <div class="section-header">
+                <h2 class="section-title"><i class="ph ph-briefcase"></i> Professional Experience & Summary</h2>
+                <p class="section-subtitle">
+                    Over a decade of progressive growth in Salesforce development, administration, and AI-driven CRM automation.
+                </p>
+            </div>
+            
+            <div class="experience-content-wrapper" style="max-width: 1400px; margin: 0 auto; padding: 0 var(--full-width-padding);">
+                <!-- Professional Journey Highlight -->
+                <div class="education-content" style="margin-bottom: var(--card-gap-xl);">
                     <div class="education-item">
                         <h3>12+ Years Professional Journey</h3>
-                        <p>AI Automation Expert, Salesforce Development, Administration & Consulting (2014 - Present)
-                        </p>
+                        <p>AI Automation Expert, Salesforce Development, Administration & Consulting (2014 - Present)</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- Professional Summary within same section -->
-            <div class="summary-container">
-                <div class="section-header">
-                    <h2 class="section-title"><i class="ph ph-list-checks"></i> Professional Summary</h2>
-                    <p class="section-subtitle">
-                        Comprehensive expertise across the entire Salesforce ecosystem with proven track record of
-                        delivering scalable solutions.
-                    </p>
-                </div>
+                <!-- Professional Summary Grid -->
                 <div class="summary-grid">
                     <div class="summary-item">
                         <div class="summary-icon"><i class="ph ph-robot" aria-hidden="true"></i></div>
@@ -674,7 +938,8 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
         <section id="metrics-dashboard" class="metrics-dashboard-section section-full">
             <div class="section-header">
                 <h2 class="section-title"><i class="ph ph-chart-line-up"></i> Enterprise Automation Impact</h2>
-                <p class="section-subtitle">Delivering measurable business value through strategic CRM and AI orchestration.</p>
+                <p class="section-subtitle">Delivering measurable business value through strategic CRM and AI
+                    orchestration.</p>
             </div>
             <div class="metrics-dashboard-grid">
                 <div class="metric-dashboard-card animate-scale" data-target="100000">
@@ -696,7 +961,8 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
                     <div class="metric-val">0</div>
                     <div class="metric-suffix">+</div>
                     <h3 class="metric-name">Systems Integrated</h3>
-                    <p class="metric-desc">Seamless API syncs between Salesforce, ERPs, AI models, and document vaults.</p>
+                    <p class="metric-desc">Seamless API syncs between Salesforce, ERPs, AI models, and document vaults.
+                    </p>
                 </div>
                 <div class="metric-dashboard-card animate-scale" data-target="52">
                     <div class="metric-icon"><i class="ph ph-trend-up"></i></div>
@@ -728,19 +994,22 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
                     <div class="step-number">01</div>
                     <div class="step-icon"><i class="ph ph-magnifying-glass"></i></div>
                     <h3>Strategic Audit</h3>
-                    <p>We perform a deep-dive analysis of your current Salesforce bottlenecks and identify high-ROI automation opportunities.</p>
+                    <p>We perform a deep-dive analysis of your current Salesforce bottlenecks and identify high-ROI
+                        automation opportunities.</p>
                 </div>
                 <div class="framework-step animate-fade-in" style="animation-delay: 0.1s;">
                     <div class="step-number">02</div>
                     <div class="step-icon"><i class="ph ph-blueprint"></i></div>
                     <h3>Architectural Blueprint</h3>
-                    <p>We design a scalable, secure AI+Salesforce roadmap tailored to your specific business revenue engine.</p>
+                    <p>We design a scalable, secure AI+Salesforce roadmap tailored to your specific business revenue
+                        engine.</p>
                 </div>
                 <div class="framework-step animate-fade-in" style="animation-delay: 0.2s;">
                     <div class="step-number">03</div>
                     <div class="step-icon"><i class="ph ph-rocket-launch"></i></div>
                     <h3>Automated Execution</h3>
-                    <p>We deploy production-grade Agentic systems that automate workflows, drive efficiency, and maximize your CRM investment.</p>
+                    <p>We deploy production-grade Agentic systems that automate workflows, drive efficiency, and
+                        maximize your CRM investment.</p>
                 </div>
             </div>
         </section>
@@ -748,7 +1017,8 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
         <!-- NEW: Enterprise-Grade Security & Compliance Section -->
         <section id="security" class="security-section section-full">
             <div class="section-header">
-                <h2 class="section-title"><i class="ph ph-shield-checkered"></i> Enterprise-Grade Security & Compliance</h2>
+                <h2 class="section-title"><i class="ph ph-shield-checkered"></i> Enterprise-Grade Security & Compliance
+                </h2>
                 <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.8);">
                     Protecting your most valuable asset: your proprietary enterprise data.
                 </p>
@@ -756,28 +1026,32 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
             <div class="security-container">
                 <div class="security-content">
                     <p class="security-intro">
-                        In the age of AI, data integrity is your most valuable asset. We build with a security-first mindset to protect your enterprise reputation.
+                        In the age of AI, data integrity is your most valuable asset. We build with a security-first
+                        mindset to protect your enterprise reputation.
                     </p>
                     <div class="security-grid">
                         <div class="security-item">
                             <div class="security-icon"><i class="ph ph-lock-key"></i></div>
                             <div>
                                 <h3>GDPR & SOC2 Alignment</h3>
-                                <p>12+ years experience architecting systems that meet rigorous international data privacy standards.</p>
+                                <p>12+ years experience architecting systems that meet rigorous international data
+                                    privacy standards.</p>
                             </div>
                         </div>
                         <div class="security-item">
                             <div class="security-icon"><i class="ph ph-database"></i></div>
                             <div>
                                 <h3>Secure AI Architectures</h3>
-                                <p>Implementing Private RAG (Retrieval-Augmented Generation) to ensure your proprietary data never trains public models.</p>
+                                <p>Implementing Private RAG (Retrieval-Augmented Generation) to ensure your proprietary
+                                    data never trains public models.</p>
                             </div>
                         </div>
                         <div class="security-item">
                             <div class="security-icon"><i class="ph ph-check-square-offset"></i></div>
                             <div>
                                 <h3>99.9% Data Integrity</h3>
-                                <p>Proven track record of maintaining absolute data accuracy in high-volume enterprise migrations and syncs.</p>
+                                <p>Proven track record of maintaining absolute data accuracy in high-volume enterprise
+                                    migrations and syncs.</p>
                             </div>
                         </div>
                     </div>
@@ -811,7 +1085,8 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
             <div class="roi-container">
                 <div class="section-header">
                     <h2 class="section-title"><i class="ph ph-calculator"></i> ROI Savings Calculator</h2>
-                    <p class="section-subtitle">Calculate how much manual time and cost we can automate for your team.</p>
+                    <p class="section-subtitle">Calculate how much manual time and cost we can automate for your team.
+                    </p>
                 </div>
                 <div class="roi-card">
                     <div class="roi-inputs">
@@ -839,7 +1114,8 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
                         </div>
                     </div>
                     <div class="roi-cta">
-                        <p>Imagine what your team could achieve with an extra <span id="hours-saved-text">2,600</span> hours.</p>
+                        <p>Imagine what your team could achieve with an extra <span id="hours-saved-text">2,600</span>
+                            hours.</p>
                         <button class="btn-primary calendly-trigger">Schedule Your ROI Discovery</button>
                     </div>
                 </div>
@@ -851,7 +1127,8 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
             <div class="arch-explorer-container">
                 <div class="section-header">
                     <h2 class="section-title"><i class="ph ph-squares-four"></i> Interactive Architecture Explorer</h2>
-                    <p class="section-subtitle">Click on the nodes below to inspect our enterprise integration patterns and data flow guardrails.</p>
+                    <p class="section-subtitle">Click on the nodes below to inspect our enterprise integration patterns
+                        and data flow guardrails.</p>
                 </div>
                 <div class="arch-explorer-layout">
                     <!-- Left: Visual Nodes Map -->
@@ -863,9 +1140,9 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
                                 <div class="node-badge">Core Engine</div>
                             </div>
                         </div>
-                        
+
                         <div class="arch-connector-line"></div>
-                        
+
                         <div class="arch-node-group">
                             <div class="arch-node" data-node="gemini" tabindex="0">
                                 <div class="node-icon"><i class="ph ph-sparkle"></i></div>
@@ -873,9 +1150,9 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
                                 <div class="node-badge">Intelligence Layer</div>
                             </div>
                         </div>
-                        
+
                         <div class="arch-connector-line"></div>
-                        
+
                         <div class="arch-node-group">
                             <div class="arch-node" data-node="apis" tabindex="0">
                                 <div class="node-icon"><i class="ph ph-plugs-connected"></i></div>
@@ -883,9 +1160,9 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
                                 <div class="node-badge">Data Connectors</div>
                             </div>
                         </div>
-                        
+
                         <div class="arch-connector-line"></div>
-                        
+
                         <div class="arch-node-group">
                             <div class="arch-node" data-node="messaging" tabindex="0">
                                 <div class="node-icon"><i class="ph ph-phone-call"></i></div>
@@ -894,12 +1171,13 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Right: Node Description Panel -->
                     <div class="arch-details-panel">
                         <div id="arch-details-content">
                             <h3 class="arch-details-title">Select an architectural node</h3>
-                            <p class="arch-details-subtitle">Click any system node to inspect its integration blueprint, scalability guardrails, and business transformation value.</p>
+                            <p class="arch-details-subtitle">Click any system node to inspect its integration blueprint,
+                                scalability guardrails, and business transformation value.</p>
                             <div class="arch-spec-box">
                                 <div class="spec-item">
                                     <strong>Integration Pattern:</strong>
@@ -999,33 +1277,39 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
         <section id="methodology" class="delivery-section section-full">
             <div class="section-header">
                 <h2 class="section-title"><i class="ph ph-tree-structure"></i> Enterprise Delivery Methodology</h2>
-                <p class="section-subtitle">A highly structured, audit-proof delivery model built for scalability, compliance, and velocity.</p>
+                <p class="section-subtitle">A highly structured, audit-proof delivery model built for scalability,
+                    compliance, and velocity.</p>
             </div>
             <div class="delivery-grid">
                 <div class="delivery-card">
                     <div class="delivery-step-num">01</div>
                     <h3>Discovery & Strategic Audit</h3>
-                    <p>Analyze business challenges, catalog technical debt, inspect existing flows, and establish hard baseline KPIs (e.g. lead leakage %, transaction latency).</p>
+                    <p>Analyze business challenges, catalog technical debt, inspect existing flows, and establish hard
+                        baseline KPIs (e.g. lead leakage %, transaction latency).</p>
                 </div>
                 <div class="delivery-card">
                     <div class="delivery-step-num">02</div>
                     <h3>Architecture & Schema Planning</h3>
-                    <p>Draft schema relationships, document metadata-driven triggers, design async processing structures, and define integration security maps.</p>
+                    <p>Draft schema relationships, document metadata-driven triggers, design async processing
+                        structures, and define integration security maps.</p>
                 </div>
                 <div class="delivery-card">
                     <div class="delivery-step-num">03</div>
                     <h3>High-Fidelity Development</h3>
-                    <p>Write bulkified Apex, build responsive LWC components, orchestrate API requests, and integrate AI prompts with robust error handling.</p>
+                    <p>Write bulkified Apex, build responsive LWC components, orchestrate API requests, and integrate AI
+                        prompts with robust error handling.</p>
                 </div>
                 <div class="delivery-card">
                     <div class="delivery-step-num">04</div>
                     <h3>Rigorous Quality Assurance</h3>
-                    <p>Stress-test governor limits, perform dry runs with high-volume data payloads, audit security sharing settings, and run regression flows.</p>
+                    <p>Stress-test governor limits, perform dry runs with high-volume data payloads, audit security
+                        sharing settings, and run regression flows.</p>
                 </div>
                 <div class="delivery-card">
                     <div class="delivery-step-num">05</div>
                     <h3>Deployment & Optimization</h3>
-                    <p>Promote code via clean CI/CD pipelines, configure live event monitoring, gather telemetry, and refine AI prompting and response parameters.</p>
+                    <p>Promote code via clean CI/CD pipelines, configure live event monitoring, gather telemetry, and
+                        refine AI prompting and response parameters.</p>
                 </div>
             </div>
         </section>
@@ -1034,23 +1318,27 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
         <section id="why-work-with-me" class="why-work-with-me-section section-full">
             <div class="section-header">
                 <h2 class="section-title"><i class="ph ph-handshake"></i> Why Partner With Me</h2>
-                <p class="section-subtitle">Bridging the gap between elite Salesforce engineering and bottom-line enterprise results.</p>
+                <p class="section-subtitle">Bridging the gap between elite Salesforce engineering and bottom-line
+                    enterprise results.</p>
             </div>
             <div class="why-grid">
                 <div class="why-card">
                     <div class="why-icon"><i class="ph ph-layout"></i></div>
                     <h3>Architecture-First Mindset</h3>
-                    <p>We decouple logic using Custom Metadata, design clean trigger handlers, and enforce rigorous naming conventions to guarantee zero technical debt.</p>
+                    <p>We decouple logic using Custom Metadata, design clean trigger handlers, and enforce rigorous
+                        naming conventions to guarantee zero technical debt.</p>
                 </div>
                 <div class="why-card">
                     <div class="why-icon"><i class="ph ph-currency-dollar"></i></div>
                     <h3>Business-Value Driven</h3>
-                    <p>We focus on metrics that matter. Every flow is built with a clear purpose: increasing lead conversions, saving team hours, or optimizing billing.</p>
+                    <p>We focus on metrics that matter. Every flow is built with a clear purpose: increasing lead
+                        conversions, saving team hours, or optimizing billing.</p>
                 </div>
                 <div class="why-card">
                     <div class="why-icon"><i class="ph ph-shield-check"></i></div>
                     <h3>Enterprise Scale & Integrity</h3>
-                    <p>Experienced with strict data governance, secure endpoints, async queueing, and robust platform architectures handling millions of annual operations.</p>
+                    <p>Experienced with strict data governance, secure endpoints, async queueing, and robust platform
+                        architectures handling millions of annual operations.</p>
                 </div>
             </div>
         </section>
@@ -1304,10 +1592,10 @@ MODULE SPECIFICATION (RULE[user_global]): Enterprise Home Page & Strategy Showca
         </div>
     </div>
     <script src="project-data.js"></script>
-    <script src="script.js?v=1.4"></script>
+    <script src="script.js?v=1.7"></script>
     <script src="scheduler.js?v=1.2"></script>
     <script src="featured-projects.js?v=1.2"></script>
-    <script src="assets/js/ai-consultant.js?v=1.2"></script>
+    <script src="assets/js/ai-consultant.js?v=2.0"></script>
 
 </body>
 

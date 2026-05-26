@@ -460,12 +460,110 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Fetch Options (Industries & Tools)
         async function loadOptions() {
+            // ── HARDCODED FALLBACK: Always available even if API/DB is down ──
+            const FALLBACK_TOOLS = [
+                { slug: 'discovery-call-prep',  name: 'AI Discovery Call Prep',       description: 'Generates industry-specific discovery questions and client qualification checklists.' },
+                { slug: 'integration-advisor',  name: 'AI Integration Planner',       description: 'Suggests middleware and API integration patterns for connecting external systems.' },
+                { slug: 'roi-estimator',        name: 'AI ROI Calculator',            description: 'Estimates potential time savings, cost reductions, and ROI metrics for Salesforce automation.' },
+                { slug: 'consulting-assistant', name: 'AI Consulting Assistant',      description: 'Provides high-level strategic advisory, CRM roadmap development, and digital transformation strategy.' },
+                { slug: 'agenda-generator',     name: 'AI Meeting Agenda Generator',  description: 'Generates structured agendas and talk tracks for stakeholder alignment workshops.' },
+                { slug: 'cloud-recommender',    name: 'AI Salesforce Optimization Tool', description: 'Analyzes your current Salesforce setup and recommends best-fit cloud products and features.' },
+                { slug: 'architect-assistant',  name: 'AI Solution Architect',        description: 'Designs technical blueprints, data models, and LWC component strategies for enterprise projects.' },
+                { slug: 'workflow-generator',   name: 'AI Workflow Generator',        description: 'Designs automated workflows and Flow logic for lead-to-cash and service processes.' }
+            ];
+
+            // Tool-specific pre-fill: goals and challenge placeholders
+            const TOOL_PRESETS = {
+                'discovery-call-prep':  { goals: ['Lead Management', 'Sales Operations'], placeholder: 'Describe the client background, deal size, or key pain points you want to uncover...' },
+                'integration-advisor':  { goals: ['Integration', 'Asynchronous Processing'], placeholder: 'Describe the systems you need to connect (e.g. SAP ERP, QuickBooks, Twilio) and the data flow required...' },
+                'roi-estimator':        { goals: ['Automation', 'Reporting'], placeholder: 'Describe your current manual processes — how many hours per week, team size, and what you want to automate...' },
+                'consulting-assistant': { goals: ['CRM Modernization', 'Automation'], placeholder: 'Describe your biggest CRM challenge — adoption issues, process gaps, data quality, or digital transformation goals...' },
+                'agenda-generator':     { goals: ['Sales Operations', 'Service Operations'], placeholder: 'Describe the meeting objective, attendees (e.g. VP Sales, IT Lead), and topics to cover...' },
+                'cloud-recommender':    { goals: ['CRM Modernization', 'Data Migration'], placeholder: 'Describe your current Salesforce setup and what is not working well or what you want to improve...' },
+                'architect-assistant':  { goals: ['Integration', 'Generative AI Integration'], placeholder: 'Describe your technical requirements — custom objects, integrations, volume of data, or LWC components needed...' },
+                'workflow-generator':   { goals: ['Automation', 'Workforce Automation'], placeholder: 'Describe the business process you want to automate — triggers, conditions, actions, and approval steps...' }
+            };
+
+            const icons = {
+                'discovery-call-prep': 'ph ph-phone-call',
+                'integration-advisor': 'ph ph-plugs-connected',
+                'roi-estimator':       'ph ph-chart-line-up',
+                'consulting-assistant':'ph ph-users-three',
+                'agenda-generator':    'ph ph-list-checks',
+                'cloud-recommender':   'ph ph-shield-check',
+                'architect-assistant': 'ph ph-sketch-logo',
+                'workflow-generator':  'ph ph-flow-arrow'
+            };
+
+            function renderToolCards(tools) {
+                toolsGrid.innerHTML = '';
+                let isInitialLoad = true;
+                tools.forEach(tool => {
+                    const card = document.createElement('div');
+                    card.className = 'ai-tool-card';
+                    card.setAttribute('data-slug', tool.slug);
+                    card.innerHTML = `
+                        <div class="ai-tool-icon"><i class="${icons[tool.slug] || 'ph ph-sparkle'}"></i></div>
+                        <div class="ai-tool-content">
+                            <h4>${tool.name}</h4>
+                            <p>${tool.description}</p>
+                        </div>
+                    `;
+
+                    card.addEventListener('click', () => {
+                        document.querySelectorAll('.ai-tool-card').forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+
+                        // Set active tool
+                        window.aiConsultant.activeTool = tool.name;
+                        window.aiConsultant.activeToolSlug = tool.slug;
+
+                        // Update right panel header
+                        const titleEl = document.getElementById('aiInquiryTitle');
+                        if (titleEl) titleEl.innerHTML = `<i class="${icons[tool.slug] || 'ph ph-sparkle'}"></i> ${tool.name}`;
+
+                        const subtitleEl = document.getElementById('aiInquirySubtitle');
+                        if (subtitleEl) subtitleEl.textContent = `Using a specialized Gen-AI tool to architect your ${tool.name} requirements.`;
+
+                        // Apply tool-specific pre-fill
+                        const preset = TOOL_PRESETS[tool.slug];
+
+                        // Reset & pre-populate goals
+                        selectedGoals.clear();
+                        if (preset?.goals) {
+                            preset.goals.forEach(g => selectedGoals.add(g));
+                        }
+                        renderTags();
+
+                        // Set context-aware placeholder
+                        challengeText.placeholder = preset?.placeholder || `Describe your ${tool.name} requirements...`;
+
+                        // BUG FIX: Immediate validation on tool click
+                        checkFormValidity();
+
+                        if (!isInitialLoad) {
+                            challengeText.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    });
+                    toolsGrid.appendChild(card);
+                });
+
+                // Set Default Tool (AI Consulting Assistant or first tool)
+                const defaultTool = tools.find(t => t.slug === 'consulting-assistant') || tools[0];
+                if (defaultTool) {
+                    const defaultCard = toolsGrid.querySelector(`[data-slug="${defaultTool.slug}"]`);
+                    if (defaultCard) defaultCard.click();
+                }
+                isInitialLoad = false;
+            }
+
             try {
                 const response = await fetch(AI_API_BASE_URL + 'ai-consultant.php?action=get_options');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
 
-                // Populate Industries
-                if (data.industries) {
+                // Populate Industries from API
+                if (data.industries && data.industries.length > 0) {
                     data.industries.forEach(ind => {
                         const opt = document.createElement('option');
                         opt.value = ind.id;
@@ -473,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         industrySelect.appendChild(opt);
                     });
 
-                    // Contextual pre-fill
+                    // Contextual pre-fill from project page
                     const currentIndustry = document.getElementById('client-industry')?.innerText;
                     if (currentIndustry) {
                         const match = Array.from(industrySelect.options).find(o =>
@@ -483,71 +581,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // Populate 8 Tools
-                if (data.tools) {
-                    const icons = {
-                        'discovery-call-prep': 'ph ph-phone-call',
-                        'integration-advisor': 'ph ph-plugs-connected',
-                        'roi-estimator': 'ph ph-chart-line-up',
-                        'consulting-assistant': 'ph ph-users-three',
-                        'agenda-generator': 'ph ph-list-checks',
-                        'cloud-recommender': 'ph ph-shield-check',
-                        'architect-assistant': 'ph ph-sketch-logo',
-                        'workflow-generator': 'ph ph-flow-arrow'
-                    };
+                // Use API tools if available, else fall back
+                const tools = (data.tools && data.tools.length > 0) ? data.tools : FALLBACK_TOOLS;
+                renderToolCards(tools);
 
-                    let isInitialLoad = true;
-                    data.tools.forEach(tool => {
-                        const card = document.createElement('div');
-                        card.className = 'ai-tool-card';
-                        card.innerHTML = `
-                            <div class="ai-tool-icon"><i class="${icons[tool.slug] || 'ph ph-sparkle'}"></i></div>
-                            <div class="ai-tool-content">
-                                <h4>${tool.name}</h4>
-                                <p>${tool.description}</p>
-                            </div>
-                        `;
-
-                        card.addEventListener('click', () => {
-                            document.querySelectorAll('.ai-tool-card').forEach(c => c.classList.remove('active'));
-                            card.classList.add('active');
-
-                            // Reset tags when a specialized tool is chosen
-                            selectedGoals.clear();
-                            renderTags();
-                            window.aiConsultant.activeTool = tool.name;
-                            window.aiConsultant.activeToolSlug = tool.slug;
-
-                            // Update Header Dynamically to save space
-                            const titleEl = document.getElementById('aiInquiryTitle');
-                            if (titleEl) titleEl.innerHTML = `<i class="ph ph-sparkle"></i> ${tool.name}`;
-
-                            const subtitleEl = document.getElementById('aiInquirySubtitle');
-                            if (subtitleEl) subtitleEl.textContent = `Using a specialized Gen-AI tool to architect your ${tool.name} requirements.`;
-
-                            challengeText.placeholder = `Describe your ${tool.name} requirements...`;
-                            
-                            // BUG FIX: Immediate validation on tool click
-                            checkFormValidity();
-
-                            if (!isInitialLoad) {
-                                challengeText.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            }
-                        });
-                        toolsGrid.appendChild(card);
-                    });
-
-                    // Set Default Tool (AI Consulting Assistant or first tool)
-                    const defaultTool = data.tools.find(t => t.name.includes('Consulting Assistant')) || data.tools[0];
-                    if (defaultTool) {
-                        const cards = toolsGrid.querySelectorAll('.ai-tool-card');
-                        const defaultCard = Array.from(cards).find(c => c.querySelector('h4').textContent === defaultTool.name);
-                        if (defaultCard) defaultCard.click();
-                    }
-                    isInitialLoad = false;
-                }
             } catch (err) {
-                console.error('AI Options Load Error:', err);
+                console.warn('AI Options API unavailable — using built-in tool definitions.', err);
+
+                // API failed: still render fallback tools so UI is fully functional
+                renderToolCards(FALLBACK_TOOLS);
+
+                // Also populate fallback industries
+                const fallbackIndustries = [
+                    { id: '1', name: 'Real Estate' }, { id: '2', name: 'Financial Services' },
+                    { id: '3', name: 'Healthcare & Life Sciences' }, { id: '4', name: 'Manufacturing' },
+                    { id: '5', name: 'Retail & E-Commerce' }, { id: '6', name: 'Technology & SaaS' },
+                    { id: '7', name: 'Nonprofit' }, { id: '8', name: 'Government & Public Sector' },
+                    { id: '9', name: 'Education' }, { id: '10', name: 'Professional Services' },
+                    { id: '11', name: 'Insurance' }, { id: '12', name: 'Telecommunications' },
+                    { id: '13', name: 'Media & Entertainment' }, { id: '14', name: 'Energy & Utilities' }
+                ];
+                // Only add if industry select is still empty
+                if (industrySelect.options.length <= 1) {
+                    fallbackIndustries.forEach(ind => {
+                        const opt = document.createElement('option');
+                        opt.value = ind.id;
+                        opt.textContent = ind.name;
+                        industrySelect.appendChild(opt);
+                    });
+                }
             }
         }
 

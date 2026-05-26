@@ -6,11 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
         static BASE_URL = (() => {
             const host = window.location.hostname;
             const origin = window.location.origin;
-            // Dynamic discovery for local development to avoid CORS issues between localhost/127.0.0.1
-            if (host === 'localhost' || host === '127.0.0.1' || host === '::1' || host === '') {
-                return `${origin}/profile/api/`;
+            if (host === 'lightcloudcrm.com' || host === 'www.lightcloudcrm.com') {
+                return 'https://lightcloudcrm.com/api/';
             }
-            return 'https://lightcloudcrm.com/api/';
+            return `${origin}/profile/api/`;
         })();
         static API_KEY = 'LIGHTCLOUD_SECRET_92de8c3f926afd3b';
 

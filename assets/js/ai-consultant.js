@@ -18,10 +18,13 @@
 // Smart API Base URL: switches between local dev and production automatically
 const AI_API_BASE_URL = (() => {
     const host = window.location.hostname;
-    if (host === 'lightcloudcrm.com' || host === 'www.lightcloudcrm.com') {
-        return 'https://lightcloudcrm.com/api/';
+    const isLocal = host === 'localhost' || host === '127.0.0.1' || host === '::1' || host === '' ||
+                    host.startsWith('192.168.') || host.startsWith('10.') || 
+                    host.startsWith('172.') || host.endsWith('.local');
+    if (isLocal) {
+        return `${window.location.origin}/profile/api/`;
     }
-    return `${window.location.origin}/profile/api/`;
+    return 'https://lightcloudcrm.com/api/';
 })();
 
 // Inline AI Panel HTML — avoids cross-origin fetch (GitHub Pages cannot send CORS headers)

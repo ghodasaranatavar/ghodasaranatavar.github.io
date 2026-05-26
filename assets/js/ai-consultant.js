@@ -190,6 +190,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // BUG FIX: Initialization Guard - prevent duplicates
     if (document.getElementById('aiModalOverlay')) return;
 
+    // Session Tracking Setup
+    let sessionId = sessionStorage.getItem('tracking_session_id');
+    if (!sessionId) {
+        sessionId = 'sess_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        sessionStorage.setItem('tracking_session_id', sessionId);
+    }
+
+    async function trackEvent(eventType, details = {}) {
+        const payload = {
+            event_type: eventType,
+            session_id: sessionStorage.getItem('tracking_session_id'),
+            consultation_id: sessionStorage.getItem('last_consultation_id') ? parseInt(sessionStorage.getItem('last_consultation_id')) : null,
+            tool_slug: sessionStorage.getItem('last_tool_slug') || (window.aiConsultant ? window.aiConsultant.activeToolSlug : null),
+            provider_used: sessionStorage.getItem('last_provider_used') || null,
+            model_used: sessionStorage.getItem('last_model_used') || null,
+            ...details
+        };
+        try {
+            await fetch(AI_API_BASE_URL + 'track-conversion.php?action=track_event', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+        } catch (err) {
+            console.error('Tracking Error:', err);
+        }
+    }
+    window.trackConversionEvent = trackEvent; // Expose globally for scheduler.js to call!
+
+    // Click interceptor for all booking triggers on the page
+    document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('.calendly-trigger');
+        if (trigger) {
+            const ctaId = trigger.id || trigger.className || 'generic-cta';
+            trackEvent('cta_click', { cta_element_id: ctaId });
+        }
+    });
+
     // 1. Create Modal Infrastructure
     const overlay = document.createElement('div');
     overlay.id = 'aiModalOverlay';
@@ -248,7 +286,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Form Validation Logic ---
         function checkFormValidity() {
             const ind = industrySelect.value;
-            const hasGoals = selectedGoals.size > 0;
+            // Valid when explicit goals are selected OR a tool card is active (provides implicit goal context)
+            const hasGoals = selectedGoals.size > 0 || !!window.aiConsultant.activeTool;
             const chall = challengeText.value.trim();
 
             if (ind !== '' && hasGoals && chall !== '') {
@@ -554,14 +593,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         async function generateConsultation() {
-            const finalGoal = window.aiConsultant.activeTool || Array.from(selectedGoals).join(', ');
+            // Prefer the user's explicit goal tags; fall back to the active tool name only if no tags are selected
+            const finalGoal = selectedGoals.size > 0
+                ? Array.from(selectedGoals).join(', ')
+                : (window.aiConsultant.activeTool || '');
             const payload = {
                 industry_id: industrySelect.value,
                 goal: finalGoal,
                 tool_slug: window.aiConsultant.activeToolSlug || '',
                 clouds: Array.from(selectedClouds).join(', '),
                 team_size: teamSizeSelect.value,
-                challenge: challengeText.value
+                challenge: challengeText.value,
+                session_id: sessionStorage.getItem('tracking_session_id')
             };
 
             if (!payload.industry_id || !payload.goal) {
@@ -590,6 +633,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await response.json();
 
                 if (data.success) {
+                    if (data.consultation_id) {
+                        sessionStorage.setItem('last_consultation_id', data.consultation_id);
+                    }
+                    sessionStorage.setItem('last_tool_slug', window.aiConsultant.activeToolSlug || '');
+                    sessionStorage.setItem('last_provider_used', data.metadata?.provider_used || '');
+                    sessionStorage.setItem('last_model_used', data.metadata?.model_used || '');
+
                     window.aiConsultant.lastConsultation = {
                         industry: industrySelect.options[industrySelect.selectedIndex].text,
                         goal: finalGoal,

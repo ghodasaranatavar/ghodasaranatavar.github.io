@@ -240,6 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
             this.updateSidebar();
             DOM.modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            if (window.trackConversionEvent) {
+                window.trackConversionEvent('scheduler_open');
+            }
         },
 
         closeModal() {
@@ -467,6 +470,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     StateManager.selectedTime = time;
                     StateManager.selectedSlotId = slotId;
                     UIController.updateSidebar();
+                    if (window.trackConversionEvent) {
+                        window.trackConversionEvent('slot_lock', { metadata: JSON.stringify({ slot_id: slotId }) });
+                    }
                     UIController.showStep(2); // Go to form (index 2 in steps array)
                 }
             } catch (error) {
@@ -508,6 +514,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Populate detailed success summary card
                     UIController.populateSuccessDetails(data);
+                    
+                    if (window.trackConversionEvent) {
+                        window.trackConversionEvent('booking_success', { metadata: JSON.stringify({ name: data.name, email: data.email }) });
+                    }
                     
                     UIController.showStep(3); // Success step
                 } catch (err) {

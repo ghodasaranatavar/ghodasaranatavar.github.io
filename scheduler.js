@@ -6,10 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
         static BASE_URL = (() => {
             const host = window.location.hostname;
             const origin = window.location.origin;
-            if (host === 'lightcloudcrm.com' || host === 'www.lightcloudcrm.com') {
-                return 'https://lightcloudcrm.com/api/';
+            const isLocal = host === 'localhost' || host === '127.0.0.1' || host === '::1' || host === '' ||
+                            host.startsWith('192.168.') || host.startsWith('10.') || 
+                            host.startsWith('172.') || host.endsWith('.local');
+            if (isLocal) {
+                return `${origin}/profile/api/`;
             }
-            return `${origin}/profile/api/`;
+            return 'https://lightcloudcrm.com/api/';
         })();
         static API_KEY = 'LIGHTCLOUD_SECRET_92de8c3f926afd3b';
 
